@@ -1,9 +1,7 @@
 import { CheckCircle } from "lucide-react";
 import { DestinationSearch } from "./DestinationSearch";
-
 export const HeroSection = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16">
+  return <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
       
@@ -20,18 +18,14 @@ export const HeroSection = () => {
               Hitta din väg ut i världen
             </h1>
 
-            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Sök på din drömdestination och få alla viktiga resurser, visum-info och tips samlat på ett ställe.
-            </p>
+            <p className="text-base sm:text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">Få all den information som just du behöver innan ditt stora äventyr</p>
 
             {/* Trust badges */}
             <div className="flex flex-wrap justify-center gap-3 mb-10">
-              {["Ingen kostnad", "Oberoende jämförelser", "Svenska partners"].map((badge) => (
-                <div key={badge} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-muted text-sm text-muted-foreground">
+              {["Ingen kostnad", "Oberoende jämförelser", "Svenska partners"].map(badge => <div key={badge} className="flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-muted text-sm text-muted-foreground">
                   <CheckCircle className="w-3.5 h-3.5 text-accent" />
                   {badge}
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
@@ -41,6 +35,5 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
