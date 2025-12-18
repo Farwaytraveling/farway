@@ -167,6 +167,30 @@ const destinations: Destination[] = [
       ],
     },
   },
+  {
+    country: "Vietnam",
+    flag: "🇻🇳",
+    code: "VN",
+    visaType: "E-Visa / Business Visa",
+    ageLimit: "18+ år",
+    duration: "90 dagar (förlängningsbar)",
+    cost: "~$25-50 USD",
+    popular: ["Digital Nomad", "Engelskundervisning", "Volontär"],
+    resources: {
+      visa: [
+        { name: "Vietnam E-Visa Portal", url: "https://evisa.xuatnhapcanh.gov.vn/", official: true },
+        { name: "Vietnamesiska ambassaden", url: "https://vietnamembassy.se/", official: true },
+      ],
+      jobs: [
+        { name: "VietnamWorks", url: "https://www.vietnamworks.com/", official: false },
+        { name: "Teach Away Vietnam", url: "https://www.teachaway.com/teach-vietnam", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Vietnam (FB)", url: "https://www.facebook.com/groups/svenskarivietnam", official: false },
+        { name: "Digital Nomads Vietnam", url: "https://www.facebook.com/groups/digitalnomadsvietnam", official: false },
+      ],
+    },
+  },
 ];
 
 export const DestinationSearch = () => {
