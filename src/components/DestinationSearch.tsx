@@ -213,10 +213,10 @@ export const DestinationSearch = () => {
   return (
     <div className="w-full">
       {/* Search Input */}
-      <div className="relative max-w-3xl mx-auto">
-        <div className="bg-card rounded-2xl shadow-glow border border-border/50 p-2">
-          <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-secondary/50">
-            <MapPin className="w-6 h-6 text-primary flex-shrink-0" />
+      <div className="relative max-w-2xl mx-auto">
+        <div className="bg-card rounded-lg shadow-medium border border-border p-1.5">
+          <div className="flex items-center gap-3 px-4 py-2.5 rounded-md bg-background">
+            <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
             <input
               ref={inputRef}
               type="text"
@@ -227,16 +227,16 @@ export const DestinationSearch = () => {
                 setSelectedDestination(null);
               }}
               onFocus={() => setIsOpen(true)}
-              placeholder="Sök destination... (t.ex. Australien, Kanada, Japan)"
-              className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground text-lg"
+              placeholder="Sök destination... (t.ex. Australien, Kanada)"
+              className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground"
             />
             {query && (
               <button onClick={clearSelection} className="text-muted-foreground hover:text-foreground">
-                <X className="w-5 h-5" />
+                <X className="w-4 h-4" />
               </button>
             )}
-            <Button variant="hero" size="lg" className="hidden sm:flex">
-              <Search className="w-5 h-5" />
+            <Button variant="default" size="default" className="hidden sm:flex">
+              <Search className="w-4 h-4" />
               Sök
             </Button>
           </div>
@@ -246,25 +246,25 @@ export const DestinationSearch = () => {
         {isOpen && query.length > 0 && !selectedDestination && (
           <div
             ref={dropdownRef}
-            className="absolute top-full left-0 right-0 mt-2 bg-card rounded-xl shadow-glow border border-border/50 overflow-hidden z-50"
+            className="absolute top-full left-0 right-0 mt-2 bg-card rounded-lg shadow-medium border border-border overflow-hidden z-50"
           >
             {filteredDestinations.length > 0 ? (
               filteredDestinations.map((dest) => (
                 <button
                   key={dest.code}
                   onClick={() => handleSelect(dest)}
-                  className="w-full flex items-center gap-4 p-4 hover:bg-secondary/50 transition-colors text-left"
+                  className="w-full flex items-center gap-3 p-3 hover:bg-secondary transition-colors text-left"
                 >
-                  <span className="text-3xl">{dest.flag}</span>
+                  <span className="text-2xl">{dest.flag}</span>
                   <div>
-                    <p className="font-semibold text-foreground">{dest.country}</p>
-                    <p className="text-sm text-muted-foreground">{dest.popular.join(" • ")}</p>
+                    <p className="font-medium text-foreground">{dest.country}</p>
+                    <p className="text-xs text-muted-foreground">{dest.popular.join(" • ")}</p>
                   </div>
                 </button>
               ))
             ) : (
-              <div className="p-4 text-center text-muted-foreground">
-                Ingen destination hittades. Prova ett annat sökord.
+              <div className="p-4 text-center text-muted-foreground text-sm">
+                Ingen destination hittades.
               </div>
             )}
           </div>
@@ -273,21 +273,21 @@ export const DestinationSearch = () => {
 
       {/* Results */}
       {selectedDestination && (
-        <div className="mt-12 animate-fade-up">
-          <div className="max-w-5xl mx-auto">
+        <div className="mt-10 animate-fade-up">
+          <div className="max-w-4xl mx-auto">
             {/* Header */}
-            <div className="text-center mb-8">
-              <span className="text-6xl mb-4 block">{selectedDestination.flag}</span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-2">
+            <div className="text-center mb-6">
+              <span className="text-5xl mb-3 block">{selectedDestination.flag}</span>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-1">
                 {selectedDestination.country}
               </h2>
-              <p className="text-muted-foreground">
-                Allt du behöver veta för att åka till {selectedDestination.country}
+              <p className="text-muted-foreground text-sm">
+                Resurser och information för {selectedDestination.country}
               </p>
             </div>
 
             {/* Quick Facts */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
               {[
                 { icon: FileCheck, label: "Visumtyp", value: selectedDestination.visaType },
                 { icon: Plane, label: "Ålder", value: selectedDestination.ageLimit },
@@ -296,9 +296,9 @@ export const DestinationSearch = () => {
               ].map((fact) => (
                 <div
                   key={fact.label}
-                  className="bg-card/80 backdrop-blur-sm rounded-xl p-4 border border-border/50"
+                  className="bg-card rounded-lg p-3 border border-border"
                 >
-                  <fact.icon className="w-5 h-5 text-primary mb-2" />
+                  <fact.icon className="w-4 h-4 text-primary mb-1.5" />
                   <p className="text-xs text-muted-foreground">{fact.label}</p>
                   <p className="font-medium text-foreground text-sm">{fact.value}</p>
                 </div>
@@ -306,12 +306,12 @@ export const DestinationSearch = () => {
             </div>
 
             {/* Resources Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {/* Visa & Official */}
-              <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50">
-                <div className="flex items-center gap-2 mb-4">
-                  <FileCheck className="w-5 h-5 text-primary" />
-                  <h3 className="font-display font-semibold text-foreground">Visum & Myndigheter</h3>
+              <div className="bg-card rounded-lg p-5 border border-border">
+                <div className="flex items-center gap-2 mb-3">
+                  <FileCheck className="w-4 h-4 text-primary" />
+                  <h3 className="font-display font-semibold text-foreground text-sm">Visum & Myndigheter</h3>
                 </div>
                 <div className="space-y-2">
                   {selectedDestination.resources.visa.map((resource) => (
@@ -320,22 +320,22 @@ export const DestinationSearch = () => {
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
+                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
                     >
-                      <span className="text-sm text-foreground group-hover:text-primary transition-colors">
+                      <span className="text-sm text-foreground">
                         {resource.name}
                       </span>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
                     </a>
                   ))}
                 </div>
               </div>
 
               {/* Jobs */}
-              <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50">
-                <div className="flex items-center gap-2 mb-4">
-                  <Briefcase className="w-5 h-5 text-accent" />
-                  <h3 className="font-display font-semibold text-foreground">Hitta jobb</h3>
+              <div className="bg-card rounded-lg p-5 border border-border">
+                <div className="flex items-center gap-2 mb-3">
+                  <Briefcase className="w-4 h-4 text-accent" />
+                  <h3 className="font-display font-semibold text-foreground text-sm">Hitta jobb</h3>
                 </div>
                 <div className="space-y-2">
                   {selectedDestination.resources.jobs.map((resource) => (
@@ -344,22 +344,22 @@ export const DestinationSearch = () => {
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
+                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
                     >
-                      <span className="text-sm text-foreground group-hover:text-accent transition-colors">
+                      <span className="text-sm text-foreground">
                         {resource.name}
                       </span>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-accent" />
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
                     </a>
                   ))}
                 </div>
               </div>
 
               {/* Community */}
-              <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/50">
-                <div className="flex items-center gap-2 mb-4">
-                  <Users className="w-5 h-5 text-primary" />
-                  <h3 className="font-display font-semibold text-foreground">Community & Partners</h3>
+              <div className="bg-card rounded-lg p-5 border border-border">
+                <div className="flex items-center gap-2 mb-3">
+                  <Users className="w-4 h-4 text-primary" />
+                  <h3 className="font-display font-semibold text-foreground text-sm">Community & Partners</h3>
                 </div>
                 <div className="space-y-2">
                   {selectedDestination.resources.community.map((resource) => (
@@ -368,12 +368,12 @@ export const DestinationSearch = () => {
                       href={resource.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group"
+                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
                     >
-                      <span className="text-sm text-foreground group-hover:text-primary transition-colors">
+                      <span className="text-sm text-foreground">
                         {resource.name}
                       </span>
-                      <ExternalLink className="w-4 h-4 text-muted-foreground group-hover:text-primary" />
+                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
                     </a>
                   ))}
                 </div>
@@ -381,12 +381,12 @@ export const DestinationSearch = () => {
             </div>
 
             {/* CTA */}
-            <div className="text-center mt-8">
-              <p className="text-muted-foreground mb-4">
-                Vill du ha hjälp med planering? Våra partners kan hjälpa dig.
+            <div className="text-center mt-6">
+              <p className="text-muted-foreground text-sm mb-3">
+                Behöver du hjälp med planering?
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Button asChild variant="hero">
+                <Button asChild variant="default">
                   <a href="https://www.kilroy.se" target="_blank" rel="noopener noreferrer">
                     Boka via Kilroy
                   </a>
@@ -404,14 +404,14 @@ export const DestinationSearch = () => {
 
       {/* Popular destinations when no search */}
       {!selectedDestination && !query && (
-        <div className="mt-8 text-center">
-          <p className="text-sm text-muted-foreground mb-4">Populära destinationer</p>
+        <div className="mt-6 text-center">
+          <p className="text-xs text-muted-foreground mb-3">Populära destinationer</p>
           <div className="flex flex-wrap justify-center gap-2">
             {destinations.slice(0, 6).map((dest) => (
               <button
                 key={dest.code}
                 onClick={() => handleSelect(dest)}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 hover:bg-secondary transition-colors text-sm"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors text-sm"
               >
                 <span>{dest.flag}</span>
                 <span className="text-foreground">{dest.country}</span>
