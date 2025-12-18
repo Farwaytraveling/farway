@@ -51,6 +51,78 @@ const destinations: Destination[] = [
     },
   },
   {
+    country: "Thailand",
+    flag: "🇹🇭",
+    code: "TH",
+    visaType: "Tourist Visa / Education Visa",
+    ageLimit: "18+ år",
+    duration: "60-90 dagar (förlängningsbar)",
+    cost: "~$40 USD",
+    popular: ["Backpacking", "Volontär", "Dykning"],
+    resources: {
+      visa: [
+        { name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true },
+        { name: "Thai ambassaden Stockholm", url: "https://stockholm.thaiembassy.org/", official: true },
+      ],
+      jobs: [
+        { name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false },
+        { name: "PADI Divemaster", url: "https://www.padi.com/", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false },
+        { name: "Kilroy Thailand", url: "https://www.kilroy.se/thailand", official: false },
+      ],
+    },
+  },
+  {
+    country: "USA",
+    flag: "🇺🇸",
+    code: "US",
+    visaType: "J-1 Visum (Au Pair, Summer Work)",
+    ageLimit: "18-28 år",
+    duration: "12-24 månader",
+    cost: "Varierar per program",
+    popular: ["Au Pair", "Summer Camp", "Praktik"],
+    resources: {
+      visa: [
+        { name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true },
+        { name: "USCIS", url: "https://www.uscis.gov/", official: true },
+      ],
+      jobs: [
+        { name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false },
+        { name: "Camp America", url: "https://www.campamerica.co.uk", official: false },
+      ],
+      community: [
+        { name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false },
+        { name: "EF USA", url: "https://www.ef.se/pg/sprakresa-usa/", official: false },
+      ],
+    },
+  },
+  {
+    country: "Spanien",
+    flag: "🇪🇸",
+    code: "ES",
+    visaType: "EU-medborgare (fritt)",
+    ageLimit: "Alla åldrar",
+    duration: "Obegränsad",
+    cost: "Gratis",
+    popular: ["Språkresa", "Bartender", "Turism"],
+    resources: {
+      visa: [
+        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
+        { name: "NIE-nummer", url: "https://www.interior.gob.es/opencms/es/servicios-al-ciudadano/tramites-y-gestiones/extranjeria/", official: true },
+      ],
+      jobs: [
+        { name: "InfoJobs", url: "https://www.infojobs.net/", official: false },
+        { name: "Seasonworkers Spain", url: "https://www.seasonworkers.com/spain", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Spanien (FB)", url: "https://www.facebook.com/groups/svenskarispanien", official: false },
+        { name: "EF Spanien", url: "https://www.ef.se/pg/sprakresa-spanien/", official: false },
+      ],
+    },
+  },
+  {
     country: "Nya Zeeland",
     flag: "🇳🇿",
     code: "NZ",
@@ -94,30 +166,6 @@ const destinations: Destination[] = [
       community: [
         { name: "Svenskar i Kanada (FB)", url: "https://www.facebook.com/groups/svenskarikanada", official: false },
         { name: "Kilroy Kanada", url: "https://www.kilroy.se/kanada", official: false },
-      ],
-    },
-  },
-  {
-    country: "USA",
-    flag: "🇺🇸",
-    code: "US",
-    visaType: "J-1 Visum (Au Pair, Summer Work)",
-    ageLimit: "18-28 år",
-    duration: "12-24 månader",
-    cost: "Varierar per program",
-    popular: ["Au Pair", "Summer Camp", "Praktik"],
-    resources: {
-      visa: [
-        { name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true },
-        { name: "USCIS", url: "https://www.uscis.gov/", official: true },
-      ],
-      jobs: [
-        { name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false },
-        { name: "Camp America", url: "https://www.campamerica.co.uk", official: false },
-      ],
-      community: [
-        { name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false },
-        { name: "EF USA", url: "https://www.ef.se/pg/sprakresa-usa/", official: false },
       ],
     },
   },
@@ -431,7 +479,7 @@ export const DestinationSearch = () => {
         <div className="mt-6 text-center">
           <p className="text-xs text-muted-foreground mb-3">Populära destinationer</p>
           <div className="flex flex-wrap justify-center gap-2">
-            {destinations.slice(0, 6).map((dest) => (
+            {destinations.slice(0, 5).map((dest) => (
               <button
                 key={dest.code}
                 onClick={() => handleSelect(dest)}
