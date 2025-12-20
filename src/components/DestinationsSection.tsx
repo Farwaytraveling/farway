@@ -78,20 +78,20 @@ export const DestinationsSection = () => {
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/20 to-transparent" />
               <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
                 {dest.programs} program
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl drop-shadow-lg">{dest.flag}</span>
-                  <h3 className="font-display text-2xl font-bold text-white drop-shadow-md">
+                  <span className="text-3xl">{dest.flag}</span>
+                  <h3 className="font-display text-2xl font-bold text-foreground">
                     {dest.country}
                   </h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {dest.popular.split(", ").map((tag) => (
-                    <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">
+                    <span key={tag} className="bg-foreground/10 text-foreground text-xs font-medium px-3 py-1 rounded-full">
                       {tag}
                     </span>
                   ))}
