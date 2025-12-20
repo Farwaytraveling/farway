@@ -1,4 +1,4 @@
-import { Briefcase, Heart, GraduationCap, Users, TreePine, Globe, ArrowRight } from "lucide-react";
+import { Briefcase, Heart, GraduationCap, Users, Snowflake, Globe, ArrowRight } from "lucide-react";
 
 const programs = [
   {
@@ -26,10 +26,10 @@ const programs = [
     gradient: "from-violet-500 to-purple-500",
   },
   {
-    icon: TreePine,
-    title: "Farm & Ranch",
-    description: "Arbeta på gårdar och rancher",
-    gradient: "from-lime-500 to-green-500",
+    icon: Snowflake,
+    title: "Skidsäsong",
+    description: "Jobba på skidorter världen över",
+    gradient: "from-sky-400 to-indigo-500",
   },
   {
     icon: Globe,
