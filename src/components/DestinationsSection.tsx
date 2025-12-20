@@ -65,29 +65,37 @@ export const DestinationsSection = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {destinations.map((dest) => (
             <div
               key={dest.country}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer"
+              className="group relative rounded-3xl overflow-hidden cursor-pointer shadow-xl hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 ring-1 ring-border/10 hover:ring-primary/30"
             >
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={dest.image}
                   alt={dest.country}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent group-hover:from-black/95 transition-colors duration-300" />
+              <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg">
+                {dest.programs} program
+              </div>
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-2xl">{dest.flag}</span>
-                  <h3 className="font-display text-xl font-semibold text-card">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl drop-shadow-lg">{dest.flag}</span>
+                  <h3 className="font-display text-2xl font-bold text-white drop-shadow-md">
                     {dest.country}
                   </h3>
                 </div>
-                <p className="text-card/80 text-sm mb-1">{dest.programs} program tillgängliga</p>
-                <p className="text-primary-foreground/70 text-xs">{dest.popular}</p>
+                <div className="flex flex-wrap gap-2">
+                  {dest.popular.split(", ").map((tag) => (
+                    <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
