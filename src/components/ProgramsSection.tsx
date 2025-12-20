@@ -1,105 +1,43 @@
-import { Briefcase, Heart, GraduationCap, Users, TreePine, Globe, ExternalLink, FileText, Users2, Building } from "lucide-react";
+import { Briefcase, Heart, GraduationCap, Users, TreePine, Globe, ArrowRight } from "lucide-react";
 
 const programs = [
   {
     icon: Briefcase,
     title: "Working Holiday",
-    description: "Jobba och res i upp till 12 månader. Perfekt för dig som vill uppleva vardagslivet i ett annat land.",
-    color: "bg-primary/10 text-primary",
-    resources: [
-      { name: "Migrationsverket - Working Holiday", url: "https://www.migrationsverket.se", type: "official" },
-      { name: "Australien WHV ansökan", url: "https://immi.homeaffairs.gov.au", type: "official" },
-      { name: "Workaway", url: "https://www.workaway.info", type: "platform" },
-      { name: "Facebook: Svenska i Australien", url: "https://facebook.com/groups", type: "community" },
-    ],
+    description: "Jobba och res i upp till 12 månader",
+    gradient: "from-orange-500 to-amber-500",
   },
   {
     icon: Heart,
     title: "Au Pair",
-    description: "Bo hos en värdfamilj och ta hand om barn. Ett unikt sätt att uppleva en ny kultur på nära håll.",
-    color: "bg-accent/10 text-accent",
-    resources: [
-      { name: "Au Pair World", url: "https://www.aupairworld.com", type: "platform" },
-      { name: "Cultural Care Au Pair", url: "https://www.culturalcare.com", type: "platform" },
-      { name: "US J-1 Visum info", url: "https://j1visa.state.gov", type: "official" },
-      { name: "Facebook: Au Pair Sverige", url: "https://facebook.com/groups", type: "community" },
-    ],
+    description: "Bo hos en värdfamilj och ta hand om barn",
+    gradient: "from-rose-500 to-pink-500",
   },
   {
     icon: GraduationCap,
     title: "Studera utomlands",
-    description: "Språkkurser eller universitetsstudier. Utveckla dig själv och ditt CV samtidigt.",
-    color: "bg-emerald-500/10 text-emerald-600",
-    resources: [
-      { name: "CSN - Studier utomlands", url: "https://www.csn.se", type: "official" },
-      { name: "Universityadmissions.se", url: "https://www.universityadmissions.se", type: "official" },
-      { name: "EF Education First", url: "https://www.ef.se", type: "platform" },
-      { name: "Erasmus+", url: "https://erasmus-plus.ec.europa.eu", type: "official" },
-    ],
+    description: "Språkkurser eller universitetsstudier",
+    gradient: "from-emerald-500 to-teal-500",
   },
   {
     icon: Users,
     title: "Volontärarbete",
-    description: "Gör skillnad medan du reser. Hjälp till i projekt som engagerar dig.",
-    color: "bg-violet-500/10 text-violet-600",
-    resources: [
-      { name: "Workaway", url: "https://www.workaway.info", type: "platform" },
-      { name: "WWOOF", url: "https://wwoof.net", type: "platform" },
-      { name: "Volunteer World", url: "https://www.volunteerworld.com", type: "platform" },
-      { name: "Facebook: Volontär utomlands", url: "https://facebook.com/groups", type: "community" },
-    ],
+    description: "Gör skillnad medan du reser",
+    gradient: "from-violet-500 to-purple-500",
   },
   {
     icon: TreePine,
     title: "Farm & Ranch",
-    description: "Arbeta på gårdar och rancher. Upplev naturen och lär dig nya färdigheter.",
-    color: "bg-amber-500/10 text-amber-600",
-    resources: [
-      { name: "WWOOF", url: "https://wwoof.net", type: "platform" },
-      { name: "HelpX", url: "https://www.helpx.net", type: "platform" },
-      { name: "Workaway Farm", url: "https://www.workaway.info", type: "platform" },
-      { name: "Facebook: Farm Work Abroad", url: "https://facebook.com/groups", type: "community" },
-    ],
+    description: "Arbeta på gårdar och rancher",
+    gradient: "from-lime-500 to-green-500",
   },
   {
     icon: Globe,
     title: "Praktik utomlands",
-    description: "Få internationell arbetslivserfarenhet inom ditt yrkesområde.",
-    color: "bg-sky-500/10 text-sky-600",
-    resources: [
-      { name: "AIESEC", url: "https://aiesec.org", type: "platform" },
-      { name: "Erasmus+ Praktik", url: "https://erasmus-plus.ec.europa.eu", type: "official" },
-      { name: "LinkedIn Jobs", url: "https://linkedin.com/jobs", type: "platform" },
-      { name: "Arbetsförmedlingen utland", url: "https://arbetsformedlingen.se", type: "official" },
-    ],
+    description: "Få internationell arbetslivserfarenhet",
+    gradient: "from-sky-500 to-blue-500",
   },
 ];
-
-const getTypeIcon = (type: string) => {
-  switch (type) {
-    case "official":
-      return <Building className="w-3 h-3" />;
-    case "platform":
-      return <FileText className="w-3 h-3" />;
-    case "community":
-      return <Users2 className="w-3 h-3" />;
-    default:
-      return <ExternalLink className="w-3 h-3" />;
-  }
-};
-
-const getTypeLabel = (type: string) => {
-  switch (type) {
-    case "official":
-      return "Myndighet";
-    case "platform":
-      return "Plattform";
-    case "community":
-      return "Community";
-    default:
-      return "Länk";
-  }
-};
 
 export const ProgramsSection = () => {
   return (
@@ -107,57 +45,32 @@ export const ProgramsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Utforska olika program
+            Välj ditt program
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Vi har samlat alla viktiga resurser, länkar till myndigheter, plattformar och communities på ett ställe.
+            Hitta det äventyr som passar dig bäst.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {programs.map((program) => (
             <div
               key={program.title}
-              className="group bg-card rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all"
+              className="group cursor-pointer"
             >
-              <div className={`w-14 h-14 rounded-xl ${program.color} flex items-center justify-center mb-4`}>
-                <program.icon className="w-7 h-7" />
-              </div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                {program.title}
-              </h3>
-              <p className="text-muted-foreground mb-4 text-sm">
-                {program.description}
-              </p>
-              
-              <div className="space-y-2">
-                <p className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
-                  Viktiga resurser
+              <div className={`relative bg-gradient-to-br ${program.gradient} rounded-2xl p-6 h-full flex flex-col items-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}>
+                <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
+                  <program.icon className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="font-display text-base font-semibold text-white mb-1">
+                  {program.title}
+                </h3>
+                <p className="text-white/80 text-xs leading-relaxed">
+                  {program.description}
                 </p>
-                {program.resources.map((resource) => (
-                  <a
-                    key={resource.name}
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-between p-2 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors group/link"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="text-muted-foreground">
-                        {getTypeIcon(resource.type)}
-                      </span>
-                      <span className="text-sm text-foreground group-hover/link:text-primary transition-colors">
-                        {resource.name}
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="text-xs text-muted-foreground bg-background/50 px-2 py-0.5 rounded">
-                        {getTypeLabel(resource.type)}
-                      </span>
-                      <ExternalLink className="w-3 h-3 text-muted-foreground group-hover/link:text-primary transition-colors" />
-                    </div>
-                  </a>
-                ))}
+                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowRight className="w-4 h-4 text-white" />
+                </div>
               </div>
             </div>
           ))}
