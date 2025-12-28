@@ -41,7 +41,7 @@ const programs = [
 
 export const ProgramsSection = () => {
   return (
-    <section id="programs" className="py-24 bg-secondary/30">
+    <section id="programs" className="py-24 bg-muted/50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
