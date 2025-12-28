@@ -3,7 +3,7 @@ import { DestinationSearch } from "./DestinationSearch";
 export const HeroSection = () => {
   return <section className="relative min-h-screen flex items-center justify-center pt-20 pb-16">
       {/* Subtle background pattern */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
