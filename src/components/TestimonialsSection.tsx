@@ -6,7 +6,7 @@ const testimonials = [
     age: 23,
     program: "Working Holiday, Australien",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
-    text: "Tack vare UtlandGuide hittade jag rätt visum och det bästa programmet för mig. Året i Australien förändrade mitt liv!",
+    text: "Tack vare Farway hittade jag rätt visum och det bästa programmet för mig. Året i Australien förändrade mitt liv!",
     rating: 5,
   },
   {
