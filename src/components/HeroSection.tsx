@@ -11,7 +11,7 @@ export const HeroSection = () => {
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-6 text-sm">
               <CheckCircle className="w-4 h-4" />
-              <span className="font-medium">100% gratis guide & jämförelsetjänst</span>
+              <span className="font-medium">100% gratis jämförelsetjänst</span>
             </div>
 
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-5 leading-tight">

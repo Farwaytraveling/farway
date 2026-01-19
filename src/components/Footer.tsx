@@ -13,7 +13,7 @@ export const Footer = () => {
                 <Globe className="w-5 h-5 text-primary-foreground" />
               </div>
               <span className="font-display font-bold text-xl">
-                Utland<span className="text-primary">Guide</span>
+                Farway
               </span>
             </Link>
             <p className="text-background/60 mb-6">
@@ -65,9 +65,9 @@ export const Footer = () => {
             <h4 className="font-display font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hej@utlandguide.se" className="text-background/60 hover:text-background transition-colors flex items-center gap-2">
+                <a href="mailto:hej@farway.se" className="text-background/60 hover:text-background transition-colors flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  hej@utlandguide.se
+                  hej@farway.se
                 </a>
               </li>
             </ul>
@@ -87,7 +87,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-background/10 pt-8 text-center text-background/40 text-sm">
-          <p>© {new Date().getFullYear()} UtlandGuide. Alla rättigheter förbehållna.</p>
+          <p>© {new Date().getFullYear()} Farway. Alla rättigheter förbehållna.</p>
         </div>
       </div>
     </footer>

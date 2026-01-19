@@ -71,7 +71,7 @@ export const AustraliaSection = () => {
             Allt du behöver för Australien
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Komplett guide med alla resurser, visum-info och tips för ditt äventyr Down Under.
+            Alla resurser, visum-info och tips för ditt äventyr Down Under.
           </p>
         </div>
 

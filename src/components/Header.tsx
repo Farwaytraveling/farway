@@ -11,7 +11,7 @@ export const Header = () => {
             <Globe className="w-5 h-5 text-primary-foreground" />
           </div>
           <span className="font-display font-bold text-lg text-foreground">
-            Farway<span className="text-primary">Guide</span>
+            Farway
           </span>
         </Link>
 
