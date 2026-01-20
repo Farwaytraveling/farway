@@ -44,6 +44,34 @@ const destinations = [
     popular: "Språkkurs, Au Pair",
     image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=600&h=400&fit=crop",
   },
+  {
+    country: "Österrike",
+    flag: "🇦🇹",
+    programs: 42,
+    popular: "Skidsäsong, Alperna",
+    image: "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&h=400&fit=crop",
+  },
+  {
+    country: "Schweiz",
+    flag: "🇨🇭",
+    programs: 38,
+    popular: "Skidsäsong, Hotell",
+    image: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=400&fit=crop",
+  },
+  {
+    country: "Italien (Alperna)",
+    flag: "🇮🇹",
+    programs: 35,
+    popular: "Skidsäsong, Dolomterna",
+    image: "https://images.unsplash.com/photo-1476231682828-37e571bc172f?w=600&h=400&fit=crop",
+  },
+  {
+    country: "Andorra",
+    flag: "🇦🇩",
+    programs: 22,
+    popular: "Skidsäsong, Grandvalira",
+    image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop",
+  },
 ];
 
 export const DestinationsSection = () => {
