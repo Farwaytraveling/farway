@@ -36,7 +36,7 @@ export const Footer = () => {
           <div>
             <h4 className="font-display font-semibold mb-4">Program</h4>
             <ul className="space-y-3">
-              {["Working Holiday", "Au Pair", "Volontärarbete", "Studera utomlands", "Praktik", "Farm & Ranch"].map((item) => (
+              {["Working Holiday", "Au Pair", "Volontärarbete", "Studera utomlands", "Praktik"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-background/60 hover:text-background transition-colors">
                     {item}
@@ -65,9 +65,9 @@ export const Footer = () => {
             <h4 className="font-display font-semibold mb-4">Kontakt</h4>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:hej@farway.se" className="text-background/60 hover:text-background transition-colors flex items-center gap-2">
+                <a href="mailto:farwaytravelling@gmail.com" className="text-background/60 hover:text-background transition-colors flex items-center gap-2">
                   <Mail className="w-4 h-4" />
-                  hej@farway.se
+                  farwaytravelling@gmail.com
                 </a>
               </li>
             </ul>
