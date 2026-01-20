@@ -239,6 +239,105 @@ const destinations: Destination[] = [
       ],
     },
   },
+  {
+    country: "Österrike",
+    flag: "🇦🇹",
+    code: "AT",
+    visaType: "EU-medborgare (fritt)",
+    ageLimit: "Alla åldrar",
+    duration: "Obegränsad",
+    cost: "Gratis",
+    popular: ["Skidsäsong", "Alperna", "Säsongsarbete"],
+    resources: {
+      visa: [
+        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
+        { name: "Österrikiska ambassaden", url: "https://www.bmeia.gv.at/sv/ambassad/stockholm/", official: true },
+      ],
+      jobs: [
+        { name: "Seasonaires", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false },
+        { name: "AMS Österrike", url: "https://www.ams.at/", official: true },
+        { name: "Natives - Ski Jobs", url: "https://www.natives.co.uk/", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Österrike (FB)", url: "https://www.facebook.com/groups/svenskarioesterrike", official: false },
+        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+      ],
+    },
+  },
+  {
+    country: "Schweiz",
+    flag: "🇨🇭",
+    code: "CH",
+    visaType: "Uppehållstillstånd krävs",
+    ageLimit: "18+ år",
+    duration: "Säsongsbaserat",
+    cost: "Varierar",
+    popular: ["Skidsäsong", "Alperna", "Hotell & Restaurang"],
+    resources: {
+      visa: [
+        { name: "Swiss Permit Info", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html", official: true },
+        { name: "Schweiziska ambassaden", url: "https://www.eda.admin.ch/countries/sweden/sv/home.html", official: true },
+      ],
+      jobs: [
+        { name: "Jobs.ch", url: "https://www.jobs.ch/", official: false },
+        { name: "Seasonaires Schweiz", url: "https://www.seasonaires.com/ski-jobs/switzerland/", official: false },
+        { name: "Hotelleriejobs", url: "https://www.hotelleriejobs.ch/", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Schweiz (FB)", url: "https://www.facebook.com/groups/svenskarischweiz", official: false },
+        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+      ],
+    },
+  },
+  {
+    country: "Italien (Alperna)",
+    flag: "🇮🇹",
+    code: "IT",
+    visaType: "EU-medborgare (fritt)",
+    ageLimit: "Alla åldrar",
+    duration: "Obegränsad",
+    cost: "Gratis",
+    popular: ["Skidsäsong", "Dolomterna", "Säsongsarbete"],
+    resources: {
+      visa: [
+        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
+        { name: "Italienska ambassaden", url: "https://ambstoccolma.esteri.it/", official: true },
+      ],
+      jobs: [
+        { name: "Seasonaires Italien", url: "https://www.seasonaires.com/ski-jobs/italy/", official: false },
+        { name: "Indeed Italia", url: "https://it.indeed.com/", official: false },
+        { name: "Ski Staff", url: "https://www.skistaff.co.uk/", official: false },
+      ],
+      community: [
+        { name: "Svenskar i Italien (FB)", url: "https://www.facebook.com/groups/svenskaritalien", official: false },
+        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+      ],
+    },
+  },
+  {
+    country: "Andorra",
+    flag: "🇦🇩",
+    code: "AD",
+    visaType: "Arbetstillstånd krävs",
+    ageLimit: "18+ år",
+    duration: "Säsongsbaserat",
+    cost: "Varierar",
+    popular: ["Skidsäsong", "Grandvalira", "Skattefritt"],
+    resources: {
+      visa: [
+        { name: "Andorra Immigration", url: "https://www.immigracio.ad/", official: true },
+        { name: "Spanska ambassaden (närmaste)", url: "https://www.exteriores.gob.es/Embajadas/estocolmo/", official: true },
+      ],
+      jobs: [
+        { name: "Grandvalira Careers", url: "https://www.grandvalira.com/en/work-with-us", official: true },
+        { name: "Seasonaires Andorra", url: "https://www.seasonaires.com/ski-jobs/andorra/", official: false },
+        { name: "Treball Andorra", url: "https://www.treball.ad/", official: true },
+      ],
+      community: [
+        { name: "Season Workers Andorra (FB)", url: "https://www.facebook.com/groups/seasonworkersandorra", official: false },
+      ],
+    },
+  },
 ];
 
 export const DestinationSearch = () => {
