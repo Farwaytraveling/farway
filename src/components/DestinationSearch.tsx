@@ -106,7 +106,7 @@ const destinations: Destination[] = [
     ageLimit: "Alla åldrar",
     duration: "Obegränsad",
     cost: "Gratis",
-    popular: ["Språkresa", "Au Pair", "Säsongsarbete"],
+    popular: ["Skidsäsong", "Val d'Isère", "Chamonix", "Språkresa"],
     resources: {
       visa: [
         { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
@@ -114,11 +114,13 @@ const destinations: Destination[] = [
       ],
       jobs: [
         { name: "Pôle Emploi", url: "https://www.pole-emploi.fr/", official: true },
-        { name: "Indeed France", url: "https://www.indeed.fr/", official: false },
+        { name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false },
+        { name: "Les 3 Vallées Jobs", url: "https://www.les3vallees.com/en/jobs/", official: true },
+        { name: "Val d'Isère Careers", url: "https://www.valdisere.com/en/jobs/", official: true },
       ],
       community: [
         { name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false },
-        { name: "EF Frankrike", url: "https://www.ef.se/pg/sprakresa-frankrike/", official: false },
+        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
       ],
     },
   },
@@ -247,20 +249,23 @@ const destinations: Destination[] = [
     ageLimit: "Alla åldrar",
     duration: "Obegränsad",
     cost: "Gratis",
-    popular: ["Skidsäsong", "Alperna", "Säsongsarbete"],
+    popular: ["St. Anton", "Ischgl", "Kitzbühel", "Sölden", "Lech"],
     resources: {
       visa: [
         { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
         { name: "Österrikiska ambassaden", url: "https://www.bmeia.gv.at/sv/ambassad/stockholm/", official: true },
       ],
       jobs: [
-        { name: "Seasonaires", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false },
+        { name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false },
+        { name: "St. Anton Jobs", url: "https://www.stantonamarlberg.com/en/jobs", official: true },
+        { name: "Ischgl Careers", url: "https://www.ischgl.com/en/service/jobs", official: true },
+        { name: "Sölden Jobs", url: "https://www.soelden.com/jobs", official: true },
         { name: "AMS Österrike", url: "https://www.ams.at/", official: true },
-        { name: "Natives - Ski Jobs", url: "https://www.natives.co.uk/", official: false },
       ],
       community: [
         { name: "Svenskar i Österrike (FB)", url: "https://www.facebook.com/groups/svenskarioesterrike", official: false },
         { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+        { name: "St. Anton Season Workers (FB)", url: "https://www.facebook.com/groups/stantonseasonworkers", official: false },
       ],
     },
   },
@@ -272,20 +277,23 @@ const destinations: Destination[] = [
     ageLimit: "18+ år",
     duration: "Säsongsbaserat",
     cost: "Varierar",
-    popular: ["Skidsäsong", "Alperna", "Hotell & Restaurang"],
+    popular: ["Zermatt", "Verbier", "St. Moritz", "Davos", "Laax"],
     resources: {
       visa: [
         { name: "Swiss Permit Info", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html", official: true },
         { name: "Schweiziska ambassaden", url: "https://www.eda.admin.ch/countries/sweden/sv/home.html", official: true },
       ],
       jobs: [
-        { name: "Jobs.ch", url: "https://www.jobs.ch/", official: false },
+        { name: "Zermatt Jobs", url: "https://www.zermatt.ch/en/jobs", official: true },
+        { name: "Verbier Careers", url: "https://www.verbier.ch/en/jobs/", official: true },
+        { name: "St. Moritz Jobs", url: "https://www.stmoritz.ch/en/jobs/", official: true },
         { name: "Seasonaires Schweiz", url: "https://www.seasonaires.com/ski-jobs/switzerland/", official: false },
         { name: "Hotelleriejobs", url: "https://www.hotelleriejobs.ch/", official: false },
       ],
       community: [
         { name: "Svenskar i Schweiz (FB)", url: "https://www.facebook.com/groups/svenskarischweiz", official: false },
-        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+        { name: "Zermatt Season Workers (FB)", url: "https://www.facebook.com/groups/zermattseasonworkers", official: false },
+        { name: "Verbier Seasonaires (FB)", url: "https://www.facebook.com/groups/verbierseasonaires", official: false },
       ],
     },
   },
@@ -297,20 +305,23 @@ const destinations: Destination[] = [
     ageLimit: "Alla åldrar",
     duration: "Obegränsad",
     cost: "Gratis",
-    popular: ["Skidsäsong", "Dolomterna", "Säsongsarbete"],
+    popular: ["Val Gardena", "Cortina", "Livigno", "Madonna di Campiglio", "Sestriere"],
     resources: {
       visa: [
         { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
         { name: "Italienska ambassaden", url: "https://ambstoccolma.esteri.it/", official: true },
       ],
       jobs: [
+        { name: "Dolomiti Superski Jobs", url: "https://www.dolomitisuperski.com/en/jobs", official: true },
+        { name: "Val Gardena Careers", url: "https://www.valgardena.it/en/jobs/", official: true },
+        { name: "Livigno Jobs", url: "https://www.livigno.eu/en/work-with-us", official: true },
         { name: "Seasonaires Italien", url: "https://www.seasonaires.com/ski-jobs/italy/", official: false },
-        { name: "Indeed Italia", url: "https://it.indeed.com/", official: false },
         { name: "Ski Staff", url: "https://www.skistaff.co.uk/", official: false },
       ],
       community: [
         { name: "Svenskar i Italien (FB)", url: "https://www.facebook.com/groups/svenskaritalien", official: false },
         { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
+        { name: "Cortina Season Workers (FB)", url: "https://www.facebook.com/groups/cortinaseasonworkers", official: false },
       ],
     },
   },
@@ -322,7 +333,7 @@ const destinations: Destination[] = [
     ageLimit: "18+ år",
     duration: "Säsongsbaserat",
     cost: "Varierar",
-    popular: ["Skidsäsong", "Grandvalira", "Skattefritt"],
+    popular: ["Grandvalira", "Vallnord", "Pas de la Casa", "Soldeu"],
     resources: {
       visa: [
         { name: "Andorra Immigration", url: "https://www.immigracio.ad/", official: true },
@@ -330,11 +341,13 @@ const destinations: Destination[] = [
       ],
       jobs: [
         { name: "Grandvalira Careers", url: "https://www.grandvalira.com/en/work-with-us", official: true },
+        { name: "Vallnord Jobs", url: "https://www.vallnord.com/en/jobs", official: true },
         { name: "Seasonaires Andorra", url: "https://www.seasonaires.com/ski-jobs/andorra/", official: false },
         { name: "Treball Andorra", url: "https://www.treball.ad/", official: true },
       ],
       community: [
         { name: "Season Workers Andorra (FB)", url: "https://www.facebook.com/groups/seasonworkersandorra", official: false },
+        { name: "Pas de la Casa Workers (FB)", url: "https://www.facebook.com/groups/pasdelacasaworkers", official: false },
       ],
     },
   },
