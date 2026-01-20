@@ -1,4 +1,5 @@
 import { Briefcase, Heart, GraduationCap, Users, Snowflake, Globe, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const programs = [
   {
@@ -6,40 +7,54 @@ const programs = [
     title: "Working Holiday",
     description: "Jobba och res i upp till 12 månader",
     gradient: "from-orange-500 to-amber-500",
+    link: "/working-holiday",
   },
   {
     icon: Heart,
     title: "Au Pair",
     description: "Bo hos en värdfamilj och ta hand om barn",
     gradient: "from-rose-500 to-pink-500",
+    link: null,
   },
   {
     icon: GraduationCap,
     title: "Studera utomlands",
     description: "Språkkurser eller universitetsstudier",
     gradient: "from-emerald-500 to-teal-500",
+    link: null,
   },
   {
     icon: Users,
     title: "Volontärarbete",
     description: "Gör skillnad medan du reser",
     gradient: "from-violet-500 to-purple-500",
+    link: null,
   },
   {
     icon: Snowflake,
     title: "Skidsäsong",
     description: "Jobba på skidorter världen över",
     gradient: "from-sky-400 to-indigo-500",
+    link: null,
   },
   {
     icon: Globe,
     title: "Praktik utomlands",
     description: "Få internationell arbetslivserfarenhet",
     gradient: "from-sky-500 to-blue-500",
+    link: null,
   },
 ];
 
 export const ProgramsSection = () => {
+  const navigate = useNavigate();
+
+  const handleProgramClick = (link: string | null) => {
+    if (link) {
+      navigate(link);
+    }
+  };
+
   return (
     <section id="programs" className="py-24 bg-muted/50">
       <div className="container mx-auto px-4">
@@ -57,6 +72,7 @@ export const ProgramsSection = () => {
             <div
               key={program.title}
               className="group cursor-pointer"
+              onClick={() => handleProgramClick(program.link)}
             >
               <div className={`relative bg-gradient-to-br ${program.gradient} rounded-2xl p-6 h-full flex flex-col items-center text-center shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300`}>
                 <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center mb-4">
