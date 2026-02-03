@@ -14,7 +14,7 @@ const programs = [
     title: "Au Pair",
     description: "Bo hos en värdfamilj och ta hand om barn",
     gradient: "from-rose-500 to-pink-500",
-    link: null,
+    link: "/au-pair",
   },
   {
     icon: GraduationCap,
