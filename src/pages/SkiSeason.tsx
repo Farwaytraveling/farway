@@ -2,6 +2,48 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Snowflake, Clock, DollarSign, Calendar, ExternalLink, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    question: "Hur hittar jag säsongsjobb på skidort?",
+    answer: "Börja söka tidigt - helst 3-6 månader innan säsongen startar. Använd jobbsajter specifika för varje land, kontakta skidorter direkt via deras hemsidor, eller gå via rekryteringsföretag som specialiserar sig på säsongsarbete. Nätverk är också viktigt - många jobb tillsätts genom rekommendationer från tidigare säsongsarbetare."
+  },
+  {
+    question: "Behöver jag erfarenhet för att få jobb?",
+    answer: "Nej, många jobb kräver ingen tidigare erfarenhet. Positioner som diskare, städare, liftvärd eller barbacka är ofta öppna för nybörjare. Har du erfarenhet av restaurang, bar eller kundservice ökar dina chanser. För specialiserade roller som skidlärare eller pistör krävs certifikat och erfarenhet."
+  },
+  {
+    question: "Ingår boende och liftkort?",
+    answer: "De flesta arbetsgivare erbjuder subventionerat eller gratis boende - detta är standard i branschen. Liftkort ingår ofta, men villkoren varierar. Vissa ger gratis säsongskort, andra erbjuder rabatterade kort eller begränsat antal skiddagar. Fråga alltid om detta vid anställning."
+  },
+  {
+    question: "Hur mycket kan jag tjäna?",
+    answer: "Lönerna varierar kraftigt beroende på land och position. I Schweiz kan du tjäna CHF 3,500-4,500/mån, medan lönen i Österrike ligger på €1,200-1,800/mån. Kom ihåg att boende ofta ingår, vilket gör att du kan spara en större del av lönen. Tips kan också vara en betydande inkomstkälla i bar- och restaurangjobb."
+  },
+  {
+    question: "Behöver jag visum för att jobba i Alperna?",
+    answer: "Som svensk (EU-medborgare) kan du jobba fritt i alla EU-länder samt Schweiz utan visum. För Andorra krävs arbetstillstånd. För destinationer utanför Europa som Kanada, Japan och Nya Zeeland behöver du ett Working Holiday-visum - ansök i god tid då dessa kan ta tid att behandla."
+  },
+  {
+    question: "Hur bra måste jag kunna skida?",
+    answer: "För de flesta jobb behöver du inte vara en expert på skidor. Många jobbar hela säsongen och lär sig skida på fritiden. Dock, om du vill maximera din tid i backarna, är det bra att ha grundläggande skidkunskaper. För jobb som skidlärare eller guide krävs naturligtvis hög skidnivå och ofta certifikat."
+  },
+  {
+    question: "När börjar och slutar säsongen?",
+    answer: "I Europa (Alperna) pågår säsongen vanligtvis från december till april, med högsäsong under jul/nyår och sportlov (februari). Glaciärorter som Zermatt och Hintertux har längre säsonger. I södra halvklotet (Nya Zeeland) är säsongen juni-oktober. Japan har säsong december-mars med bäst snö i januari-februari."
+  },
+  {
+    question: "Kan jag åka med vänner?",
+    answer: "Absolut! Många åker med vänner och söker jobb tillsammans. Vissa arbetsgivare föredrar till och med att anställa grupper eftersom det minskar risken att folk hoppar av. Delat boende är också standard, så du kommer träffa massor av nya vänner från hela världen under säsongen."
+  },
+];
+
 
 const skiDestinations = [
   {
@@ -299,6 +341,29 @@ const SkiSeason = () => {
                   För europeiska skidorter kan du som svensk jobba fritt utan visum. För destinationer utanför EU som Kanada, Japan och Nya Zeeland behöver du ett Working Holiday-visum. Ansök i god tid - de populäraste orterna fyller sina positioner snabbt!
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+                Vanliga frågor
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-medium">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>
