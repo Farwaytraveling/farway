@@ -35,7 +35,7 @@ const programs = [
     title: "Skidsäsong",
     description: "Jobba på skidorter världen över",
     gradient: "from-sky-400 to-indigo-500",
-    link: null,
+    link: "/ski-season",
   },
   {
     icon: Globe,
