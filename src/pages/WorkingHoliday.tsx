@@ -1,7 +1,49 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Briefcase, ArrowRight, Clock, DollarSign, User, ExternalLink } from "lucide-react";
+import { Briefcase, Clock, DollarSign, User, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    question: "Vad är ett Working Holiday-visum?",
+    answer: "Ett Working Holiday-visum är ett speciellt visum som tillåter unga vuxna att resa och arbeta i ett annat land under en längre period, vanligtvis 12 månader. Det skiljer sig från ett vanligt turistvisum genom att du har rätt att ta anställning och tjäna pengar för att finansiera din resa."
+  },
+  {
+    question: "Vilka krav måste jag uppfylla?",
+    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18-30 år (vissa länder upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med pengar för att försörja dig initialt (ofta runt 5,000 AUD/NZD/CAD), ha en returbiljett eller pengar för en, samt ha en giltig reseförsäkring."
+  },
+  {
+    question: "Hur lång tid tar ansökningsprocessen?",
+    answer: "Handläggningstiden varierar kraftigt. Australien kan ge svar inom några dagar till veckor, medan Kanadas IEC-program har en årlig lotterirunda. Japan och andra asiatiska länder tar ofta 2-4 veckor. Ansök alltid i god tid - minst 2-3 månader innan planerad avresa."
+  },
+  {
+    question: "Kan jag förlänga mitt visum?",
+    answer: "Det beror på landet. Australien erbjuder möjlighet att förlänga upp till 3 år om du utför specificerat arbete (t.ex. farmarbete) under din första visumperiod. Nya Zeeland har liknande regler. De flesta andra länder erbjuder inte förlängning av Working Holiday-visum."
+  },
+  {
+    question: "Vilka typer av jobb kan jag få?",
+    answer: "De vanligaste jobben inkluderar restaurang- och bararbete, hotell och turism, farmarbete (särskilt i Australien/Nya Zeeland), säsongsarbete på skidorter, au pair, och kontorsjobb om du har relevant erfarenhet. Vissa länder har begränsningar för hur länge du får jobba hos samma arbetsgivare."
+  },
+  {
+    question: "Hur mycket pengar behöver jag ha sparat?",
+    answer: "De flesta länder kräver att du kan visa cirka 5,000 AUD/NZD/CAD i sparade medel. Utöver detta rekommenderas att ha extra buffert för oförutsedda utgifter, första månadens hyra och levnadskostnader tills du hittar jobb - räkna med minst 20,000-30,000 SEK extra."
+  },
+  {
+    question: "Behöver jag reseförsäkring?",
+    answer: "Ja, reseförsäkring är obligatoriskt för de flesta Working Holiday-visum och starkt rekommenderat för alla. Försäkringen bör täcka sjukvård, olyckor, hemtransport och helst även stöld och förlorat bagage. Jämför olika försäkringsbolag - priser och villkor varierar."
+  },
+  {
+    question: "Kan jag ansöka om jag redan är i landet?",
+    answer: "Generellt måste du ansöka om Working Holiday-visum från ditt hemland (Sverige) och vara utanför destinationslandet när visumet beviljas. Du kan inte konvertera ett turistvisum till Working Holiday-visum på plats. Planera därför i förväg."
+  },
+];
+
 
 const workingHolidayCountries = [
   {
@@ -243,6 +285,29 @@ const WorkingHoliday = () => {
                   Ansökningsprocessen varierar mellan länder. Vissa, som Japan och Chile, erbjuder gratis visum medan andra som Australien har en ansökningsavgift. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
                 </p>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+                Vanliga frågor
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-medium">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>
