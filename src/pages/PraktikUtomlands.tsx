@@ -1,0 +1,330 @@
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { Globe, Clock, DollarSign, ExternalLink, Briefcase, Building, Award, TrendingUp } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const internshipDestinations = [
+  {
+    country: "USA",
+    flag: "🇺🇸",
+    programType: "J-1 Intern/Trainee Visa",
+    ageLimit: "18-35 år",
+    duration: "1-18 månader",
+    cost: "$1,000-2,000 (programavgift)",
+    salary: "Ofta oavlönad eller $500-2,000/mån",
+    description: "Världens största ekonomi och hem för Silicon Valley, Wall Street och Hollywood. Oändliga möjligheter inom alla branscher.",
+    highlights: ["Silicon Valley", "Fortune 500", "Nätverkande"],
+    sectors: ["Tech", "Finans", "Media", "Startup"],
+    applyUrl: "https://j1visa.state.gov/programs/intern",
+  },
+  {
+    country: "Storbritannien",
+    flag: "🇬🇧",
+    programType: "Youth Mobility / Tier 5",
+    ageLimit: "18-30 år",
+    duration: "3-12 månader",
+    cost: "£298 (visum)",
+    salary: "£0-2,000/mån",
+    description: "London är ett globalt nav för finans, mode och kreativa industrier. Perfekt för att bygga en internationell karriär.",
+    highlights: ["London", "Finans", "Kreativa industrier"],
+    sectors: ["Finans", "Mode", "Juridik", "Media"],
+    applyUrl: "https://www.gov.uk/youth-mobility",
+  },
+  {
+    country: "Tyskland",
+    flag: "🇩🇪",
+    programType: "EU: inget visum krävs",
+    ageLimit: "Ingen gräns",
+    duration: "1-12 månader",
+    cost: "Inget visum behövs",
+    salary: "€520-2,000/mån",
+    description: "Europas starkaste ekonomi med ledande företag inom fordon, ingenjörskonst och tillverkning. Minimilön gäller för praktikanter.",
+    highlights: ["Ingenjörskonst", "Bilindustri", "Minimilön"],
+    sectors: ["Ingenjör", "Fordon", "Kemi", "IT"],
+    applyUrl: "https://www.daad.de/en/",
+  },
+  {
+    country: "Spanien",
+    flag: "🇪🇸",
+    programType: "EU: inget visum krävs",
+    ageLimit: "Ingen gräns",
+    duration: "1-12 månader",
+    cost: "Inget visum behövs",
+    salary: "€300-800/mån (ofta oavlönad)",
+    description: "Populärt för praktik inom turism, marknadsföring och NGO:er. Kombinera karriärutveckling med medelhavets livsstil.",
+    highlights: ["Turism", "Startups", "Spanska"],
+    sectors: ["Turism", "Marketing", "NGO", "Eventbransch"],
+    applyUrl: "https://www.erasmusintern.org/",
+  },
+  {
+    country: "Singapore",
+    flag: "🇸🇬",
+    programType: "Training Employment Pass",
+    ageLimit: "Ingen gräns",
+    duration: "1-6 månader",
+    cost: "SGD 225",
+    salary: "SGD 1,000-3,000/mån",
+    description: "Asiens affärscentrum med global finans, tech och handel. Perfekt språngbräda för karriär i Asien.",
+    highlights: ["Finans", "Tech-hub", "Asien-gateway"],
+    sectors: ["Finans", "Tech", "Handel", "Logistik"],
+    applyUrl: "https://www.mom.gov.sg/passes-and-permits",
+  },
+  {
+    country: "Australien",
+    flag: "🇦🇺",
+    programType: "Working Holiday (subclass 417)",
+    ageLimit: "18-30 år",
+    duration: "1-12 månader",
+    cost: "$510 AUD",
+    salary: "AUD 2,000-4,000/mån",
+    description: "Kombinera praktik med Working Holiday-visum. Starkt fokus på gruvdrift, jordbruk, turism och kreativa branscher.",
+    highlights: ["Working Holiday", "Livskvalitet", "Höga löner"],
+    sectors: ["Gruvdrift", "Turism", "IT", "Hälsa"],
+    applyUrl: "https://immi.homeaffairs.gov.au/",
+  },
+  {
+    country: "Frankrike",
+    flag: "🇫🇷",
+    programType: "EU: inget visum krävs",
+    ageLimit: "Ingen gräns",
+    duration: "1-12 månader",
+    cost: "Inget visum behövs",
+    salary: "€600-1,200/mån (gratification)",
+    description: "Mode, gastronomi, lyxvarumärken och diplomati. Frankrike kräver lagstadgad ersättning för praktik över 2 månader.",
+    highlights: ["Modeindustri", "Lyx", "Lagstadgad lön"],
+    sectors: ["Mode", "Gastronomi", "Diplomati", "Konst"],
+    applyUrl: "https://www.campusfrance.org/en",
+  },
+  {
+    country: "Japan",
+    flag: "🇯🇵",
+    programType: "Designated Activities Visa",
+    ageLimit: "Ingen gräns",
+    duration: "1-12 månader",
+    cost: "¥3,000 (visum)",
+    salary: "¥100,000-200,000/mån",
+    description: "Teknikjätten i öst. Praktik i Japan ger unik insikt i japansk affärskultur och avancerad teknologi.",
+    highlights: ["Teknologi", "Affärskultur", "Innovation"],
+    sectors: ["Tech", "Robotik", "Fordon", "Gaming"],
+    applyUrl: "https://www.mofa.go.jp/",
+  },
+];
+
+const platforms = [
+  { name: "Erasmus Intern", url: "https://www.erasmusintern.org/", desc: "EU-finansierade praktikplatser" },
+  { name: "AIESEC", url: "https://aiesec.org/", desc: "Internationella praktik- och volontärprogram" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/jobs/internship-jobs/", desc: "Sök praktik globalt" },
+  { name: "IAESTE", url: "https://iaeste.org/", desc: "Teknisk praktik för studenter" },
+];
+
+const faqItems = [
+  {
+    question: "Kan jag få CSN under praktik utomlands?",
+    answer: "Om praktiken ingår i din utbildning (t.ex. VFU eller examensarbete) kan du få CSN. Fristående praktik ger vanligtvis inte CSN. Erasmus+ erbjuder stipendier för praktik i Europa. Kontrollera med din högskola om praktiken kan tillgodoräknas i din examen."
+  },
+  {
+    question: "Får man lön som praktikant utomlands?",
+    answer: "Det varierar stort. Frankrike kräver lagstadgad ersättning för praktik över 2 månader. Tyskland har minimilön. USA:s praktik är ofta oavlönad men ger värdefullt J-1-visum. I Asien och Storbritannien varierar det. Förhandla alltid villkoren innan du accepterar."
+  },
+  {
+    question: "Behöver jag visum för praktik?",
+    answer: "Inom EU behöver du inget visum. För USA krävs J-1 Intern/Trainee visa. Storbritannien kräver Youth Mobility Scheme. Singapore kräver Training Employment Pass. Japan kräver Designated Activities Visa. Ansök alltid i god tid - vissa visum tar 2-3 månader."
+  },
+  {
+    question: "Hur hittar jag praktikplats utomlands?",
+    answer: "Använd plattformar som AIESEC, IAESTE (teknik), Erasmus Intern (EU), och LinkedIn. Kontakta företag direkt med ett bra CV och personligt brev. Fråga din högskola om partneruniversitet och utbytesavtal. Nätverka via branschevents och sociala medier."
+  },
+  {
+    question: "Kan praktiken tillgodoräknas i min utbildning?",
+    answer: "Ofta ja, om praktiken är relevant för din utbildning. Kontrollera med din programansvarig innan du åker. Många högskolor kräver ett praktikavtal (learning agreement) och en handledare på plats. Dokumentera dina arbetsuppgifter och be om intyg."
+  },
+  {
+    question: "Hur lång bör praktiken vara?",
+    answer: "Minst 2-3 månader rekommenderas för att få ut maximalt. 6 månader ger dig tid att verkligen lära dig och bidra. Kortare praktik (1 månad) ger begränsad erfarenhet men kan vara bra som inledning. USA tillåter upp till 12-18 månader med J-1-visum."
+  },
+  {
+    question: "Behöver jag kunna landets språk?",
+    answer: "Engelska räcker oftast i internationella företag, men lokalspråkskunskaper är en stor fördel. I Frankrike, Tyskland och Spanien förväntas ofta grundläggande kunskaper. I Asien är engelska standard i internationella miljöer. Språkkurser innan eller under praktiken rekommenderas."
+  },
+  {
+    question: "Vad bör jag tänka på vid avlönad vs oavlönad praktik?",
+    answer: "Avlönad praktik ger ekonomisk trygghet men kan vara mer kompetitiv. Oavlönad praktik vid prestigefyllda organisationer kan vara värt det för CV:t. Se till att du har budget för levnadskostnader. Kontrollera lokala lagar - vissa länder förbjuder oavlönad praktik."
+  },
+];
+
+const PraktikUtomlands = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        {/* Hero Section */}
+        <section className="relative py-20 bg-gradient-to-br from-sky-500 to-blue-500 text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Globe className="w-7 h-7" />
+                </div>
+                <span className="text-white/80 font-medium">Program</span>
+              </div>
+              <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+                Praktik utomlands
+              </h1>
+              <p className="text-xl text-white/90 mb-8">
+                Få internationell arbetslivserfarenhet och bygg ditt globala nätverk. 
+                Praktik utomlands ger dig en konkurrensfördel på arbetsmarknaden.
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm">
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                  <Briefcase className="w-4 h-4" />
+                  <span>Alla branscher</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                  <Clock className="w-4 h-4" />
+                  <span>1-18 månader</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                  <Award className="w-4 h-4" />
+                  <span>CV-meritering</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                  <TrendingUp className="w-4 h-4" />
+                  <span>Karriärlyft</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Destinations */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
+                Populära praktikdestinationer
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Utforska de bästa länderna för internationell praktik och hitta din drömplats.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {internshipDestinations.map((dest) => (
+                <div
+                  key={dest.country}
+                  className="group bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4 mb-4">
+                    <span className="text-4xl">{dest.flag}</span>
+                    <div className="flex-1">
+                      <h3 className="font-display text-xl font-semibold text-foreground">{dest.country}</h3>
+                      <p className="text-sm text-muted-foreground">{dest.programType}</p>
+                    </div>
+                  </div>
+
+                  <p className="text-muted-foreground text-sm mb-4">{dest.description}</p>
+
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {dest.highlights.map((h) => (
+                      <span key={h} className="text-xs bg-sky-100 text-sky-700 px-2 py-1 rounded-full">{h}</span>
+                    ))}
+                  </div>
+
+                  <div className="mb-4">
+                    <div className="text-xs text-muted-foreground mb-1">Branscher</div>
+                    <div className="flex flex-wrap gap-1">
+                      {dest.sectors.map((s) => (
+                        <span key={s} className="text-xs bg-muted px-2 py-0.5 rounded">{s}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-2 text-center text-xs mb-4 py-3 bg-muted/50 rounded-lg">
+                    <div>
+                      <div className="text-muted-foreground">Längd</div>
+                      <div className="font-medium text-foreground">{dest.duration}</div>
+                    </div>
+                    <div>
+                      <div className="text-muted-foreground">Lön</div>
+                      <div className="font-medium text-foreground text-[10px]">{dest.salary}</div>
+                    </div>
+                  </div>
+
+                  <a href={dest.applyUrl} target="_blank" rel="noopener noreferrer">
+                    <Button variant="outline" className="w-full group-hover:bg-sky-500 group-hover:text-white group-hover:border-sky-500 transition-colors">
+                      <span>Hitta praktik</span>
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </Button>
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Platforms */}
+        <section className="py-16 bg-muted/50">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-6 text-center">
+                Hitta praktikplatser
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {platforms.map((p) => (
+                  <a
+                    key={p.name}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow"
+                  >
+                    <div className="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center">
+                      <Building className="w-5 h-5 text-sky-600" />
+                    </div>
+                    <div>
+                      <div className="font-medium text-foreground">{p.name}</div>
+                      <div className="text-xs text-muted-foreground">{p.desc}</div>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+                Vanliga frågor
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-medium">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default PraktikUtomlands;
