@@ -7,6 +7,9 @@ import Index from "./pages/Index";
 import WorkingHoliday from "./pages/WorkingHoliday";
 import AuPair from "./pages/AuPair";
 import SkiSeason from "./pages/SkiSeason";
+import StuderaUtomlands from "./pages/StuderaUtomlands";
+import Volontararbete from "./pages/Volontararbete";
+import PraktikUtomlands from "./pages/PraktikUtomlands";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +25,9 @@ const App = () => (
           <Route path="/working-holiday" element={<WorkingHoliday />} />
           <Route path="/au-pair" element={<AuPair />} />
           <Route path="/ski-season" element={<SkiSeason />} />
+          <Route path="/studera-utomlands" element={<StuderaUtomlands />} />
+          <Route path="/volontararbete" element={<Volontararbete />} />
+          <Route path="/praktik-utomlands" element={<PraktikUtomlands />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,7 +1,48 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Heart, ArrowRight, Clock, DollarSign, User, ExternalLink, Home, Baby } from "lucide-react";
+import { Heart, Clock, DollarSign, User, ExternalLink, Home, Baby } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
+const faqItems = [
+  {
+    question: "Vad gör en au pair egentligen?",
+    answer: "Som au pair bor du hos en värdfamilj och hjälper till med barnpassning, vanligtvis 25-45 timmar per vecka. Arbetsuppgifterna inkluderar att lämna/hämta barn från skolan, laga enkel mat, leka, hjälpa med läxor och ibland lättare hushållsarbete kopplat till barnen. Du får eget rum, mat och fickpengar."
+  },
+  {
+    question: "Hur hittar jag en bra värdfamilj?",
+    answer: "Använd etablerade plattformar som AuPairWorld och AuPair.com. Ta alltid videointervjuer med potentiella familjer, be om referenser från tidigare au pairs, och ställ detaljerade frågor om förväntningar, arbetstider och ledighet. Lita på din magkänsla - det är viktigt att ni matchar personlighetsmässigt."
+  },
+  {
+    question: "Behöver jag erfarenhet av barnpassning?",
+    answer: "De flesta familjer och program kräver minst 200 timmars dokumenterad barnpassningserfarenhet. Detta kan vara babysitting, arbete på förskola/fritids, scoutledare, sportträning för barn eller liknande. USA:s J-1-program har striktast krav. Samla intyg och referenser i god tid."
+  },
+  {
+    question: "Hur mycket fickpengar får jag?",
+    answer: "Fickpengarna varierar stort mellan länder. I USA garanteras minst $195.75/vecka, i Tyskland ca €280/månad, i Frankrike €80-100/vecka. Inom EU är beloppen ofta lägre men kost och logi ingår alltid. Vissa familjer erbjuder extra förmåner som språkkurser eller resebidrag."
+  },
+  {
+    question: "Behöver jag visum som svensk?",
+    answer: "Inom EU/EES behöver du inget visum - du kan fritt arbeta som au pair i t.ex. Frankrike, Tyskland, Spanien eller Italien. För USA krävs J-1 Au Pair Visa, för Storbritannien Youth Mobility Scheme, och för Australien/Nya Zeeland Working Holiday-visum. Ansök alltid i god tid."
+  },
+  {
+    question: "Vad händer om det inte fungerar med värdfamiljen?",
+    answer: "Om det uppstår problem, kontakta först din au pair-organisation eller plattform för medling. I USA har du rätt att byta familj genom din sponsororganisation. I Europa kan du söka ny familj via plattformarna. Ha alltid en nödfond och kontaktuppgifter till svenska ambassaden."
+  },
+  {
+    question: "Kan jag studera samtidigt som jag är au pair?",
+    answer: "Ja, i de flesta länder uppmuntras au pairs att studera, särskilt språkkurser. I USA ingår collegestudier (minst 6 credits) i J-1-programmet och värdfamiljen bidrar med upp till $500. I Europa har du vanligtvis fri tid för studier och många familjer stödjer språkkurser ekonomiskt."
+  },
+  {
+    question: "Hur gammal måste jag vara?",
+    answer: "De flesta länder accepterar au pairs mellan 18-30 år. USA har striktare gräns på 18-26 år, och Österrike 18-28 år. Du måste vara ogift och utan egna barn. Vissa program kräver också att du har gymnasieexamen och grundläggande kunskaper i värdlandets språk eller engelska."
+  },
+];
 
 const auPairCountries = [
   {
@@ -325,6 +366,29 @@ const AuPair = () => {
                   </a>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
+                Vanliga frågor
+              </h2>
+              <Accordion type="single" collapsible className="w-full">
+                {faqItems.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger className="text-left font-medium">
+                      {item.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground">
+                      {item.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
             </div>
           </div>
         </section>

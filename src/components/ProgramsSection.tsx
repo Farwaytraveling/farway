@@ -21,14 +21,14 @@ const programs = [
     title: "Studera utomlands",
     description: "Språkkurser eller universitetsstudier",
     gradient: "from-emerald-500 to-teal-500",
-    link: null,
+    link: "/studera-utomlands",
   },
   {
     icon: Users,
     title: "Volontärarbete",
     description: "Gör skillnad medan du reser",
     gradient: "from-violet-500 to-purple-500",
-    link: null,
+    link: "/volontararbete",
   },
   {
     icon: Snowflake,
@@ -42,7 +42,7 @@ const programs = [
     title: "Praktik utomlands",
     description: "Få internationell arbetslivserfarenhet",
     gradient: "from-sky-500 to-blue-500",
-    link: null,
+    link: "/praktik-utomlands",
   },
 ];
 
