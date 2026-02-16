@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Snowflake, Clock, DollarSign, Calendar, ExternalLink, MapPin } from "lucide-react";
+import { Snowflake, Clock, DollarSign, Calendar, ExternalLink, MapPin, Sparkles, ArrowRight, Mountain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -198,57 +198,65 @@ const SkiSeason = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-sky-400 to-indigo-500 text-white">
-          <div className="container mx-auto px-4">
+        <section className="relative py-24 sm:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.2),transparent_50%)]" />
+          <div className="absolute top-10 right-10 text-8xl opacity-10 select-none hidden sm:block">⛷️</div>
+          <div className="absolute bottom-10 left-10 text-6xl opacity-10 select-none hidden sm:block">🏔️</div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Snowflake className="w-7 h-7" />
-                </div>
-                <span className="text-white/80 font-medium">Program</span>
-              </div>
-              <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+              <span className="inline-block text-sm font-medium bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full mb-6">
+                ❄️ Vinterns bästa äventyr
+              </span>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Skidsäsong
               </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Jobba på skidorter världen över. Kombinera din passion för skidåkning med arbete och få betalt för att leva i bergen.
+              <p className="text-xl sm:text-2xl text-white/90 mb-4 font-light leading-relaxed">
+                Jobba på skidorter och få betalt för att leva i bergen.
               </p>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+              <p className="text-lg text-white/70 mb-10 max-w-xl">
+                Från Alpernas après-ski till Japans legendariska powder – kombinera din passion med arbete.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Calendar className="w-4 h-4" />
-                  <span>Nov - April (Europa)</span>
+                  <span>Nov – April (Europa)</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Clock className="w-4 h-4" />
-                  <span>3-6 månader</span>
+                  <span>3–6 månader</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <DollarSign className="w-4 h-4" />
-                  <span>€1,000-4,500/mån</span>
+                  <span>€1,000–4,500/mån</span>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Destinations Grid */}
-        <section className="py-16">
+        {/* Destinations */}
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Populära skiddestinationer
+            <div className="text-center mb-16">
+              <span className="text-sm font-medium text-sky-600 bg-sky-50 px-3 py-1 rounded-full">
+                8 destinationer
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
+                Välj din skidort
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Från Alpernas klassiska skidorter till Japans legendariska powder - här hittar du din nästa skidsäsong.
+              <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+                Europas Alper, Kanadas powder eller Japans unika snö – vart drar du?
               </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6">
               {skiDestinations.map((destination) => (
                 <div
                   key={destination.country}
-                  className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-lg transition-all duration-300"
+                  className="bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl transition-all duration-300"
                 >
+                  <div className="h-1.5 bg-gradient-to-r from-sky-400 to-indigo-500" />
                   <div className="p-6 sm:p-8">
                     <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                       {/* Country Header */}
@@ -265,48 +273,51 @@ const SkiSeason = () => {
                             </div>
                           </div>
                         </div>
-                        <p className="text-muted-foreground text-sm mb-4">
+                        <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                           {destination.description}
                         </p>
-                        <div className="flex flex-wrap gap-2 mb-4">
+                        <div className="flex flex-wrap gap-1.5 mb-4">
                           {destination.highlights.map((highlight) => (
                             <span
                               key={highlight}
-                              className="text-xs bg-sky-100 text-sky-700 px-2 py-1 rounded-full"
+                              className="text-xs font-medium bg-gradient-to-r from-sky-50 to-indigo-50 text-sky-700 border border-sky-200/60 px-2.5 py-1 rounded-full"
                             >
                               {highlight}
                             </span>
                           ))}
                         </div>
-                        <div className="grid grid-cols-2 gap-2 text-xs py-3 bg-muted/50 rounded-lg px-3 mb-4">
+                        <div className="grid grid-cols-2 gap-1 text-xs py-3 bg-muted/30 rounded-xl px-3 mb-4">
                           <div>
-                            <div className="text-muted-foreground">Säsong</div>
-                            <div className="font-medium text-foreground">{destination.season}</div>
+                            <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Säsong</div>
+                            <div className="font-semibold text-foreground">{destination.season}</div>
                           </div>
-                          <div>
-                            <div className="text-muted-foreground">Lön</div>
-                            <div className="font-medium text-foreground">{destination.avgSalary}</div>
+                          <div className="border-l border-border pl-3">
+                            <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Lön</div>
+                            <div className="font-semibold text-foreground">{destination.avgSalary}</div>
                           </div>
                         </div>
-                        <p className="text-xs text-muted-foreground mb-4">
+                        <p className="text-xs text-muted-foreground mb-4 italic">
                           {destination.visaInfo}
                         </p>
                         <a href={destination.jobUrl} target="_blank" rel="noopener noreferrer">
-                          <Button variant="outline" className="w-full group-hover:bg-sky-500 group-hover:text-white group-hover:border-sky-500 transition-colors">
+                          <Button variant="outline" className="w-full hover:bg-gradient-to-r hover:from-sky-500 hover:to-indigo-500 hover:text-white hover:border-transparent transition-all duration-300">
                             <span>Hitta jobb</span>
-                            <ExternalLink className="w-4 h-4 ml-2" />
+                            <ArrowRight className="w-4 h-4 ml-2" />
                           </Button>
                         </a>
                       </div>
 
                       {/* Resorts */}
                       <div className="lg:w-2/3">
-                        <h4 className="font-semibold text-foreground mb-4">Populära skidorter</h4>
+                        <div className="flex items-center gap-2 mb-4">
+                          <Mountain className="w-4 h-4 text-sky-500" />
+                          <h4 className="font-semibold text-foreground">Populära skidorter</h4>
+                        </div>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                           {destination.resorts.map((resort) => (
                             <div
                               key={resort.name}
-                              className="bg-muted/50 rounded-xl p-4 hover:bg-muted transition-colors"
+                              className="bg-gradient-to-br from-muted/30 to-muted/60 rounded-xl p-4 hover:from-sky-50 hover:to-indigo-50/50 transition-colors border border-transparent hover:border-sky-200/50"
                             >
                               <h5 className="font-semibold text-foreground mb-1">{resort.name}</h5>
                               <p className="text-xs text-sky-600 font-medium mb-2">{resort.type}</p>
@@ -324,21 +335,29 @@ const SkiSeason = () => {
         </section>
 
         {/* Info Section */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-sky-50 to-indigo-50/50" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6 text-center">
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5 text-sky-500" />
+                <span className="text-sm font-medium text-sky-600">Bra att veta</span>
+              </div>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-8 text-center">
                 Att jobba på skidort
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  Att jobba en skidsäsong är drömmen för många skidentusiaster. Du får möjlighet att bo i bergen, skida på din fritid och träffa likasinnade från hela världen. De flesta jobb inkluderar boende och ofta även liftkort.
+                  Att jobba en skidsäsong är drömmen för många skidentusiaster. Du får möjlighet att bo i bergen, skida på din fritid och träffa likasinnade från hela världen.
                 </p>
+                <div className="bg-white rounded-2xl border border-sky-200/50 p-6 shadow-sm">
+                  <p className="text-foreground font-medium mb-2">🎿 Tips från säsongsarbetare</p>
+                  <p className="text-muted-foreground">
+                    De flesta jobb inkluderar boende och ofta liftkort. Sök tidigt – populära orter som Verbier och Niseko fyller sina platser snabbt. Bar- och restaurangerfarenhet är guld värt.
+                  </p>
+                </div>
                 <p>
-                  Vanliga jobb inkluderar arbete i barer och restauranger, på hotell, i skiduthyrning, som liftvärd eller i skidskola. Har du erfarenhet kan du söka mer specialiserade roller som pistör, guide eller snowboardinstruktör.
-                </p>
-                <p>
-                  För europeiska skidorter kan du som svensk jobba fritt utan visum. För destinationer utanför EU som Kanada, Japan och Nya Zeeland behöver du ett Working Holiday-visum. Ansök i god tid - de populäraste orterna fyller sina positioner snabbt!
+                  Vanliga jobb inkluderar barer, restauranger, hotell, skiduthyrning, liftvärd och skidskola. Har du certifikat kan du söka som pistör eller instruktör.
                 </p>
               </div>
             </div>
@@ -346,19 +365,27 @@ const SkiSeason = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
-                Vanliga frågor
-              </h2>
-              <Accordion type="single" collapsible className="w-full">
+              <div className="text-center mb-10">
+                <span className="text-sm font-medium text-sky-600 bg-sky-50 px-3 py-1 rounded-full">
+                  ❓ Vanliga frågor
+                </span>
+                <h2 className="font-display text-3xl font-bold text-foreground mt-4 mb-3">
+                  Allt om skidsäsong
+                </h2>
+                <p className="text-muted-foreground">
+                  Svar på de vanligaste frågorna om att jobba på skidort.
+                </p>
+              </div>
+              <Accordion type="single" collapsible className="w-full space-y-3">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-medium">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-5 bg-card data-[state=open]:shadow-md transition-shadow">
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>

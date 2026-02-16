@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Users, Clock, DollarSign, ExternalLink, Globe, Heart, MapPin, Shield } from "lucide-react";
+import { Users, Clock, DollarSign, ExternalLink, Globe, Heart, MapPin, Shield, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -159,36 +159,39 @@ const Volontararbete = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-violet-500 to-purple-500 text-white">
-          <div className="container mx-auto px-4">
+        <section className="relative py-24 sm:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-500 via-purple-500 to-fuchsia-600" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_40%_30%,rgba(255,255,255,0.15),transparent_50%)]" />
+          <div className="absolute top-10 right-10 text-8xl opacity-10 select-none hidden sm:block">🌍</div>
+          <div className="absolute bottom-10 left-10 text-6xl opacity-10 select-none hidden sm:block">🤝</div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Users className="w-7 h-7" />
-                </div>
-                <span className="text-white/80 font-medium">Program</span>
-              </div>
-              <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+              <span className="inline-block text-sm font-medium bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full mb-6">
+                💜 Gör skillnad i världen
+              </span>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Volontärarbete
               </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Gör skillnad medan du reser. Volontärarbete ger dig unika upplevelser, 
-                nya vänner och chansen att bidra till en bättre värld.
+              <p className="text-xl sm:text-2xl text-white/90 mb-4 font-light leading-relaxed">
+                Res med mening. Bidra till en bättre värld.
               </p>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+              <p className="text-lg text-white/70 mb-10 max-w-xl">
+                Skydda havssköldpaddor i Costa Rica, undervisa i Tanzania eller restaurera korallrev i Fiji.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Heart className="w-4 h-4" />
                   <span>Gör skillnad</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Clock className="w-4 h-4" />
-                  <span>2 veckor - 12 månader</span>
+                  <span>2 veckor – 12 månader</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <MapPin className="w-4 h-4" />
                   <span>30+ länder</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Shield className="w-4 h-4" />
                   <span>Inga krav på erfarenhet</span>
                 </div>
@@ -198,65 +201,71 @@ const Volontararbete = () => {
         </section>
 
         {/* Destinations */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Populära volontärdestinationer
+            <div className="text-center mb-16">
+              <span className="text-sm font-medium text-violet-600 bg-violet-50 px-3 py-1 rounded-full">
+                9 destinationer
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
+                Var vill du göra skillnad?
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Utforska de mest populära länderna för volontärarbete och hitta det projekt som passar dig.
+              <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+                Från tropiska stränder till bergsbyar – hitta ditt projekt.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {volunteerDestinations.map((dest) => (
                 <div
                   key={dest.country}
-                  className="group bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <span className="text-4xl">{dest.flag}</span>
-                    <div className="flex-1">
-                      <h3 className="font-display text-xl font-semibold text-foreground">{dest.country}</h3>
-                      <p className="text-sm text-muted-foreground">{dest.focus}</p>
+                  <div className="h-1.5 bg-gradient-to-r from-violet-400 to-purple-500" />
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <span className="text-5xl leading-none">{dest.flag}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-display text-xl font-bold text-foreground">{dest.country}</h3>
+                        <p className="text-xs text-muted-foreground">{dest.focus}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <p className="text-muted-foreground text-sm mb-4">{dest.description}</p>
+                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{dest.description}</p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {dest.highlights.map((h) => (
-                      <span key={h} className="text-xs bg-violet-100 text-violet-700 px-2 py-1 rounded-full">{h}</span>
-                    ))}
-                  </div>
-
-                  <div className="mb-4">
-                    <div className="text-xs text-muted-foreground mb-1">Projekttyper</div>
-                    <div className="flex flex-wrap gap-1">
-                      {dest.projects.map((p) => (
-                        <span key={p} className="text-xs bg-muted px-2 py-0.5 rounded">{p}</span>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {dest.highlights.map((h) => (
+                        <span key={h} className="text-xs font-medium bg-gradient-to-r from-violet-50 to-purple-50 text-violet-700 border border-violet-200/60 px-2.5 py-1 rounded-full">{h}</span>
                       ))}
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-center text-xs mb-4 py-3 bg-muted/50 rounded-lg">
-                    <div>
-                      <div className="text-muted-foreground">Längd</div>
-                      <div className="font-medium text-foreground">{dest.duration}</div>
+                    <div className="mb-4">
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Projekttyper</div>
+                      <div className="flex flex-wrap gap-1">
+                        {dest.projects.map((p) => (
+                          <span key={p} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{p}</span>
+                        ))}
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-muted-foreground">Kostnad</div>
-                      <div className="font-medium text-foreground text-[10px]">{dest.cost}</div>
-                    </div>
-                  </div>
 
-                  <a href={dest.applyUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="w-full group-hover:bg-violet-500 group-hover:text-white group-hover:border-violet-500 transition-colors">
-                      <span>Hitta projekt</span>
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
-                  </a>
+                    <div className="grid grid-cols-2 gap-1 text-center text-xs mb-5 py-3 bg-muted/30 rounded-xl">
+                      <div>
+                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Längd</div>
+                        <div className="font-semibold text-foreground">{dest.duration}</div>
+                      </div>
+                      <div className="border-l border-border">
+                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Kostnad</div>
+                        <div className="font-semibold text-foreground text-[11px]">{dest.cost}</div>
+                      </div>
+                    </div>
+
+                    <a href={dest.applyUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="w-full group-hover:bg-gradient-to-r group-hover:from-violet-500 group-hover:to-purple-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                        <span>Hitta projekt</span>
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
@@ -264,11 +273,16 @@ const Volontararbete = () => {
         </section>
 
         {/* Platforms */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-violet-50 to-purple-50/50" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5 text-violet-500" />
+                <span className="text-sm font-medium text-violet-600">Resurser</span>
+              </div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6 text-center">
-                Hitta volontärprojekt
+                Hitta volontärprojekt via
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {platforms.map((p) => (
@@ -277,7 +291,7 @@ const Volontararbete = () => {
                     href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow"
+                    className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
                     <div className="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
                       <Globe className="w-5 h-5 text-violet-600" />
@@ -295,19 +309,27 @@ const Volontararbete = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
-                Vanliga frågor
-              </h2>
-              <Accordion type="single" collapsible className="w-full">
+              <div className="text-center mb-10">
+                <span className="text-sm font-medium text-violet-600 bg-violet-50 px-3 py-1 rounded-full">
+                  ❓ Vanliga frågor
+                </span>
+                <h2 className="font-display text-3xl font-bold text-foreground mt-4 mb-3">
+                  Allt om volontärarbete
+                </h2>
+                <p className="text-muted-foreground">
+                  Svar på dina frågor om att volontärarbeta utomlands.
+                </p>
+              </div>
+              <Accordion type="single" collapsible className="w-full space-y-3">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-medium">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-5 bg-card data-[state=open]:shadow-md transition-shadow">
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>

@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Heart, Clock, DollarSign, User, ExternalLink, Home, Baby } from "lucide-react";
+import { Heart, Clock, DollarSign, User, ExternalLink, Home, Baby, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -183,38 +183,41 @@ const AuPair = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-20 bg-gradient-to-br from-rose-500 to-pink-500 text-white">
-          <div className="container mx-auto px-4">
+        <section className="relative py-24 sm:py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-400 via-pink-500 to-fuchsia-500" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(255,255,255,0.15),transparent_50%)]" />
+          <div className="absolute top-10 right-10 text-8xl opacity-10 select-none hidden sm:block">👨‍👩‍👧‍👦</div>
+          <div className="absolute bottom-10 left-10 text-6xl opacity-10 select-none hidden sm:block">🏠</div>
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Heart className="w-7 h-7" />
-                </div>
-                <span className="text-white/80 font-medium">Program</span>
-              </div>
-              <h1 className="font-display text-4xl sm:text-5xl font-bold mb-4">
+              <span className="inline-block text-sm font-medium bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full mb-6">
+                💕 Kulturutbyte & familjeliv
+              </span>
+              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                 Au Pair
               </h1>
-              <p className="text-xl text-white/90 mb-8">
-                Bo hos en värdfamilj, ta hand om barn och upplev en ny kultur på djupet. 
-                Perfekt för dig som vill resa, lära dig ett nytt språk och skapa livslånga minnen.
+              <p className="text-xl sm:text-2xl text-white/90 mb-4 font-light leading-relaxed">
+                Bo hos en värdfamilj och upplev en ny kultur inifrån.
               </p>
-              <div className="flex flex-wrap gap-4 text-sm">
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+              <p className="text-lg text-white/70 mb-10 max-w-xl">
+                Passa barn, lär dig ett nytt språk och skapa livslånga minnen – med kost, logi och fickpengar.
+              </p>
+              <div className="flex flex-wrap gap-3 text-sm">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <User className="w-4 h-4" />
-                  <span>18-30 år</span>
+                  <span>18–30 år</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Clock className="w-4 h-4" />
-                  <span>6-24 månader</span>
+                  <span>6–24 månader</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Home className="w-4 h-4" />
                   <span>Kost & logi ingår</span>
                 </div>
-                <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
                   <Baby className="w-4 h-4" />
-                  <span>25-45 tim/vecka</span>
+                  <span>25–45 tim/vecka</span>
                 </div>
               </div>
             </div>
@@ -222,87 +225,93 @@ const AuPair = () => {
         </section>
 
         {/* Countries Grid */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                Populära Au Pair-länder
+            <div className="text-center mb-16">
+              <span className="text-sm font-medium text-rose-600 bg-rose-50 px-3 py-1 rounded-full">
+                10 populära länder
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
+                Hitta din värdfamilj
               </h2>
-              <p className="text-muted-foreground max-w-2xl mx-auto">
-                Här är de mest populära länderna för svenska au pairs. Klicka på ett land för att hitta värdfamiljer.
+              <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+                Från soliga Spanien till äventyrliga Australien – här är de bästa länderna.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {auPairCountries.map((country) => (
                 <div
                   key={country.country}
-                  className="group bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="flex items-start gap-4 mb-4">
-                    <span className="text-4xl">{country.flag}</span>
-                    <div className="flex-1">
-                      <h3 className="font-display text-xl font-semibold text-foreground">
-                        {country.country}
-                      </h3>
-                      <p className="text-sm text-muted-foreground">{country.programType}</p>
+                  <div className="h-1.5 bg-gradient-to-r from-rose-400 to-pink-500" />
+                  <div className="p-6">
+                    <div className="flex items-start gap-4 mb-4">
+                      <span className="text-5xl leading-none">{country.flag}</span>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-display text-xl font-bold text-foreground">
+                          {country.country}
+                        </h3>
+                        <p className="text-xs text-muted-foreground truncate">{country.programType}</p>
+                      </div>
                     </div>
-                  </div>
 
-                  <p className="text-muted-foreground text-sm mb-4">
-                    {country.description}
-                  </p>
+                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
+                      {country.description}
+                    </p>
 
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {country.highlights.map((highlight) => (
-                      <span
-                        key={highlight}
-                        className="text-xs bg-rose-100 text-rose-700 px-2 py-1 rounded-full"
-                      >
-                        {highlight}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="mb-4">
-                    <div className="text-xs text-muted-foreground mb-1">Populära städer</div>
-                    <div className="flex flex-wrap gap-1">
-                      {country.cities.slice(0, 3).map((city) => (
-                        <span key={city} className="text-xs bg-muted px-2 py-0.5 rounded">
-                          {city}
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {country.highlights.map((highlight) => (
+                        <span
+                          key={highlight}
+                          className="text-xs font-medium bg-gradient-to-r from-rose-50 to-pink-50 text-rose-700 border border-rose-200/60 px-2.5 py-1 rounded-full"
+                        >
+                          {highlight}
                         </span>
                       ))}
-                      {country.cities.length > 3 && (
-                        <span className="text-xs text-muted-foreground">+{country.cities.length - 3}</span>
-                      )}
                     </div>
-                  </div>
 
-                  <div className="grid grid-cols-2 gap-2 text-center text-xs mb-4 py-3 bg-muted/50 rounded-lg">
-                    <div>
-                      <div className="text-muted-foreground">Ålder</div>
-                      <div className="font-medium text-foreground">{country.ageLimit}</div>
+                    <div className="mb-4">
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer</div>
+                      <div className="flex flex-wrap gap-1">
+                        {country.cities.slice(0, 3).map((city) => (
+                          <span key={city} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{city}</span>
+                        ))}
+                        {country.cities.length > 3 && (
+                          <span className="text-xs text-muted-foreground">+{country.cities.length - 3}</span>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <div className="text-muted-foreground">Längd</div>
-                      <div className="font-medium text-foreground">{country.duration}</div>
-                    </div>
-                    <div>
-                      <div className="text-muted-foreground">Kostnad</div>
-                      <div className="font-medium text-foreground text-[10px]">{country.cost}</div>
-                    </div>
-                    <div>
-                      <div className="text-muted-foreground">Fickpengar</div>
-                      <div className="font-medium text-foreground text-[10px]">{country.weeklyPay}</div>
-                    </div>
-                  </div>
 
-                  <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
-                    <Button variant="outline" className="w-full group-hover:bg-rose-500 group-hover:text-white group-hover:border-rose-500 transition-colors">
-                      <span>Hitta värdfamiljer</span>
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </Button>
-                  </a>
+                    <div className="grid grid-cols-2 gap-1 text-center text-xs mb-5 py-3 bg-muted/30 rounded-xl">
+                      <div>
+                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Ålder</div>
+                        <div className="font-semibold text-foreground">{country.ageLimit}</div>
+                      </div>
+                      <div className="border-l border-border">
+                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Längd</div>
+                        <div className="font-semibold text-foreground">{country.duration}</div>
+                      </div>
+                      <div className="col-span-2 border-t border-border mt-2 pt-2 grid grid-cols-2">
+                        <div>
+                          <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Kostnad</div>
+                          <div className="font-semibold text-foreground text-[11px]">{country.cost}</div>
+                        </div>
+                        <div className="border-l border-border">
+                          <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Fickpengar</div>
+                          <div className="font-semibold text-foreground text-[11px]">{country.weeklyPay}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline" className="w-full group-hover:bg-gradient-to-r group-hover:from-rose-500 group-hover:to-pink-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                        <span>Hitta värdfamiljer</span>
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                      </Button>
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
@@ -310,35 +319,43 @@ const AuPair = () => {
         </section>
 
         {/* Info Section */}
-        <section className="py-16 bg-muted/50">
-          <div className="container mx-auto px-4">
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-rose-50 to-pink-50/50" />
+          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6 text-center">
-                Vad är Au Pair?
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <Sparkles className="w-5 h-5 text-rose-500" />
+                <span className="text-sm font-medium text-rose-600">Bra att veta</span>
+              </div>
+              <h2 className="font-display text-3xl font-bold text-foreground mb-8 text-center">
+                Livet som Au Pair
               </h2>
-              <div className="space-y-4 text-muted-foreground">
+              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p>
                   Au Pair är ett kulturutbytesprogram där du bor hos en värdfamilj och hjälper till med barnpassning i utbyte mot kost, logi och fickpengar. Det är ett fantastiskt sätt att uppleva en ny kultur, lära sig ett nytt språk och skapa livslånga vänskapsband.
                 </p>
+                <div className="bg-white rounded-2xl border border-rose-200/50 p-6 shadow-sm">
+                  <p className="text-foreground font-medium mb-2">💡 Bra att veta</p>
+                  <p className="text-muted-foreground">
+                    Inom EU behöver svenska medborgare inget visum för att vara au pair. I USA inkluderar J-1-visumet collegestudier och garanterade villkor.
+                  </p>
+                </div>
                 <p>
-                  Som au pair arbetar du vanligtvis 25-45 timmar per vecka med att ta hand om familjens barn. Arbetsuppgifterna kan inkludera att lämna och hämta barn från skolan, laga enkel mat, leka och hjälpa till med läxor. Du får eget rum, mat och fickpengar.
-                </p>
-                <p>
-                  Inom EU behöver svenska medborgare inget visum för att vara au pair. För länder utanför EU, som USA, krävs ett speciellt visum. USA är det mest reglerade landet med J-1-visum som inkluderar collegestudier och garanterade villkor.
+                  Som au pair arbetar du vanligtvis 25–45 timmar per vecka. Du får eget rum, mat, fickpengar – och ofta en helt ny familj för livet.
                 </p>
               </div>
 
               {/* Popular Agencies */}
-              <div className="mt-12">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-4 text-center">
-                  Hitta värdfamiljer
+              <div className="mt-14">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-5 text-center">
+                  Hitta värdfamiljer via
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-4">
-                  <a 
-                    href="https://www.aupairworld.com/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.aupairworld.com/"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow"
+                    className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
                     <div className="w-10 h-10 rounded-lg bg-rose-100 flex items-center justify-center">
                       <Heart className="w-5 h-5 text-rose-600" />
@@ -349,18 +366,18 @@ const AuPair = () => {
                     </div>
                     <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
                   </a>
-                  <a 
-                    href="https://www.aupair.com/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.aupair.com/"
+                    target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow"
+                    className="flex items-center gap-3 p-4 bg-white rounded-xl border border-border hover:shadow-md hover:-translate-y-0.5 transition-all"
                   >
                     <div className="w-10 h-10 rounded-lg bg-rose-100 flex items-center justify-center">
                       <Home className="w-5 h-5 text-rose-600" />
                     </div>
                     <div>
                       <div className="font-medium text-foreground">AuPair.com</div>
-                      <div className="text-xs text-muted-foreground">Hitta familjer världen över</div>
+                      <div className="text-xs text-muted-foreground">Matcha med familjer globalt</div>
                     </div>
                     <ExternalLink className="w-4 h-4 text-muted-foreground ml-auto" />
                   </a>
@@ -371,19 +388,27 @@ const AuPair = () => {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-16">
+        <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
-              <h2 className="font-display text-2xl font-bold text-foreground mb-8 text-center">
-                Vanliga frågor
-              </h2>
-              <Accordion type="single" collapsible className="w-full">
+              <div className="text-center mb-10">
+                <span className="text-sm font-medium text-rose-600 bg-rose-50 px-3 py-1 rounded-full">
+                  ❓ Vanliga frågor
+                </span>
+                <h2 className="font-display text-3xl font-bold text-foreground mt-4 mb-3">
+                  Allt du undrar om Au Pair
+                </h2>
+                <p className="text-muted-foreground">
+                  Svar på de vanligaste frågorna om att vara au pair utomlands.
+                </p>
+              </div>
+              <Accordion type="single" collapsible className="w-full space-y-3">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-medium">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-5 bg-card data-[state=open]:shadow-md transition-shadow">
+                    <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
                       {item.question}
                     </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
+                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
                       {item.answer}
                     </AccordionContent>
                   </AccordionItem>
