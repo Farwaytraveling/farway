@@ -29,50 +29,53 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="py-24">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+    <section id="testimonials" className="py-24 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.02] to-background" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-14">
+          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Omdömen</p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Vad säger våra resenärer?
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-lg mx-auto">
             Tusentals svenskar har hittat sitt drömäventyr via oss
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}
-              className="bg-card rounded-2xl p-8 shadow-soft hover:shadow-medium transition-all relative"
+              className="bg-card rounded-2xl p-7 border border-border/60 hover:shadow-lg hover:border-primary/15 transition-all duration-300 relative group"
             >
-              <Quote className="absolute top-6 right-6 w-10 h-10 text-primary/10" />
-              
-              <div className="flex items-center gap-4 mb-6">
+              <Quote className="absolute top-5 right-5 w-8 h-8 text-primary/8 group-hover:text-primary/15 transition-colors" />
+
+              <div className="flex gap-1 mb-5">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                ))}
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed mb-6 text-[15px]">
+                "{testimonial.text}"
+              </p>
+
+              <div className="flex items-center gap-3 pt-4 border-t border-border/50">
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-14 h-14 rounded-full object-cover ring-2 ring-primary/20"
+                  className="w-11 h-11 rounded-full object-cover ring-2 ring-border"
                 />
                 <div>
-                  <h4 className="font-display font-semibold text-foreground">
+                  <h4 className="font-semibold text-sm text-foreground">
                     {testimonial.name}, {testimonial.age}
                   </h4>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs text-muted-foreground">
                     {testimonial.program}
                   </p>
                 </div>
               </div>
-
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                ))}
-              </div>
-
-              <p className="text-muted-foreground leading-relaxed">
-                "{testimonial.text}"
-              </p>
             </div>
           ))}
         </div>

@@ -1,46 +1,64 @@
-import { Globe, Instagram, Facebook, Youtube, Mail } from "lucide-react";
+import { Globe, Instagram, Facebook, Youtube, Mail, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const footerLinks = {
+  program: [
+    { label: "Working Holiday", href: "/working-holiday" },
+    { label: "Au Pair", href: "/au-pair" },
+    { label: "Volontärarbete", href: "/volontararbete" },
+    { label: "Studera utomlands", href: "/studera-utomlands" },
+    { label: "Praktik utomlands", href: "/praktik-utomlands" },
+    { label: "Skidsäsong", href: "/ski-season" },
+  ],
+  destinations: ["Australien", "Nya Zeeland", "Kanada", "USA", "Thailand", "Japan"],
+  company: ["Om oss", "Blogg", "Integritetspolicy"],
+};
 
 export const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+    <footer className="border-t border-border/60 bg-muted/30">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl gradient-hero flex items-center justify-center">
+            <Link to="/" className="flex items-center gap-2.5 mb-4 group">
+              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
                 <Globe className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-display font-bold text-xl">
+              <span className="font-display font-bold text-lg text-foreground">
                 Farway
               </span>
             </Link>
-            <p className="text-background/60 mb-6">
+            <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs">
               Sveriges ledande jämförelsetjänst för Working Holiday, Au Pair och andra utlandsprogram.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-background/10 hover:bg-background/20 flex items-center justify-center transition-colors">
-                <Youtube className="w-5 h-5" />
-              </a>
+            <div className="flex gap-2">
+              {[
+                { icon: Instagram, label: "Instagram" },
+                { icon: Facebook, label: "Facebook" },
+                { icon: Youtube, label: "Youtube" },
+              ].map(({ icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="w-9 h-9 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:text-primary flex items-center justify-center transition-all text-muted-foreground"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Program */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Program</h4>
-            <ul className="space-y-3">
-              {["Working Holiday", "Au Pair", "Volontärarbete", "Studera utomlands", "Praktik"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-background/60 hover:text-background transition-colors">
-                    {item}
-                  </a>
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Program</h4>
+            <ul className="space-y-2.5">
+              {footerLinks.program.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -48,11 +66,11 @@ export const Footer = () => {
 
           {/* Destinationer */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Destinationer</h4>
-            <ul className="space-y-3">
-              {["Australien", "Nya Zeeland", "Kanada", "USA", "Thailand", "Spanien"].map((item) => (
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Destinationer</h4>
+            <ul className="space-y-2.5">
+              {footerLinks.destinations.map((item) => (
                 <li key={item}>
-                  <a href="#" className="text-background/60 hover:text-background transition-colors">
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                     {item}
                   </a>
                 </li>
@@ -60,34 +78,37 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Kontakt */}
+          {/* Kontakt & Företag */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Kontakt</h4>
-            <ul className="space-y-3">
-              <li>
-                <a href="mailto:farwaytravelling@gmail.com" className="text-background/60 hover:text-background transition-colors flex items-center gap-2">
-                  <Mail className="w-4 h-4" />
-                  farwaytravelling@gmail.com
-                </a>
-              </li>
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Kontakt</h4>
+            <a
+              href="mailto:farwaytravelling@gmail.com"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 mb-6"
+            >
+              <Mail className="w-4 h-4" />
+              farwaytravelling@gmail.com
+            </a>
+
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Företag</h4>
+            <ul className="space-y-2.5">
+              {footerLinks.company.map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
-            <div className="mt-6">
-              <h4 className="font-display font-semibold mb-4">Företag</h4>
-              <ul className="space-y-3">
-                {["Om oss", "Karriär", "Blogg", "Integritetspolicy"].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-background/60 hover:text-background transition-colors">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
         </div>
 
-        <div className="border-t border-background/10 pt-8 text-center text-background/40 text-sm">
-          <p>© {new Date().getFullYear()} Farway. Alla rättigheter förbehållna.</p>
+        <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Farway. Alla rättigheter förbehållna.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Gjord med ❤️ i Sverige
+          </p>
         </div>
       </div>
     </footer>
