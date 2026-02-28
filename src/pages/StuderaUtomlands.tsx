@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { GraduationCap, Clock, DollarSign, ExternalLink, BookOpen, Languages, Sparkles, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Clock, DollarSign, BookOpen, Languages, ArrowRight } from "lucide-react";
+
 import {
   Accordion,
   AccordionContent,
@@ -201,7 +201,7 @@ const StuderaUtomlands = () => {
       <main>
         {/* Hero Section */}
         <section className="relative py-24 sm:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-primary/60" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_20%,rgba(255,255,255,0.15),transparent_50%)]" />
           <div className="absolute top-10 right-10 text-8xl opacity-10 select-none hidden sm:block">🎓</div>
           <div className="absolute bottom-10 left-10 text-6xl opacity-10 select-none hidden sm:block">📚</div>
@@ -244,73 +244,68 @@ const StuderaUtomlands = () => {
         {/* University Destinations */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
-              <span className="text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                8 studiedestinationer
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
+            <div className="text-center mb-14">
+              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">8 studiedestinationer</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Vart vill du studera?
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              <p className="text-muted-foreground max-w-lg mx-auto text-lg">
                 Från Ivy League till gratis tyska universitet – hitta din drömutbildning.
               </p>
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
               {studyDestinations.map((dest) => (
-                <div
+                <a
                   key={dest.country}
-                  className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  href={dest.applyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group bg-card rounded-2xl border border-border/60 overflow-hidden hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 transition-all duration-300"
                 >
-                  <div className="h-1.5 bg-gradient-to-r from-emerald-400 to-teal-500" />
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <span className="text-5xl leading-none">{dest.flag}</span>
+                  <div className="h-1 bg-gradient-to-r from-primary to-primary/60 opacity-60 group-hover:opacity-100 transition-opacity" />
+                  <div className="p-5">
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="text-4xl leading-none">{dest.flag}</span>
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-display text-xl font-bold text-foreground">{dest.country}</h3>
+                        <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{dest.country}</h3>
                         <p className="text-xs text-muted-foreground truncate">{dest.programType}</p>
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">{dest.description}</p>
+                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed line-clamp-3">{dest.description}</p>
 
                     <div className="flex flex-wrap gap-1.5 mb-4">
                       {dest.highlights.map((h) => (
-                        <span key={h} className="text-xs font-medium bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 border border-emerald-200/60 px-2.5 py-1 rounded-full">{h}</span>
+                        <span key={h} className="text-xs font-medium bg-primary/8 text-primary border border-primary/15 px-2.5 py-0.5 rounded-full">{h}</span>
                       ))}
                     </div>
 
-                    <div className="mb-4">
-                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer</div>
-                      <div className="flex flex-wrap gap-1">
-                        {dest.cities.slice(0, 3).map((city) => (
-                          <span key={city} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{city}</span>
-                        ))}
-                        {dest.cities.length > 3 && (
-                          <span className="text-xs text-muted-foreground">+{dest.cities.length - 3}</span>
-                        )}
-                      </div>
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {dest.cities.slice(0, 3).map((city) => (
+                        <span key={city} className="text-xs bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full">{city}</span>
+                      ))}
+                      {dest.cities.length > 3 && (
+                        <span className="text-xs text-muted-foreground">+{dest.cities.length - 3}</span>
+                      )}
                     </div>
 
-                    <div className="grid grid-cols-2 gap-1 text-center text-xs mb-5 py-3 bg-muted/30 rounded-xl">
+                    <div className="grid grid-cols-2 gap-px text-center text-xs py-3 bg-muted/40 rounded-lg mb-4">
                       <div>
                         <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Längd</div>
                         <div className="font-semibold text-foreground">{dest.duration}</div>
                       </div>
-                      <div className="border-l border-border">
+                      <div className="border-l border-border/60">
                         <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Kostnad</div>
                         <div className="font-semibold text-foreground text-[11px]">{dest.cost}</div>
                       </div>
                     </div>
 
-                    <a href={dest.applyUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full group-hover:bg-gradient-to-r group-hover:from-emerald-500 group-hover:to-teal-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
-                        <span>Läs mer</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
-                      </Button>
-                    </a>
+                    <div className="flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-0 group-hover:translate-x-1">
+                      Läs mer <ArrowRight className="w-4 h-4 ml-1" />
+                    </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -318,16 +313,14 @@ const StuderaUtomlands = () => {
 
         {/* Language Schools */}
         <section className="py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 to-teal-50/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
-              <span className="text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                🗣️ Språkkurser
-              </span>
-              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
+              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">🗣️ Språkkurser</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Lär dig ett nytt språk
               </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto text-lg">
+              <p className="text-muted-foreground max-w-lg mx-auto text-lg">
                 Bo och studera i landet – det snabbaste sättet att lära sig ett språk.
               </p>
             </div>
@@ -339,22 +332,22 @@ const StuderaUtomlands = () => {
                   href={school.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-white rounded-2xl border border-border p-6 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                  className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-4xl">{school.flag}</span>
-                    <h3 className="font-display text-lg font-bold text-foreground">{school.language}</h3>
+                    <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{school.language}</h3>
                   </div>
                   <div className="flex flex-wrap gap-1 mb-4">
                     {school.countries.map((c) => (
-                      <span key={c} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{c}</span>
+                      <span key={c} className="text-xs bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full">{c}</span>
                     ))}
                   </div>
                   <div className="text-sm text-muted-foreground space-y-1.5">
                     <div>📅 {school.duration}</div>
                     <div>💰 {school.cost}</div>
                   </div>
-                  <div className="mt-4 flex items-center text-sm text-emerald-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="mt-4 flex items-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-all translate-x-0 group-hover:translate-x-1">
                     Hitta kurser <ArrowRight className="w-3 h-3 ml-1" />
                   </div>
                 </a>
@@ -368,10 +361,8 @@ const StuderaUtomlands = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-10">
-                <span className="text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
-                  ❓ Vanliga frågor
-                </span>
-                <h2 className="font-display text-3xl font-bold text-foreground mt-4 mb-3">
+                <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">❓ Vanliga frågor</p>
+                <h2 className="font-display text-3xl font-bold text-foreground mb-3">
                   Allt om utlandsstudier
                 </h2>
                 <p className="text-muted-foreground">
@@ -380,7 +371,7 @@ const StuderaUtomlands = () => {
               </div>
               <Accordion type="single" collapsible className="w-full space-y-3">
                 {faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`} className="border border-border rounded-xl px-5 bg-card data-[state=open]:shadow-md transition-shadow">
+                  <AccordionItem key={index} value={`item-${index}`} className="border border-border/60 rounded-xl px-5 bg-card data-[state=open]:shadow-md data-[state=open]:border-primary/20 transition-all">
                     <AccordionTrigger className="text-left font-medium hover:no-underline py-5">
                       {item.question}
                     </AccordionTrigger>
