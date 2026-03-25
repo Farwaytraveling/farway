@@ -34,13 +34,15 @@ export const Footer = () => {
             </p>
             <div className="flex gap-2">
               {[
-                { icon: Instagram, label: "Instagram" },
-                { icon: Facebook, label: "Facebook" },
-                { icon: Youtube, label: "Youtube" },
-              ].map(({ icon: Icon, label }) => (
+                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/farwaytraveling/" },
+                { icon: Facebook, label: "Facebook", href: "#" },
+                { icon: Youtube, label: "Youtube", href: "#" },
+              ].map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:text-primary flex items-center justify-center transition-all text-muted-foreground"
                 >
