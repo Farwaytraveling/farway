@@ -55,12 +55,6 @@ export const HeroSection = () => {
             <DestinationSearch />
           </div>
 
-          {/* Social proof */}
-          <div className="mt-10 text-center">
-            <p className="text-sm text-muted-foreground">
-              <span className="font-semibold text-foreground">2 000+</span> svenskar har hittat sitt äventyr via Farway
-            </p>
-          </div>
         </div>
       </div>
     </section>
