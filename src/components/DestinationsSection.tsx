@@ -1,13 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const destinations = [
-  { country: "Australien", flag: "🇦🇺", programs: 45, popular: "Working Holiday, Farm Work", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop" },
-  { country: "Nya Zeeland", flag: "🇳🇿", programs: 32, popular: "Working Holiday, Äventyr", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop" },
-  { country: "Chamonix", flag: "🇫🇷", programs: 18, popular: "Skidsäsong, Äventyr", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop" },
-  { country: "USA", flag: "🇺🇸", programs: 52, popular: "Au Pair, Summer Camp", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop" },
-  { country: "Thailand", flag: "🇹🇭", programs: 28, popular: "Volontär, Språkkurs", image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&h=400&fit=crop" },
-  { country: "Paris", flag: "🇫🇷", programs: 30, popular: "Au Pair, Språkkurs", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" },
+  { country: "Australien", slug: "australien", flag: "🇦🇺", programs: 45, popular: "Working Holiday, Farm Work", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop" },
+  { country: "Nya Zeeland", slug: "nya-zeeland", flag: "🇳🇿", programs: 32, popular: "Working Holiday, Äventyr", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop" },
+  { country: "Chamonix", slug: "chamonix", flag: "🇫🇷", programs: 18, popular: "Skidsäsong, Äventyr", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop" },
+  { country: "USA", slug: "usa", flag: "🇺🇸", programs: 52, popular: "Au Pair, Summer Camp", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop" },
+  { country: "Thailand", slug: "thailand", flag: "🇹🇭", programs: 28, popular: "Volontär, Språkkurs", image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&h=400&fit=crop" },
+  { country: "Paris", slug: "paris", flag: "🇫🇷", programs: 30, popular: "Au Pair, Språkkurs", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" },
 ];
 
 export const DestinationsSection = () => {
@@ -32,7 +33,8 @@ export const DestinationsSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {destinations.map((dest) => (
-            <div
+            <Link
+              to={`/destination/${dest.slug}`}
               key={dest.country}
               className="group relative rounded-2xl overflow-hidden cursor-pointer border border-border/60 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
             >
@@ -62,7 +64,7 @@ export const DestinationsSection = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

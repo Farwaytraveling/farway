@@ -10,6 +10,7 @@ import SkiSeason from "./pages/SkiSeason";
 import StuderaUtomlands from "./pages/StuderaUtomlands";
 import Volontararbete from "./pages/Volontararbete";
 import PraktikUtomlands from "./pages/PraktikUtomlands";
+import Destination from "./pages/Destination";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/studera-utomlands" element={<StuderaUtomlands />} />
           <Route path="/volontararbete" element={<Volontararbete />} />
           <Route path="/praktik-utomlands" element={<PraktikUtomlands />} />
+          <Route path="/destination/:slug" element={<Destination />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
