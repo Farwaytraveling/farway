@@ -4,10 +4,10 @@ import { ArrowRight } from "lucide-react";
 const destinations = [
   { country: "Australien", flag: "🇦🇺", programs: 45, popular: "Working Holiday, Farm Work", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop" },
   { country: "Nya Zeeland", flag: "🇳🇿", programs: 32, popular: "Working Holiday, Äventyr", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop" },
-  { country: "Kanada", flag: "🇨🇦", programs: 38, popular: "Working Holiday, Skidort", image: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&h=400&fit=crop" },
+  { country: "Chamonix", flag: "🇫🇷", programs: 18, popular: "Skidsäsong, Äventyr", image: "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?w=600&h=400&fit=crop" },
   { country: "USA", flag: "🇺🇸", programs: 52, popular: "Au Pair, Summer Camp", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop" },
   { country: "Thailand", flag: "🇹🇭", programs: 28, popular: "Volontär, Språkkurs", image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=600&h=400&fit=crop" },
-  { country: "Spanien", flag: "🇪🇸", programs: 35, popular: "Språkkurs, Au Pair", image: "https://images.unsplash.com/photo-1543783207-ec64e4d95325?w=600&h=400&fit=crop" },
+  { country: "Paris", flag: "🇫🇷", programs: 30, popular: "Au Pair, Språkkurs", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop" },
 ];
 
 export const DestinationsSection = () => {
