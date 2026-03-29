@@ -36,9 +36,6 @@ export const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" className="hidden sm:flex text-sm font-medium">
-            Logga in
-          </Button>
           <Button variant="default" size="default" className="hidden sm:flex rounded-xl shadow-sm">
             Kom igång
           </Button>
@@ -73,7 +70,6 @@ export const Header = () => {
               </a>
             ))}
             <div className="flex gap-2 mt-3 pt-3 border-t border-border/50">
-              <Button variant="outline" className="flex-1">Logga in</Button>
               <Button variant="default" className="flex-1">Kom igång</Button>
             </div>
           </nav>
