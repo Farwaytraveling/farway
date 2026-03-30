@@ -2,7 +2,16 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2 } from "lucide-react";
+
+type CityInfo = {
+  name: string;
+  image: string;
+  description: string;
+  swedes: string;
+  popularFor: string[];
+  avgRent: string;
+};
 
 const destinationData: Record<string, {
   name: string;
@@ -15,6 +24,8 @@ const destinationData: Record<string, {
   bestTime: string;
   currency: string;
   language: string;
+  communityStats: { total: string; swedish: string; ageRange: string };
+  cities: CityInfo[];
 }> = {
   australien: {
     name: "Australien",
@@ -25,7 +36,7 @@ const destinationData: Record<string, {
     programs: [
       { title: "Working Holiday", description: "Arbeta och res runt i upp till 3 år med WHV.", icon: Briefcase },
       { title: "Farm Work", description: "Jobba på gårdar och förläng ditt visum.", icon: Sun },
-      { title: "Au Pair", description: "Bo hos en värd familj och ta hand om barn.", icon: Users },
+      { title: "Au Pair", description: "Bo hos en värdfamilj och ta hand om barn.", icon: Users },
     ],
     facts: [
       { label: "Visumlängd", value: "1–3 år" },
@@ -35,6 +46,13 @@ const destinationData: Record<string, {
     bestTime: "Oktober – Mars (sommar)",
     currency: "Australiensisk dollar (AUD)",
     language: "Engelska",
+    communityStats: { total: "~150 000 backpackers/år", swedish: "~4 000 svenskar/år", ageRange: "18–30 år vanligast" },
+    cities: [
+      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv. Stor svensk community.", swedes: "~1 200 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån" },
+      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop", description: "Kulturhuvudstaden med fantastisk matscen, street art och sportkultur. Känt för sitt hipster-liv och coffee culture.", swedes: "~900 svenskar", popularFor: ["Hospitality", "Barista-jobb", "Kreativa jobb"], avgRent: "~10 000 kr/mån" },
+      { name: "Gold Coast", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surfarnas paradis med milslånga sandstränder och soligt väder året runt. Perfekt för dig som vill kombinera jobb med strandliv.", swedes: "~500 svenskar", popularFor: ["Surfing", "Turismbranschen", "Fitness-jobb"], avgRent: "~8 500 kr/mån" },
+      { name: "Cairns", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=600&h=400&fit=crop", description: "Porten till Great Barrier Reef och tropisk regnskog. Populärt bland backpackers som vill uppleva unik natur.", swedes: "~300 svenskar", popularFor: ["Dykning", "Turismjobb", "Farm work i närheten"], avgRent: "~7 000 kr/mån" },
+    ],
   },
   "nya-zeeland": {
     name: "Nya Zeeland",
@@ -55,6 +73,12 @@ const destinationData: Record<string, {
     bestTime: "November – April (sommar)",
     currency: "Nyzeeländsk dollar (NZD)",
     language: "Engelska",
+    communityStats: { total: "~60 000 backpackers/år", swedish: "~1 500 svenskar/år", ageRange: "20–28 år vanligast" },
+    cities: [
+      { name: "Auckland", image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=600&h=400&fit=crop", description: "Nya Zeelands största stad med en mix av stadskultur och natur. Bra jobbmöjligheter och utgångspunkt för att utforska Nordön.", swedes: "~500 svenskar", popularFor: ["Kontorsjobb", "Hospitality", "Startpunkt för resor"], avgRent: "~9 000 kr/mån" },
+      { name: "Queenstown", image: "https://images.unsplash.com/photo-1589871973318-9ca1258faa07?w=600&h=400&fit=crop", description: "Äventyrshuvudstaden med bungy, skidåkning och otrolig natur. Extremt populär bland säsongsarbetare.", swedes: "~400 svenskar", popularFor: ["Skidsäsong", "Äventyrsjobb", "Hospitality"], avgRent: "~10 000 kr/mån" },
+      { name: "Wellington", image: "https://images.unsplash.com/photo-1589871973318-9ca1258faa07?w=600&h=400&fit=crop", description: "Huvudstaden med kreativ kultur, fantastisk matscen och filmhistoria (Weta Workshop). Kompakt och gåbar.", swedes: "~250 svenskar", popularFor: ["Kreativa jobb", "Kaféer & restauranger", "Filmproduktion"], avgRent: "~8 500 kr/mån" },
+    ],
   },
   chamonix: {
     name: "Chamonix",
@@ -75,6 +99,12 @@ const destinationData: Record<string, {
     bestTime: "December – April (skidsäsong)",
     currency: "Euro (EUR)",
     language: "Franska",
+    communityStats: { total: "~5 000 säsongsarbetare/vinter", swedish: "~200 svenskar/säsong", ageRange: "19–28 år vanligast" },
+    cities: [
+      { name: "Chamonix-Mont-Blanc", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop", description: "Själva hjärtat med tillgång till Mont Blanc-massivet, fantastisk offpist och legendarisk afterski. Många barer och restauranger söker personal.", swedes: "~100 svenskar", popularFor: ["Skidlärare", "Bar & restaurang", "Hotellpersonal"], avgRent: "~7 000 kr/mån (delat boende)" },
+      { name: "Morzine / Avoriaz", image: "https://images.unsplash.com/photo-1520454974749-611b7248ffdb?w=600&h=400&fit=crop", description: "Del av det enorma Portes du Soleil-området med 650 km pist. Mysig by-känsla och mycket brittisk community.", swedes: "~50 svenskar", popularFor: ["Chalet-jobb", "Skiduthyrning", "Transfer-chaufför"], avgRent: "~6 000 kr/mån (delat)" },
+      { name: "Val d'Isère", image: "https://images.unsplash.com/photo-1548777123-e216912df7d8?w=600&h=400&fit=crop", description: "En av Europas mest exklusiva skidorter med hög afterski-nivå. Bra löner och internationell atmosfär.", swedes: "~80 svenskar", popularFor: ["Lyxhotell", "Skidlärare", "Bartender"], avgRent: "~8 000 kr/mån (delat)" },
+    ],
   },
   usa: {
     name: "USA",
@@ -95,6 +125,13 @@ const destinationData: Record<string, {
     bestTime: "Året runt",
     currency: "US Dollar (USD)",
     language: "Engelska",
+    communityStats: { total: "~20 000 au pairs/år", swedish: "~1 000 svenskar/år", ageRange: "18–26 år vanligast" },
+    cities: [
+      { name: "New York", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop", description: "Världens mest ikoniska stad med oändliga möjligheter. Många au pair-familjer i Manhattans förorter som Westchester och Connecticut.", swedes: "~350 svenskar (au pairs)", popularFor: ["Au Pair", "Praktik", "Studier"], avgRent: "~15 000 kr/mån" },
+      { name: "Los Angeles", image: "https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=600&h=400&fit=crop", description: "Solen, stränderna och Hollywood. Populärt område för au pairs och praktikanter inom kreativa branscher.", swedes: "~250 svenskar", popularFor: ["Au Pair", "Filmindustrin", "Sportindustrin"], avgRent: "~13 000 kr/mån" },
+      { name: "San Francisco", image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=600&h=400&fit=crop", description: "Tech-huvudstaden med Golden Gate Bridge och en progressiv kultur. Bra för praktik inom tech och startup.", swedes: "~150 svenskar", popularFor: ["Tech-praktik", "Au Pair", "Startup-kultur"], avgRent: "~16 000 kr/mån" },
+      { name: "Miami", image: "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?w=600&h=400&fit=crop", description: "Tropiskt klimat, vibrerande nattliv och latinamerikansk kultur. Populärt för au pairs som vill ha strandliv.", swedes: "~100 svenskar", popularFor: ["Au Pair", "Hospitality", "Strandliv"], avgRent: "~11 000 kr/mån" },
+    ],
   },
   thailand: {
     name: "Thailand",
@@ -115,6 +152,12 @@ const destinationData: Record<string, {
     bestTime: "November – Mars (torrsäsong)",
     currency: "Thailändsk baht (THB)",
     language: "Thailändska",
+    communityStats: { total: "~35 000 volontärer/år", swedish: "~2 000 svenskar/år", ageRange: "18–25 år vanligast" },
+    cities: [
+      { name: "Bangkok", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=400&fit=crop", description: "Den pulserande huvudstaden med tempel, streetfood och otroligt nattliv. Bra utgångspunkt och massor av volontärmöjligheter.", swedes: "~600 svenskar", popularFor: ["Volontärarbete", "Språkkurser", "Undervisning"], avgRent: "~4 000 kr/mån" },
+      { name: "Chiang Mai", image: "https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&h=400&fit=crop", description: "Kulturella huvudstaden i norr med tempel, marknader och närhet till djungeln. Extremt populärt bland digitala nomader och volontärer.", swedes: "~400 svenskar", popularFor: ["Elefant-sanctuary", "Undervisning", "Digital nomad-liv"], avgRent: "~3 500 kr/mån" },
+      { name: "Koh Tao", image: "https://images.unsplash.com/photo-1537956965359-7573183d1f57?w=600&h=400&fit=crop", description: "Världens mest populära plats för dykutbildning. Liten ö med kristallklart vatten och avslappnad stämning.", swedes: "~200 svenskar", popularFor: ["Dykcertifiering", "Strandjobb", "Yoga & wellness"], avgRent: "~3 000 kr/mån" },
+    ],
   },
   paris: {
     name: "Paris",
@@ -135,6 +178,12 @@ const destinationData: Record<string, {
     bestTime: "Året runt",
     currency: "Euro (EUR)",
     language: "Franska",
+    communityStats: { total: "~15 000 au pairs/år", swedish: "~500 svenskar/år", ageRange: "19–27 år vanligast" },
+    cities: [
+      { name: "Paris (Centrala)", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Hjärtat av Paris med Eiffeltornet, Louvren och Seine. Många au pair-familjer bor i de västra arrondissementen (16:e, 15:e).", swedes: "~250 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån" },
+      { name: "Versailles", image: "https://images.unsplash.com/photo-1591289009723-aef0a1a8a211?w=600&h=400&fit=crop", description: "Strax utanför Paris med det berömda slottet. Lugnare, familjevänligt område populärt bland au pair-familjer.", swedes: "~80 svenskar", popularFor: ["Au Pair", "Kulturupplevelser", "Familjeliv"], avgRent: "~8 000 kr/mån" },
+      { name: "Lyon", image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=600&h=400&fit=crop", description: "Frankrikes gastronomiska huvudstad. Mindre och billigare än Paris men med samma charm. Bra för matintresserade.", swedes: "~100 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
+    ],
   },
 };
 
@@ -184,8 +233,27 @@ const Destination = () => {
 
         {/* Content */}
         <section className="container mx-auto px-4 py-16">
-          <div className="max-w-4xl">
+          <div className="max-w-5xl">
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">{dest.description}</p>
+
+            {/* Community Stats */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+              <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10 text-center">
+                <Users className="w-6 h-6 text-primary mx-auto mb-2" />
+                <p className="text-xl font-bold text-foreground">{dest.communityStats.total}</p>
+                <p className="text-xs text-muted-foreground mt-1">Totalt antal resenärer</p>
+              </div>
+              <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10 text-center">
+                <span className="text-2xl block mb-1">🇸🇪</span>
+                <p className="text-xl font-bold text-foreground">{dest.communityStats.swedish}</p>
+                <p className="text-xs text-muted-foreground mt-1">Svenska resenärer</p>
+              </div>
+              <div className="p-5 rounded-2xl bg-primary/5 border border-primary/10 text-center">
+                <Calendar className="w-6 h-6 text-primary mx-auto mb-2" />
+                <p className="text-xl font-bold text-foreground">{dest.communityStats.ageRange}</p>
+                <p className="text-xs text-muted-foreground mt-1">Åldersgrupp</p>
+              </div>
+            </div>
 
             {/* Highlights */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-16">
@@ -193,6 +261,36 @@ const Destination = () => {
                 <div key={h} className="flex items-start gap-3 p-4 rounded-xl bg-primary/5 border border-primary/10">
                   <Sun className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                   <span className="text-sm font-medium text-foreground">{h}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Cities */}
+            <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+              <Building2 className="w-6 h-6 inline-block mr-2 text-primary" />
+              Populära städer i {dest.name}
+            </h2>
+            <p className="text-muted-foreground mb-8 text-sm">Upptäck var andra svenskar bor och jobbar</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+              {dest.cities.map((city) => (
+                <div key={city.name} className="rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-shadow">
+                  <img src={city.image} alt={city.name} className="w-full h-44 object-cover" />
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-display text-lg font-semibold text-foreground">{city.name}</h3>
+                      <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">{city.swedes}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{city.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {city.popularFor.map((tag) => (
+                        <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-muted text-muted-foreground font-medium">{tag}</span>
+                      ))}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground pt-3 border-t border-border/50">
+                      <MapPin className="w-3.5 h-3.5" />
+                      Genomsnittlig hyra: {city.avgRent}
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
