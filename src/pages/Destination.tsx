@@ -13,6 +13,15 @@ type CityInfo = {
   swedes: string;
   popularFor: string[];
   avgRent: string;
+  detailedInfo?: {
+    neighborhoods: string[];
+    tips: string[];
+    safety: string;
+    internet: string;
+    costOfLiving: string;
+    nightlife: string;
+    transport: string;
+  };
 };
 
 const destinationData: Record<string, {
