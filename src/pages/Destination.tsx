@@ -286,14 +286,23 @@ const Destination = () => {
             <p className="text-muted-foreground mb-8 text-sm">Upptäck var andra svenskar bor och jobbar</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
               {dest.cities.map((city) => (
-                <div key={city.name} className="rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-shadow">
-                  <img src={city.image} alt={city.name} className="w-full h-44 object-cover" />
+                <div
+                  key={city.name}
+                  onClick={() => setSelectedCity(city)}
+                  className="rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer hover:scale-[1.02] group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img src={city.image} alt={city.name} className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors flex items-center justify-center">
+                      <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-primary/80 px-4 py-2 rounded-full text-sm">Visa mer info</span>
+                    </div>
+                  </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="font-display text-lg font-semibold text-foreground">{city.name}</h3>
                       <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">{city.swedes}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{city.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">{city.description}</p>
                     <div className="flex flex-wrap gap-2 mb-3">
                       {city.popularFor.map((tag) => (
                         <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-muted text-muted-foreground font-medium">{tag}</span>
@@ -307,6 +316,125 @@ const Destination = () => {
                 </div>
               ))}
             </div>
+
+            {/* City Detail Dialog */}
+            <Dialog open={!!selectedCity} onOpenChange={(open) => !open && setSelectedCity(null)}>
+              <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+                {selectedCity && (
+                  <>
+                    <DialogHeader>
+                      <DialogTitle className="font-display text-2xl flex items-center gap-3">
+                        <MapPin className="w-6 h-6 text-primary" />
+                        {selectedCity.name}
+                      </DialogTitle>
+                    </DialogHeader>
+
+                    <img src={selectedCity.image} alt={selectedCity.name} className="w-full h-48 object-cover rounded-xl mt-2" />
+
+                    <p className="text-muted-foreground leading-relaxed mt-4">{selectedCity.description}</p>
+
+                    {/* Stats grid */}
+                    <div className="grid grid-cols-2 gap-3 mt-6">
+                      <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                        <Users className="w-4 h-4 text-primary mb-1" />
+                        <p className="text-sm font-semibold text-foreground">{selectedCity.swedes}</p>
+                        <p className="text-xs text-muted-foreground">Svenska resenärer</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                        <Home className="w-4 h-4 text-primary mb-1" />
+                        <p className="text-sm font-semibold text-foreground">{selectedCity.avgRent}</p>
+                        <p className="text-xs text-muted-foreground">Genomsnittlig hyra</p>
+                      </div>
+                      {selectedCity.detailedInfo && (
+                        <>
+                          <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                            <DollarSign className="w-4 h-4 text-primary mb-1" />
+                            <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.costOfLiving}</p>
+                            <p className="text-xs text-muted-foreground">Levnadskostnad</p>
+                          </div>
+                          <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                            <Shield className="w-4 h-4 text-primary mb-1" />
+                            <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.safety}</p>
+                            <p className="text-xs text-muted-foreground">Säkerhet</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Popular for */}
+                    <div className="mt-6">
+                      <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                        <Briefcase className="w-4 h-4 text-primary" /> Populärt för
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCity.popularFor.map((tag) => (
+                          <span key={tag} className="text-sm px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-medium">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {selectedCity.detailedInfo && (
+                      <>
+                        {/* Neighborhoods */}
+                        <div className="mt-6">
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Building2 className="w-4 h-4 text-primary" /> Populära stadsdelar
+                          </h4>
+                          <div className="space-y-2">
+                            {selectedCity.detailedInfo.neighborhoods.map((n) => (
+                              <div key={n} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <MapPin className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                                {n}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Practical info */}
+                        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div className="p-3 rounded-xl border border-border">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Wifi className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Internet</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.internet}</p>
+                          </div>
+                          <div className="p-3 rounded-xl border border-border">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Coffee className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Nattliv</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.nightlife}</p>
+                          </div>
+                          <div className="p-3 rounded-xl border border-border sm:col-span-2">
+                            <div className="flex items-center gap-2 mb-1">
+                              <TrendingUp className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Transport</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.transport}</p>
+                          </div>
+                        </div>
+
+                        {/* Tips */}
+                        <div className="mt-6">
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Star className="w-4 h-4 text-primary" /> Tips från andra svenskar
+                          </h4>
+                          <div className="space-y-2">
+                            {selectedCity.detailedInfo.tips.map((tip) => (
+                              <div key={tip} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <span className="text-primary mt-0.5">💡</span>
+                                {tip}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </>
+                )}
+              </DialogContent>
+            </Dialog>
 
             {/* Programs */}
             <h2 className="font-display text-2xl font-bold text-foreground mb-6">Program i {dest.name}</h2>
