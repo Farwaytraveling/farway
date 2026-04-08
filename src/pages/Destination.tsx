@@ -199,6 +199,8 @@ const destinationData: Record<string, {
 };
 
 const Destination = () => {
+  const [selectedCity, setSelectedCity] = useState<CityInfo | null>(null);
+
   const { slug } = useParams<{ slug: string }>();
   const dest = slug ? destinationData[slug] : null;
 
