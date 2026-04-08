@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield } from "lucide-react";
 
 type CityInfo = {
   name: string;
@@ -11,6 +13,15 @@ type CityInfo = {
   swedes: string;
   popularFor: string[];
   avgRent: string;
+  detailedInfo?: {
+    neighborhoods: string[];
+    tips: string[];
+    safety: string;
+    internet: string;
+    costOfLiving: string;
+    nightlife: string;
+    transport: string;
+  };
 };
 
 const destinationData: Record<string, {
@@ -48,10 +59,10 @@ const destinationData: Record<string, {
     language: "Engelska",
     communityStats: { total: "~150 000 backpackers/år", swedish: "~4 000 svenskar/år", ageRange: "18–30 år vanligast" },
     cities: [
-      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv. Stor svensk community.", swedes: "~1 200 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån" },
-      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop", description: "Kulturhuvudstaden med fantastisk matscen, street art och sportkultur. Känt för sitt hipster-liv och coffee culture.", swedes: "~900 svenskar", popularFor: ["Hospitality", "Barista-jobb", "Kreativa jobb"], avgRent: "~10 000 kr/mån" },
-      { name: "Gold Coast", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surfarnas paradis med milslånga sandstränder och soligt väder året runt. Perfekt för dig som vill kombinera jobb med strandliv.", swedes: "~500 svenskar", popularFor: ["Surfing", "Turismbranschen", "Fitness-jobb"], avgRent: "~8 500 kr/mån" },
-      { name: "Cairns", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=600&h=400&fit=crop", description: "Porten till Great Barrier Reef och tropisk regnskog. Populärt bland backpackers som vill uppleva unik natur.", swedes: "~300 svenskar", popularFor: ["Dykning", "Turismjobb", "Farm work i närheten"], avgRent: "~7 000 kr/mån" },
+      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv. Stor svensk community.", swedes: "~1 200 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån", detailedInfo: { neighborhoods: ["Bondi Beach – Populärt bland backpackers och surfare", "Manly – Avslappnad strandförort med färja till city", "Surry Hills – Hippt område med caféer och barer", "Newtown – Alternativt och prisvärt"], tips: ["Skaffa Opal Card för kollektivtrafiken", "RSA-certifikat krävs för att jobba på bar", "Bondi till Coogee-promenaden är ett måste", "Gå med i svenska Facebook-grupper för jobb"], safety: "Mycket säkert – var uppmärksam vid stränderna (strömmar)", internet: "Snabbt och pålitligt, WiFi på de flesta caféer", costOfLiving: "Hög – räkna med 15 000–20 000 kr/mån totalt", nightlife: "Fantastiskt – Kings Cross, Darling Harbour, The Rocks", transport: "Bra kollektivtrafik med bussar, tåg och färjor" } },
+      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop", description: "Kulturhuvudstaden med fantastisk matscen, street art och sportkultur. Känt för sitt hipster-liv och coffee culture.", swedes: "~900 svenskar", popularFor: ["Hospitality", "Barista-jobb", "Kreativa jobb"], avgRent: "~10 000 kr/mån", detailedInfo: { neighborhoods: ["Fitzroy – Street art och hippa barer", "St Kilda – Strandliv och nöjen", "Brunswick – Alternativt med bra matscen", "CBD – Centralt med många jobbmöjligheter"], tips: ["Melbourne har 'fyra årstider på en dag' – klä dig i lager", "Kafékulturen är enorm – bra för baristajobb", "Myki-kort för kollektivtrafiken", "Gratis spårvagn i CBD-zonen"], safety: "Mycket säkert – undvik Parker Street sent på kvällen", internet: "Utmärkt – gratis WiFi i CBD", costOfLiving: "Medel-hög – 13 000–18 000 kr/mån", nightlife: "Världskänt – gömda barer och livemusik", transport: "Utmärkt med spårvagnar, tåg och bussar" } },
+      { name: "Gold Coast", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surfarnas paradis med milslånga sandstränder och soligt väder året runt. Perfekt för dig som vill kombinera jobb med strandliv.", swedes: "~500 svenskar", popularFor: ["Surfing", "Turismbranschen", "Fitness-jobb"], avgRent: "~8 500 kr/mån", detailedInfo: { neighborhoods: ["Surfers Paradise – Centrum med nattliv och shopping", "Burleigh Heads – Avslappnat med bra surfing", "Coolangatta – Gränsen till NSW, lugnt och mysigt", "Broadbeach – Mitt emellan fest och lugn"], tips: ["Lär dig surfa – det är gratis!", "Jobb finns inom turism och restaurang", "Go Card för kollektivtrafiken", "Regnsäsongen är januari–mars"], safety: "Säkert – bada alltid mellan flaggorna", internet: "Bra – de flesta hostels har WiFi", costOfLiving: "Medel – 10 000–14 000 kr/mån", nightlife: "Surfers Paradise har allt – klubbar, barer, livescener", transport: "Bussar och light rail längs kusten" } },
+      { name: "Cairns", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=600&h=400&fit=crop", description: "Porten till Great Barrier Reef och tropisk regnskog. Populärt bland backpackers som vill uppleva unik natur.", swedes: "~300 svenskar", popularFor: ["Dykning", "Turismjobb", "Farm work i närheten"], avgRent: "~7 000 kr/mån", detailedInfo: { neighborhoods: ["Cairns City – Kompakt centrum vid havet", "Northern Beaches – Palm Cove och Trinity Beach", "Kuranda – Regnskogsstad i bergen", "Port Douglas – Lyxigare kuststad norrut"], tips: ["Dykcertifiering tar 3–4 dagar", "Farm work finns i Atherton Tablelands", "Var beredd på fuktigt tropiskt klimat", "Besök Daintree Rainforest"], safety: "Säkert – var medveten om krokodiler och maneter", internet: "Okej – kan vara långsamt utanför staden", costOfLiving: "Låg-medel – 8 000–12 000 kr/mån", nightlife: "Mindre men livligt – Cairns Esplanade har barer", transport: "Begränsad – bil eller cykel rekommenderas" } },
     ],
   },
   "nya-zeeland": {
@@ -188,6 +199,8 @@ const destinationData: Record<string, {
 };
 
 const Destination = () => {
+  const [selectedCity, setSelectedCity] = useState<CityInfo | null>(null);
+
   const { slug } = useParams<{ slug: string }>();
   const dest = slug ? destinationData[slug] : null;
 
@@ -273,14 +286,23 @@ const Destination = () => {
             <p className="text-muted-foreground mb-8 text-sm">Upptäck var andra svenskar bor och jobbar</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
               {dest.cities.map((city) => (
-                <div key={city.name} className="rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-shadow">
-                  <img src={city.image} alt={city.name} className="w-full h-44 object-cover" />
+                <div
+                  key={city.name}
+                  onClick={() => setSelectedCity(city)}
+                  className="rounded-2xl border border-border bg-card overflow-hidden hover:shadow-lg transition-all cursor-pointer hover:scale-[1.02] group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img src={city.image} alt={city.name} className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors flex items-center justify-center">
+                      <span className="text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity bg-primary/80 px-4 py-2 rounded-full text-sm">Visa mer info</span>
+                    </div>
+                  </div>
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-2">
                       <h3 className="font-display text-lg font-semibold text-foreground">{city.name}</h3>
                       <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">{city.swedes}</span>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{city.description}</p>
+                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-2">{city.description}</p>
                     <div className="flex flex-wrap gap-2 mb-3">
                       {city.popularFor.map((tag) => (
                         <span key={tag} className="text-xs px-2.5 py-1 rounded-lg bg-muted text-muted-foreground font-medium">{tag}</span>
@@ -294,6 +316,125 @@ const Destination = () => {
                 </div>
               ))}
             </div>
+
+            {/* City Detail Dialog */}
+            <Dialog open={!!selectedCity} onOpenChange={(open) => !open && setSelectedCity(null)}>
+              <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
+                {selectedCity && (
+                  <>
+                    <DialogHeader>
+                      <DialogTitle className="font-display text-2xl flex items-center gap-3">
+                        <MapPin className="w-6 h-6 text-primary" />
+                        {selectedCity.name}
+                      </DialogTitle>
+                    </DialogHeader>
+
+                    <img src={selectedCity.image} alt={selectedCity.name} className="w-full h-48 object-cover rounded-xl mt-2" />
+
+                    <p className="text-muted-foreground leading-relaxed mt-4">{selectedCity.description}</p>
+
+                    {/* Stats grid */}
+                    <div className="grid grid-cols-2 gap-3 mt-6">
+                      <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                        <Users className="w-4 h-4 text-primary mb-1" />
+                        <p className="text-sm font-semibold text-foreground">{selectedCity.swedes}</p>
+                        <p className="text-xs text-muted-foreground">Svenska resenärer</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                        <Home className="w-4 h-4 text-primary mb-1" />
+                        <p className="text-sm font-semibold text-foreground">{selectedCity.avgRent}</p>
+                        <p className="text-xs text-muted-foreground">Genomsnittlig hyra</p>
+                      </div>
+                      {selectedCity.detailedInfo && (
+                        <>
+                          <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                            <DollarSign className="w-4 h-4 text-primary mb-1" />
+                            <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.costOfLiving}</p>
+                            <p className="text-xs text-muted-foreground">Levnadskostnad</p>
+                          </div>
+                          <div className="p-3 rounded-xl bg-primary/5 border border-primary/10">
+                            <Shield className="w-4 h-4 text-primary mb-1" />
+                            <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.safety}</p>
+                            <p className="text-xs text-muted-foreground">Säkerhet</p>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Popular for */}
+                    <div className="mt-6">
+                      <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                        <Briefcase className="w-4 h-4 text-primary" /> Populärt för
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedCity.popularFor.map((tag) => (
+                          <span key={tag} className="text-sm px-3 py-1.5 rounded-lg bg-primary/10 text-primary font-medium">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {selectedCity.detailedInfo && (
+                      <>
+                        {/* Neighborhoods */}
+                        <div className="mt-6">
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Building2 className="w-4 h-4 text-primary" /> Populära stadsdelar
+                          </h4>
+                          <div className="space-y-2">
+                            {selectedCity.detailedInfo.neighborhoods.map((n) => (
+                              <div key={n} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <MapPin className="w-3.5 h-3.5 text-primary mt-0.5 shrink-0" />
+                                {n}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Practical info */}
+                        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div className="p-3 rounded-xl border border-border">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Wifi className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Internet</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.internet}</p>
+                          </div>
+                          <div className="p-3 rounded-xl border border-border">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Coffee className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Nattliv</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.nightlife}</p>
+                          </div>
+                          <div className="p-3 rounded-xl border border-border sm:col-span-2">
+                            <div className="flex items-center gap-2 mb-1">
+                              <TrendingUp className="w-4 h-4 text-primary" />
+                              <span className="text-xs font-semibold text-foreground">Transport</span>
+                            </div>
+                            <p className="text-xs text-muted-foreground">{selectedCity.detailedInfo.transport}</p>
+                          </div>
+                        </div>
+
+                        {/* Tips */}
+                        <div className="mt-6">
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Star className="w-4 h-4 text-primary" /> Tips från andra svenskar
+                          </h4>
+                          <div className="space-y-2">
+                            {selectedCity.detailedInfo.tips.map((tip) => (
+                              <div key={tip} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <span className="text-primary mt-0.5">💡</span>
+                                {tip}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                  </>
+                )}
+              </DialogContent>
+            </Dialog>
 
             {/* Programs */}
             <h2 className="font-display text-2xl font-bold text-foreground mb-6">Program i {dest.name}</h2>
