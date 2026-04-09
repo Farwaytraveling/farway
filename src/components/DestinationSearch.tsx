@@ -1,6 +1,12 @@
-import { useState, useRef, useEffect } from "react";
-import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane } from "lucide-react";
+import { useState, useRef, useEffect, useMemo } from "react";
+import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane, Globe, GraduationCap, Heart, Mountain, Sun, Tent, Music, Utensils, Camera, Waves } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+type Activity = {
+  name: string;
+  icon: string;
+  description: string;
+};
 
 type Resource = {
   name: string;
@@ -9,389 +15,288 @@ type Resource = {
 };
 
 type Destination = {
-  country: string;
+  name: string;
   flag: string;
-  code: string;
-  visaType: string;
-  ageLimit: string;
-  duration: string;
-  cost: string;
-  popular: string[];
-  resources: {
-    visa: Resource[];
-    jobs: Resource[];
-    community: Resource[];
+  region: string;
+  visaInfo: string;
+  activities: string[];
+  resources?: {
+    visa?: Resource[];
+    jobs?: Resource[];
+    community?: Resource[];
   };
 };
 
+const allActivities: Record<string, { label: string; emoji: string }> = {
+  "working-holiday": { label: "Working Holiday", emoji: "💼" },
+  "au-pair": { label: "Au Pair", emoji: "👶" },
+  "volontar": { label: "Volontärarbete", emoji: "🤝" },
+  "sprakresa": { label: "Språkresa", emoji: "📚" },
+  "studera": { label: "Studera", emoji: "🎓" },
+  "praktik": { label: "Praktik", emoji: "💻" },
+  "backpacking": { label: "Backpacking", emoji: "🎒" },
+  "skidsasong": { label: "Skidsäsong", emoji: "⛷️" },
+  "digital-nomad": { label: "Digital Nomad", emoji: "🌐" },
+  "dykning": { label: "Dykning", emoji: "🤿" },
+  "surfing": { label: "Surfing", emoji: "🏄" },
+  "yoga": { label: "Yoga & Wellness", emoji: "🧘" },
+  "farm-work": { label: "Farm Work", emoji: "🌾" },
+  "undervisning": { label: "Undervisa engelska", emoji: "📖" },
+  "safari": { label: "Safari & Natur", emoji: "🦁" },
+  "kultur": { label: "Kultur & Historia", emoji: "🏛️" },
+  "mat": { label: "Mat & Gastronomi", emoji: "🍽️" },
+  "sommarsasong": { label: "Sommarsäsong", emoji: "☀️" },
+  "musik": { label: "Musik & Festivaler", emoji: "🎵" },
+  "vandring": { label: "Vandring", emoji: "🥾" },
+};
+
 const destinations: Destination[] = [
-  {
-    country: "Australien",
-    flag: "🇦🇺",
-    code: "AU",
-    visaType: "Working Holiday (subclass 417)",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "~$510 AUD",
-    popular: ["Working Holiday", "Farm Work", "Backpacking"],
-    resources: {
-      visa: [
-        { name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true },
-        { name: "Tax File Number (TFN)", url: "https://www.ato.gov.au/individuals/tax-file-number/", official: true },
-      ],
-      jobs: [
-        { name: "Seek", url: "https://www.seek.com.au", official: false },
-        { name: "Harvest Trail - Farm Jobs", url: "https://jobsearch.gov.au/harvest", official: true },
-        { name: "Backpacker Job Board", url: "https://www.backpackerjobboard.com.au", official: false },
-      ],
-      community: [
-        { name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false },
-        { name: "Kilroy Australien", url: "https://www.kilroy.se/australien", official: false },
-      ],
-    },
-  },
-  {
-    country: "Thailand",
-    flag: "🇹🇭",
-    code: "TH",
-    visaType: "Tourist Visa / Education Visa",
-    ageLimit: "18+ år",
-    duration: "60-90 dagar (förlängningsbar)",
-    cost: "~$40 USD",
-    popular: ["Backpacking", "Volontär", "Dykning"],
-    resources: {
-      visa: [
-        { name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true },
-        { name: "Thai ambassaden Stockholm", url: "https://stockholm.thaiembassy.org/", official: true },
-      ],
-      jobs: [
-        { name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false },
-        { name: "PADI Divemaster", url: "https://www.padi.com/", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false },
-        { name: "Kilroy Thailand", url: "https://www.kilroy.se/thailand", official: false },
-      ],
-    },
-  },
-  {
-    country: "USA",
-    flag: "🇺🇸",
-    code: "US",
-    visaType: "J-1 Visum (Au Pair, Summer Work)",
-    ageLimit: "18-28 år",
-    duration: "12-24 månader",
-    cost: "Varierar per program",
-    popular: ["Au Pair", "Summer Camp", "Praktik"],
-    resources: {
-      visa: [
-        { name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true },
-        { name: "USCIS", url: "https://www.uscis.gov/", official: true },
-      ],
-      jobs: [
-        { name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false },
-        { name: "Camp America", url: "https://www.campamerica.co.uk", official: false },
-      ],
-      community: [
-        { name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false },
-        { name: "EF USA", url: "https://www.ef.se/pg/sprakresa-usa/", official: false },
-      ],
-    },
-  },
-  {
-    country: "Frankrike",
-    flag: "🇫🇷",
-    code: "FR",
-    visaType: "EU-medborgare (fritt)",
-    ageLimit: "Alla åldrar",
-    duration: "Obegränsad",
-    cost: "Gratis",
-    popular: ["Skidsäsong", "Val d'Isère", "Chamonix", "Språkresa"],
-    resources: {
-      visa: [
-        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
-        { name: "Franska ambassaden", url: "https://se.ambafrance.org/", official: true },
-      ],
-      jobs: [
-        { name: "Pôle Emploi", url: "https://www.pole-emploi.fr/", official: true },
-        { name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false },
-        { name: "Les 3 Vallées Jobs", url: "https://www.les3vallees.com/en/jobs/", official: true },
-        { name: "Val d'Isère Careers", url: "https://www.valdisere.com/en/jobs/", official: true },
-      ],
-      community: [
-        { name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false },
-        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
-      ],
-    },
-  },
-  {
-    country: "Nya Zeeland",
-    flag: "🇳🇿",
-    code: "NZ",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "~$280 NZD",
-    popular: ["Working Holiday", "Äventyr", "Natur"],
-    resources: {
-      visa: [
-        { name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true },
-        { name: "IRD Number", url: "https://www.ird.govt.nz/", official: true },
-      ],
-      jobs: [
-        { name: "Seek NZ", url: "https://www.seek.co.nz", official: false },
-        { name: "Trade Me Jobs", url: "https://www.trademe.co.nz/jobs", official: false },
-      ],
-      community: [
-        { name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false },
-      ],
-    },
-  },
-  {
-    country: "Kanada",
-    flag: "🇨🇦",
-    code: "CA",
-    visaType: "International Experience Canada (IEC)",
-    ageLimit: "18-35 år",
-    duration: "12-24 månader",
-    cost: "~$250 CAD",
-    popular: ["Working Holiday", "Skidorter", "Storstäder"],
-    resources: {
-      visa: [
-        { name: "IEC Program", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html", official: true },
-        { name: "Social Insurance Number", url: "https://www.canada.ca/en/employment-social-development/services/sin.html", official: true },
-      ],
-      jobs: [
-        { name: "Indeed Canada", url: "https://ca.indeed.com", official: false },
-        { name: "Job Bank", url: "https://www.jobbank.gc.ca", official: true },
-      ],
-      community: [
-        { name: "Svenskar i Kanada (FB)", url: "https://www.facebook.com/groups/svenskarikanada", official: false },
-        { name: "Kilroy Kanada", url: "https://www.kilroy.se/kanada", official: false },
-      ],
-    },
-  },
-  {
-    country: "Japan",
-    flag: "🇯🇵",
-    code: "JP",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "Gratis",
-    popular: ["Kultur", "Språk", "Tech"],
-    resources: {
-      visa: [
-        { name: "Japanska ambassaden", url: "https://www.se.emb-japan.go.jp/", official: true },
-        { name: "Immigration Japan", url: "https://www.isa.go.jp/en/", official: true },
-      ],
-      jobs: [
-        { name: "GaijinPot Jobs", url: "https://jobs.gaijinpot.com/", official: false },
-        { name: "Indeed Japan", url: "https://jp.indeed.com/", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Japan (FB)", url: "https://www.facebook.com/groups/svenskarijapan", official: false },
-      ],
-    },
-  },
-  {
-    country: "Sydkorea",
-    flag: "🇰🇷",
-    code: "KR",
-    visaType: "Working Holiday Visa (H-1)",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "~$50 USD",
-    popular: ["K-culture", "Tech", "Språk"],
-    resources: {
-      visa: [
-        { name: "Korea Immigration", url: "https://www.immigration.go.kr/", official: true },
-        { name: "Koreanska ambassaden", url: "https://overseas.mofa.go.kr/se-sv/", official: true },
-      ],
-      jobs: [
-        { name: "Work in Korea", url: "https://www.workinkorea.go.kr/", official: true },
-        { name: "Seoul Craigslist", url: "https://seoul.craigslist.org/", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Korea (FB)", url: "https://www.facebook.com/groups/svenskarikorea", official: false },
-      ],
-    },
-  },
-  {
-    country: "Vietnam",
-    flag: "🇻🇳",
-    code: "VN",
-    visaType: "E-Visa / Business Visa",
-    ageLimit: "18+ år",
-    duration: "90 dagar (förlängningsbar)",
-    cost: "~$25-50 USD",
-    popular: ["Digital Nomad", "Engelskundervisning", "Volontär"],
-    resources: {
-      visa: [
-        { name: "Vietnam E-Visa Portal", url: "https://evisa.xuatnhapcanh.gov.vn/", official: true },
-        { name: "Vietnamesiska ambassaden", url: "https://vietnamembassy.se/", official: true },
-      ],
-      jobs: [
-        { name: "VietnamWorks", url: "https://www.vietnamworks.com/", official: false },
-        { name: "Teach Away Vietnam", url: "https://www.teachaway.com/teach-vietnam", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Vietnam (FB)", url: "https://www.facebook.com/groups/svenskarivietnam", official: false },
-        { name: "Digital Nomads Vietnam", url: "https://www.facebook.com/groups/digitalnomadsvietnam", official: false },
-      ],
-    },
-  },
-  {
-    country: "Österrike",
-    flag: "🇦🇹",
-    code: "AT",
-    visaType: "EU-medborgare (fritt)",
-    ageLimit: "Alla åldrar",
-    duration: "Obegränsad",
-    cost: "Gratis",
-    popular: ["St. Anton", "Ischgl", "Kitzbühel", "Sölden", "Lech"],
-    resources: {
-      visa: [
-        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
-        { name: "Österrikiska ambassaden", url: "https://www.bmeia.gv.at/sv/ambassad/stockholm/", official: true },
-      ],
-      jobs: [
-        { name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false },
-        { name: "St. Anton Jobs", url: "https://www.stantonamarlberg.com/en/jobs", official: true },
-        { name: "Ischgl Careers", url: "https://www.ischgl.com/en/service/jobs", official: true },
-        { name: "Sölden Jobs", url: "https://www.soelden.com/jobs", official: true },
-        { name: "AMS Österrike", url: "https://www.ams.at/", official: true },
-      ],
-      community: [
-        { name: "Svenskar i Österrike (FB)", url: "https://www.facebook.com/groups/svenskarioesterrike", official: false },
-        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
-        { name: "St. Anton Season Workers (FB)", url: "https://www.facebook.com/groups/stantonseasonworkers", official: false },
-      ],
-    },
-  },
-  {
-    country: "Schweiz",
-    flag: "🇨🇭",
-    code: "CH",
-    visaType: "Uppehållstillstånd krävs",
-    ageLimit: "18+ år",
-    duration: "Säsongsbaserat",
-    cost: "Varierar",
-    popular: ["Zermatt", "Verbier", "St. Moritz", "Davos", "Laax"],
-    resources: {
-      visa: [
-        { name: "Swiss Permit Info", url: "https://www.sem.admin.ch/sem/en/home/themen/aufenthalt.html", official: true },
-        { name: "Schweiziska ambassaden", url: "https://www.eda.admin.ch/countries/sweden/sv/home.html", official: true },
-      ],
-      jobs: [
-        { name: "Zermatt Jobs", url: "https://www.zermatt.ch/en/jobs", official: true },
-        { name: "Verbier Careers", url: "https://www.verbier.ch/en/jobs/", official: true },
-        { name: "St. Moritz Jobs", url: "https://www.stmoritz.ch/en/jobs/", official: true },
-        { name: "Seasonaires Schweiz", url: "https://www.seasonaires.com/ski-jobs/switzerland/", official: false },
-        { name: "Hotelleriejobs", url: "https://www.hotelleriejobs.ch/", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Schweiz (FB)", url: "https://www.facebook.com/groups/svenskarischweiz", official: false },
-        { name: "Zermatt Season Workers (FB)", url: "https://www.facebook.com/groups/zermattseasonworkers", official: false },
-        { name: "Verbier Seasonaires (FB)", url: "https://www.facebook.com/groups/verbierseasonaires", official: false },
-      ],
-    },
-  },
-  {
-    country: "Italien (Alperna)",
-    flag: "🇮🇹",
-    code: "IT",
-    visaType: "EU-medborgare (fritt)",
-    ageLimit: "Alla åldrar",
-    duration: "Obegränsad",
-    cost: "Gratis",
-    popular: ["Val Gardena", "Cortina", "Livigno", "Madonna di Campiglio", "Sestriere"],
-    resources: {
-      visa: [
-        { name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true },
-        { name: "Italienska ambassaden", url: "https://ambstoccolma.esteri.it/", official: true },
-      ],
-      jobs: [
-        { name: "Dolomiti Superski Jobs", url: "https://www.dolomitisuperski.com/en/jobs", official: true },
-        { name: "Val Gardena Careers", url: "https://www.valgardena.it/en/jobs/", official: true },
-        { name: "Livigno Jobs", url: "https://www.livigno.eu/en/work-with-us", official: true },
-        { name: "Seasonaires Italien", url: "https://www.seasonaires.com/ski-jobs/italy/", official: false },
-        { name: "Ski Staff", url: "https://www.skistaff.co.uk/", official: false },
-      ],
-      community: [
-        { name: "Svenskar i Italien (FB)", url: "https://www.facebook.com/groups/svenskaritalien", official: false },
-        { name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false },
-        { name: "Cortina Season Workers (FB)", url: "https://www.facebook.com/groups/cortinaseasonworkers", official: false },
-      ],
-    },
-  },
-  {
-    country: "Andorra",
-    flag: "🇦🇩",
-    code: "AD",
-    visaType: "Arbetstillstånd krävs",
-    ageLimit: "18+ år",
-    duration: "Säsongsbaserat",
-    cost: "Varierar",
-    popular: ["Grandvalira", "Vallnord", "Pas de la Casa", "Soldeu"],
-    resources: {
-      visa: [
-        { name: "Andorra Immigration", url: "https://www.immigracio.ad/", official: true },
-        { name: "Spanska ambassaden (närmaste)", url: "https://www.exteriores.gob.es/Embajadas/estocolmo/", official: true },
-      ],
-      jobs: [
-        { name: "Grandvalira Careers", url: "https://www.grandvalira.com/en/work-with-us", official: true },
-        { name: "Vallnord Jobs", url: "https://www.vallnord.com/en/jobs", official: true },
-        { name: "Seasonaires Andorra", url: "https://www.seasonaires.com/ski-jobs/andorra/", official: false },
-        { name: "Treball Andorra", url: "https://www.treball.ad/", official: true },
-      ],
-      community: [
-        { name: "Season Workers Andorra (FB)", url: "https://www.facebook.com/groups/seasonworkersandorra", official: false },
-        { name: "Pas de la Casa Workers (FB)", url: "https://www.facebook.com/groups/pasdelacasaworkers", official: false },
-      ],
-    },
-  },
+  // Oceanien
+  { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
+    resources: { visa: [{ name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true }], jobs: [{ name: "Seek", url: "https://www.seek.com.au", official: false }, { name: "Harvest Trail", url: "https://jobsearch.gov.au/harvest", official: true }], community: [{ name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false }] } },
+  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
+    resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
+  { name: "Fiji", flag: "🇫🇯", region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: ["volontar", "dykning", "backpacking", "surfing"] },
+
+  // Nordamerika
+  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
+    resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
+  { name: "Kanada", flag: "🇨🇦", region: "Nordamerika", visaInfo: "IEC, 18-35 år", activities: ["working-holiday", "skidsasong", "studera", "backpacking", "vandring"],
+    resources: { visa: [{ name: "IEC Program", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html", official: true }], jobs: [{ name: "Job Bank", url: "https://www.jobbank.gc.ca", official: true }], community: [{ name: "Svenskar i Kanada (FB)", url: "https://www.facebook.com/groups/svenskarikanada", official: false }] } },
+  { name: "Mexiko", flag: "🇲🇽", region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: ["backpacking", "digital-nomad", "sprakresa", "dykning", "surfing", "yoga", "kultur"] },
+  { name: "Costa Rica", flag: "🇨🇷", region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "surfing", "yoga", "backpacking", "sprakresa", "digital-nomad"] },
+  { name: "Panama", flag: "🇵🇦", region: "Centralamerika", visaInfo: "Turistvisum 180 dagar", activities: ["digital-nomad", "backpacking", "dykning"] },
+  { name: "Guatemala", flag: "🇬🇹", region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "sprakresa", "backpacking", "kultur"] },
+  { name: "Kuba", flag: "🇨🇺", region: "Karibien", visaInfo: "Turistkort krävs", activities: ["backpacking", "kultur", "musik", "sprakresa"] },
+
+  // Sydamerika
+  { name: "Argentina", flag: "🇦🇷", region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: ["working-holiday", "sprakresa", "backpacking", "vandring", "kultur", "mat"] },
+  { name: "Brasilien", flag: "🇧🇷", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["backpacking", "surfing", "volontar", "musik", "kultur"] },
+  { name: "Colombia", flag: "🇨🇴", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "sprakresa", "backpacking", "surfing", "kultur"] },
+  { name: "Peru", flag: "🇵🇪", region: "Sydamerika", visaInfo: "Turistvisum 183 dagar", activities: ["backpacking", "vandring", "volontar", "kultur", "sprakresa"] },
+  { name: "Chile", flag: "🇨🇱", region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: ["working-holiday", "backpacking", "vandring", "skidsasong"] },
+  { name: "Ecuador", flag: "🇪🇨", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "backpacking", "sprakresa", "dykning"] },
+  { name: "Bolivia", flag: "🇧🇴", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["backpacking", "vandring", "volontar", "kultur"] },
+  { name: "Uruguay", flag: "🇺🇾", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "backpacking", "surfing"] },
+
+  // Europa
+  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
+    resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
+  { name: "Spanien", flag: "🇪🇸", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "au-pair", "studera", "sommarsasong", "surfing", "kultur", "mat", "digital-nomad"] },
+  { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
+  { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
+  { name: "Tyskland", flag: "🇩🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "au-pair", "sprakresa", "kultur"] },
+  { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "vandring", "kultur", "sommarsasong"],
+    resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }], community: [{ name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false }] } },
+  { name: "Schweiz", flag: "🇨🇭", region: "Europa", visaInfo: "Uppehållstillstånd krävs", activities: ["skidsasong", "vandring", "au-pair", "sommarsasong"],
+    resources: { jobs: [{ name: "Seasonaires Schweiz", url: "https://www.seasonaires.com/ski-jobs/switzerland/", official: false }] } },
+  { name: "Grekland", flag: "🇬🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "kultur", "yoga"] },
+  { name: "Kroatien", flag: "🇭🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "surfing"] },
+  { name: "Irland", flag: "🇮🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["working-holiday", "studera", "sprakresa", "kultur", "musik"] },
+  { name: "Storbritannien", flag: "🇬🇧", region: "Europa", visaInfo: "Visum krävs efter Brexit", activities: ["studera", "au-pair", "sprakresa", "praktik", "kultur"] },
+  { name: "Nederländerna", flag: "🇳🇱", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "digital-nomad", "kultur"] },
+  { name: "Andorra", flag: "🇦🇩", region: "Europa", visaInfo: "Arbetstillstånd krävs", activities: ["skidsasong"] },
+  { name: "Norge", flag: "🇳🇴", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "farm-work"] },
+  { name: "Island", flag: "🇮🇸", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "volontar"] },
+  { name: "Malta", flag: "🇲🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "dykning", "digital-nomad", "sommarsasong"] },
+  { name: "Tjeckien", flag: "🇨🇿", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "kultur", "digital-nomad"] },
+  { name: "Polen", flag: "🇵🇱", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "kultur", "vandring"] },
+  { name: "Ungern", flag: "🇭🇺", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "kultur", "digital-nomad"] },
+  { name: "Rumänien", flag: "🇷🇴", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["volontar", "vandring", "kultur", "digital-nomad"] },
+  { name: "Bulgarien", flag: "🇧🇬", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "sommarsasong", "digital-nomad"] },
+  { name: "Estland", flag: "🇪🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "studera", "kultur"] },
+  { name: "Turkiet", flag: "🇹🇷", region: "Europa/Asien", visaInfo: "E-visum, 90 dagar", activities: ["backpacking", "kultur", "sommarsasong", "surfing", "mat"] },
+  { name: "Montenegro", flag: "🇲🇪", region: "Europa", visaInfo: "Visumfritt 90 dagar", activities: ["sommarsasong", "backpacking", "digital-nomad"] },
+  { name: "Albanien", flag: "🇦🇱", region: "Europa", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "digital-nomad", "vandring"] },
+  { name: "Georgien", flag: "🇬🇪", region: "Europa/Asien", visaInfo: "Visumfritt 1 år", activities: ["digital-nomad", "vandring", "kultur", "mat", "skidsasong"] },
+
+  // Asien
+  { name: "Thailand", flag: "🇹🇭", region: "Asien", visaInfo: "Tourist Visa 60-90 dagar", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "undervisning", "surfing", "mat"],
+    resources: { visa: [{ name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true }], jobs: [{ name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false }], community: [{ name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false }] } },
+  { name: "Japan", flag: "🇯🇵", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning", "vandring", "skidsasong"],
+    resources: { visa: [{ name: "Japanska ambassaden", url: "https://www.se.emb-japan.go.jp/", official: true }], jobs: [{ name: "GaijinPot Jobs", url: "https://jobs.gaijinpot.com/", official: false }], community: [{ name: "Svenskar i Japan (FB)", url: "https://www.facebook.com/groups/svenskarijapan", official: false }] } },
+  { name: "Sydkorea", flag: "🇰🇷", region: "Asien", visaInfo: "Working Holiday (H-1), 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning"],
+    resources: { visa: [{ name: "Korea Immigration", url: "https://www.immigration.go.kr/", official: true }] } },
+  { name: "Vietnam", flag: "🇻🇳", region: "Asien", visaInfo: "E-Visa 90 dagar", activities: ["backpacking", "digital-nomad", "undervisning", "volontar", "mat"],
+    resources: { visa: [{ name: "Vietnam E-Visa", url: "https://evisa.xuatnhapcanh.gov.vn/", official: true }] } },
+  { name: "Indonesien", flag: "🇮🇩", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["backpacking", "surfing", "dykning", "yoga", "digital-nomad", "volontar"] },
+  { name: "Bali", flag: "🇮🇩", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["digital-nomad", "surfing", "yoga", "kultur", "mat"] },
+  { name: "Filippinerna", flag: "🇵🇭", region: "Asien", visaInfo: "Visumfritt 30 dagar", activities: ["backpacking", "dykning", "surfing", "sprakresa", "volontar", "digital-nomad"] },
+  { name: "Kambodja", flag: "🇰🇭", region: "Asien", visaInfo: "E-Visa 30 dagar", activities: ["backpacking", "volontar", "undervisning", "kultur"] },
+  { name: "Laos", flag: "🇱🇦", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["backpacking", "volontar", "vandring"] },
+  { name: "Myanmar", flag: "🇲🇲", region: "Asien", visaInfo: "E-Visa 28 dagar", activities: ["backpacking", "kultur", "volontar"] },
+  { name: "Sri Lanka", flag: "🇱🇰", region: "Asien", visaInfo: "ETA 30 dagar", activities: ["backpacking", "surfing", "yoga", "volontar", "dykning"] },
+  { name: "Nepal", flag: "🇳🇵", region: "Asien", visaInfo: "Visa on Arrival 90 dagar", activities: ["vandring", "volontar", "yoga", "backpacking"] },
+  { name: "Indien", flag: "🇮🇳", region: "Asien", visaInfo: "E-Visa 60 dagar", activities: ["backpacking", "yoga", "volontar", "kultur", "sprakresa"] },
+  { name: "Kina", flag: "🇨🇳", region: "Asien", visaInfo: "Visum krävs", activities: ["studera", "undervisning", "kultur", "praktik", "sprakresa"] },
+  { name: "Taiwan", flag: "🇹🇼", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday", "studera", "undervisning", "kultur", "vandring"] },
+  { name: "Malaysia", flag: "🇲🇾", region: "Asien", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "dykning", "digital-nomad", "mat"] },
+  { name: "Singapore", flag: "🇸🇬", region: "Asien", visaInfo: "Visumfritt 90 dagar", activities: ["praktik", "studera", "kultur", "mat"] },
+  { name: "Mongoliet", flag: "🇲🇳", region: "Asien", visaInfo: "Visumfritt 30 dagar", activities: ["backpacking", "vandring", "volontar", "kultur"] },
+
+  // Mellanöstern
+  { name: "Israel", flag: "🇮🇱", region: "Mellanöstern", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "studera", "kultur", "vandring"] },
+  { name: "Jordanien", flag: "🇯🇴", region: "Mellanöstern", visaInfo: "Visa on Arrival", activities: ["backpacking", "kultur", "vandring", "dykning"] },
+  { name: "Förenade Arabemiraten", flag: "🇦🇪", region: "Mellanöstern", visaInfo: "Visumfritt 90 dagar", activities: ["praktik", "digital-nomad", "sommarsasong"] },
+  { name: "Oman", flag: "🇴🇲", region: "Mellanöstern", visaInfo: "E-Visa", activities: ["backpacking", "vandring", "dykning", "kultur"] },
+
+  // Afrika
+  { name: "Sydafrika", flag: "🇿🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["volontar", "safari", "surfing", "backpacking", "dykning"] },
+  { name: "Tanzania", flag: "🇹🇿", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["safari", "vandring", "volontar", "dykning", "backpacking"] },
+  { name: "Kenya", flag: "🇰🇪", region: "Afrika", visaInfo: "E-Visa", activities: ["safari", "volontar", "backpacking"] },
+  { name: "Marocko", flag: "🇲🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "surfing", "sprakresa", "kultur", "yoga"] },
+  { name: "Egypten", flag: "🇪🇬", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["backpacking", "dykning", "kultur"] },
+  { name: "Ghana", flag: "🇬🇭", region: "Afrika", visaInfo: "Visum krävs", activities: ["volontar", "kultur", "undervisning"] },
+  { name: "Uganda", flag: "🇺🇬", region: "Afrika", visaInfo: "E-Visa", activities: ["volontar", "safari", "vandring"] },
+  { name: "Madagaskar", flag: "🇲🇬", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["volontar", "backpacking", "safari"] },
+  { name: "Senegal", flag: "🇸🇳", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["volontar", "surfing", "kultur", "musik"] },
+  { name: "Namibia", flag: "🇳🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["safari", "backpacking", "vandring", "volontar"] },
+  { name: "Moçambique", flag: "🇲🇿", region: "Afrika", visaInfo: "E-Visa", activities: ["dykning", "backpacking", "volontar", "surfing"] },
+  { name: "Rwanda", flag: "🇷🇼", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["volontar", "safari", "vandring"] },
+  { name: "Etiopien", flag: "🇪🇹", region: "Afrika", visaInfo: "E-Visa", activities: ["backpacking", "vandring", "kultur", "volontar"] },
+  { name: "Zanzibar", flag: "🇹🇿", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["dykning", "backpacking", "yoga", "volontar"] },
+  { name: "Kapverde", flag: "🇨🇻", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["surfing", "backpacking", "vandring", "musik"] },
+
+  // Karibien
+  { name: "Jamaica", flag: "🇯🇲", region: "Karibien", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "surfing", "musik", "volontar"] },
+  { name: "Dominikanska republiken", flag: "🇩🇴", region: "Karibien", visaInfo: "Turistkort vid ankomst", activities: ["backpacking", "surfing", "volontar", "sprakresa"] },
+  { name: "Barbados", flag: "🇧🇧", region: "Karibien", visaInfo: "Visumfritt 6 mån", activities: ["digital-nomad", "surfing", "dykning"] },
 ];
+
+// Populära städer/platser som alternativa söktermer
+const cityAliases: Record<string, string> = {
+  "sydney": "Australien", "melbourne": "Australien", "gold coast": "Australien", "cairns": "Australien", "brisbane": "Australien", "perth": "Australien",
+  "auckland": "Nya Zeeland", "queenstown": "Nya Zeeland", "wellington": "Nya Zeeland",
+  "new york": "USA", "los angeles": "USA", "miami": "USA", "san francisco": "USA", "hawaii": "USA", "boston": "USA", "chicago": "USA", "seattle": "USA",
+  "toronto": "Kanada", "vancouver": "Kanada", "montreal": "Kanada", "banff": "Kanada", "whistler": "Kanada",
+  "paris": "Frankrike", "lyon": "Frankrike", "bordeaux": "Frankrike", "marseille": "Frankrike", "nice": "Frankrike", "chamonix": "Frankrike", "val d'isère": "Frankrike",
+  "barcelona": "Spanien", "madrid": "Spanien", "sevilla": "Spanien", "valencia": "Spanien", "málaga": "Spanien", "ibiza": "Spanien",
+  "rom": "Italien", "milano": "Italien", "florens": "Italien", "neapel": "Italien", "venedig": "Italien",
+  "lissabon": "Portugal", "porto": "Portugal", "algarve": "Portugal",
+  "berlin": "Tyskland", "münchen": "Tyskland", "hamburg": "Tyskland",
+  "wien": "Österrike", "innsbruck": "Österrike", "st. anton": "Österrike", "ischgl": "Österrike",
+  "zürich": "Schweiz", "zermatt": "Schweiz", "verbier": "Schweiz",
+  "aten": "Grekland", "santorini": "Grekland", "kreta": "Grekland", "mykonos": "Grekland",
+  "dubrovnik": "Kroatien", "split": "Kroatien", "zagreb": "Kroatien",
+  "dublin": "Irland", "galway": "Irland",
+  "london": "Storbritannien", "edinburgh": "Storbritannien", "manchester": "Storbritannien",
+  "amsterdam": "Nederländerna", "rotterdam": "Nederländerna",
+  "bangkok": "Thailand", "chiang mai": "Thailand", "phuket": "Thailand", "koh samui": "Thailand", "koh phangan": "Thailand", "krabi": "Thailand",
+  "tokyo": "Japan", "kyoto": "Japan", "osaka": "Japan",
+  "seoul": "Sydkorea", "busan": "Sydkorea",
+  "hanoi": "Vietnam", "ho chi minh": "Vietnam", "da nang": "Vietnam",
+  "jakarta": "Indonesien", "yogyakarta": "Indonesien", "lombok": "Indonesien",
+  "ubud": "Bali", "canggu": "Bali", "seminyak": "Bali", "uluwatu": "Bali",
+  "manila": "Filippinerna", "cebu": "Filippinerna", "el nido": "Filippinerna", "siargao": "Filippinerna",
+  "siem reap": "Kambodja", "phnom penh": "Kambodja",
+  "kathmandu": "Nepal", "pokhara": "Nepal",
+  "mumbai": "Indien", "delhi": "Indien", "goa": "Indien", "rishikesh": "Indien",
+  "shanghai": "Kina", "peking": "Kina", "beijing": "Kina",
+  "taipei": "Taiwan",
+  "kuala lumpur": "Malaysia", "penang": "Malaysia", "langkawi": "Malaysia",
+  "buenos aires": "Argentina", "mendoza": "Argentina", "patagonien": "Argentina",
+  "rio de janeiro": "Brasilien", "são paulo": "Brasilien", "florianópolis": "Brasilien",
+  "bogotá": "Colombia", "medellín": "Colombia", "cartagena": "Colombia",
+  "lima": "Peru", "cusco": "Peru", "machu picchu": "Peru",
+  "santiago": "Chile", "valparaíso": "Chile",
+  "quito": "Ecuador", "galápagos": "Ecuador",
+  "cancún": "Mexiko", "playa del carmen": "Mexiko", "tulum": "Mexiko", "mexico city": "Mexiko", "oaxaca": "Mexiko", "puerto vallarta": "Mexiko",
+  "san josé": "Costa Rica", "tamarindo": "Costa Rica", "santa teresa": "Costa Rica",
+  "kapstaden": "Sydafrika", "johannesburg": "Sydafrika", "durban": "Sydafrika",
+  "kilimanjaro": "Tanzania", "serengeti": "Tanzania", "dar es salaam": "Tanzania",
+  "nairobi": "Kenya", "mombasa": "Kenya",
+  "marrakech": "Marocko", "essaouira": "Marocko", "fez": "Marocko",
+  "kairo": "Egypten", "hurghada": "Egypten", "sharm el sheikh": "Egypten",
+  "dubai": "Förenade Arabemiraten", "abu dhabi": "Förenade Arabemiraten",
+  "tel aviv": "Israel", "jerusalem": "Israel",
+  "istanbul": "Turkiet", "antalya": "Turkiet", "bodrum": "Turkiet", "kappadokien": "Turkiet",
+  "tbilisi": "Georgien", "batumi": "Georgien",
+  "prag": "Tjeckien",
+  "budapest": "Ungern",
+  "krakow": "Polen", "warszawa": "Polen",
+  "bukarest": "Rumänien",
+  "tallinn": "Estland",
+  "reykjavik": "Island",
+  "valletta": "Malta",
+  "tirana": "Albanien",
+  "kingston": "Jamaica",
+};
 
 export const DestinationSearch = () => {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const [activeActivityFilter, setActiveActivityFilter] = useState<string | null>(null);
+  const [matchedCity, setMatchedCity] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const filteredDestinations = destinations.filter(
-    (dest) =>
-      dest.country.toLowerCase().includes(query.toLowerCase()) ||
-      dest.code.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredDestinations = useMemo(() => {
+    if (!query) return [];
+    const q = query.toLowerCase().trim();
+
+    // Check city aliases
+    const cityMatch = Object.entries(cityAliases).find(([city]) => city.includes(q) || q.includes(city));
+
+    let results = destinations.filter(
+      (dest) =>
+        dest.name.toLowerCase().includes(q) ||
+        dest.region.toLowerCase().includes(q) ||
+        dest.activities.some(a => allActivities[a]?.label.toLowerCase().includes(q))
+    );
+
+    // Add city alias matches
+    if (cityMatch) {
+      const countryName = cityMatch[1];
+      const country = destinations.find(d => d.name === countryName);
+      if (country && !results.find(r => r.name === country.name)) {
+        results.unshift(country);
+      }
+    }
+
+    // Also filter by activity if active
+    if (activeActivityFilter) {
+      results = results.filter(d => d.activities.includes(activeActivityFilter));
+    }
+
+    return results.slice(0, 12);
+  }, [query, activeActivityFilter]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node) &&
-        inputRef.current &&
-        !inputRef.current.contains(event.target as Node)
+        dropdownRef.current && !dropdownRef.current.contains(event.target as Node) &&
+        inputRef.current && !inputRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSelect = (destination: Destination) => {
+  const handleSelect = (destination: Destination, city?: string) => {
     setSelectedDestination(destination);
-    setQuery(destination.country);
+    setQuery(city ? `${city}, ${destination.name}` : destination.name);
+    setMatchedCity(city || null);
     setIsOpen(false);
   };
 
   const clearSelection = () => {
     setSelectedDestination(null);
     setQuery("");
+    setMatchedCity(null);
+    setActiveActivityFilter(null);
     inputRef.current?.focus();
+  };
+
+  // Find which city was searched
+  const getCityForResult = (dest: Destination, q: string): string | undefined => {
+    const qLower = q.toLowerCase().trim();
+    const match = Object.entries(cityAliases).find(
+      ([city, country]) => country === dest.name && (city.includes(qLower) || qLower.includes(city))
+    );
+    return match ? match[0].charAt(0).toUpperCase() + match[0].slice(1) : undefined;
   };
 
   return (
@@ -409,9 +314,10 @@ export const DestinationSearch = () => {
                 setQuery(e.target.value);
                 setIsOpen(true);
                 setSelectedDestination(null);
+                setMatchedCity(null);
               }}
-              onFocus={() => setIsOpen(true)}
-              placeholder="Sök destination... (t.ex. Australien, Kanada)"
+              onFocus={() => { if (query) setIsOpen(true); }}
+              placeholder="Sök land, stad eller aktivitet... (t.ex. Bali, surfing, Paris)"
               className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-muted-foreground"
             />
             {query && (
@@ -430,25 +336,34 @@ export const DestinationSearch = () => {
         {isOpen && query.length > 0 && !selectedDestination && (
           <div
             ref={dropdownRef}
-            className="absolute top-full left-0 right-0 mt-2 bg-card rounded-lg shadow-medium border border-border overflow-hidden z-50"
+            className="absolute top-full left-0 right-0 mt-2 bg-card rounded-lg shadow-medium border border-border overflow-hidden z-50 max-h-[400px] overflow-y-auto"
           >
             {filteredDestinations.length > 0 ? (
-              filteredDestinations.map((dest) => (
-                <button
-                  key={dest.code}
-                  onClick={() => handleSelect(dest)}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-secondary transition-colors text-left"
-                >
-                  <span className="text-2xl">{dest.flag}</span>
-                  <div>
-                    <p className="font-medium text-foreground">{dest.country}</p>
-                    <p className="text-xs text-muted-foreground">{dest.popular.join(" • ")}</p>
-                  </div>
-                </button>
-              ))
+              filteredDestinations.map((dest) => {
+                const city = getCityForResult(dest, query);
+                return (
+                  <button
+                    key={dest.name}
+                    onClick={() => handleSelect(dest, city)}
+                    className="w-full flex items-center gap-3 p-3 hover:bg-secondary transition-colors text-left"
+                  >
+                    <span className="text-2xl">{dest.flag}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-foreground">
+                        {city ? `${city}, ${dest.name}` : dest.name}
+                      </p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {dest.region} • {dest.activities.slice(0, 4).map(a => allActivities[a]?.label).join(" • ")}
+                      </p>
+                    </div>
+                    <span className="text-xs text-muted-foreground">{dest.visaInfo.split(",")[0]}</span>
+                  </button>
+                );
+              })
             ) : (
               <div className="p-4 text-center text-muted-foreground text-sm">
-                Ingen destination hittades.
+                <p>Ingen destination hittades för "{query}"</p>
+                <p className="text-xs mt-1">Prova att söka på ett land, stad eller aktivitet</p>
               </div>
             )}
           </div>
@@ -463,122 +378,120 @@ export const DestinationSearch = () => {
             <div className="text-center mb-6">
               <span className="text-5xl mb-3 block">{selectedDestination.flag}</span>
               <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-1">
-                {selectedDestination.country}
+                {matchedCity ? `${matchedCity}, ${selectedDestination.name}` : selectedDestination.name}
               </h2>
               <p className="text-muted-foreground text-sm">
-                Resurser och information för {selectedDestination.country}
+                {selectedDestination.region} • {selectedDestination.visaInfo}
               </p>
+            </div>
+
+            {/* Activities */}
+            <div className="mb-6">
+              <h3 className="font-display font-semibold text-foreground text-sm mb-3 text-center">
+                Vad kan du göra {matchedCity ? `i ${matchedCity}` : `i ${selectedDestination.name}`}?
+              </h3>
+              <div className="flex flex-wrap justify-center gap-2">
+                {selectedDestination.activities.map((actId) => {
+                  const act = allActivities[actId];
+                  if (!act) return null;
+                  return (
+                    <span
+                      key={actId}
+                      className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-secondary border border-border text-sm text-foreground hover:border-primary/30 hover:bg-primary/5 transition-all cursor-default"
+                    >
+                      <span>{act.emoji}</span>
+                      {act.label}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Quick Facts */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-              {[
-                { icon: FileCheck, label: "Visumtyp", value: selectedDestination.visaType },
-                { icon: Plane, label: "Ålder", value: selectedDestination.ageLimit },
-                { icon: Briefcase, label: "Giltighetstid", value: selectedDestination.duration },
-                { icon: Users, label: "Kostnad", value: selectedDestination.cost },
-              ].map((fact) => (
-                <div
-                  key={fact.label}
-                  className="bg-card rounded-lg p-3 border border-border"
-                >
-                  <fact.icon className="w-4 h-4 text-primary mb-1.5" />
-                  <p className="text-xs text-muted-foreground">{fact.label}</p>
-                  <p className="font-medium text-foreground text-sm">{fact.value}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Resources Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {/* Visa & Official */}
-              <div className="bg-card rounded-lg p-5 border border-border">
-                <div className="flex items-center gap-2 mb-3">
-                  <FileCheck className="w-4 h-4 text-primary" />
-                  <h3 className="font-display font-semibold text-foreground text-sm">Visum & Myndigheter</h3>
-                </div>
-                <div className="space-y-2">
-                  {selectedDestination.resources.visa.map((resource) => (
-                    <a
-                      key={resource.name}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
-                    >
-                      <span className="text-sm text-foreground">
-                        {resource.name}
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
-                    </a>
-                  ))}
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+              <div className="bg-card rounded-lg p-4 border border-border text-center">
+                <FileCheck className="w-5 h-5 text-primary mx-auto mb-2" />
+                <p className="text-xs text-muted-foreground">Visum</p>
+                <p className="font-medium text-foreground text-sm">{selectedDestination.visaInfo}</p>
               </div>
-
-              {/* Jobs */}
-              <div className="bg-card rounded-lg p-5 border border-border">
-                <div className="flex items-center gap-2 mb-3">
-                  <Briefcase className="w-4 h-4 text-accent" />
-                  <h3 className="font-display font-semibold text-foreground text-sm">Hitta jobb</h3>
-                </div>
-                <div className="space-y-2">
-                  {selectedDestination.resources.jobs.map((resource) => (
-                    <a
-                      key={resource.name}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
-                    >
-                      <span className="text-sm text-foreground">
-                        {resource.name}
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
-                    </a>
-                  ))}
-                </div>
+              <div className="bg-card rounded-lg p-4 border border-border text-center">
+                <Globe className="w-5 h-5 text-primary mx-auto mb-2" />
+                <p className="text-xs text-muted-foreground">Region</p>
+                <p className="font-medium text-foreground text-sm">{selectedDestination.region}</p>
               </div>
-
-              {/* Community */}
-              <div className="bg-card rounded-lg p-5 border border-border">
-                <div className="flex items-center gap-2 mb-3">
-                  <Users className="w-4 h-4 text-primary" />
-                  <h3 className="font-display font-semibold text-foreground text-sm">Community & Partners</h3>
-                </div>
-                <div className="space-y-2">
-                  {selectedDestination.resources.community.map((resource) => (
-                    <a
-                      key={resource.name}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors group"
-                    >
-                      <span className="text-sm text-foreground">
-                        {resource.name}
-                      </span>
-                      <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
-                    </a>
-                  ))}
-                </div>
+              <div className="bg-card rounded-lg p-4 border border-border text-center">
+                <Briefcase className="w-5 h-5 text-primary mx-auto mb-2" />
+                <p className="text-xs text-muted-foreground">Aktiviteter</p>
+                <p className="font-medium text-foreground text-sm">{selectedDestination.activities.length} möjligheter</p>
               </div>
             </div>
+
+            {/* Resources */}
+            {selectedDestination.resources && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                {selectedDestination.resources.visa && selectedDestination.resources.visa.length > 0 && (
+                  <div className="bg-card rounded-lg p-5 border border-border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <FileCheck className="w-4 h-4 text-primary" />
+                      <h3 className="font-display font-semibold text-foreground text-sm">Visum & Myndigheter</h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedDestination.resources.visa.map((r) => (
+                        <a key={r.name} href={r.url} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors">
+                          <span className="text-sm text-foreground">{r.name}</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {selectedDestination.resources.jobs && selectedDestination.resources.jobs.length > 0 && (
+                  <div className="bg-card rounded-lg p-5 border border-border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Briefcase className="w-4 h-4 text-primary" />
+                      <h3 className="font-display font-semibold text-foreground text-sm">Hitta jobb</h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedDestination.resources.jobs.map((r) => (
+                        <a key={r.name} href={r.url} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors">
+                          <span className="text-sm text-foreground">{r.name}</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {selectedDestination.resources.community && selectedDestination.resources.community.length > 0 && (
+                  <div className="bg-card rounded-lg p-5 border border-border">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Users className="w-4 h-4 text-primary" />
+                      <h3 className="font-display font-semibold text-foreground text-sm">Community</h3>
+                    </div>
+                    <div className="space-y-2">
+                      {selectedDestination.resources.community.map((r) => (
+                        <a key={r.name} href={r.url} target="_blank" rel="noopener noreferrer"
+                          className="flex items-center justify-between p-2.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors">
+                          <span className="text-sm text-foreground">{r.name}</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-muted-foreground" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
 
             {/* CTA */}
             <div className="text-center mt-6">
-              <p className="text-muted-foreground text-sm mb-3">
-                Behöver du hjälp med planering?
-              </p>
+              <p className="text-muted-foreground text-sm mb-3">Behöver du hjälp med planering?</p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button asChild variant="default">
-                  <a href="https://www.kilroy.se" target="_blank" rel="noopener noreferrer">
-                    Boka via Kilroy
-                  </a>
+                  <a href="https://www.kilroy.se" target="_blank" rel="noopener noreferrer">Boka via Kilroy</a>
                 </Button>
                 <Button asChild variant="outline">
-                  <a href="https://www.ef.se" target="_blank" rel="noopener noreferrer">
-                    Språkresa med EF
-                  </a>
+                  <a href="https://www.ef.se" target="_blank" rel="noopener noreferrer">Språkresa med EF</a>
                 </Button>
               </div>
             </div>
@@ -586,21 +499,49 @@ export const DestinationSearch = () => {
         </div>
       )}
 
-      {/* Popular destinations when no search */}
+      {/* Activity filter chips + popular destinations when no search */}
       {!selectedDestination && !query && (
-        <div className="mt-6 text-center">
-          <p className="text-xs text-muted-foreground mb-3">Populära destinationer</p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {destinations.slice(0, 5).map((dest) => (
-              <button
-                key={dest.code}
-                onClick={() => handleSelect(dest)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors text-sm"
-              >
-                <span>{dest.flag}</span>
-                <span className="text-foreground">{dest.country}</span>
-              </button>
-            ))}
+        <div className="mt-6 space-y-4">
+          {/* Activity filter */}
+          <div className="text-center">
+            <p className="text-xs text-muted-foreground mb-3">Filtrera på aktivitet</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {Object.entries(allActivities).slice(0, 10).map(([id, act]) => (
+                <button
+                  key={id}
+                  onClick={() => {
+                    setActiveActivityFilter(activeActivityFilter === id ? null : id);
+                    setQuery(act.label);
+                    setIsOpen(true);
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-all border ${
+                    activeActivityFilter === id
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-secondary hover:bg-secondary/80 text-foreground border-border"
+                  }`}
+                >
+                  <span>{act.emoji}</span>
+                  {act.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Popular destinations */}
+          <div className="text-center">
+            <p className="text-xs text-muted-foreground mb-3">Populära destinationer</p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {destinations.slice(0, 8).map((dest) => (
+                <button
+                  key={dest.name}
+                  onClick={() => handleSelect(dest)}
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-secondary hover:bg-secondary/80 transition-colors text-sm border border-border"
+                >
+                  <span>{dest.flag}</span>
+                  <span className="text-foreground">{dest.name}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
