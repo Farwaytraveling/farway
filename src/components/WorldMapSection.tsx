@@ -1,4 +1,5 @@
 import { useState, useMemo, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ComposableMap,
   Geographies,
@@ -6,8 +7,9 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
-import { X, MapPin, Plane, Globe } from "lucide-react";
+import { X, MapPin, Plane, Globe, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
@@ -15,20 +17,21 @@ const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 type MapDestination = {
   name: string;
   flag: string;
-  coordinates: [number, number]; // [lng, lat]
+  coordinates: [number, number];
   region: string;
   visaInfo: string;
+  slug?: string; // links to /destination/:slug
   activities: { label: string; emoji: string }[];
 };
 
 const destinations: MapDestination[] = [
   // Oceanien
-  { name: "Australien", flag: "🇦🇺", coordinates: [133.7751, -25.2744], region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Surfing", emoji: "🏄" }, { label: "Farm Work", emoji: "🌾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Dykning", emoji: "🤿" }] },
+  { name: "Australien", flag: "🇦🇺", coordinates: [133.7751, -25.2744], region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", slug: "australien", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Surfing", emoji: "🏄" }, { label: "Farm Work", emoji: "🌾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Dykning", emoji: "🤿" }] },
   { name: "Nya Zeeland", flag: "🇳🇿", coordinates: [174.886, -40.9006], region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Vandring", emoji: "🥾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Farm Work", emoji: "🌾" }] },
   { name: "Fiji", flag: "🇫🇯", coordinates: [179.4144, -17.7134], region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: [{ label: "Dykning", emoji: "🤿" }, { label: "Volontär", emoji: "🤝" }, { label: "Surfing", emoji: "🏄" }] },
 
   // Nordamerika
-  { name: "USA", flag: "🇺🇸", coordinates: [-95.7129, 37.0902], region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", activities: [{ label: "Au Pair", emoji: "👶" }, { label: "Studera", emoji: "🎓" }, { label: "Praktik", emoji: "💻" }, { label: "Sommarsäsong", emoji: "☀️" }] },
+  { name: "USA", flag: "🇺🇸", coordinates: [-95.7129, 37.0902], region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", slug: "usa", activities: [{ label: "Au Pair", emoji: "👶" }, { label: "Studera", emoji: "🎓" }, { label: "Praktik", emoji: "💻" }, { label: "Sommarsäsong", emoji: "☀️" }] },
   { name: "Kanada", flag: "🇨🇦", coordinates: [-106.3468, 56.1304], region: "Nordamerika", visaInfo: "IEC, 18-35 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Skidsäsong", emoji: "⛷️" }, { label: "Vandring", emoji: "🥾" }] },
   { name: "Mexiko", flag: "🇲🇽", coordinates: [-102.5528, 23.6345], region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: [{ label: "Digital Nomad", emoji: "🌐" }, { label: "Surfing", emoji: "🏄" }, { label: "Språkresa", emoji: "📚" }, { label: "Dykning", emoji: "🤿" }] },
   { name: "Costa Rica", flag: "🇨🇷", coordinates: [-83.7534, 9.7489], region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: [{ label: "Surfing", emoji: "🏄" }, { label: "Yoga", emoji: "🧘" }, { label: "Volontär", emoji: "🤝" }] },
@@ -41,7 +44,7 @@ const destinations: MapDestination[] = [
   { name: "Chile", flag: "🇨🇱", coordinates: [-71.543, -35.6751], region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Skidsäsong", emoji: "⛷️" }, { label: "Vandring", emoji: "🥾" }] },
 
   // Europa
-  { name: "Frankrike", flag: "🇫🇷", coordinates: [2.2137, 46.2276], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }, { label: "Mat", emoji: "🍽️" }] },
+  { name: "Frankrike", flag: "🇫🇷", coordinates: [2.2137, 46.2276], region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "paris", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }, { label: "Mat", emoji: "🍽️" }] },
   { name: "Spanien", flag: "🇪🇸", coordinates: [-3.7492, 40.4637], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Språkresa", emoji: "📚" }, { label: "Au Pair", emoji: "👶" }, { label: "Surfing", emoji: "🏄" }, { label: "Digital Nomad", emoji: "🌐" }] },
   { name: "Italien", flag: "🇮🇹", coordinates: [12.5674, 41.8719], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Kultur", emoji: "🏛️" }, { label: "Mat", emoji: "🍽️" }, { label: "Au Pair", emoji: "👶" }] },
   { name: "Portugal", flag: "🇵🇹", coordinates: [-8.2245, 39.3999], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Digital Nomad", emoji: "🌐" }, { label: "Surfing", emoji: "🏄" }, { label: "Sommarsäsong", emoji: "☀️" }] },
@@ -53,7 +56,7 @@ const destinations: MapDestination[] = [
   { name: "Irland", flag: "🇮🇪", coordinates: [-8.2439, 53.4129], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Studera", emoji: "🎓" }, { label: "Kultur", emoji: "🏛️" }] },
 
   // Asien
-  { name: "Thailand", flag: "🇹🇭", coordinates: [100.9925, 15.8700], region: "Asien", visaInfo: "Tourist Visa 60-90 dagar", activities: [{ label: "Backpacking", emoji: "🎒" }, { label: "Dykning", emoji: "🤿" }, { label: "Yoga", emoji: "🧘" }, { label: "Digital Nomad", emoji: "🌐" }, { label: "Mat", emoji: "🍽️" }] },
+  { name: "Thailand", flag: "🇹🇭", coordinates: [100.9925, 15.8700], region: "Asien", visaInfo: "Tourist Visa 60-90 dagar", slug: "thailand", activities: [{ label: "Backpacking", emoji: "🎒" }, { label: "Dykning", emoji: "🤿" }, { label: "Yoga", emoji: "🧘" }, { label: "Digital Nomad", emoji: "🌐" }, { label: "Mat", emoji: "🍽️" }] },
   { name: "Japan", flag: "🇯🇵", coordinates: [138.2529, 36.2048], region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Kultur", emoji: "🏛️" }, { label: "Skidsäsong", emoji: "⛷️" }] },
   { name: "Sydkorea", flag: "🇰🇷", coordinates: [127.7669, 35.9078], region: "Asien", visaInfo: "Working Holiday (H-1), 18-30 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Studera", emoji: "🎓" }, { label: "Kultur", emoji: "🏛️" }] },
   { name: "Vietnam", flag: "🇻🇳", coordinates: [108.2772, 14.0583], region: "Asien", visaInfo: "E-Visa 90 dagar", activities: [{ label: "Backpacking", emoji: "🎒" }, { label: "Digital Nomad", emoji: "🌐" }, { label: "Mat", emoji: "🍽️" }] },
@@ -78,6 +81,7 @@ const destinations: MapDestination[] = [
 export const WorldMapSection = () => {
   const [selected, setSelected] = useState<MapDestination | null>(null);
   const [hoveredName, setHoveredName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleMarkerClick = useCallback((dest: MapDestination) => {
     setSelected(dest);
@@ -219,6 +223,19 @@ export const WorldMapSection = () => {
                   ))}
                 </div>
               </div>
+
+              {selected.slug && (
+                <Button
+                  className="w-full mt-2"
+                  onClick={() => {
+                    setSelected(null);
+                    navigate(`/destination/${selected.slug}`);
+                  }}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Läs mer om {selected.name}
+                </Button>
+              )}
             </div>
           )}
         </DialogContent>
