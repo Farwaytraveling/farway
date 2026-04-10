@@ -81,6 +81,7 @@ const destinations: MapDestination[] = [
 export const WorldMapSection = () => {
   const [selected, setSelected] = useState<MapDestination | null>(null);
   const [hoveredName, setHoveredName] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const handleMarkerClick = useCallback((dest: MapDestination) => {
     setSelected(dest);
