@@ -17,9 +17,10 @@ const GEO_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 type MapDestination = {
   name: string;
   flag: string;
-  coordinates: [number, number]; // [lng, lat]
+  coordinates: [number, number];
   region: string;
   visaInfo: string;
+  slug?: string; // links to /destination/:slug
   activities: { label: string; emoji: string }[];
 };
 
