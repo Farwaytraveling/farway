@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ComposableMap,
@@ -7,7 +7,7 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
-import { X, MapPin, Plane, Globe, ExternalLink } from "lucide-react";
+import { MapPin, Plane, Globe, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -78,9 +78,31 @@ const destinations: MapDestination[] = [
   { name: "Jordanien", flag: "🇯🇴", coordinates: [36.2384, 30.5852], region: "Mellanöstern", visaInfo: "Visa on Arrival", activities: [{ label: "Kultur", emoji: "🏛️" }, { label: "Vandring", emoji: "🥾" }, { label: "Dykning", emoji: "🤿" }] },
 ];
 
+const MemoGeographies = memo(() => (
+  <Geographies geography={GEO_URL}>
+    {({ geographies }) =>
+      geographies.map((geo) => (
+        <Geography
+          key={geo.rsmKey}
+          geography={geo}
+          fill="hsl(var(--muted))"
+          stroke="hsl(var(--border))"
+          strokeWidth={0.5}
+          style={{
+            default: { outline: "none" },
+            hover: { outline: "none", fill: "hsl(var(--accent))" },
+            pressed: { outline: "none" },
+          }}
+          tabIndex={-1}
+        />
+      ))
+    }
+  </Geographies>
+));
+MemoGeographies.displayName = "MemoGeographies";
+
 export const WorldMapSection = () => {
   const [selected, setSelected] = useState<MapDestination | null>(null);
-  const [hoveredName, setHoveredName] = useState<string | null>(null);
   const navigate = useNavigate();
 
   const handleMarkerClick = useCallback((dest: MapDestination) => {
@@ -115,32 +137,13 @@ export const WorldMapSection = () => {
               maxZoom={8}
               translateExtent={[[-200, -200], [1200, 700]]}
             >
-              <Geographies geography={GEO_URL}>
-                {({ geographies }) =>
-                  geographies.map((geo) => (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill="hsl(var(--muted))"
-                      stroke="hsl(var(--border))"
-                      strokeWidth={0.5}
-                      style={{
-                        default: { outline: "none" },
-                        hover: { fill: "hsl(var(--accent))", outline: "none" },
-                        pressed: { outline: "none" },
-                      }}
-                    />
-                  ))
-                }
-              </Geographies>
+              <MemoGeographies />
 
               {destinations.map((dest) => (
                 <Marker
                   key={dest.name}
                   coordinates={dest.coordinates}
                   onClick={() => handleMarkerClick(dest)}
-                  onMouseEnter={() => setHoveredName(dest.name)}
-                  onMouseLeave={() => setHoveredName(null)}
                   style={{ cursor: "pointer" }}
                 >
                   <circle
@@ -148,27 +151,8 @@ export const WorldMapSection = () => {
                     fill="hsl(var(--primary))"
                     stroke="hsl(var(--primary-foreground))"
                     strokeWidth={1.5}
-                    className="transition-all duration-200"
-                    style={{
-                      transform: hoveredName === dest.name ? "scale(1.6)" : "scale(1)",
-                      transformOrigin: "center",
-                    }}
                   />
-                  {hoveredName === dest.name && (
-                    <text
-                      textAnchor="middle"
-                      y={-10}
-                      style={{
-                        fontFamily: "system-ui",
-                        fontSize: 10,
-                        fill: "hsl(var(--foreground))",
-                        fontWeight: 600,
-                        pointerEvents: "none",
-                      }}
-                    >
-                      {dest.flag} {dest.name}
-                    </text>
-                  )}
+                  <title>{dest.flag} {dest.name}</title>
                 </Marker>
               ))}
             </ZoomableGroup>
