@@ -223,6 +223,19 @@ export const WorldMapSection = () => {
                   ))}
                 </div>
               </div>
+
+              {selected.slug && (
+                <Button
+                  className="w-full mt-2"
+                  onClick={() => {
+                    setSelected(null);
+                    navigate(`/destination/${selected.slug}`);
+                  }}
+                >
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Läs mer om {selected.name}
+                </Button>
+              )}
             </div>
           )}
         </DialogContent>
