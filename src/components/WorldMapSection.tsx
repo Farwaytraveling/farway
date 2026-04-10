@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ComposableMap,
@@ -7,7 +7,7 @@ import {
   Marker,
   ZoomableGroup,
 } from "react-simple-maps";
-import { X, MapPin, Plane, Globe, ExternalLink } from "lucide-react";
+import { MapPin, Plane, Globe, ExternalLink } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
