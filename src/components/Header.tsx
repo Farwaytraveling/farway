@@ -45,18 +45,29 @@ export const Header = () => {
 
           <nav className="hidden md:flex items-center gap-1">
             {[
-              { href: "#programs", label: "Program" },
-              { href: "#destinations", label: "Destinationer" },
-              { href: "#how-it-works", label: "Så fungerar det" },
-            ].map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="px-3.5 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
+              { href: "#programs", label: "Program", isRoute: false },
+              { href: "#destinations", label: "Destinationer", isRoute: false },
+              { href: "/karta", label: "Världskarta", isRoute: true },
+              { href: "#how-it-works", label: "Så fungerar det", isRoute: false },
+            ].map((item) =>
+              item.isRoute ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="px-3.5 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="px-3.5 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -84,19 +95,31 @@ export const Header = () => {
           <div className="md:hidden border-t border-border/50 bg-background/95 backdrop-blur-md">
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-1">
               {[
-                { href: "#programs", label: "Program" },
-                { href: "#destinations", label: "Destinationer" },
-                { href: "#how-it-works", label: "Så fungerar det" },
-              ].map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 rounded-lg text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
-                >
-                  {item.label}
-                </a>
-              ))}
+                { href: "#programs", label: "Program", isRoute: false },
+                { href: "#destinations", label: "Destinationer", isRoute: false },
+                { href: "/karta", label: "Världskarta", isRoute: true },
+                { href: "#how-it-works", label: "Så fungerar det", isRoute: false },
+              ].map((item) =>
+                item.isRoute ? (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="px-4 py-3 rounded-lg text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="px-4 py-3 rounded-lg text-foreground hover:bg-muted/60 transition-all text-sm font-medium"
+                  >
+                    {item.label}
+                  </a>
+                )
+              )}
               <div className="flex gap-2 mt-3 pt-3 border-t border-border/50">
                 <Button variant="default" className="flex-1" onClick={() => setDialogOpen(true)}>
                   Kom igång
