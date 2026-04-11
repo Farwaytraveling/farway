@@ -126,7 +126,7 @@ export const WorldMapSection = () => {
           </p>
         </div>
 
-        <div className="relative rounded-2xl overflow-hidden border border-border bg-gradient-to-b from-sky-100/50 to-blue-200/30 dark:from-sky-900/20 dark:to-blue-950/30 shadow-lg">
+        <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-lg" style={{ background: "linear-gradient(to bottom, hsl(var(--accent) / 0.3), hsl(var(--muted) / 0.5))" }}>
           {/* Ocean decorations */}
           <div className="absolute bottom-8 left-8 text-2xl opacity-30 pointer-events-none select-none">🐋</div>
           <div className="absolute bottom-12 right-24 text-xl opacity-25 pointer-events-none select-none">🐟</div>
