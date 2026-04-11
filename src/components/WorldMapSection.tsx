@@ -126,7 +126,14 @@ export const WorldMapSection = () => {
           </p>
         </div>
 
-        <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-lg">
+        <div className="relative rounded-2xl overflow-hidden border border-border bg-gradient-to-b from-sky-100/50 to-blue-200/30 dark:from-sky-900/20 dark:to-blue-950/30 shadow-lg">
+          {/* Ocean decorations */}
+          <div className="absolute bottom-8 left-8 text-2xl opacity-30 pointer-events-none select-none">🐋</div>
+          <div className="absolute bottom-12 right-24 text-xl opacity-25 pointer-events-none select-none">🐟</div>
+          <div className="absolute bottom-6 left-1/3 text-lg opacity-20 pointer-events-none select-none">🌊</div>
+          <div className="absolute top-16 left-16 text-lg opacity-20 pointer-events-none select-none">🌊</div>
+          <div className="absolute bottom-16 right-12 text-lg opacity-20 pointer-events-none select-none">🐠</div>
+          <div className="absolute top-8 right-8 text-xl opacity-25 pointer-events-none select-none">✈️</div>
           <ComposableMap
             projection="geoMercator"
             projectionConfig={{ scale: 130, center: [10, 20] }}
@@ -147,13 +154,17 @@ export const WorldMapSection = () => {
                   onClick={() => handleMarkerClick(dest)}
                   style={{ cursor: "pointer" }}
                 >
-                  <circle
-                    r={4}
-                    fill="hsl(var(--primary))"
-                    stroke="hsl(var(--primary-foreground))"
-                    strokeWidth={1.5}
-                  />
-                  <title>{dest.flag} {dest.name}</title>
+                  <g transform="translate(-12, -12)">
+                    <text fontSize={14} textAnchor="middle" x={12} y={14} style={{ pointerEvents: "none" }}>
+                      {dest.flag}
+                    </text>
+                    <text fontSize={9} textAnchor="middle" x={12} y={26} style={{ pointerEvents: "none" }}>
+                      {dest.icon}
+                    </text>
+                    {/* Invisible hit area */}
+                    <rect x={0} y={0} width={24} height={28} fill="transparent" />
+                  </g>
+                  <title>{dest.flag} {dest.name} {dest.icon}</title>
                 </Marker>
               ))}
             </ZoomableGroup>
