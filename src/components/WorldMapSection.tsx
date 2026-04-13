@@ -79,44 +79,82 @@ const destinations: MapDestination[] = [
   { name: "Jordanien", flag: "🇯🇴", icon: "🏜️", coordinates: [36.2384, 30.5852], region: "Mellanöstern", visaInfo: "Visa on Arrival", activities: [{ label: "Kultur", emoji: "🏛️" }, { label: "Vandring", emoji: "🥾" }, { label: "Dykning", emoji: "🤿" }] },
 ];
 
-const regionColors: Record<string, string> = {
-  "Africa": "#8BC34A",
-  "Americas": "#FF9800",
-  "Asia": "#E91E63",
-  "Europe": "#42A5F5",
-  "Oceania": "#26A69A",
-  "Antarctica": "#B0BEC5",
+// Country colors by terrain/climate character
+const countryColors: Record<string, string> = {
+  // Tropical jungle – lush green
+  BRA: "#43A047", COL: "#66BB6A", PER: "#4CAF50", CRI: "#2E7D32", PAN: "#388E3C",
+  ECU: "#43A047", VEN: "#66BB6A", GUY: "#4CAF50", SUR: "#388E3C", BOL: "#558B2F",
+  PRY: "#7CB342", IDN: "#43A047", MYS: "#66BB6A", PHL: "#4CAF50", VNM: "#388E3C",
+  THA: "#43A047", MMR: "#66BB6A", KHM: "#4CAF50", LAO: "#2E7D32", BGD: "#558B2F",
+  LKA: "#43A047", PNG: "#4CAF50", SLB: "#66BB6A", COG: "#388E3C", COD: "#2E7D32",
+  CMR: "#43A047", GAB: "#66BB6A", GNQ: "#4CAF50", MDG: "#558B2F",
+  NGA: "#7CB342", GHA: "#66BB6A", CIV: "#4CAF50", GIN: "#388E3C",
+  // Desert / arid – warm sandy
+  SAU: "#E6A817", ARE: "#F0C040", OMN: "#D4A017", QAT: "#E8B830", KWT: "#EDBE3E",
+  IRQ: "#D4A017", SYR: "#C8A040", JOR: "#DEB040", YEM: "#C89830",
+  EGY: "#E6A817", LBY: "#EDBE3E", DZA: "#D4A017", TUN: "#E8B830",
+  MAR: "#DEB040", MRT: "#C8A040", MLI: "#D4A017", NER: "#E6A817",
+  TCD: "#EDBE3E", SDN: "#C89830", SSD: "#D4A017", SOM: "#E8B830",
+  AFG: "#C8A040", TKM: "#D4A017", UZB: "#DEB040", PAK: "#E6A817",
+  // Snowy / cold – icy blue
+  ISL: "#90CAF9", NOR: "#64B5F6", SWE: "#42A5F5", FIN: "#1E88E5",
+  RUS: "#90CAF9", CAN: "#64B5F6", GRL: "#BBDEFB",
+  MNG: "#90CAF9", KAZ: "#64B5F6", KGZ: "#42A5F5",
+  // Mediterranean – terracotta
+  ESP: "#EF8C5E", PRT: "#E07850", ITA: "#EF8C5E", GRC: "#E07850",
+  HRV: "#F4A07A", TUR: "#E07850", CYP: "#F4A07A",
+  ALB: "#EF8C5E", MNE: "#F4A07A", MKD: "#E07850",
+  // Temperate Europe – soft teal
+  FRA: "#5C9EAD", DEU: "#4A8FA0", GBR: "#5C9EAD", IRL: "#6DAE8C",
+  NLD: "#4A8FA0", BEL: "#5C9EAD", LUX: "#4A8FA0", CHE: "#6DAE8C",
+  AUT: "#5C9EAD", CZE: "#4A8FA0", POL: "#5C9EAD", SVK: "#4A8FA0",
+  HUN: "#5C9EAD", ROU: "#6DAE8C", BGR: "#4A8FA0", SRB: "#5C9EAD",
+  BIH: "#4A8FA0", SVN: "#6DAE8C", DNK: "#5C9EAD",
+  EST: "#4A8FA0", LVA: "#5C9EAD", LTU: "#4A8FA0",
+  BLR: "#6DAE8C", UKR: "#5C9EAD", MDA: "#4A8FA0",
+  // Savanna / safari – golden-green
+  KEN: "#A0892C", TZA: "#B8A038", ZAF: "#8B7D2A", BWA: "#C4A840",
+  ZMB: "#A0892C", ZWE: "#B8A038", MOZ: "#8B7D2A", NAM: "#C4A840",
+  MWI: "#A0892C", UGA: "#B8A038", RWA: "#8B7D2A", BDI: "#A0892C",
+  ETH: "#B8A038", ERI: "#C4A840", DJI: "#A0892C", SWZ: "#8B7D2A",
+  LSO: "#A0892C", BEN: "#B8A038", TGO: "#A0892C", BFA: "#C4A840",
+  SEN: "#B8A038", GMB: "#A0892C", GNB: "#8B7D2A", SLE: "#A0892C", LBR: "#B8A038",
+  // Oceania – teal
+  AUS: "#26A69A", NZL: "#00897B", FJI: "#4DB6AC",
+  // East Asia – cherry blossom
+  JPN: "#EC93A0", KOR: "#E8899A", PRK: "#D4778A", CHN: "#D4778A", TWN: "#EC93A0",
+  // India – saffron
+  IND: "#FF8F00", NPL: "#F57C00", BTN: "#FF9800",
+  // Latin America temperate
+  ARG: "#AB6DAC", CHL: "#9C5DA0", URY: "#B07DB2",
+  MEX: "#C07040", GTM: "#A86038", HND: "#C07040", SLV: "#A86038", NIC: "#C07040",
+  CUB: "#A86038", HTI: "#C07040", DOM: "#A86038", JAM: "#C07040",
+  // USA
+  USA: "#3F6BAA",
+  // Misc
+  ISR: "#7986CB", PSE: "#7986CB", LBN: "#7986CB", IRN: "#8D6E63",
 };
 
-const getContinent = (geo: any): string => {
+const getCountryColor = (geo: any): string => {
   const id = geo.id || geo.properties?.ISO_A3 || "";
-  const africa = ["DZA","AGO","BEN","BWA","BFA","BDI","CMR","CPV","CAF","TCD","COM","COG","COD","CIV","DJI","EGY","GNQ","ERI","SWZ","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO","LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA","STP","SEN","SYC","SLE","SOM","ZAF","SSD","SDN","TZA","TGO","TUN","UGA","ZMB","ZWE"];
-  const asia = ["AFG","ARM","AZE","BHR","BGD","BTN","BRN","KHM","CHN","CYP","GEO","IND","IDN","IRN","IRQ","ISR","JPN","JOR","KAZ","KWT","KGZ","LAO","LBN","MYS","MDV","MNG","MMR","NPL","OMN","PAK","PSE","PHL","QAT","SAU","SGP","KOR","PRK","LKA","SYR","TWN","TJK","THA","TLS","TUR","TKM","ARE","UZB","VNM","YEM"];
-  const europe = ["ALB","AND","AUT","BLR","BEL","BIH","BGR","HRV","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ISL","IRL","ITA","XKX","LVA","LIE","LTU","LUX","MKD","MLT","MDA","MCO","MNE","NLD","NOR","POL","PRT","ROU","RUS","SMR","SRB","SVK","SVN","ESP","SWE","CHE","UKR","GBR","VAT"];
-  const oceania = ["AUS","FJI","KIR","MHL","FSM","NRU","NZL","PLW","PNG","WSM","SLB","TON","TUV","VUT"];
-  if (africa.includes(id)) return "Africa";
-  if (asia.includes(id)) return "Asia";
-  if (europe.includes(id)) return "Europe";
-  if (oceania.includes(id)) return "Oceania";
-  return "Americas";
+  return countryColors[id] || "#B0BEC5";
 };
 
 const MemoGeographies = memo(() => (
   <Geographies geography={GEO_URL}>
     {({ geographies }) =>
       geographies.map((geo) => {
-        const continent = getContinent(geo);
-        const baseColor = regionColors[continent] || "#90A4AE";
+        const color = getCountryColor(geo);
         return (
           <Geography
             key={geo.rsmKey}
             geography={geo}
-            fill={baseColor}
+            fill={color}
             stroke="#ffffff"
             strokeWidth={0.6}
             style={{
-              default: { outline: "none", opacity: 0.75 },
-              hover: { outline: "none", opacity: 1, fill: baseColor },
+              default: { outline: "none", opacity: 0.8 },
+              hover: { outline: "none", opacity: 1 },
               pressed: { outline: "none" },
             }}
             tabIndex={-1}
