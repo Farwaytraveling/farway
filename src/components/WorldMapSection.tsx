@@ -79,24 +79,50 @@ const destinations: MapDestination[] = [
   { name: "Jordanien", flag: "🇯🇴", icon: "🏜️", coordinates: [36.2384, 30.5852], region: "Mellanöstern", visaInfo: "Visa on Arrival", activities: [{ label: "Kultur", emoji: "🏛️" }, { label: "Vandring", emoji: "🥾" }, { label: "Dykning", emoji: "🤿" }] },
 ];
 
+const regionColors: Record<string, string> = {
+  "Africa": "#8BC34A",
+  "Americas": "#FF9800",
+  "Asia": "#E91E63",
+  "Europe": "#42A5F5",
+  "Oceania": "#26A69A",
+  "Antarctica": "#B0BEC5",
+};
+
+const getContinent = (geo: any): string => {
+  const id = geo.id || geo.properties?.ISO_A3 || "";
+  const africa = ["DZA","AGO","BEN","BWA","BFA","BDI","CMR","CPV","CAF","TCD","COM","COG","COD","CIV","DJI","EGY","GNQ","ERI","SWZ","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO","LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA","STP","SEN","SYC","SLE","SOM","ZAF","SSD","SDN","TZA","TGO","TUN","UGA","ZMB","ZWE"];
+  const asia = ["AFG","ARM","AZE","BHR","BGD","BTN","BRN","KHM","CHN","CYP","GEO","IND","IDN","IRN","IRQ","ISR","JPN","JOR","KAZ","KWT","KGZ","LAO","LBN","MYS","MDV","MNG","MMR","NPL","OMN","PAK","PSE","PHL","QAT","SAU","SGP","KOR","PRK","LKA","SYR","TWN","TJK","THA","TLS","TUR","TKM","ARE","UZB","VNM","YEM"];
+  const europe = ["ALB","AND","AUT","BLR","BEL","BIH","BGR","HRV","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ISL","IRL","ITA","XKX","LVA","LIE","LTU","LUX","MKD","MLT","MDA","MCO","MNE","NLD","NOR","POL","PRT","ROU","RUS","SMR","SRB","SVK","SVN","ESP","SWE","CHE","UKR","GBR","VAT"];
+  const oceania = ["AUS","FJI","KIR","MHL","FSM","NRU","NZL","PLW","PNG","WSM","SLB","TON","TUV","VUT"];
+  if (africa.includes(id)) return "Africa";
+  if (asia.includes(id)) return "Asia";
+  if (europe.includes(id)) return "Europe";
+  if (oceania.includes(id)) return "Oceania";
+  return "Americas";
+};
+
 const MemoGeographies = memo(() => (
   <Geographies geography={GEO_URL}>
     {({ geographies }) =>
-      geographies.map((geo) => (
-        <Geography
-          key={geo.rsmKey}
-          geography={geo}
-          fill="hsl(var(--muted))"
-          stroke="hsl(var(--border))"
-          strokeWidth={0.5}
-          style={{
-            default: { outline: "none" },
-            hover: { outline: "none", fill: "hsl(var(--accent))" },
-            pressed: { outline: "none" },
-          }}
-          tabIndex={-1}
-        />
-      ))
+      geographies.map((geo) => {
+        const continent = getContinent(geo);
+        const baseColor = regionColors[continent] || "#90A4AE";
+        return (
+          <Geography
+            key={geo.rsmKey}
+            geography={geo}
+            fill={baseColor}
+            stroke="#ffffff"
+            strokeWidth={0.6}
+            style={{
+              default: { outline: "none", opacity: 0.75 },
+              hover: { outline: "none", opacity: 1, fill: baseColor },
+              pressed: { outline: "none" },
+            }}
+            tabIndex={-1}
+          />
+        );
+      })
     }
   </Geographies>
 ));
