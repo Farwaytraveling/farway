@@ -70,8 +70,6 @@ const destinations: Destination[] = [
   { name: "Fiji", flag: "🇫🇯", region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: ["volontar", "dykning", "backpacking", "surfing"] },
 
   // Nordamerika
-  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
-    resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
   { name: "Kanada", flag: "🇨🇦", region: "Nordamerika", visaInfo: "IEC, 18-35 år", activities: ["working-holiday", "skidsasong", "studera", "backpacking", "vandring"],
     resources: { visa: [{ name: "IEC Program", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html", official: true }], jobs: [{ name: "Job Bank", url: "https://www.jobbank.gc.ca", official: true }], community: [{ name: "Svenskar i Kanada (FB)", url: "https://www.facebook.com/groups/svenskarikanada", official: false }] } },
   { name: "Mexiko", flag: "🇲🇽", region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: ["backpacking", "digital-nomad", "sprakresa", "dykning", "surfing", "yoga", "kultur"] },
