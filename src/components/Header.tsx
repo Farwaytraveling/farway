@@ -47,8 +47,10 @@ export const Header = () => {
             {[
               { href: "#programs", label: "Program", isRoute: false },
               { href: "#destinations", label: "Destinationer", isRoute: false },
+              { href: "/alperna", label: "Alperna", isRoute: true },
+              { href: "/sydostasien", label: "Sydostasien", isRoute: true },
+              { href: "/sydamerika", label: "Sydamerika", isRoute: true },
               { href: "/karta", label: "Världskarta", isRoute: true },
-              { href: "#how-it-works", label: "Så fungerar det", isRoute: false },
             ].map((item) =>
               item.isRoute ? (
                 <Link
@@ -97,8 +99,10 @@ export const Header = () => {
               {[
                 { href: "#programs", label: "Program", isRoute: false },
                 { href: "#destinations", label: "Destinationer", isRoute: false },
+                { href: "/alperna", label: "Alperna", isRoute: true },
+                { href: "/sydostasien", label: "Sydostasien", isRoute: true },
+                { href: "/sydamerika", label: "Sydamerika", isRoute: true },
                 { href: "/karta", label: "Världskarta", isRoute: true },
-                { href: "#how-it-works", label: "Så fungerar det", isRoute: false },
               ].map((item) =>
                 item.isRoute ? (
                   <Link
