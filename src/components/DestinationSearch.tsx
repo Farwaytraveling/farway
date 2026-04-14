@@ -67,8 +67,6 @@ const destinations: Destination[] = [
     resources: { visa: [{ name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true }], jobs: [{ name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false }], community: [{ name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false }] } },
 
   // Oceanien
-  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
-    resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
   { name: "Fiji", flag: "🇫🇯", region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: ["volontar", "dykning", "backpacking", "surfing"] },
 
   // Nordamerika
@@ -91,9 +89,6 @@ const destinations: Destination[] = [
   { name: "Uruguay", flag: "🇺🇾", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "backpacking", "surfing"] },
 
   // Europa
-  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
-    resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
-  { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
   { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
   { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "vandring", "kultur", "sommarsasong"],
     resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }], community: [{ name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false }] } },
