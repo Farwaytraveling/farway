@@ -52,21 +52,21 @@ const allActivities: Record<string, { label: string; emoji: string }> = {
 
 const destinations: Destination[] = [
   // Topp 8 – baserat på SCB-statistik (19–34 år, 2015–2024) + WHV-data
-  { name: "Norge", flag: "🇳🇴", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "farm-work"] },
+  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
+    resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
   { name: "Storbritannien", flag: "🇬🇧", region: "Europa", visaInfo: "Visum krävs efter Brexit", activities: ["studera", "au-pair", "sprakresa", "praktik", "kultur"] },
   { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
     resources: { visa: [{ name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true }], jobs: [{ name: "Seek", url: "https://www.seek.com.au", official: false }, { name: "Harvest Trail", url: "https://jobsearch.gov.au/harvest", official: true }], community: [{ name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false }] } },
-  { name: "Danmark", flag: "🇩🇰", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["studera", "praktik", "kultur", "sommarsasong"] },
+  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
+    resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
   { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
     resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
-  { name: "Tyskland", flag: "🇩🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "au-pair", "sprakresa", "kultur"] },
+  { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
   { name: "Spanien", flag: "🇪🇸", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "au-pair", "studera", "sommarsasong", "surfing", "kultur", "mat", "digital-nomad"] },
   { name: "Thailand", flag: "🇹🇭", region: "Asien", visaInfo: "Tourist Visa 60-90 dagar", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "undervisning", "surfing", "mat"],
     resources: { visa: [{ name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true }], jobs: [{ name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false }], community: [{ name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false }] } },
 
   // Oceanien
-  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
-    resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
   { name: "Fiji", flag: "🇫🇯", region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: ["volontar", "dykning", "backpacking", "surfing"] },
 
   // Nordamerika
@@ -89,9 +89,6 @@ const destinations: Destination[] = [
   { name: "Uruguay", flag: "🇺🇾", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "backpacking", "surfing"] },
 
   // Europa
-  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
-    resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
-  { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
   { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
   { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "vandring", "kultur", "sommarsasong"],
     resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }], community: [{ name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false }] } },
