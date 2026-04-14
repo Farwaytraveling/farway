@@ -93,7 +93,6 @@ const destinations: Destination[] = [
     resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
   { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
   { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
-  { name: "Tyskland", flag: "🇩🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "au-pair", "sprakresa", "kultur"] },
   { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "vandring", "kultur", "sommarsasong"],
     resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }], community: [{ name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false }] } },
   { name: "Schweiz", flag: "🇨🇭", region: "Europa", visaInfo: "Uppehållstillstånd krävs", activities: ["skidsasong", "vandring", "au-pair", "sommarsasong"],
@@ -101,10 +100,8 @@ const destinations: Destination[] = [
   { name: "Grekland", flag: "🇬🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "kultur", "yoga"] },
   { name: "Kroatien", flag: "🇭🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "surfing"] },
   { name: "Irland", flag: "🇮🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["working-holiday", "studera", "sprakresa", "kultur", "musik"] },
-  { name: "Storbritannien", flag: "🇬🇧", region: "Europa", visaInfo: "Visum krävs efter Brexit", activities: ["studera", "au-pair", "sprakresa", "praktik", "kultur"] },
   { name: "Nederländerna", flag: "🇳🇱", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "digital-nomad", "kultur"] },
   { name: "Andorra", flag: "🇦🇩", region: "Europa", visaInfo: "Arbetstillstånd krävs", activities: ["skidsasong"] },
-  { name: "Norge", flag: "🇳🇴", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "farm-work"] },
   { name: "Island", flag: "🇮🇸", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "volontar"] },
   { name: "Malta", flag: "🇲🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "dykning", "digital-nomad", "sommarsasong"] },
   { name: "Tjeckien", flag: "🇨🇿", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "kultur", "digital-nomad"] },
@@ -119,8 +116,6 @@ const destinations: Destination[] = [
   { name: "Georgien", flag: "🇬🇪", region: "Europa/Asien", visaInfo: "Visumfritt 1 år", activities: ["digital-nomad", "vandring", "kultur", "mat", "skidsasong"] },
 
   // Asien
-  { name: "Thailand", flag: "🇹🇭", region: "Asien", visaInfo: "Tourist Visa 60-90 dagar", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "undervisning", "surfing", "mat"],
-    resources: { visa: [{ name: "Thai E-Visa", url: "https://www.thaievisa.go.th/", official: true }], jobs: [{ name: "Workaway Thailand", url: "https://www.workaway.info/en/hostlist/asia/th", official: false }], community: [{ name: "Svenskar i Thailand (FB)", url: "https://www.facebook.com/groups/svenskarithailand", official: false }] } },
   { name: "Japan", flag: "🇯🇵", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning", "vandring", "skidsasong"],
     resources: { visa: [{ name: "Japanska ambassaden", url: "https://www.se.emb-japan.go.jp/", official: true }], jobs: [{ name: "GaijinPot Jobs", url: "https://jobs.gaijinpot.com/", official: false }], community: [{ name: "Svenskar i Japan (FB)", url: "https://www.facebook.com/groups/svenskarijapan", official: false }] } },
   { name: "Sydkorea", flag: "🇰🇷", region: "Asien", visaInfo: "Working Holiday (H-1), 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning"],
