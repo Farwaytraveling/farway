@@ -91,7 +91,6 @@ const destinations: Destination[] = [
   // Europa
   { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
     resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
-  { name: "Spanien", flag: "🇪🇸", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "au-pair", "studera", "sommarsasong", "surfing", "kultur", "mat", "digital-nomad"] },
   { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera", "sprakresa", "kultur", "mat", "sommarsasong"] },
   { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
   { name: "Tyskland", flag: "🇩🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "au-pair", "sprakresa", "kultur"] },
