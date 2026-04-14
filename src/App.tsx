@@ -12,6 +12,9 @@ import Volontararbete from "./pages/Volontararbete";
 import PraktikUtomlands from "./pages/PraktikUtomlands";
 import Destination from "./pages/Destination";
 import MapPage from "./pages/MapPage";
+import Alperna from "./pages/Alperna";
+import Sydostasien from "./pages/Sydostasien";
+import Sydamerika from "./pages/Sydamerika";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
           <Route path="/praktik-utomlands" element={<PraktikUtomlands />} />
           <Route path="/destination/:slug" element={<Destination />} />
           <Route path="/karta" element={<MapPage />} />
+          <Route path="/alperna" element={<Alperna />} />
+          <Route path="/sydostasien" element={<Sydostasien />} />
+          <Route path="/sydamerika" element={<Sydamerika />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
