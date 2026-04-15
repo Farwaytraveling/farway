@@ -219,6 +219,7 @@ const cityAliases: Record<string, string> = {
 };
 
 export const DestinationSearch = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
