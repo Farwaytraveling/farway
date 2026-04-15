@@ -47,9 +47,6 @@ export const Header = () => {
             {[
               { href: "#programs", label: "Program", isRoute: false },
               { href: "#destinations", label: "Destinationer", isRoute: false },
-              { href: "/alperna", label: "Alperna", isRoute: true },
-              { href: "/sydostasien", label: "Sydostasien", isRoute: true },
-              { href: "/sydamerika", label: "Sydamerika", isRoute: true },
               { href: "/karta", label: "Världskarta", isRoute: true },
             ].map((item) =>
               item.isRoute ? (
@@ -99,9 +96,6 @@ export const Header = () => {
               {[
                 { href: "#programs", label: "Program", isRoute: false },
                 { href: "#destinations", label: "Destinationer", isRoute: false },
-                { href: "/alperna", label: "Alperna", isRoute: true },
-                { href: "/sydostasien", label: "Sydostasien", isRoute: true },
-                { href: "/sydamerika", label: "Sydamerika", isRoute: true },
                 { href: "/karta", label: "Världskarta", isRoute: true },
               ].map((item) =>
                 item.isRoute ? (
