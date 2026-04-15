@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
-import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane, Globe, GraduationCap, Heart, Mountain, Sun, Tent, Music, Utensils, Camera, Waves } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane, Globe, GraduationCap, Heart, Mountain, Sun, Tent, Music, Utensils, Camera, Waves, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Activity = {
@@ -20,6 +21,7 @@ type Destination = {
   region: string;
   visaInfo: string;
   activities: string[];
+  slug?: string;
   resources?: {
     visa?: Resource[];
     jobs?: Resource[];
