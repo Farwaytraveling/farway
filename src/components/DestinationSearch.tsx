@@ -273,6 +273,17 @@ export const DestinationSearch = () => {
   }, []);
 
   const handleSelect = (destination: Destination, city?: string) => {
+    if (destination.slug) {
+      // Navigate to the destination page
+      if (destination.slug.startsWith("_")) {
+        // Region pages (alperna, sydostasien, sydamerika)
+        navigate(`/${destination.slug.slice(1)}`);
+      } else {
+        navigate(`/destination/${destination.slug}`);
+      }
+      return;
+    }
+    // Fallback for destinations without a dedicated page
     setSelectedDestination(destination);
     setQuery(city ? `${city}, ${destination.name}` : destination.name);
     setMatchedCity(city || null);
