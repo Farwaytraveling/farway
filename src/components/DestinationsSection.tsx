@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const destinations = [
   { country: "Australien", slug: "australien", flag: "🇦🇺", programs: 45, popular: "Working Holiday, Farm Work", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop", isRegion: false },
-  { country: "Frankrike", slug: "frankrike", flag: "🇫🇷", programs: 38, popular: "Skidsäsong, Au Pair", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", isRegion: false },
+  
   { country: "USA", slug: "usa", flag: "🇺🇸", programs: 52, popular: "Au Pair, Summer Camp", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop", isRegion: false },
   { country: "Nya Zeeland", slug: "nya-zeeland", flag: "🇳🇿", programs: 32, popular: "Working Holiday, Äventyr", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop", isRegion: false },
   { country: "Alperna", slug: "alperna", flag: "🏔️", programs: 30, popular: "Skidsäsong, Äventyr", image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop", isRegion: true },

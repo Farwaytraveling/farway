@@ -52,8 +52,6 @@ const allActivities: Record<string, { label: string; emoji: string }> = {
 
 const destinations: Destination[] = [
   // Populära destinationer
-  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "sprakresa", "studera", "kultur", "mat", "sommarsasong"],
-    resources: { visa: [{ name: "EU-rätt att arbeta", url: "https://europa.eu/youreurope/citizens/work/work-abroad/index_sv.htm", official: true }], jobs: [{ name: "Seasonaires Frankrike", url: "https://www.seasonaires.com/ski-jobs/france/", official: false }], community: [{ name: "Svenskar i Frankrike (FB)", url: "https://www.facebook.com/groups/svenskarifrankrike", official: false }] } },
   { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
     resources: { visa: [{ name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true }], jobs: [{ name: "Seek", url: "https://www.seek.com.au", official: false }, { name: "Harvest Trail", url: "https://jobsearch.gov.au/harvest", official: true }], community: [{ name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false }] } },
   { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
@@ -64,11 +62,9 @@ const destinations: Destination[] = [
   { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", activities: ["skidsasong", "vandring", "sommarsasong"] },
 
   // Övriga destinationer
-  { name: "Fiji", flag: "🇫🇯", region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: ["volontar", "dykning", "backpacking", "surfing"] },
+  
 
   // Nordamerika
-  { name: "Kanada", flag: "🇨🇦", region: "Nordamerika", visaInfo: "IEC, 18-35 år", activities: ["working-holiday", "skidsasong", "studera", "backpacking", "vandring"],
-    resources: { visa: [{ name: "IEC Program", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html", official: true }], jobs: [{ name: "Job Bank", url: "https://www.jobbank.gc.ca", official: true }], community: [{ name: "Svenskar i Kanada (FB)", url: "https://www.facebook.com/groups/svenskarikanada", official: false }] } },
   { name: "Mexiko", flag: "🇲🇽", region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: ["backpacking", "digital-nomad", "sprakresa", "dykning", "surfing", "yoga", "kultur"] },
   { name: "Costa Rica", flag: "🇨🇷", region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "surfing", "yoga", "backpacking", "sprakresa", "digital-nomad"] },
   { name: "Panama", flag: "🇵🇦", region: "Centralamerika", visaInfo: "Turistvisum 180 dagar", activities: ["digital-nomad", "backpacking", "dykning"] },
