@@ -60,9 +60,10 @@ const destinations: Destination[] = [
     resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
   { name: "Paris", flag: "🗼", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["au-pair", "studera", "sprakresa", "kultur", "mat"] },
   { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", activities: ["skidsasong", "vandring", "sommarsasong"] },
+  { name: "Sydostasien", flag: "🌴", region: "Asien", visaInfo: "Varierar per land", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "surfing"] },
+  { name: "Sydamerika", flag: "🌎", region: "Sydamerika", visaInfo: "Varierar per land", activities: ["backpacking", "volontar", "sprakresa", "vandring", "kultur"] },
 
   // Övriga destinationer
-  
 
   // Nordamerika
   { name: "Mexiko", flag: "🇲🇽", region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: ["backpacking", "digital-nomad", "sprakresa", "dykning", "surfing", "yoga", "kultur"] },
