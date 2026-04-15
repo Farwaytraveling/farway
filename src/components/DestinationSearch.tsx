@@ -525,7 +525,7 @@ export const DestinationSearch = () => {
           <div className="text-center">
             <p className="text-xs text-muted-foreground mb-3">Populära destinationer</p>
             <div className="flex flex-wrap justify-center gap-2">
-              {destinations.slice(0, 8).map((dest) => (
+              {destinations.slice(0, 7).map((dest) => (
                 <button
                   key={dest.name}
                   onClick={() => handleSelect(dest)}
