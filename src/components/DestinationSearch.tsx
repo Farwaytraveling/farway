@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
-import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane, Globe, GraduationCap, Heart, Mountain, Sun, Tent, Music, Utensils, Camera, Waves } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Search, MapPin, X, ExternalLink, FileCheck, Briefcase, Users, Plane, Globe, GraduationCap, Heart, Mountain, Sun, Tent, Music, Utensils, Camera, Waves, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 type Activity = {
@@ -20,6 +21,7 @@ type Destination = {
   region: string;
   visaInfo: string;
   activities: string[];
+  slug?: string;
   resources?: {
     visa?: Resource[];
     jobs?: Resource[];
@@ -52,16 +54,16 @@ const allActivities: Record<string, { label: string; emoji: string }> = {
 
 const destinations: Destination[] = [
   // Populära destinationer
-  { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
+  { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", slug: "australien", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
     resources: { visa: [{ name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true }], jobs: [{ name: "Seek", url: "https://www.seek.com.au", official: false }, { name: "Harvest Trail", url: "https://jobsearch.gov.au/harvest", official: true }], community: [{ name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false }] } },
-  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
+  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", slug: "nya-zeeland", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
     resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
-  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
+  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", slug: "usa", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
     resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
-  { name: "Paris", flag: "🗼", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["au-pair", "studera", "sprakresa", "kultur", "mat"] },
-  { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", activities: ["skidsasong", "vandring", "sommarsasong"] },
-  { name: "Sydostasien", flag: "🌴", region: "Asien", visaInfo: "Varierar per land", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "surfing"] },
-  { name: "Sydamerika", flag: "🌎", region: "Sydamerika", visaInfo: "Varierar per land", activities: ["backpacking", "volontar", "sprakresa", "vandring", "kultur"] },
+  { name: "Paris", flag: "🗼", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "paris", activities: ["au-pair", "studera", "sprakresa", "kultur", "mat"] },
+  { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", slug: "_alperna", activities: ["skidsasong", "vandring", "sommarsasong"] },
+  { name: "Sydostasien", flag: "🌴", region: "Asien", visaInfo: "Varierar per land", slug: "_sydostasien", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "surfing"] },
+  { name: "Sydamerika", flag: "🌎", region: "Sydamerika", visaInfo: "Varierar per land", slug: "_sydamerika", activities: ["backpacking", "volontar", "sprakresa", "vandring", "kultur"] },
 
   // Övriga destinationer
 
@@ -217,6 +219,7 @@ const cityAliases: Record<string, string> = {
 };
 
 export const DestinationSearch = () => {
+  const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
@@ -270,6 +273,17 @@ export const DestinationSearch = () => {
   }, []);
 
   const handleSelect = (destination: Destination, city?: string) => {
+    if (destination.slug) {
+      // Navigate to the destination page
+      if (destination.slug.startsWith("_")) {
+        // Region pages (alperna, sydostasien, sydamerika)
+        navigate(`/${destination.slug.slice(1)}`);
+      } else {
+        navigate(`/destination/${destination.slug}`);
+      }
+      return;
+    }
+    // Fallback for destinations without a dedicated page
     setSelectedDestination(destination);
     setQuery(city ? `${city}, ${destination.name}` : destination.name);
     setMatchedCity(city || null);
