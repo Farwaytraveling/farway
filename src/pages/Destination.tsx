@@ -703,6 +703,12 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "Season Workers Housing", url: "https://www.seasonworkers.com/accommodation/", official: false },
         ],
       },
+      {
+        category: "Boka via partner", icon: Plane,
+        links: [
+          { name: "Kilroy – Frankrike & Alperna", url: "https://www.kilroy.se/destinationer/frankrike", official: false },
+        ],
+      },
     ],
     cities: [
       { name: "Chamonix-Mont-Blanc", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop", description: "Hjärtat vid Mont Blanc-massivet.", swedes: "~120 svenskar/säsong", popularFor: ["Skidlärare", "Bar & restaurang", "Hotellpersonal"], avgRent: "~7 000 kr/mån" },
