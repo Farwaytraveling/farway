@@ -772,6 +772,13 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "Svenska kyrkan i Paris", url: "https://www.svenskakyrkan.se/paris", official: true },
         ],
       },
+      {
+        category: "Boka via partner", icon: Plane,
+        links: [
+          { name: "Kilroy – Frankrike", url: "https://www.kilroy.se/destinationer/frankrike", official: false },
+          { name: "EF – Språkkurser i Paris", url: "https://www.ef.se/ils/destinations/frankrike/paris/", official: false },
+        ],
+      },
     ],
     cities: [
       { name: "Paris (Centrala)", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Hjärtat av Paris med Eiffeltornet och Louvren.", swedes: "~15 000 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån" },
