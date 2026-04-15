@@ -28,7 +28,7 @@ type MapDestination = {
 const destinations: MapDestination[] = [
   // Oceanien
   { name: "Australien", flag: "🇦🇺", icon: "🦘", coordinates: [133.7751, -25.2744], region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", slug: "australien", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Surfing", emoji: "🏄" }, { label: "Farm Work", emoji: "🌾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Dykning", emoji: "🤿" }] },
-  { name: "Nya Zeeland", flag: "🇳🇿", icon: "🐑", coordinates: [174.886, -40.9006], region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Vandring", emoji: "🥾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Farm Work", emoji: "🌾" }] },
+  { name: "Nya Zeeland", flag: "🇳🇿", icon: "🐑", coordinates: [174.886, -40.9006], region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", slug: "nya-zeeland", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Vandring", emoji: "🥾" }, { label: "Backpacking", emoji: "🎒" }, { label: "Farm Work", emoji: "🌾" }] },
   { name: "Fiji", flag: "🇫🇯", icon: "🐠", coordinates: [179.4144, -17.7134], region: "Oceanien", visaInfo: "Turistvisum vid ankomst, 4 mån", activities: [{ label: "Dykning", emoji: "🤿" }, { label: "Volontär", emoji: "🤝" }, { label: "Surfing", emoji: "🏄" }] },
 
   // Nordamerika
@@ -45,15 +45,15 @@ const destinations: MapDestination[] = [
   { name: "Chile", flag: "🇨🇱", icon: "🏔️", coordinates: [-71.543, -35.6751], region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Skidsäsong", emoji: "⛷️" }, { label: "Vandring", emoji: "🥾" }] },
 
   // Europa
-  { name: "Frankrike", flag: "🇫🇷", icon: "🥐", coordinates: [2.2137, 46.2276], region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "paris", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }, { label: "Mat", emoji: "🍽️" }] },
-  { name: "Spanien", flag: "🇪🇸", icon: "💃", coordinates: [-3.7492, 40.4637], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Språkresa", emoji: "📚" }, { label: "Au Pair", emoji: "👶" }, { label: "Surfing", emoji: "🏄" }, { label: "Digital Nomad", emoji: "🌐" }] },
-  { name: "Italien", flag: "🇮🇹", icon: "🍕", coordinates: [12.5674, 41.8719], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Kultur", emoji: "🏛️" }, { label: "Mat", emoji: "🍽️" }, { label: "Au Pair", emoji: "👶" }] },
+  { name: "Frankrike", flag: "🇫🇷", icon: "🥐", coordinates: [2.2137, 46.2276], region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "frankrike", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }, { label: "Mat", emoji: "🍽️" }] },
+  { name: "Spanien", flag: "🇪🇸", icon: "💃", coordinates: [-3.7492, 40.4637], region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "spanien", activities: [{ label: "Språkresa", emoji: "📚" }, { label: "Au Pair", emoji: "👶" }, { label: "Surfing", emoji: "🏄" }, { label: "Digital Nomad", emoji: "🌐" }] },
+  { name: "Italien", flag: "🇮🇹", icon: "🍕", coordinates: [12.5674, 41.8719], region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "italien", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Kultur", emoji: "🏛️" }, { label: "Mat", emoji: "🍽️" }, { label: "Au Pair", emoji: "👶" }] },
   { name: "Portugal", flag: "🇵🇹", icon: "🌊", coordinates: [-8.2245, 39.3999], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Digital Nomad", emoji: "🌐" }, { label: "Surfing", emoji: "🏄" }, { label: "Sommarsäsong", emoji: "☀️" }] },
   { name: "Tyskland", flag: "🇩🇪", icon: "🍺", coordinates: [10.4515, 51.1657], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Studera", emoji: "🎓" }, { label: "Praktik", emoji: "💻" }, { label: "Au Pair", emoji: "👶" }] },
   { name: "Österrike", flag: "🇦🇹", icon: "⛷️", coordinates: [14.5501, 47.5162], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Skidsäsong", emoji: "⛷️" }, { label: "Vandring", emoji: "🥾" }, { label: "Kultur", emoji: "🏛️" }] },
   { name: "Grekland", flag: "🇬🇷", icon: "🏛️", coordinates: [21.8243, 39.0742], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Sommarsäsong", emoji: "☀️" }, { label: "Dykning", emoji: "🤿" }, { label: "Kultur", emoji: "🏛️" }] },
   { name: "Kroatien", flag: "🇭🇷", icon: "⛵", coordinates: [15.982, 45.1], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Sommarsäsong", emoji: "☀️" }, { label: "Dykning", emoji: "🤿" }] },
-  { name: "Storbritannien", flag: "🇬🇧", icon: "👑", coordinates: [-3.436, 55.3781], region: "Europa", visaInfo: "Visum krävs efter Brexit", activities: [{ label: "Studera", emoji: "🎓" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }] },
+  { name: "Storbritannien", flag: "🇬🇧", icon: "👑", coordinates: [-3.436, 55.3781], region: "Europa", visaInfo: "Visum krävs efter Brexit", slug: "storbritannien", activities: [{ label: "Studera", emoji: "🎓" }, { label: "Au Pair", emoji: "👶" }, { label: "Språkresa", emoji: "📚" }] },
   { name: "Irland", flag: "🇮🇪", icon: "🍀", coordinates: [-8.2439, 53.4129], region: "Europa", visaInfo: "EU-medborgare, fritt", activities: [{ label: "Working Holiday", emoji: "💼" }, { label: "Studera", emoji: "🎓" }, { label: "Kultur", emoji: "🏛️" }] },
 
   // Asien
