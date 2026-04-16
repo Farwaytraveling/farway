@@ -1,54 +1,38 @@
-import { Briefcase, Heart, GraduationCap, Users, Snowflake, Globe, ArrowRight } from "lucide-react";
+import { Briefcase, Heart, GraduationCap, Snowflake, ArrowRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const programs = [
   {
     icon: Briefcase,
     title: "Working Holiday",
-    description: "Jobba och res i upp till 12 månader",
+    description: "Jobba och res i Australien, NZ, Kanada & Japan",
     emoji: "🧳",
     gradient: "from-orange-500 to-amber-500",
     link: "/working-holiday",
   },
   {
-    icon: Heart,
-    title: "Au Pair",
-    description: "Bo hos en värdfamilj och ta hand om barn",
-    emoji: "👨‍👩‍👧",
-    gradient: "from-rose-500 to-pink-500",
-    link: "/au-pair",
-  },
-  {
-    icon: GraduationCap,
-    title: "Studera utomlands",
-    description: "Språkkurser eller universitetsstudier",
-    emoji: "📚",
-    gradient: "from-emerald-500 to-teal-500",
-    link: "/studera-utomlands",
-  },
-  {
-    icon: Users,
-    title: "Volontärarbete",
-    description: "Gör skillnad medan du reser",
-    emoji: "🌍",
-    gradient: "from-violet-500 to-purple-500",
-    link: "/volontararbete",
-  },
-  {
     icon: Snowflake,
-    title: "Skidsäsong",
-    description: "Jobba på skidorter världen över",
+    title: "Skidsäsong i Alperna",
+    description: "Jobba på Europas bästa skidorter",
     emoji: "⛷️",
     gradient: "from-sky-400 to-indigo-500",
     link: "/ski-season",
   },
   {
-    icon: Globe,
-    title: "Praktik utomlands",
-    description: "Få internationell arbetslivserfarenhet",
-    emoji: "💼",
-    gradient: "from-sky-500 to-blue-500",
-    link: "/praktik-utomlands",
+    icon: GraduationCap,
+    title: "Studera utomlands",
+    description: "Studera i London, Paris eller Barcelona",
+    emoji: "📚",
+    gradient: "from-emerald-500 to-teal-500",
+    link: "/studera-utomlands",
+  },
+  {
+    icon: Heart,
+    title: "Au Pair",
+    description: "Bo hos en värdfamilj i London, Paris eller Barcelona",
+    emoji: "👨‍👩‍👧",
+    gradient: "from-rose-500 to-pink-500",
+    link: "/au-pair",
   },
 ];
 
@@ -66,11 +50,11 @@ export const ProgramsSection = () => {
             Välj ditt äventyr
           </h2>
           <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Sex unika sätt att upptäcka världen — vilket passar dig?
+            Fyra unika sätt att upptäcka världen — vilket passar dig?
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
           {programs.map((program) => (
             <div
               key={program.title}
