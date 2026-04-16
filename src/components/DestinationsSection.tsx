@@ -1,73 +1,80 @@
-import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const destinations = [
-  { country: "Australien", slug: "australien", flag: "🇦🇺", programs: 45, popular: "Working Holiday, Farm Work", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop", isRegion: false },
-  
-  { country: "USA", slug: "usa", flag: "🇺🇸", programs: 52, popular: "Au Pair, Summer Camp", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop", isRegion: false },
-  { country: "Nya Zeeland", slug: "nya-zeeland", flag: "🇳🇿", programs: 32, popular: "Working Holiday, Äventyr", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop", isRegion: false },
-  { country: "Alperna", slug: "alperna", flag: "🏔️", programs: 30, popular: "Skidsäsong, Äventyr", image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop", isRegion: true },
-  { country: "Paris", slug: "paris", flag: "🗼", programs: 25, popular: "Au Pair, Studera", image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=600&h=400&fit=crop", isRegion: false },
-  { country: "Sydostasien", slug: "sydostasien", flag: "🌴", programs: 40, popular: "Backpacking, Volontär", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop", isRegion: true },
-  { country: "Sydamerika", slug: "sydamerika", flag: "🌎", programs: 35, popular: "Volontär, Äventyr", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=400&fit=crop", isRegion: true },
+  { country: "Australien", slug: "australien", flag: "🇦🇺", popular: "Working Holiday", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=900&h=700&fit=crop", isRegion: false },
+  { country: "USA", slug: "usa", flag: "🇺🇸", popular: "Au Pair & Studier", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=700&h=520&fit=crop", isRegion: false },
+  { country: "Nya Zeeland", slug: "nya-zeeland", flag: "🇳🇿", popular: "Working Holiday", image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=700&h=520&fit=crop", isRegion: false },
+  { country: "Alperna", slug: "alperna", flag: "🏔️", popular: "Skidsäsong", image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700&h=520&fit=crop", isRegion: true },
+  { country: "Paris", slug: "paris", flag: "🗼", popular: "Au Pair & Studier", image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=700&h=520&fit=crop", isRegion: false },
+  { country: "Sydostasien", slug: "sydostasien", flag: "🌴", popular: "Backpacking", image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=700&h=520&fit=crop", isRegion: true },
+  { country: "Sydamerika", slug: "sydamerika", flag: "🌎", popular: "Äventyr", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=700&h=520&fit=crop", isRegion: true },
 ];
 
 export const DestinationsSection = () => {
+  const [featured, ...rest] = destinations;
+
   return (
-    <section id="destinations" className="py-24">
+    <section id="destinations" className="bg-accent/20 py-24">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-14">
-          <div>
-            <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Utforska världen</p>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+        <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">Utvalda destinationer</p>
+            <h2 className="font-display text-4xl font-light leading-tight text-foreground sm:text-5xl">
               Populära destinationer
             </h2>
-            <p className="text-lg text-muted-foreground max-w-xl">
-              Upptäck de mest populära länderna bland svenska resenärer.
+          </div>
+          <div className="lg:col-span-4">
+            <p className="max-w-md text-base leading-7 text-muted-foreground">
+              En mer kurerad känsla — mindre katalog, mer väl valda spår att börja med.
             </p>
           </div>
-          <Button variant="outline" className="self-start sm:self-auto rounded-xl">
-            Alla destinationer
-            <ArrowRight className="w-4 h-4" />
-          </Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {destinations.map((dest) => (
-            <Link
-              to={dest.isRegion ? `/${dest.slug}` : `/destination/${dest.slug}`}
-              key={dest.country}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer border border-border/60 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={dest.image}
-                  alt={dest.country}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-              <div className="absolute top-4 right-4 bg-primary/90 backdrop-blur-sm text-primary-foreground text-xs font-semibold px-3 py-1.5 rounded-full">
-                {dest.programs} program
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-3xl">{dest.flag}</span>
-                  <h3 className="font-display text-2xl font-bold text-white">
-                    {dest.country}
-                  </h3>
+        <div className="grid gap-6 lg:grid-cols-12">
+          <Link
+            to={featured.isRegion ? `/${featured.slug}` : `/destination/${featured.slug}`}
+            className="group relative overflow-hidden border border-border/60 bg-card lg:col-span-7"
+          >
+            <div className="absolute left-5 top-5 z-10 bg-background/90 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
+              Mest efterfrågad
+            </div>
+            <div className="aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/3] overflow-hidden">
+              <img src={featured.image} alt={featured.country} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground/80">{featured.popular}</p>
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <span className="mb-2 block text-4xl">{featured.flag}</span>
+                  <h3 className="font-display text-3xl font-light text-primary-foreground sm:text-4xl">{featured.country}</h3>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {dest.popular.split(", ").map((tag) => (
-                    <span key={tag} className="bg-white/15 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full border border-white/20">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+                <ArrowRight className="h-5 w-5 text-primary-foreground transition-transform duration-300 group-hover:translate-x-1" />
               </div>
-            </Link>
-          ))}
+            </div>
+          </Link>
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5">
+            {rest.map((dest) => (
+              <Link
+                to={dest.isRegion ? `/${dest.slug}` : `/destination/${dest.slug}`}
+                key={dest.country}
+                className="group overflow-hidden border border-border/60 bg-card"
+              >
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={dest.image} alt={dest.country} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="border-t border-border/60 p-5">
+                  <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{dest.popular}</p>
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-display text-2xl font-light text-foreground">{dest.country}</h3>
+                    <span className="text-2xl">{dest.flag}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </section>

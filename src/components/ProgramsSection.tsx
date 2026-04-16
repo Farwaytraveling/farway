@@ -5,33 +5,29 @@ const programs = [
   {
     icon: Briefcase,
     title: "Working Holiday",
-    description: "Jobba och res i Australien, NZ, Kanada & Japan",
-    emoji: "🧳",
-    gradient: "from-orange-500 to-amber-500",
+    description: "Australien, NZ, Kanada & Japan",
+    kicker: "01 / Jobba & res",
     link: "/working-holiday",
   },
   {
     icon: Snowflake,
     title: "Skidsäsong i Alperna",
-    description: "Jobba på Europas bästa skidorter",
-    emoji: "⛷️",
-    gradient: "from-sky-400 to-indigo-500",
+    description: "Österrike, Schweiz & Frankrike",
+    kicker: "02 / Bergsliv",
     link: "/ski-season",
   },
   {
     icon: GraduationCap,
     title: "Studera utomlands",
-    description: "Studera i London, Paris eller Barcelona",
-    emoji: "📚",
-    gradient: "from-emerald-500 to-teal-500",
+    description: "London, Paris & Barcelona",
+    kicker: "03 / Studentliv",
     link: "/studera-utomlands",
   },
   {
     icon: Heart,
     title: "Au Pair",
-    description: "Bo hos en värdfamilj i London, Paris eller Barcelona",
-    emoji: "👨‍👩‍👧",
-    gradient: "from-rose-500 to-pink-500",
+    description: "Europeiska storstäder & värdfamiljer",
+    kicker: "04 / Bo lokalt",
     link: "/au-pair",
   },
 ];
@@ -40,50 +36,46 @@ export const ProgramsSection = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="programs" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30" />
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-14">
-          <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">Utforska möjligheter</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Välj ditt äventyr
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-lg mx-auto">
-            Fyra unika sätt att upptäcka världen — vilket passar dig?
-          </p>
+    <section id="programs" className="border-b border-border/60 bg-background py-24">
+      <div className="container mx-auto px-4">
+        <div className="mb-14 grid gap-6 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">Utforska möjligheter</p>
+            <h2 className="font-display text-4xl font-light leading-tight text-foreground sm:text-5xl">
+              Välj ditt äventyr
+            </h2>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="max-w-md text-base leading-7 text-muted-foreground">
+              Fyra tydliga vägar ut i världen — redigerade för att kännas mer som ett magasin än en vanlig infosida.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+        <div className="grid gap-px overflow-hidden border border-border/60 bg-border/60 md:grid-cols-2">
           {programs.map((program) => (
-            <div
+            <button
               key={program.title}
-              className="group cursor-pointer"
               onClick={() => navigate(program.link)}
+              className="group bg-card p-7 text-left transition-colors hover:bg-secondary/40 sm:p-8"
             >
-              <div className="relative bg-card rounded-2xl border border-border/60 p-6 h-full flex flex-col hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 transition-all duration-300 overflow-hidden">
-                {/* Gradient accent line */}
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${program.gradient} opacity-60 group-hover:opacity-100 transition-opacity`} />
-                
-                <div className="flex items-start gap-4 mb-3">
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${program.gradient} flex items-center justify-center shadow-sm flex-shrink-0`}>
-                    <program.icon className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-display text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {program.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {program.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-4 flex items-center text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-0 group-hover:translate-x-1">
-                  Läs mer <ArrowRight className="w-4 h-4 ml-1" />
-                </div>
+              <div className="mb-12 flex items-start justify-between gap-4">
+                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">{program.kicker}</span>
+                <program.icon className="h-5 w-5 text-primary transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
-            </div>
+
+              <div className="max-w-sm">
+                <h3 className="font-display text-2xl font-light leading-snug text-foreground sm:text-3xl">
+                  {program.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">{program.description}</p>
+              </div>
+
+              <div className="mt-10 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+                <span>Läs mer</span>
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </div>
+            </button>
           ))}
         </div>
       </div>
