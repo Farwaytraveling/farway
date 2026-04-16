@@ -12,64 +12,16 @@ import {
 
 const studyDestinations = [
   {
-    country: "USA",
-    flag: "🇺🇸",
-    programType: "F-1 Student Visa",
-    ageLimit: "Ingen gräns",
-    duration: "1-4 år",
-    cost: "$20,000-50,000/år",
-    description: "Världens mest prestigefyllda universitet. Från Ivy League till community colleges - USA har alternativ för alla.",
-    highlights: ["Ivy League", "Campus-liv", "OPT-arbete"],
-    cities: ["New York", "Boston", "Los Angeles", "San Francisco", "Chicago"],
-    applyUrl: "https://educationusa.state.gov/",
-  },
-  {
     country: "Storbritannien",
     flag: "🇬🇧",
     programType: "Student Visa",
     ageLimit: "Ingen gräns",
     duration: "1-3 år",
     cost: "£10,000-30,000/år",
-    description: "Oxford, Cambridge och hundratals andra universitet i världsklass. Kortare utbildningar än i USA.",
-    highlights: ["Traditionsrika uni", "1 års master", "Engelska"],
-    cities: ["London", "Oxford", "Cambridge", "Edinburgh", "Manchester"],
+    description: "London har några av världens mest prestigefyllda universitet – UCL, Imperial College, King's College. En internationell studentstad utan motstycke.",
+    highlights: ["Världsklass-uni", "1 års master", "Engelska"],
+    cities: ["London", "Oxford", "Cambridge"],
     applyUrl: "https://www.ucas.com/",
-  },
-  {
-    country: "Australien",
-    flag: "🇦🇺",
-    programType: "Student Visa (subclass 500)",
-    ageLimit: "Ingen gräns",
-    duration: "6 mån - 4 år",
-    cost: "$20,000-45,000 AUD/år",
-    description: "Hög livskvalitet och bra universitet. Du får arbeta 48 timmar per 14 dagar under studierna.",
-    highlights: ["Arbeta vid sidan", "Bra klimat", "Post-study visa"],
-    cities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide"],
-    applyUrl: "https://www.studyaustralia.gov.au/",
-  },
-  {
-    country: "Spanien",
-    flag: "🇪🇸",
-    programType: "Studentvisum (EU: inget krävs)",
-    ageLimit: "Ingen gräns",
-    duration: "3 mån - 4 år",
-    cost: "€1,000-5,000/år (offentliga)",
-    description: "Prisvärt med fantastisk livsstil. Perfekt för språkstudier i spanska eller universitetskurser.",
-    highlights: ["Låga avgifter", "Spanska", "Sol & kultur"],
-    cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Granada"],
-    applyUrl: "https://www.studying-in-spain.com/",
-  },
-  {
-    country: "Tyskland",
-    flag: "🇩🇪",
-    programType: "Studentvisum (EU: inget krävs)",
-    ageLimit: "Ingen gräns",
-    duration: "1-4 år",
-    cost: "€0-500/termin (offentliga)",
-    description: "Nästan gratis universitetsstudier, även för internationella studenter. Många program på engelska.",
-    highlights: ["Gratis studier", "Engelska program", "Ingenjörsland"],
-    cities: ["Berlin", "München", "Hamburg", "Heidelberg", "Freiburg"],
-    applyUrl: "https://www.daad.de/en/",
   },
   {
     country: "Frankrike",
@@ -78,34 +30,22 @@ const studyDestinations = [
     ageLimit: "Ingen gräns",
     duration: "1-4 år",
     cost: "€170-770/år (offentliga)",
-    description: "Från Sorbonne till grandes écoles. Frankrike erbjuder utbildning i världsklass till lågt pris.",
-    highlights: ["Mycket låga avgifter", "Franska", "Gastronomi"],
-    cities: ["Paris", "Lyon", "Toulouse", "Montpellier", "Nice"],
+    description: "Paris – Sorbonne, Sciences Po och hundratals andra lärosäten. Studera i världsklass till otroligt låga avgifter med rik kultur runt varje hörn.",
+    highlights: ["Mycket låga avgifter", "Franska", "Sorbonne"],
+    cities: ["Paris", "Lyon", "Toulouse"],
     applyUrl: "https://www.campusfrance.org/en",
   },
   {
-    country: "Nederländerna",
-    flag: "🇳🇱",
-    programType: "EU: inget visum krävs",
+    country: "Spanien",
+    flag: "🇪🇸",
+    programType: "Studentvisum (EU: inget krävs)",
     ageLimit: "Ingen gräns",
-    duration: "1-4 år",
-    cost: "€2,200/år (EU-studenter)",
-    description: "Flest engelskspråkiga program i icke-engelsktalande Europa. Internationell och välkomnande atmosfär.",
-    highlights: ["Engelska program", "Internationellt", "Cykelkultur"],
-    cities: ["Amsterdam", "Rotterdam", "Utrecht", "Leiden", "Groningen"],
-    applyUrl: "https://www.studyinholland.nl/",
-  },
-  {
-    country: "Japan",
-    flag: "🇯🇵",
-    programType: "Student Visa",
-    ageLimit: "Ingen gräns",
-    duration: "6 mån - 4 år",
-    cost: "¥500,000-1,500,000/år",
-    description: "Unik blandning av tradition och teknologi. Många stipendier tillgängliga för internationella studenter.",
-    highlights: ["MEXT-stipendier", "Teknologi", "Unik kultur"],
-    cities: ["Tokyo", "Kyoto", "Osaka", "Fukuoka", "Sapporo"],
-    applyUrl: "https://www.studyinjapan.go.jp/en/",
+    duration: "3 mån - 4 år",
+    cost: "€1,000-5,000/år (offentliga)",
+    description: "Barcelona kombinerar Universitat de Barcelona och Pompeu Fabra med Gaudís arkitektur, strandliv och fantastisk mat. Perfekt för språk och kultur.",
+    highlights: ["Låga avgifter", "Spanska", "Strandliv"],
+    cities: ["Barcelona", "Madrid", "Valencia"],
+    applyUrl: "https://www.studying-in-spain.com/",
   },
 ];
 
@@ -245,12 +185,12 @@ const StuderaUtomlands = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-14">
-              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">8 studiedestinationer</p>
+              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">3 studiedestinationer</p>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Vart vill du studera?
+                Europas bästa studentstäder
               </h2>
               <p className="text-muted-foreground max-w-lg mx-auto text-lg">
-                Från Ivy League till gratis tyska universitet – hitta din drömutbildning.
+                London, Paris och Barcelona – tre världsstäder med universitet i toppklass.
               </p>
             </div>
 
