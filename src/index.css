@@ -17,6 +17,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
 
 @layer base {
+  * {
+    font-weight: 700 !important;
+  }
+
   :root {
     /* Deep navy primary - corporate but worldly */
     --primary: 200 98% 39%;
