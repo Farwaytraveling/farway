@@ -1029,9 +1029,65 @@ const Destination = () => {
                             <Shield className="w-4 h-4 text-primary mb-1" />
                             <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.safety}</p>
                             <p className="text-xs text-muted-foreground">Säkerhet</p>
-                          </div>
-                        </>
-                      )}
+                        </div>
+                      </>
+                    )}
+
+                    {selectedCity.cityLinks && selectedCity.cityLinks.length > 0 && (
+                      <div className="mt-6">
+                        <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                          <Globe className="w-4 h-4 text-primary" /> Länkar för {selectedCity.name}
+                        </h4>
+                        {(() => {
+                          const fbLinks = selectedCity.cityLinks!.filter(l => l.type === "facebook");
+                          const jobLinks = selectedCity.cityLinks!.filter(l => l.type === "jobb");
+                          const housingLinks = selectedCity.cityLinks!.filter(l => l.type === "boende");
+                          return (
+                            <div className="space-y-4">
+                              {fbLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">🇸🇪 Svenska Facebook-grupper</p>
+                                  <div className="space-y-1.5">
+                                    {fbLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                              {jobLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">💼 Jobbsidor</p>
+                                  <div className="space-y-1.5">
+                                    {jobLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                              {housingLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">🏠 Boende</p>
+                                  <div className="space-y-1.5">
+                                    {housingLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    )
                     </div>
 
                     <div className="mt-6">
