@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane } from "lucide-react";
 
+type CityLink = {
+  name: string;
+  url: string;
+  type: "facebook" | "jobb" | "boende";
+};
+
 type CityInfo = {
   name: string;
   image: string;
@@ -13,6 +19,7 @@ type CityInfo = {
   swedes: string;
   popularFor: string[];
   avgRent: string;
+  cityLinks?: CityLink[];
   detailedInfo?: {
     neighborhoods: string[];
     tips: string[];
