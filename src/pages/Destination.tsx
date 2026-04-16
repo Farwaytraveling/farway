@@ -6,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane } from "lucide-react";
 
+type CityLink = {
+  name: string;
+  url: string;
+  type: "facebook" | "jobb" | "boende";
+};
+
 type CityInfo = {
   name: string;
   image: string;
@@ -13,6 +19,7 @@ type CityInfo = {
   swedes: string;
   popularFor: string[];
   avgRent: string;
+  cityLinks?: CityLink[];
   detailedInfo?: {
     neighborhoods: string[];
     tips: string[];
@@ -129,10 +136,40 @@ const destinationData: Record<string, DestinationInfo> = {
       },
     ],
     cities: [
-      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv.", swedes: "~3 500 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån", detailedInfo: { neighborhoods: ["Bondi Beach – Populärt bland backpackers och surfare", "Manly – Avslappnad strandförort med färja till city", "Surry Hills – Hippt område med caféer och barer", "Newtown – Alternativt och prisvärt"], tips: ["Skaffa Opal Card för kollektivtrafiken", "RSA-certifikat krävs för att jobba på bar", "Bondi till Coogee-promenaden är ett måste", "Gå med i svenska Facebook-grupper för jobb"], safety: "Mycket säkert – var uppmärksam vid stränderna (strömmar)", internet: "Snabbt och pålitligt, WiFi på de flesta caféer", costOfLiving: "Hög – räkna med 15 000–20 000 kr/mån totalt", nightlife: "Fantastiskt – Kings Cross, Darling Harbour, The Rocks", transport: "Bra kollektivtrafik med bussar, tåg och färjor" } },
-      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop", description: "Kulturhuvudstaden med fantastisk matscen, street art och sportkultur.", swedes: "~2 500 svenskar", popularFor: ["Hospitality", "Barista-jobb", "Kreativa jobb"], avgRent: "~10 000 kr/mån", detailedInfo: { neighborhoods: ["Fitzroy – Street art och hippa barer", "St Kilda – Strandliv och nöjen", "Brunswick – Alternativt med bra matscen", "CBD – Centralt med många jobbmöjligheter"], tips: ["Melbourne har 'fyra årstider på en dag' – klä dig i lager", "Kafékulturen är enorm – bra för baristajobb", "Myki-kort för kollektivtrafiken", "Gratis spårvagn i CBD-zonen"], safety: "Mycket säkert", internet: "Utmärkt – gratis WiFi i CBD", costOfLiving: "Medel-hög – 13 000–18 000 kr/mån", nightlife: "Världskänt – gömda barer och livemusik", transport: "Utmärkt med spårvagnar, tåg och bussar" } },
-      { name: "Gold Coast", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surfarnas paradis med milslånga sandstränder och soligt väder året runt.", swedes: "~1 500 svenskar", popularFor: ["Surfing", "Turismbranschen", "Fitness-jobb"], avgRent: "~8 500 kr/mån", detailedInfo: { neighborhoods: ["Surfers Paradise – Centrum med nattliv", "Burleigh Heads – Avslappnat med bra surfing", "Coolangatta – Lugnt och mysigt", "Broadbeach – Mitt emellan fest och lugn"], tips: ["Lär dig surfa – det är gratis!", "Jobb finns inom turism och restaurang", "Go Card för kollektivtrafiken"], safety: "Säkert – bada alltid mellan flaggorna", internet: "Bra – de flesta hostels har WiFi", costOfLiving: "Medel – 10 000–14 000 kr/mån", nightlife: "Surfers Paradise har allt", transport: "Bussar och light rail längs kusten" } },
-      { name: "Cairns", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=600&h=400&fit=crop", description: "Porten till Great Barrier Reef och tropisk regnskog.", swedes: "~800 svenskar", popularFor: ["Dykning", "Turismjobb", "Farm work"], avgRent: "~7 000 kr/mån", detailedInfo: { neighborhoods: ["Cairns City – Kompakt centrum", "Northern Beaches – Palm Cove", "Kuranda – Regnskogsstad", "Port Douglas – Lyxig kuststad"], tips: ["Dykcertifiering tar 3–4 dagar", "Farm work i Atherton Tablelands", "Var beredd på fuktigt tropiskt klimat"], safety: "Säkert – var medveten om krokodiler och maneter", internet: "Okej – kan vara långsamt utanför staden", costOfLiving: "Låg-medel – 8 000–12 000 kr/mån", nightlife: "Mindre men livligt", transport: "Begränsad – bil eller cykel rekommenderas" } },
+      { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv.", swedes: "~3 500 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån", cityLinks: [
+          { name: "Svenskar i Sydney (Facebook)", url: "https://www.facebook.com/groups/svenskarisydney", type: "facebook" },
+          { name: "Svenska i Australien – Sydney", url: "https://www.facebook.com/groups/svenskaiAustralien", type: "facebook" },
+          { name: "Jobs in Sydney (Facebook)", url: "https://www.facebook.com/groups/jobsinsydney", type: "jobb" },
+          { name: "Backpacker Jobs Sydney", url: "https://www.facebook.com/groups/backpackerjobssydney", type: "jobb" },
+          { name: "Seek – Sydney", url: "https://www.seek.com.au/jobs/in-Sydney", type: "jobb" },
+          { name: "Flatmates – Sydney", url: "https://flatmates.com.au/sydney", type: "boende" },
+          { name: "Gumtree – Sydney boende", url: "https://www.gumtree.com.au/s-flatshare-houseshare/sydney/c18294l3003435", type: "boende" },
+        ], detailedInfo: { neighborhoods: ["Bondi Beach – Populärt bland backpackers och surfare", "Manly – Avslappnad strandförort med färja till city", "Surry Hills – Hippt område med caféer och barer", "Newtown – Alternativt och prisvärt"], tips: ["Skaffa Opal Card för kollektivtrafiken", "RSA-certifikat krävs för att jobba på bar", "Bondi till Coogee-promenaden är ett måste", "Gå med i svenska Facebook-grupper för jobb"], safety: "Mycket säkert – var uppmärksam vid stränderna (strömmar)", internet: "Snabbt och pålitligt, WiFi på de flesta caféer", costOfLiving: "Hög – räkna med 15 000–20 000 kr/mån totalt", nightlife: "Fantastiskt – Kings Cross, Darling Harbour, The Rocks", transport: "Bra kollektivtrafik med bussar, tåg och färjor" } },
+      { name: "Melbourne", image: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&h=400&fit=crop", description: "Kulturhuvudstaden med fantastisk matscen, street art och sportkultur.", swedes: "~2 500 svenskar", popularFor: ["Hospitality", "Barista-jobb", "Kreativa jobb"], avgRent: "~10 000 kr/mån", cityLinks: [
+          { name: "Svenskar i Melbourne (Facebook)", url: "https://www.facebook.com/groups/svenskarimelbourne", type: "facebook" },
+          { name: "Scandinavians in Melbourne", url: "https://www.facebook.com/groups/scandinaviansinmelbourne", type: "facebook" },
+          { name: "Jobs in Melbourne (Facebook)", url: "https://www.facebook.com/groups/jobsinmelbourne", type: "jobb" },
+          { name: "Backpacker Jobs Melbourne", url: "https://www.facebook.com/groups/backpackerjobsmelbourne", type: "jobb" },
+          { name: "Seek – Melbourne", url: "https://www.seek.com.au/jobs/in-Melbourne", type: "jobb" },
+          { name: "Flatmates – Melbourne", url: "https://flatmates.com.au/melbourne", type: "boende" },
+          { name: "Gumtree – Melbourne boende", url: "https://www.gumtree.com.au/s-flatshare-houseshare/melbourne/c18294l3001317", type: "boende" },
+        ], detailedInfo: { neighborhoods: ["Fitzroy – Street art och hippa barer", "St Kilda – Strandliv och nöjen", "Brunswick – Alternativt med bra matscen", "CBD – Centralt med många jobbmöjligheter"], tips: ["Melbourne har 'fyra årstider på en dag' – klä dig i lager", "Kafékulturen är enorm – bra för baristajobb", "Myki-kort för kollektivtrafiken", "Gratis spårvagn i CBD-zonen"], safety: "Mycket säkert", internet: "Utmärkt – gratis WiFi i CBD", costOfLiving: "Medel-hög – 13 000–18 000 kr/mån", nightlife: "Världskänt – gömda barer och livemusik", transport: "Utmärkt med spårvagnar, tåg och bussar" } },
+      { name: "Gold Coast", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surfarnas paradis med milslånga sandstränder och soligt väder året runt.", swedes: "~1 500 svenskar", popularFor: ["Surfing", "Turismbranschen", "Fitness-jobb"], avgRent: "~8 500 kr/mån", cityLinks: [
+          { name: "Svenskar på Gold Coast (Facebook)", url: "https://www.facebook.com/groups/svenskarpagoldcoast", type: "facebook" },
+          { name: "Scandinavians Gold Coast", url: "https://www.facebook.com/groups/scandinaviansgoldcoast", type: "facebook" },
+          { name: "Jobs Gold Coast (Facebook)", url: "https://www.facebook.com/groups/jobsgoldcoast", type: "jobb" },
+          { name: "Seek – Gold Coast", url: "https://www.seek.com.au/jobs/in-Gold-Coast", type: "jobb" },
+          { name: "Flatmates – Gold Coast", url: "https://flatmates.com.au/gold-coast", type: "boende" },
+          { name: "Gumtree – Gold Coast boende", url: "https://www.gumtree.com.au/s-flatshare-houseshare/gold-coast/c18294l3001327", type: "boende" },
+        ], detailedInfo: { neighborhoods: ["Surfers Paradise – Centrum med nattliv", "Burleigh Heads – Avslappnat med bra surfing", "Coolangatta – Lugnt och mysigt", "Broadbeach – Mitt emellan fest och lugn"], tips: ["Lär dig surfa – det är gratis!", "Jobb finns inom turism och restaurang", "Go Card för kollektivtrafiken"], safety: "Säkert – bada alltid mellan flaggorna", internet: "Bra – de flesta hostels har WiFi", costOfLiving: "Medel – 10 000–14 000 kr/mån", nightlife: "Surfers Paradise har allt", transport: "Bussar och light rail längs kusten" } },
+      { name: "Cairns", image: "https://images.unsplash.com/photo-1587139223877-04cb899fa3e8?w=600&h=400&fit=crop", description: "Porten till Great Barrier Reef och tropisk regnskog.", swedes: "~800 svenskar", popularFor: ["Dykning", "Turismjobb", "Farm work"], avgRent: "~7 000 kr/mån", cityLinks: [
+          { name: "Svenskar i Cairns (Facebook)", url: "https://www.facebook.com/groups/svenskaricairns", type: "facebook" },
+          { name: "Backpackers Cairns (Facebook)", url: "https://www.facebook.com/groups/backpackerscairns", type: "facebook" },
+          { name: "Jobs in Cairns (Facebook)", url: "https://www.facebook.com/groups/jobsincairns", type: "jobb" },
+          { name: "Seek – Cairns", url: "https://www.seek.com.au/jobs/in-Cairns", type: "jobb" },
+          { name: "Flatmates – Cairns", url: "https://flatmates.com.au/cairns", type: "boende" },
+          { name: "Gumtree – Cairns boende", url: "https://www.gumtree.com.au/s-flatshare-houseshare/cairns/c18294l3001306", type: "boende" },
+        ], detailedInfo: { neighborhoods: ["Cairns City – Kompakt centrum", "Northern Beaches – Palm Cove", "Kuranda – Regnskogsstad", "Port Douglas – Lyxig kuststad"], tips: ["Dykcertifiering tar 3–4 dagar", "Farm work i Atherton Tablelands", "Var beredd på fuktigt tropiskt klimat"], safety: "Säkert – var medveten om krokodiler och maneter", internet: "Okej – kan vara långsamt utanför staden", costOfLiving: "Låg-medel – 8 000–12 000 kr/mån", nightlife: "Mindre men livligt", transport: "Begränsad – bil eller cykel rekommenderas" } },
     ],
   },
 
@@ -996,6 +1033,62 @@ const Destination = () => {
                         </>
                       )}
                     </div>
+
+                    {selectedCity.cityLinks && selectedCity.cityLinks.length > 0 && (
+                      <div className="mt-6">
+                        <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                          <Globe className="w-4 h-4 text-primary" /> Länkar för {selectedCity.name}
+                        </h4>
+                        {(() => {
+                          const fbLinks = selectedCity.cityLinks!.filter(l => l.type === "facebook");
+                          const jobLinks = selectedCity.cityLinks!.filter(l => l.type === "jobb");
+                          const housingLinks = selectedCity.cityLinks!.filter(l => l.type === "boende");
+                          return (
+                            <div className="space-y-4">
+                              {fbLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">🇸🇪 Svenska Facebook-grupper</p>
+                                  <div className="space-y-1.5">
+                                    {fbLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                              {jobLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">💼 Jobbsidor</p>
+                                  <div className="space-y-1.5">
+                                    {jobLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                              {housingLinks.length > 0 && (
+                                <div>
+                                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">🏠 Boende</p>
+                                  <div className="space-y-1.5">
+                                    {housingLinks.map(link => (
+                                      <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-2.5 rounded-lg bg-muted/40 hover:bg-primary/5 transition-colors group text-sm">
+                                        <span className="text-foreground group-hover:text-primary transition-colors">{link.name}</span>
+                                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                                      </a>
+                                    ))}
+                                  </div>
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    )}
 
                     <div className="mt-6">
                       <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
