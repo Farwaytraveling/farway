@@ -24,7 +24,7 @@ const faqItems = [
 const skiDestinations = [
   {
     country: "Österrike", flag: "🇦🇹", region: "Tyrolen & Salzburg", season: "December - April", avgSalary: "€1,200-1,800/mån",
-    description: "Österrike är hjärtat av Alperna med världsberömda skidorter och ett livligt après-ski.",
+    description: "Österrike är hjärtat av Alperna med världsberömda skidorter och ett livligt après-ski. Perfekt för dig som vill kombinera bra löner med legendariskt festliv.",
     resorts: [
       { name: "St. Anton", type: "Party & Powder", jobs: "Barer, hotell, liftar" },
       { name: "Ischgl", type: "Exklusivt", jobs: "Restauranger, butiker" },
@@ -37,7 +37,7 @@ const skiDestinations = [
   },
   {
     country: "Schweiz", flag: "🇨🇭", region: "Valais & Graubünden", season: "November - April", avgSalary: "CHF 3,500-4,500/mån",
-    description: "Schweiz erbjuder de högsta lönerna i Alperna och spektakulära skidområden.",
+    description: "Schweiz erbjuder de högsta lönerna i Alperna och spektakulära skidområden. Här kan du spara rejält medan du lever i bergen.",
     resorts: [
       { name: "Zermatt", type: "Ikoniskt", jobs: "Hotell, restauranger" },
       { name: "Verbier", type: "Exklusivt", jobs: "Chalets, barer" },
@@ -50,7 +50,7 @@ const skiDestinations = [
   },
   {
     country: "Frankrike", flag: "🇫🇷", region: "Franska Alperna", season: "December - April", avgSalary: "€1,100-1,600/mån",
-    description: "Frankrike har några av världens största sammanlänkade skidområden.",
+    description: "Frankrike har några av världens största sammanlänkade skidområden. Fantastisk mat, bra skidåkning och en avslappnad livsstil.",
     resorts: [
       { name: "Val d'Isère", type: "Legendariskt", jobs: "Barer, hotell, liftar" },
       { name: "Chamonix", type: "Extrem", jobs: "Guider, uthyrning" },
@@ -60,71 +60,6 @@ const skiDestinations = [
     ],
     highlights: ["Enorma skidområden", "Bra mat", "Varierat"],
     jobUrl: "https://www.emploi.gouv.fr/", visaInfo: "EU-medborgare behöver inget visum",
-  },
-  {
-    country: "Italien", flag: "🇮🇹", region: "Dolomterna & Aosta", season: "December - Mars", avgSalary: "€1,000-1,400/mån",
-    description: "Italien erbjuder fantastisk mat, vänliga människor och spektakulära bergsvyer.",
-    resorts: [
-      { name: "Val Gardena", type: "Pittoreskt", jobs: "Hotell, restauranger" },
-      { name: "Cortina d'Ampezzo", type: "Glamoröst", jobs: "Butiker, hotell" },
-      { name: "Livigno", type: "Taxfree", jobs: "Butiker, barer" },
-      { name: "Courmayeur", type: "Charmigt", jobs: "Restauranger, guider" },
-      { name: "Madonna di Campiglio", type: "Elegant", jobs: "Hotell, spa" },
-    ],
-    highlights: ["Italiensk mat", "Dolomterna", "Taxfree i Livigno"],
-    jobUrl: "https://www.indeed.it/", visaInfo: "EU-medborgare kan jobba fritt",
-  },
-  {
-    country: "Andorra", flag: "🇦🇩", region: "Pyrenéerna", season: "December - April", avgSalary: "€1,200-1,600/mån",
-    description: "Andorra är ett litet furstendöme med taxfree-shopping och prisvärda skidorter.",
-    resorts: [
-      { name: "Grandvalira", type: "Största", jobs: "Liftar, hotell, barer" },
-      { name: "Vallnord", type: "Lugnt", jobs: "Skidskola, uthyrning" },
-      { name: "Soldeu", type: "Brittiskt", jobs: "Barer, restauranger" },
-      { name: "Pas de la Casa", type: "Festligt", jobs: "Nattklubbar, butiker" },
-      { name: "Arinsal", type: "Budget", jobs: "Hostels, barer" },
-    ],
-    highlights: ["Taxfree", "Prisvärt", "Spansk/Fransk kultur"],
-    jobUrl: "https://www.treball.ad/", visaInfo: "Kräver arbetstillstånd (ej EU)",
-  },
-  {
-    country: "Kanada", flag: "🇨🇦", region: "British Columbia & Alberta", season: "November - April", avgSalary: "CAD 2,500-3,500/mån",
-    description: "Kanada erbjuder legendarisk powder och enorma skidområden.",
-    resorts: [
-      { name: "Whistler", type: "Ikoniskt", jobs: "Allt från liftar till restauranger" },
-      { name: "Banff", type: "Nationalpark", jobs: "Hotell, guider" },
-      { name: "Revelstoke", type: "Powder", jobs: "Liftar, lodge" },
-      { name: "Big White", type: "Familjevänligt", jobs: "Skidskola, uthyrning" },
-      { name: "Sun Peaks", type: "Avlägset", jobs: "Hotell, restauranger" },
-    ],
-    highlights: ["Champagne powder", "Working Holiday", "Nordamerikansk kultur"],
-    jobUrl: "https://www.jobbank.gc.ca/", visaInfo: "Working Holiday (IEC) krävs",
-  },
-  {
-    country: "Japan", flag: "🇯🇵", region: "Hokkaido & Nagano", season: "December - Mars", avgSalary: "¥180,000-250,000/mån",
-    description: "Japan är känt för sin fantastiska powder och unika kultur.",
-    resorts: [
-      { name: "Niseko", type: "Powder paradise", jobs: "Hotell, restauranger, skidskola" },
-      { name: "Hakuba", type: "OS-ort", jobs: "Liftar, uthyrning" },
-      { name: "Nozawa Onsen", type: "Traditionellt", jobs: "Ryokan, onsen" },
-      { name: "Rusutsu", type: "Tree skiing", jobs: "Resort, hotell" },
-      { name: "Furano", type: "Avlägset", jobs: "Hotell, guider" },
-    ],
-    highlights: ["Japow (japansk powder)", "Gratis visum", "Unik kultur"],
-    jobUrl: "https://www.gaijinpot.com/jobs/", visaInfo: "Working Holiday (gratis)",
-  },
-  {
-    country: "Nya Zeeland", flag: "🇳🇿", region: "Södra ön", season: "Juni - Oktober", avgSalary: "NZD 22-28/tim",
-    description: "Nya Zeeland erbjuder skidsäsong under nordisk sommar. Perfekt för dig som vill förlänga vintern.",
-    resorts: [
-      { name: "Queenstown", type: "Äventyr", jobs: "Barer, hotell, äventyr" },
-      { name: "Wanaka", type: "Avslappnat", jobs: "Caféer, uthyrning" },
-      { name: "The Remarkables", type: "Spektakulärt", jobs: "Liftar, skidskola" },
-      { name: "Coronet Peak", type: "Nära stan", jobs: "Nattkidåkning, events" },
-      { name: "Cardrona", type: "Freestyle", jobs: "Parker, events" },
-    ],
-    highlights: ["Sommarsäsong", "Working Holiday", "Bungyjump"],
-    jobUrl: "https://www.seek.co.nz/", visaInfo: "Working Holiday krävs",
   },
 ];
 
@@ -173,7 +108,8 @@ const SkiSeason = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                8 destinationer
+                3 alpländer
+              </span>
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Välj din skidort
