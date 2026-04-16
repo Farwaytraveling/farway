@@ -1029,9 +1029,10 @@ const Destination = () => {
                             <Shield className="w-4 h-4 text-primary mb-1" />
                             <p className="text-sm font-semibold text-foreground">{selectedCity.detailedInfo.safety}</p>
                             <p className="text-xs text-muted-foreground">Säkerhet</p>
-                        </div>
-                      </>
-                    )}
+                          </div>
+                        </>
+                      )}
+                    </div>
 
                     {selectedCity.cityLinks && selectedCity.cityLinks.length > 0 && (
                       <div className="mt-6">
@@ -1087,8 +1088,7 @@ const Destination = () => {
                           );
                         })()}
                       </div>
-                    )
-                    </div>
+                    )}
 
                     <div className="mt-6">
                       <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
