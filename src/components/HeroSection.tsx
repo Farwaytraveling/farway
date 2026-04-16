@@ -1,60 +1,72 @@
-import { CheckCircle, Sparkles } from "lucide-react";
+import { ArrowDownRight, Sparkles } from "lucide-react";
 import { DestinationSearch } from "./DestinationSearch";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16">
-      {/* Layered background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-background to-accent/30" />
-      <div className="absolute top-20 -right-32 w-[500px] h-[500px] rounded-full bg-primary/[0.06] blur-3xl" />
-      <div className="absolute -bottom-20 -left-32 w-[400px] h-[400px] rounded-full bg-accent/20 blur-3xl" />
-      
-      {/* Decorative dots */}
-      <div className="absolute top-32 left-[15%] w-2 h-2 rounded-full bg-primary/20 animate-float" />
-      <div className="absolute top-48 right-[20%] w-3 h-3 rounded-full bg-primary/15 animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute bottom-32 left-[25%] w-2.5 h-2.5 rounded-full bg-primary/10 animate-float" style={{ animationDelay: '4s' }} />
+    <section className="relative border-b border-border/60 bg-background">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.08),transparent_35%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,hsl(var(--background)),hsl(var(--accent)/0.35))]" />
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary mb-8 text-sm font-medium border border-primary/15 shadow-sm">
-              <Sparkles className="w-4 h-4" />
-              <span>100% gratis jämförelsetjänst</span>
-            </div>
+      <div className="container mx-auto px-4 relative z-10 pt-28 pb-16 sm:pt-32 sm:pb-20 lg:pt-36 lg:pb-24">
+        <div className="flex items-center justify-between gap-4 border-y border-border/60 py-3 text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-3.5 h-3.5 text-primary" />
+            <span>100% gratis guide</span>
+          </div>
+          <span className="hidden sm:inline">Sverige → världen</span>
+        </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6 leading-[1.15] tracking-tight">
-              Hitta din väg
-              <span className="block text-primary">ut i världen</span>
-            </h1>
-
-            <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-              Få all den information som just du behöver innan ditt stora äventyr
+        <div className="grid gap-10 py-12 lg:grid-cols-12 lg:items-end lg:gap-8">
+          <div className="lg:col-span-8">
+            <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+              Editorial guide för unga svenskar
             </p>
+            <h1 className="font-display text-5xl font-light leading-[0.95] tracking-[-0.03em] text-foreground sm:text-6xl md:text-7xl lg:text-[92px]">
+              Hitta din väg
+              <span className="block italic text-primary">ut i världen.</span>
+            </h1>
+          </div>
 
-            {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
-              {[
-                { text: "Ingen kostnad", emoji: "💰" },
-                { text: "Oberoende jämförelser", emoji: "⚖️" },
-                { text: "Svenska partners", emoji: "🇸🇪" },
-              ].map((badge) => (
-                <div
-                  key={badge.text}
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-card border border-border/60 text-sm text-muted-foreground shadow-sm hover:shadow-md hover:border-primary/20 transition-all"
-                >
-                  <span>{badge.emoji}</span>
-                  {badge.text}
-                </div>
-              ))}
+          <div className="lg:col-span-4 lg:pb-2">
+            <p className="max-w-md text-base leading-8 text-muted-foreground sm:text-lg">
+              Allt du behöver för Working Holiday, skidsäsong, studier och Au Pair — samlat på ett snyggare,
+              smartare och mer inspirerande sätt.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-6 lg:grid-cols-12 lg:items-stretch">
+          <div className="lg:col-span-8">
+            <div className="border border-border/60 bg-card/70 p-3 shadow-soft backdrop-blur-sm sm:p-4">
+              <DestinationSearch />
             </div>
           </div>
 
-          {/* Search */}
-          <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
-            <DestinationSearch />
-          </div>
+          <div className="lg:col-span-4">
+            <div className="flex h-full flex-col justify-between border border-border/60 bg-secondary/30 p-6">
+              <div>
+                <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  Just nu i fokus
+                </p>
+                <div className="space-y-3">
+                  {[
+                    "Australien & NZ för Working Holiday",
+                    "London, Paris & Barcelona",
+                    "Skidsäsong i Alperna",
+                  ].map((item) => (
+                    <div key={item} className="border-b border-border/50 pb-3 text-sm text-foreground last:border-b-0 last:pb-0">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
+              <div className="mt-8 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+                <span>Scrolla vidare</span>
+                <ArrowDownRight className="w-4 h-4" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
