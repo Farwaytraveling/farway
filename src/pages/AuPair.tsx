@@ -133,13 +133,13 @@ const AuPair = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                10 populära länder
+                3 europeiska städer
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Hitta din värdfamilj
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                Från soliga Spanien till äventyrliga Australien – här är de bästa länderna.
+                London, Paris eller Barcelona – Europas mest populära au pair-städer.
               </p>
             </div>
 
