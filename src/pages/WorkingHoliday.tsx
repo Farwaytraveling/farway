@@ -90,74 +90,7 @@ const workingHolidayCountries = [
     highlights: ["Gratis visum", "Unik kultur", "Tech & tradition"],
     applyUrl: "https://www.se.emb-japan.go.jp/",
   },
-  {
-    country: "Sydkorea",
-    flag: "🇰🇷",
-    visaType: "Working Holiday Visa (H-1)",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "~$50 USD",
-    description: "För K-pop och tech-entusiaster. Seoul erbjuder ett spännande stadsliv med unika jobbmöjligheter.",
-    highlights: ["K-culture", "Tech-industri", "Låg kostnad"],
-    applyUrl: "https://overseas.mofa.go.kr/se-sv/",
-  },
-  {
-    country: "Taiwan",
-    flag: "🇹🇼",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "Gratis",
-    description: "Gratis visum och vänligt folk. Perfekt för den som vill uppleva kinesisk kultur i en demokratisk miljö.",
-    highlights: ["Gratis visum", "Låg levnadskostnad", "Naturskönt"],
-    applyUrl: "https://www.roc-taiwan.org/se/",
-  },
-  {
-    country: "Hongkong",
-    flag: "🇭🇰",
-    visaType: "Working Holiday Scheme",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "~$230 HKD",
-    description: "Internationell storstad med unika möjligheter inom finans och handel.",
-    highlights: ["Finans-hub", "Internationellt", "Stadsliv"],
-    applyUrl: "https://www.immd.gov.hk/eng/services/visas/working_holiday_scheme.html",
-  },
-  {
-    country: "Argentina",
-    flag: "🇦🇷",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-35 år",
-    duration: "12 månader",
-    cost: "Varierar",
-    description: "Sydamerikas pärla för äventyrare. Tango, biffstek och Patagoniens vildmark väntar.",
-    highlights: ["Spanska", "Tango", "Patagonien"],
-    applyUrl: "https://cancilleria.gob.ar/",
-  },
-  {
-    country: "Chile",
-    flag: "🇨🇱",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
-    duration: "12 månader",
-    cost: "Gratis",
-    description: "Från Atacamaöknen till Patagoniens glaciärer. Chile erbjuder otrolig geografisk mångfald.",
-    highlights: ["Gratis visum", "Vinregioner", "Äventyr"],
-    applyUrl: "https://chile.gob.cl/suecia/",
-  },
-  {
-    country: "Uruguay",
-    flag: "🇺🇾",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18-35 år",
-    duration: "12 månader",
-    cost: "Varierar",
-    description: "Sydamerikas dolda pärla. Lugnt tempo, vackra stränder och avslappnad kultur.",
-    highlights: ["Avslappnat", "Stränder", "Montevideo"],
-    applyUrl: "https://www.gub.uy/",
-  },
 ];
-
 const WorkingHoliday = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -203,7 +136,7 @@ const WorkingHoliday = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                10 länder med avtal
+                4 länder med avtal
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Vart vill du åka?
