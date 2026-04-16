@@ -15,34 +15,25 @@ export default {
   	extend: {
   		fontFamily: {
   			sans: [
-  				'Poppins',
-  				'ui-sans-serif',
-  				'system-ui',
-  				'sans-serif',
-  				'Apple Color Emoji',
-  				'Segoe UI Emoji',
-  				'Segoe UI Symbol',
-  				'Noto Color Emoji'
+  				'"Comic Sans MS"',
+  				'"Comic Sans"',
+  				'cursive',
   			],
   			display: [
-  				'Merriweather',
-  				'Georgia',
-  				'serif'
+  				'"Comic Sans MS"',
+  				'"Comic Sans"',
+  				'cursive',
   			],
   			serif: [
-  				'Crimson Pro',
-  				'ui-serif',
-  				'Georgia',
-  				'Cambria',
-  				'Times New Roman',
-  				'Times',
-  				'serif'
+  				'"Comic Sans MS"',
+  				'"Comic Sans"',
+  				'cursive',
   			],
   			mono: [
-  				'Space Mono',
-  				'ui-monospace',
-  				'SFMono-Regular',
-  				'Menlo',
+  				'"Comic Sans MS"',
+  				'"Comic Sans"',
+  				'cursive',
+  			],
   				'Monaco',
   				'Consolas',
   				'Liberation Mono',
