@@ -3,7 +3,7 @@ import { DestinationSearch } from "./DestinationSearch";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center pt-20 pb-16">
       {/* Layered background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-background to-accent/30" />
       <div className="absolute top-20 -right-32 w-[500px] h-[500px] rounded-full bg-primary/[0.06] blur-3xl" />
