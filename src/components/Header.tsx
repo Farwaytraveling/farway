@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Globe, Menu, X, Plane, GraduationCap, Heart, Snowflake, Briefcase, Baby } from "lucide-react";
+import { Globe, Menu, X, Plane, GraduationCap, Heart, Snowflake, Baby } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {
@@ -11,12 +11,10 @@ import {
 } from "@/components/ui/dialog";
 
 const programOptions = [
-  { icon: Plane, label: "Working Holiday", description: "Jobba och res utomlands", href: "/working-holiday" },
-  { icon: Baby, label: "Au Pair", description: "Bo hos en värdfamilj", href: "/au-pair" },
-  { icon: Heart, label: "Volontärarbete", description: "Gör skillnad i världen", href: "/volontararbete" },
-  { icon: GraduationCap, label: "Studera Utomlands", description: "Utbilda dig internationellt", href: "/studera-utomlands" },
-  { icon: Briefcase, label: "Praktik Utomlands", description: "Få internationell erfarenhet", href: "/praktik-utomlands" },
-  { icon: Snowflake, label: "Skidsäsong", description: "Jobba på skidort", href: "/skidsasong" },
+  { icon: Plane, label: "Working Holiday", description: "Australien, NZ, Kanada & Japan", href: "/working-holiday" },
+  { icon: Snowflake, label: "Skidsäsong", description: "Jobba i Alperna", href: "/ski-season" },
+  { icon: GraduationCap, label: "Studera Utomlands", description: "London, Paris & Barcelona", href: "/studera-utomlands" },
+  { icon: Baby, label: "Au Pair", description: "Bo hos en europeisk familj", href: "/au-pair" },
 ];
 
 export const Header = () => {
