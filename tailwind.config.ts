@@ -34,12 +34,6 @@ export default {
   				'"Comic Sans"',
   				'cursive',
   			],
-  				'Monaco',
-  				'Consolas',
-  				'Liberation Mono',
-  				'Courier New',
-  				'monospace'
-  			]
   		},
   		colors: {
   			border: 'hsl(var(--border))',
