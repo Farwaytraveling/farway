@@ -216,7 +216,7 @@ export const DestinationSearch = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative z-20">
       {/* Search Input */}
       <div className="relative max-w-2xl mx-auto">
         <div className="bg-card rounded-lg shadow-medium border border-border p-1.5">
