@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 const footerLinks = {
   program: [
     { label: "Working Holiday", href: "/working-holiday" },
-    { label: "Au Pair", href: "/au-pair" },
-    { label: "Volontärarbete", href: "/volontararbete" },
+    { label: "Skidsäsong i Alperna", href: "/ski-season" },
     { label: "Studera utomlands", href: "/studera-utomlands" },
-    { label: "Praktik utomlands", href: "/praktik-utomlands" },
-    { label: "Skidsäsong", href: "/ski-season" },
+    { label: "Au Pair", href: "/au-pair" },
   ],
-  destinations: ["Australien", "Nya Zeeland", "Kanada", "USA", "Thailand", "Japan"],
+  destinations: ["Australien", "Nya Zeeland", "USA", "Paris", "Alperna", "Sydostasien", "Sydamerika"],
   company: ["Om oss", "Blogg", "Integritetspolicy"],
 };
 
