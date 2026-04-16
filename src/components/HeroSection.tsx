@@ -12,27 +12,41 @@ export const HeroSection = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="border-b border-border/40 bg-background">
-      {/* Horizontal scrollable filter bar — like ednia's program filter */}
-      <div className="container mx-auto px-4">
-        <div className="flex items-center gap-3 py-3 overflow-x-auto scrollbar-hide">
-          <button
-            className="flex flex-col items-center gap-1 px-4 py-2 rounded-lg text-primary border-b-2 border-primary shrink-0 transition-all"
-          >
-            <span className="text-xs font-medium whitespace-nowrap">Alla program</span>
-          </button>
-          {filters.map((f) => (
-            <button
-              key={f.label}
-              onClick={() => navigate(f.href)}
-              className="flex flex-col items-center gap-1 px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 shrink-0 transition-all"
-            >
-              <f.icon className="w-5 h-5" />
-              <span className="text-xs font-medium whitespace-nowrap">{f.label}</span>
+    <>
+      {/* Welcome hero */}
+      <section className="bg-gradient-to-b from-primary/5 to-background py-16 sm:py-24 text-center">
+        <div className="container mx-auto px-4 max-w-2xl">
+          <p className="text-sm font-mono uppercase tracking-widest text-primary mb-4">Farway</p>
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-foreground">
+            Hitta din väg<br />
+            <span className="italic text-primary font-normal">ut i världen.</span>
+          </h1>
+          <p className="mt-6 text-muted-foreground text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+            Utforska program, destinationer och möjligheter för dig som vill jobba, studera eller uppleva något nytt utomlands.
+          </p>
+        </div>
+      </section>
+
+      {/* Filter bar */}
+      <div className="border-b border-border/40 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center gap-3 py-3 overflow-x-auto scrollbar-hide">
+            <button className="flex flex-col items-center gap-1 px-4 py-2 rounded-lg text-primary border-b-2 border-primary shrink-0 transition-all">
+              <span className="text-xs font-medium whitespace-nowrap">Alla program</span>
             </button>
-          ))}
+            {filters.map((f) => (
+              <button
+                key={f.label}
+                onClick={() => navigate(f.href)}
+                className="flex flex-col items-center gap-1 px-4 py-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/40 shrink-0 transition-all"
+              >
+                <f.icon className="w-5 h-5" />
+                <span className="text-xs font-medium whitespace-nowrap">{f.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
