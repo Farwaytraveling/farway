@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Briefcase, Clock, DollarSign, User, ExternalLink, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import heroImg from "@/assets/hero-working-holiday.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -163,11 +164,10 @@ const WorkingHoliday = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative py-24 sm:py-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-primary/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.12),transparent_50%)]" />
-          <div className="absolute top-10 right-10 text-8xl opacity-[0.06] select-none hidden sm:block">🌏</div>
-          <div className="absolute bottom-10 left-10 text-6xl opacity-[0.06] select-none hidden sm:block">✈️</div>
+        <section className="relative py-28 sm:py-36 overflow-hidden">
+          <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={768} />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent" />
           <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-3xl">
               <span className="inline-flex items-center gap-2 text-sm font-medium bg-primary-foreground/15 backdrop-blur-sm text-primary-foreground px-4 py-1.5 rounded-full mb-6 border border-primary-foreground/20">
