@@ -154,10 +154,10 @@ const StuderaUtomlands = () => {
                 Studera utomlands
               </h1>
               <p className="text-xl sm:text-2xl text-white/90 mb-4 font-light leading-relaxed">
-                Bredda dina horisonter med studier i ett nytt land.
+                Studera i London, Paris eller Barcelona.
               </p>
               <p className="text-lg text-white/70 mb-10 max-w-xl">
-                Universitetsstudier, språkkurser eller utbytesprogram – ta steget och bygg ett internationellt nätverk.
+                Europas tre mest populära studentstäder – universitetsstudier, språkkurser eller utbytesprogram.
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
