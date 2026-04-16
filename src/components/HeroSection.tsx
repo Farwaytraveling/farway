@@ -16,12 +16,12 @@ export const HeroSection = () => {
       {/* Welcome hero */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 sm:py-24 text-center">
         <div className="container mx-auto px-4 max-w-2xl">
-          <p className="text-sm font-mono uppercase tracking-widest text-primary mb-4">Farway</p>
+          <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>Farway</p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
             Hitta din väg<br />
             <span className="italic text-primary">ut i världen.</span>
           </h1>
-          <p className="mt-6 text-muted-foreground text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+          <p className="mt-6 text-muted-foreground text-base sm:text-lg max-w-md mx-auto leading-relaxed font-bold" style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }}>
             Utforska program, destinationer och möjligheter för dig som vill jobba, studera eller uppleva något nytt utomlands.
           </p>
         </div>
