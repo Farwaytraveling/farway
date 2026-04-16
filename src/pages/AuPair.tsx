@@ -85,6 +85,32 @@ const auPairCountries = [
     cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Málaga"],
     applyUrl: "https://www.aupairworld.com/en/au_pair_program/spain",
   },
+  {
+    country: "Australien",
+    flag: "🇦🇺",
+    programType: "Working Holiday Visa (subclass 462)",
+    ageLimit: "18-30 år",
+    duration: "Upp till 12 månader",
+    cost: "~$510 AUD",
+    weeklyPay: "$200-350 AUD/vecka",
+    description: "Kombinera au pair med det australiska äventyret. Upplev surfkultur, vilda djur och en avslappnad livsstil medan du bor hos en australisk familj.",
+    highlights: ["Sydney", "Engelska", "Strandliv"],
+    cities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Gold Coast"],
+    applyUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462",
+  },
+  {
+    country: "Italien",
+    flag: "🇮🇹",
+    programType: "Au Pair (inget visum krävs)",
+    ageLimit: "18-30 år",
+    duration: "3-12 månader",
+    cost: "Inget visum behövs (EU)",
+    weeklyPay: "€60-80/vecka",
+    description: "Lev la dolce vita! Lär dig italienska medan du bor hos en familj i Rom eller Milano – med pasta, gelato och historia runt varje hörn.",
+    highlights: ["Rom", "Italienska", "Mat & historia"],
+    cities: ["Rom", "Milano", "Florens", "Neapel", "Turin"],
+    applyUrl: "https://www.aupairworld.com/en/au_pair_program/italy",
+  },
 ];
 
 const AuPair = () => {
@@ -133,13 +159,13 @@ const AuPair = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                3 europeiska städer
+                5 populära länder
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Hitta din värdfamilj
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                London, Paris eller Barcelona – Europas mest populära au pair-städer.
+                London, Paris, Barcelona, Sydney eller Rom – välj din drömstad.
               </p>
             </div>
 
