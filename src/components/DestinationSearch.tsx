@@ -37,110 +37,34 @@ const allActivities: Record<string, { label: string; emoji: string }> = {
 };
 
 const destinations: Destination[] = [
-  // Populära destinationer
-  { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", slug: "australien", activities: ["working-holiday", "farm-work", "backpacking", "surfing", "dykning", "digital-nomad"],
+  // Populära destinationer (de 7 som visas på startsidan)
+  { name: "Australien", flag: "🇦🇺", region: "Oceanien", visaInfo: "Working Holiday Visa (417), 18-30 år", slug: "australien", activities: ["working-holiday"],
     resources: { visa: [{ name: "Working Holiday Visa (417)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417", official: true }], jobs: [{ name: "Seek", url: "https://www.seek.com.au", official: false }, { name: "Harvest Trail", url: "https://jobsearch.gov.au/harvest", official: true }], community: [{ name: "Svenska i Australien (FB)", url: "https://www.facebook.com/groups/svenskaiAustralien", official: false }] } },
-  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", slug: "nya-zeeland", activities: ["working-holiday", "backpacking", "vandring", "farm-work", "surfing"],
+  { name: "Nya Zeeland", flag: "🇳🇿", region: "Oceanien", visaInfo: "Working Holiday Visa, 18-30 år", slug: "nya-zeeland", activities: ["working-holiday"],
     resources: { visa: [{ name: "Immigration NZ - WHV", url: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa", official: true }], jobs: [{ name: "Seek NZ", url: "https://www.seek.co.nz", official: false }], community: [{ name: "Svenska i Nya Zeeland (FB)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false }] } },
-  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", slug: "usa", activities: ["au-pair", "studera", "praktik", "sommarsasong", "backpacking", "digital-nomad"],
-    resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }, { name: "Camp America", url: "https://www.campamerica.co.uk", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
-  { name: "Paris", flag: "🗼", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "paris", activities: ["au-pair", "studera", "sprakresa", "kultur", "mat"] },
-  { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", slug: "_alperna", activities: ["skidsasong", "vandring", "sommarsasong"] },
-  { name: "Sydostasien", flag: "🌴", region: "Asien", visaInfo: "Varierar per land", slug: "_sydostasien", activities: ["backpacking", "dykning", "yoga", "volontar", "digital-nomad", "surfing"] },
-  { name: "Sydamerika", flag: "🌎", region: "Sydamerika", visaInfo: "Varierar per land", slug: "_sydamerika", activities: ["backpacking", "volontar", "sprakresa", "vandring", "kultur"] },
+  { name: "USA", flag: "🇺🇸", region: "Nordamerika", visaInfo: "J-1 Visum, 18-28 år", slug: "usa", activities: ["au-pair", "studera"],
+    resources: { visa: [{ name: "J-1 Visa Info", url: "https://j1visa.state.gov/", official: true }], jobs: [{ name: "Cultural Care Au Pair", url: "https://www.culturalcare.se", official: false }], community: [{ name: "Au Pair i USA (FB)", url: "https://www.facebook.com/groups/aupairiusa", official: false }] } },
+  { name: "Paris", flag: "🗼", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "paris", activities: ["au-pair", "studera"] },
+  { name: "Alperna", flag: "🏔️", region: "Europa", visaInfo: "Flera länder, oftast fritt inom EU", slug: "_alperna", activities: ["skidsasong"] },
+  { name: "Sydostasien", flag: "🌴", region: "Asien", visaInfo: "Varierar per land", slug: "_sydostasien", activities: [] },
+  { name: "Sydamerika", flag: "🌎", region: "Sydamerika", visaInfo: "Varierar per land", slug: "_sydamerika", activities: [] },
 
-  // Övriga destinationer
+  // Working Holiday-länder
+  { name: "Kanada", flag: "🇨🇦", region: "Nordamerika", visaInfo: "Working Holiday (IEC), 18-35 år", activities: ["working-holiday"],
+    resources: { visa: [{ name: "IEC Canada", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html", official: true }] } },
+  { name: "Japan", flag: "🇯🇵", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday"],
+    resources: { visa: [{ name: "Japanska ambassaden", url: "https://www.se.emb-japan.go.jp/", official: true }], jobs: [{ name: "GaijinPot Jobs", url: "https://jobs.gaijinpot.com/", official: false }] } },
 
-  // Nordamerika
-  { name: "Mexiko", flag: "🇲🇽", region: "Nordamerika", visaInfo: "Turistvisum 180 dagar", activities: ["backpacking", "digital-nomad", "sprakresa", "dykning", "surfing", "yoga", "kultur"] },
-  { name: "Costa Rica", flag: "🇨🇷", region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "surfing", "yoga", "backpacking", "sprakresa", "digital-nomad"] },
-  { name: "Panama", flag: "🇵🇦", region: "Centralamerika", visaInfo: "Turistvisum 180 dagar", activities: ["digital-nomad", "backpacking", "dykning"] },
-  { name: "Guatemala", flag: "🇬🇹", region: "Centralamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "sprakresa", "backpacking", "kultur"] },
-  { name: "Kuba", flag: "🇨🇺", region: "Karibien", visaInfo: "Turistkort krävs", activities: ["backpacking", "kultur", "musik", "sprakresa"] },
-
-  // Sydamerika
-  { name: "Argentina", flag: "🇦🇷", region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: ["working-holiday", "sprakresa", "backpacking", "vandring", "kultur", "mat"] },
-  { name: "Brasilien", flag: "🇧🇷", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["backpacking", "surfing", "volontar", "musik", "kultur"] },
-  { name: "Colombia", flag: "🇨🇴", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "sprakresa", "backpacking", "surfing", "kultur"] },
-  { name: "Peru", flag: "🇵🇪", region: "Sydamerika", visaInfo: "Turistvisum 183 dagar", activities: ["backpacking", "vandring", "volontar", "kultur", "sprakresa"] },
-  { name: "Chile", flag: "🇨🇱", region: "Sydamerika", visaInfo: "Working Holiday tillgängligt", activities: ["working-holiday", "backpacking", "vandring", "skidsasong"] },
-  { name: "Ecuador", flag: "🇪🇨", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "backpacking", "sprakresa", "dykning"] },
-  { name: "Bolivia", flag: "🇧🇴", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["backpacking", "vandring", "volontar", "kultur"] },
-  { name: "Uruguay", flag: "🇺🇾", region: "Sydamerika", visaInfo: "Turistvisum 90 dagar", activities: ["digital-nomad", "backpacking", "surfing"] },
-
-  // Europa
-  { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "surfing", "sprakresa", "sommarsasong", "kultur"] },
-  { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "vandring", "kultur", "sommarsasong"],
-    resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }], community: [{ name: "Säsongsarbete Alperna (FB)", url: "https://www.facebook.com/groups/sasongsarbetealperna", official: false }] } },
-  { name: "Schweiz", flag: "🇨🇭", region: "Europa", visaInfo: "Uppehållstillstånd krävs", activities: ["skidsasong", "vandring", "au-pair", "sommarsasong"],
+  // Skidsäsong i Alperna
+  { name: "Österrike", flag: "🇦🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong"],
+    resources: { jobs: [{ name: "Seasonaires Österrike", url: "https://www.seasonaires.com/ski-jobs/austria/", official: false }, { name: "AMS Österrike", url: "https://www.ams.at/", official: true }] } },
+  { name: "Schweiz", flag: "🇨🇭", region: "Europa", visaInfo: "EU-medborgare kan jobba fritt", activities: ["skidsasong"],
     resources: { jobs: [{ name: "Seasonaires Schweiz", url: "https://www.seasonaires.com/ski-jobs/switzerland/", official: false }] } },
-  { name: "Grekland", flag: "🇬🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "kultur", "yoga"] },
-  { name: "Kroatien", flag: "🇭🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sommarsasong", "backpacking", "dykning", "surfing"] },
-  { name: "Irland", flag: "🇮🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["working-holiday", "studera", "sprakresa", "kultur", "musik"] },
-  { name: "Nederländerna", flag: "🇳🇱", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "digital-nomad", "kultur"] },
-  { name: "Andorra", flag: "🇦🇩", region: "Europa", visaInfo: "Arbetstillstånd krävs", activities: ["skidsasong"] },
-  { name: "Island", flag: "🇮🇸", region: "Europa", visaInfo: "Nordisk medborgare, fritt", activities: ["sommarsasong", "vandring", "volontar"] },
-  { name: "Malta", flag: "🇲🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["sprakresa", "dykning", "digital-nomad", "sommarsasong"] },
-  { name: "Tjeckien", flag: "🇨🇿", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "kultur", "digital-nomad"] },
-  { name: "Polen", flag: "🇵🇱", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "praktik", "kultur", "vandring"] },
-  { name: "Ungern", flag: "🇭🇺", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["studera", "kultur", "digital-nomad"] },
-  { name: "Rumänien", flag: "🇷🇴", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["volontar", "vandring", "kultur", "digital-nomad"] },
-  { name: "Bulgarien", flag: "🇧🇬", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "sommarsasong", "digital-nomad"] },
-  { name: "Estland", flag: "🇪🇪", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["digital-nomad", "studera", "kultur"] },
-  { name: "Turkiet", flag: "🇹🇷", region: "Europa/Asien", visaInfo: "E-visum, 90 dagar", activities: ["backpacking", "kultur", "sommarsasong", "surfing", "mat"] },
-  { name: "Montenegro", flag: "🇲🇪", region: "Europa", visaInfo: "Visumfritt 90 dagar", activities: ["sommarsasong", "backpacking", "digital-nomad"] },
-  { name: "Albanien", flag: "🇦🇱", region: "Europa", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "digital-nomad", "vandring"] },
-  { name: "Georgien", flag: "🇬🇪", region: "Europa/Asien", visaInfo: "Visumfritt 1 år", activities: ["digital-nomad", "vandring", "kultur", "mat", "skidsasong"] },
+  { name: "Frankrike", flag: "🇫🇷", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["skidsasong", "au-pair", "studera"] },
 
-  // Asien
-  { name: "Japan", flag: "🇯🇵", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning", "vandring", "skidsasong"],
-    resources: { visa: [{ name: "Japanska ambassaden", url: "https://www.se.emb-japan.go.jp/", official: true }], jobs: [{ name: "GaijinPot Jobs", url: "https://jobs.gaijinpot.com/", official: false }], community: [{ name: "Svenskar i Japan (FB)", url: "https://www.facebook.com/groups/svenskarijapan", official: false }] } },
-  { name: "Sydkorea", flag: "🇰🇷", region: "Asien", visaInfo: "Working Holiday (H-1), 18-30 år", activities: ["working-holiday", "studera", "kultur", "undervisning"],
-    resources: { visa: [{ name: "Korea Immigration", url: "https://www.immigration.go.kr/", official: true }] } },
-  { name: "Vietnam", flag: "🇻🇳", region: "Asien", visaInfo: "E-Visa 90 dagar", activities: ["backpacking", "digital-nomad", "undervisning", "volontar", "mat"],
-    resources: { visa: [{ name: "Vietnam E-Visa", url: "https://evisa.xuatnhapcanh.gov.vn/", official: true }] } },
-  { name: "Indonesien", flag: "🇮🇩", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["backpacking", "surfing", "dykning", "yoga", "digital-nomad", "volontar"] },
-  { name: "Bali", flag: "🇮🇩", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["digital-nomad", "surfing", "yoga", "kultur", "mat"] },
-  { name: "Filippinerna", flag: "🇵🇭", region: "Asien", visaInfo: "Visumfritt 30 dagar", activities: ["backpacking", "dykning", "surfing", "sprakresa", "volontar", "digital-nomad"] },
-  { name: "Kambodja", flag: "🇰🇭", region: "Asien", visaInfo: "E-Visa 30 dagar", activities: ["backpacking", "volontar", "undervisning", "kultur"] },
-  { name: "Laos", flag: "🇱🇦", region: "Asien", visaInfo: "Visa on Arrival 30 dagar", activities: ["backpacking", "volontar", "vandring"] },
-  { name: "Myanmar", flag: "🇲🇲", region: "Asien", visaInfo: "E-Visa 28 dagar", activities: ["backpacking", "kultur", "volontar"] },
-  { name: "Sri Lanka", flag: "🇱🇰", region: "Asien", visaInfo: "ETA 30 dagar", activities: ["backpacking", "surfing", "yoga", "volontar", "dykning"] },
-  { name: "Nepal", flag: "🇳🇵", region: "Asien", visaInfo: "Visa on Arrival 90 dagar", activities: ["vandring", "volontar", "yoga", "backpacking"] },
-  { name: "Indien", flag: "🇮🇳", region: "Asien", visaInfo: "E-Visa 60 dagar", activities: ["backpacking", "yoga", "volontar", "kultur", "sprakresa"] },
-  { name: "Kina", flag: "🇨🇳", region: "Asien", visaInfo: "Visum krävs", activities: ["studera", "undervisning", "kultur", "praktik", "sprakresa"] },
-  { name: "Taiwan", flag: "🇹🇼", region: "Asien", visaInfo: "Working Holiday, 18-30 år", activities: ["working-holiday", "studera", "undervisning", "kultur", "vandring"] },
-  { name: "Malaysia", flag: "🇲🇾", region: "Asien", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "dykning", "digital-nomad", "mat"] },
-  { name: "Singapore", flag: "🇸🇬", region: "Asien", visaInfo: "Visumfritt 90 dagar", activities: ["praktik", "studera", "kultur", "mat"] },
-  { name: "Mongoliet", flag: "🇲🇳", region: "Asien", visaInfo: "Visumfritt 30 dagar", activities: ["backpacking", "vandring", "volontar", "kultur"] },
-
-  // Mellanöstern
-  { name: "Israel", flag: "🇮🇱", region: "Mellanöstern", visaInfo: "Turistvisum 90 dagar", activities: ["volontar", "studera", "kultur", "vandring"] },
-  { name: "Jordanien", flag: "🇯🇴", region: "Mellanöstern", visaInfo: "Visa on Arrival", activities: ["backpacking", "kultur", "vandring", "dykning"] },
-  { name: "Förenade Arabemiraten", flag: "🇦🇪", region: "Mellanöstern", visaInfo: "Visumfritt 90 dagar", activities: ["praktik", "digital-nomad", "sommarsasong"] },
-  { name: "Oman", flag: "🇴🇲", region: "Mellanöstern", visaInfo: "E-Visa", activities: ["backpacking", "vandring", "dykning", "kultur"] },
-
-  // Afrika
-  { name: "Sydafrika", flag: "🇿🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["volontar", "safari", "surfing", "backpacking", "dykning"] },
-  { name: "Tanzania", flag: "🇹🇿", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["safari", "vandring", "volontar", "dykning", "backpacking"] },
-  { name: "Kenya", flag: "🇰🇪", region: "Afrika", visaInfo: "E-Visa", activities: ["safari", "volontar", "backpacking"] },
-  { name: "Marocko", flag: "🇲🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "surfing", "sprakresa", "kultur", "yoga"] },
-  { name: "Egypten", flag: "🇪🇬", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["backpacking", "dykning", "kultur"] },
-  { name: "Ghana", flag: "🇬🇭", region: "Afrika", visaInfo: "Visum krävs", activities: ["volontar", "kultur", "undervisning"] },
-  { name: "Uganda", flag: "🇺🇬", region: "Afrika", visaInfo: "E-Visa", activities: ["volontar", "safari", "vandring"] },
-  { name: "Madagaskar", flag: "🇲🇬", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["volontar", "backpacking", "safari"] },
-  { name: "Senegal", flag: "🇸🇳", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["volontar", "surfing", "kultur", "musik"] },
-  { name: "Namibia", flag: "🇳🇦", region: "Afrika", visaInfo: "Visumfritt 90 dagar", activities: ["safari", "backpacking", "vandring", "volontar"] },
-  { name: "Moçambique", flag: "🇲🇿", region: "Afrika", visaInfo: "E-Visa", activities: ["dykning", "backpacking", "volontar", "surfing"] },
-  { name: "Rwanda", flag: "🇷🇼", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["volontar", "safari", "vandring"] },
-  { name: "Etiopien", flag: "🇪🇹", region: "Afrika", visaInfo: "E-Visa", activities: ["backpacking", "vandring", "kultur", "volontar"] },
-  { name: "Zanzibar", flag: "🇹🇿", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["dykning", "backpacking", "yoga", "volontar"] },
-  { name: "Kapverde", flag: "🇨🇻", region: "Afrika", visaInfo: "Visa on Arrival", activities: ["surfing", "backpacking", "vandring", "musik"] },
-
-  // Karibien
-  { name: "Jamaica", flag: "🇯🇲", region: "Karibien", visaInfo: "Visumfritt 90 dagar", activities: ["backpacking", "surfing", "musik", "volontar"] },
-  { name: "Dominikanska republiken", flag: "🇩🇴", region: "Karibien", visaInfo: "Turistkort vid ankomst", activities: ["backpacking", "surfing", "volontar", "sprakresa"] },
-  { name: "Barbados", flag: "🇧🇧", region: "Karibien", visaInfo: "Visumfritt 6 mån", activities: ["digital-nomad", "surfing", "dykning"] },
+  // Studera & Au Pair-städer
+  { name: "Storbritannien", flag: "🇬🇧", region: "Europa", visaInfo: "Youth Mobility Scheme, 18-30 år", activities: ["au-pair", "studera"] },
+  { name: "Spanien", flag: "🇪🇸", region: "Europa", visaInfo: "EU-medborgare, fritt", activities: ["au-pair", "studera"] },
 ];
 
 // Populära städer/platser som alternativa söktermer
