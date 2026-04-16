@@ -34,20 +34,6 @@ const allActivities: Record<string, { label: string; emoji: string }> = {
   "au-pair": { label: "Au Pair", emoji: "👶" },
   "studera": { label: "Studera", emoji: "🎓" },
   "skidsasong": { label: "Skidsäsong", emoji: "⛷️" },
-  "backpacking": { label: "Backpacking", emoji: "🎒" },
-  "sprakresa": { label: "Språkresa", emoji: "📚" },
-  "digital-nomad": { label: "Digital Nomad", emoji: "🌐" },
-  "dykning": { label: "Dykning", emoji: "🤿" },
-  "surfing": { label: "Surfing", emoji: "🏄" },
-  "yoga": { label: "Yoga & Wellness", emoji: "🧘" },
-  "farm-work": { label: "Farm Work", emoji: "🌾" },
-  "undervisning": { label: "Undervisa engelska", emoji: "📖" },
-  "safari": { label: "Safari & Natur", emoji: "🦁" },
-  "kultur": { label: "Kultur & Historia", emoji: "🏛️" },
-  "mat": { label: "Mat & Gastronomi", emoji: "🍽️" },
-  "sommarsasong": { label: "Sommarsäsong", emoji: "☀️" },
-  "musik": { label: "Musik & Festivaler", emoji: "🎵" },
-  "vandring": { label: "Vandring", emoji: "🥾" },
 };
 
 const destinations: Destination[] = [
