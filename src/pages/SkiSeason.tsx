@@ -110,12 +110,11 @@ const SkiSeason = () => {
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
                 3 alpländer
               </span>
-              </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Välj din skidort
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                Europas Alper, Kanadas powder eller Japans unika snö – vart drar du?
+                Österrike, Schweiz eller Frankrike – de tre mest populära alpländerna för säsongsjobb.
               </p>
             </div>
 
