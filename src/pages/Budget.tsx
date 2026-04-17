@@ -115,13 +115,13 @@ const Budget = () => {
                       className="mt-1.5"
                     />
                     {destination && !country && (
-                      <p className="text-xs text-amber-600 mt-1.5 flex items-start gap-1">
+                      <p className="text-xs text-destructive mt-1.5 flex items-start gap-1">
                         <AlertCircle className="w-3 h-3 mt-0.5 shrink-0" />
                         Vi har inte data för just det landet än. Prova ett annat.
                       </p>
                     )}
                     {country && (
-                      <p className="text-xs text-emerald-600 mt-1.5">
+                      <p className="text-xs text-primary mt-1.5">
                         ✓ Hittade {country.data.name}
                       </p>
                     )}
@@ -222,7 +222,7 @@ const Budget = () => {
               ) : !country ? (
                 <Card>
                   <CardContent className="py-12 text-center">
-                    <AlertCircle className="w-10 h-10 text-amber-500 mx-auto mb-3" />
+                    <AlertCircle className="w-10 h-10 text-destructive mx-auto mb-3" />
                     <h3 className="font-display text-lg text-foreground mb-2">
                       Vi behöver en destination
                     </h3>
