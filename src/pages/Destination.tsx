@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane, Syringe, AlertTriangle } from "lucide-react";
 import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
+import { udTravelInfo, defaultUDInfo } from "@/data/udTravelInfo";
 
 type CityLink = {
   name: string;
@@ -1365,6 +1366,105 @@ const Destination = () => {
                           </a>
                         ))}
                       </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Säkerhet & UD-reseråd */}
+            {(() => {
+              const ud = (slug && udTravelInfo[slug]) || defaultUDInfo;
+              const udRiskColors: Record<string, string> = {
+                "låg": "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20",
+                "medel": "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
+                "hög": "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
+                "avrådan": "bg-red-600/15 text-red-800 dark:text-red-300 border-red-600/30",
+              };
+              const udRiskLabel: Record<string, string> = {
+                "låg": "LÅG RISK",
+                "medel": "MEDELRISK",
+                "hög": "HÖG RISK",
+                "avrådan": "UD AVRÅDER",
+              };
+              return (
+                <div className="rounded-3xl border border-border bg-card p-8 mb-16 shadow-sm">
+                  <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+                    <Shield className="w-6 h-6 inline-block mr-2 text-primary" />
+                    Säkerhet & UD-reseråd
+                  </h2>
+                  <p className="text-muted-foreground mb-6 text-sm">
+                    Information från Utrikesdepartementet (UD). Kontrollera alltid aktuell reseinformation före avresa.
+                  </p>
+
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-3 flex-wrap">
+                      <span className={`text-xs font-semibold px-3 py-1.5 rounded-full border ${udRiskColors[ud.riskLevel]}`}>
+                        {udRiskLabel[ud.riskLevel]}
+                      </span>
+                      <span className="text-sm text-muted-foreground flex-1 min-w-[200px]">{ud.summary}</span>
+                    </div>
+
+                    <div className="bg-muted/40 rounded-2xl p-5">
+                      <h4 className="font-semibold text-foreground text-sm mb-3 flex items-center gap-2">
+                        <AlertTriangle className="w-4 h-4 text-primary" /> Viktiga säkerhetsråd
+                      </h4>
+                      <ul className="space-y-2">
+                        {ud.advice.map((a, i) => (
+                          <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                            <span className="text-primary mt-1">•</span>
+                            <span>{a}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {ud.embassy && (
+                      <div className="bg-primary/5 border border-primary/10 rounded-2xl p-5">
+                        <h4 className="font-semibold text-foreground text-sm mb-2 flex items-center gap-2">
+                          <Building2 className="w-4 h-4 text-primary" /> Sveriges ambassad
+                        </h4>
+                        <div className="text-sm text-muted-foreground space-y-1">
+                          <p><span className="font-medium text-foreground">{ud.embassy.name}</span> – {ud.embassy.location}</p>
+                          {ud.embassy.phone && (
+                            <p>Tel: <a href={`tel:${ud.embassy.phone.replace(/\s/g, "")}`} className="text-primary hover:underline">{ud.embassy.phone}</a></p>
+                          )}
+                          <a
+                            href={ud.embassy.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 text-primary hover:underline mt-1"
+                          >
+                            Besök ambassadens sida <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="border-t border-border pt-5">
+                      <h4 className="font-semibold text-foreground text-sm mb-3">Officiella länkar</h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        {ud.links.map((l) => (
+                          <a
+                            key={l.url}
+                            href={l.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-between gap-2 p-3 rounded-xl bg-background border border-border hover:border-primary/40 hover:bg-muted/40 transition-colors group"
+                          >
+                            <span className="text-sm text-foreground flex items-center gap-2">
+                              {l.official && <Shield className="w-3.5 h-3.5 text-primary flex-shrink-0" />}
+                              {l.label}
+                            </span>
+                            <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary flex-shrink-0" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="text-xs text-muted-foreground bg-amber-500/5 border border-amber-500/20 rounded-xl p-3">
+                      <strong className="text-foreground">UD jourtjänst (24/7):</strong>{" "}
+                      <a href="tel:+4684055005" className="text-primary hover:underline">+46 8 405 50 05</a> – vid akut nöd utomlands.
                     </div>
                   </div>
                 </div>
