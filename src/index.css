@@ -150,11 +150,11 @@
 
 @layer utilities {
   .font-sans {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Permanent Marker', 'Caveat Brush', cursive, system-ui, sans-serif;
   }
 
   .font-display {
-    font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+    font-family: 'Permanent Marker', 'Caveat Brush', cursive, system-ui, sans-serif;
     letter-spacing: 0.01em;
   }
 
