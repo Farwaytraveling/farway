@@ -6,13 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle } from "lucide-react";
+import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin } from "lucide-react";
 import {
   countryBudgets,
   detectActivity,
   findCountry,
   type CostStyle,
 } from "@/data/budgetData";
+import { recommendedCities } from "@/data/recommendedCities";
 
 const styles: { value: CostStyle; label: string; desc: string }[] = [
   { value: "budget", label: "Budget", desc: "Hostel, gatumat, kollektivt" },
