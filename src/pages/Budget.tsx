@@ -278,6 +278,34 @@ const Budget = () => {
                     </CardContent>
                   </Card>
 
+                  {/* Recommended cities */}
+                  {country && recommendedCities[country.slug] && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="font-display text-base flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-primary" />
+                          Rekommenderade städer i {country.data.name}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <ul className="space-y-3">
+                          {recommendedCities[country.slug].map((city) => (
+                            <li key={city.name} className="flex gap-3">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
+                              <div>
+                                <p className="text-sm font-semibold text-foreground">{city.name}</p>
+                                <p className="text-sm text-muted-foreground">{city.blurb}</p>
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="text-xs text-muted-foreground mt-4 italic">
+                          Kostnaderna kan variera mellan städer – storstäder är ofta dyrare än småorter.
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
+
                   {/* Activity note */}
                   {activityProfile.note && (
                     <Card className="bg-accent/5 border-accent/20">
