@@ -823,6 +823,324 @@ const destinationData: Record<string, DestinationInfo> = {
       { name: "Lyon", image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=600&h=400&fit=crop", description: "Gastronomiska huvudstaden.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
     ],
   },
+
+  vietnam: {
+    name: "Vietnam",
+    flag: "🇻🇳",
+    heroImage: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&h=600&fit=crop",
+    description: "Vietnam bjuder på en otrolig blandning av historia, dramatisk natur och världens bästa gatumat. Populärt att köra motorcykel från Hanoi i norr till Ho Chi Minh-staden i söder.",
+    highlights: ["Billigt – under 4 000 kr/månad räcker långt", "Episk motorcykel-resa nord till syd", "Undervisa engelska med bra lön", "Otrolig matkultur"],
+    programs: [
+      { title: "Undervisa engelska", description: "TEFL-jobb med bra lön i Hanoi och HCMC.", icon: Briefcase },
+      { title: "Backpacking", description: "Klassisk rutt från norr till söder.", icon: Globe },
+      { title: "Digital Nomad", description: "Snabbt internet och billigt boende i Da Nang.", icon: Wifi },
+    ],
+    facts: [
+      { label: "Visum", value: "E-Visa 90 dagar" },
+      { label: "Åldersgräns", value: "18+ år" },
+      { label: "Budget/månad", value: "~4 000 kr" },
+    ],
+    bestTime: "November – April (torrsäsong)",
+    currency: "Vietnamesisk dong (VND)",
+    language: "Vietnamesiska",
+    communityStats: { total: "~500 svenskar bosatta", swedish: "~2 000 besökare/år", ageRange: "20–30 år vanligast" },
+    quickFacts: [
+      { icon: Calendar, label: "E-Visa", value: "90 dagar" },
+      { icon: DollarSign, label: "Budget/dag", value: "~150–300 kr" },
+      { icon: Briefcase, label: "TEFL-lön", value: "~15 000–25 000 kr/mån" },
+      { icon: Plane, label: "Flygtid", value: "~12 timmar" },
+    ],
+    resources: [
+      {
+        category: "Visum & Myndigheter", icon: FileCheck,
+        links: [
+          { name: "Vietnam E-Visa (officiell)", url: "https://evisa.xuatnhapcanh.gov.vn", official: true },
+          { name: "Svenska ambassaden i Hanoi", url: "https://www.swedenabroad.se/hanoi", official: true },
+        ],
+      },
+      {
+        category: "Jobba & Volontär", icon: Briefcase,
+        links: [
+          { name: "ESL Cafe – Lärartjänster", url: "https://www.eslcafe.com/jobs/vietnam", official: false },
+          { name: "Workaway Vietnam", url: "https://www.workaway.info/en/country/vietnam", official: false },
+          { name: "Vietnam Teaching Jobs", url: "https://vietnamteachingjobs.com", official: false },
+        ],
+      },
+      {
+        category: "Boende & Resa", icon: MapPin,
+        links: [
+          { name: "Agoda – Vietnam", url: "https://www.agoda.com/country/vietnam.html", official: false },
+          { name: "12Go – Bussar & tåg", url: "https://12go.asia/en/vietnam", official: false },
+          { name: "Hostelworld Vietnam", url: "https://www.hostelworld.com/hostels/Vietnam", official: false },
+        ],
+      },
+      {
+        category: "Communities", icon: Users,
+        links: [
+          { name: "Svenskar i Vietnam (Facebook)", url: "https://www.facebook.com/groups/svenskarivietnam", official: false },
+          { name: "Expats in Vietnam", url: "https://www.facebook.com/groups/expatsinvietnam", official: false },
+          { name: "r/VietNam (Reddit)", url: "https://www.reddit.com/r/VietNam", official: false },
+        ],
+      },
+    ],
+    cities: [
+      { name: "Hanoi", image: "https://images.unsplash.com/photo-1509030450996-dd1a26dda07a?w=600&h=400&fit=crop", description: "Den charmiga huvudstaden i norr med gamla kvarter och bästa pho.", swedes: "~200 svenskar", popularFor: ["Undervisa engelska", "Kultur", "Mat"], avgRent: "~3 500 kr/mån", detailedInfo: { neighborhoods: ["Old Quarter – Hjärtat med 36 gator", "Tay Ho – Expat-favorit vid sjön", "Ba Dinh – Politiskt centrum", "Hoan Kiem – Centralt och turistvänligt"], tips: ["Korsa gatan långsamt och stadigt – stanna inte", "Egg coffee är ett måste-prova", "Grab-app för taxi och mat", "Kvällspromenad runt Hoan Kiem-sjön"], safety: "Säkert – var uppmärksam på väskryckare på moped", internet: "Snabbt och billigt fiber", costOfLiving: "Låg – 4 000–7 000 kr/mån", nightlife: "Beer Street, Ta Hien – billig öl och liv", transport: "Grab, taxi, hyr moped (med försiktighet)" } },
+      { name: "Ho Chi Minh-staden", image: "https://images.unsplash.com/photo-1583417267826-aebc4d1542e1?w=600&h=400&fit=crop", description: "Pulserande affärscentrum i söder, tidigare Saigon.", swedes: "~250 svenskar", popularFor: ["Engelsklärare", "Praktik", "Digital Nomad"], avgRent: "~4 500 kr/mån" },
+      { name: "Da Nang & Hoi An", image: "https://images.unsplash.com/photo-1559592413-7cec4d0cae2b?w=600&h=400&fit=crop", description: "Strandstäder med bra balans mellan stadsliv och natur – nomad-favorit.", swedes: "~150 svenskar", popularFor: ["Digital Nomad", "Surf", "Volontär"], avgRent: "~3 500 kr/mån" },
+    ],
+  },
+
+  indonesien: {
+    name: "Indonesien / Bali",
+    flag: "🇮🇩",
+    heroImage: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200&h=600&fit=crop",
+    description: "Bali har blivit en av världens mest populära platser för digitala nomader, surfare och yogaälskare. Utanför Bali väntar 17 000 öar att utforska – från Komodo till Sumatra.",
+    highlights: ["Världens hetaste digital nomad-hub", "Surfing och yoga i världsklass", "Fantastisk dykning i Komodo & Raja Ampat", "Billig massage, mat och boende"],
+    programs: [
+      { title: "Digital Nomad", description: "Coworking och visumlösningar i Canggu och Ubud.", icon: Wifi },
+      { title: "Yogalärarutbildning", description: "200h YTT i Ubud – världens yoga-mecka.", icon: Globe },
+      { title: "Surfresor", description: "Lär dig surfa i Kuta, Canggu eller Uluwatu.", icon: Sun },
+    ],
+    facts: [
+      { label: "Visum", value: "Visa on Arrival 30 dagar (förlängbart)" },
+      { label: "Åldersgräns", value: "18+ år" },
+      { label: "Budget/månad", value: "~6 000 kr" },
+    ],
+    bestTime: "April – Oktober (torrsäsong)",
+    currency: "Indonesisk rupiah (IDR)",
+    language: "Indonesiska (engelska vanligt på Bali)",
+    communityStats: { total: "~3 000 svenskar bosatta", swedish: "~10 000 besökare/år", ageRange: "22–35 år vanligast" },
+    quickFacts: [
+      { icon: Calendar, label: "VoA", value: "30 dagar (förlängbart till 60)" },
+      { icon: DollarSign, label: "Budget/dag", value: "~250–500 kr" },
+      { icon: Briefcase, label: "Coworking/mån", value: "~1 500–2 500 kr" },
+      { icon: Plane, label: "Flygtid", value: "~15 timmar" },
+    ],
+    resources: [
+      {
+        category: "Visum & Myndigheter", icon: FileCheck,
+        links: [
+          { name: "Indonesia E-Visa (officiell)", url: "https://evisa.imigrasi.go.id", official: true },
+          { name: "Svenska ambassaden i Jakarta", url: "https://www.swedenabroad.se/jakarta", official: true },
+          { name: "B211A – Social/turistvisum 60d", url: "https://www.imigrasi.go.id", official: true },
+        ],
+      },
+      {
+        category: "Coworking & Jobb", icon: Briefcase,
+        links: [
+          { name: "Dojo Bali (Canggu)", url: "https://www.dojobali.org", official: false },
+          { name: "Outpost Coworking", url: "https://www.outpost-asia.com", official: false },
+          { name: "Workaway Indonesien", url: "https://www.workaway.info/en/country/indonesia", official: false },
+        ],
+      },
+      {
+        category: "Boende & Resa", icon: MapPin,
+        links: [
+          { name: "Airbnb Bali", url: "https://www.airbnb.com/s/Bali", official: false },
+          { name: "Facebook – Bali Housing", url: "https://www.facebook.com/groups/balihousing", official: false },
+          { name: "Hostelworld Bali", url: "https://www.hostelworld.com/hostels/Bali", official: false },
+        ],
+      },
+      {
+        category: "Communities", icon: Users,
+        links: [
+          { name: "Svenskar på Bali (Facebook)", url: "https://www.facebook.com/groups/svenskarpabali", official: false },
+          { name: "Canggu Community", url: "https://www.facebook.com/groups/cangguconnections", official: false },
+          { name: "r/bali (Reddit)", url: "https://www.reddit.com/r/bali", official: false },
+        ],
+      },
+    ],
+    cities: [
+      { name: "Canggu", image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=600&h=400&fit=crop", description: "Digital nomad-mecka med surf, smoothie bowls och coworking.", swedes: "~600 svenskar", popularFor: ["Digital Nomad", "Surf", "Yoga"], avgRent: "~6 000 kr/mån", detailedInfo: { neighborhoods: ["Echo Beach – Surfare och nomader", "Berawa – Familjevänligt och hippt", "Pererenan – Lugnare alternativ", "Batu Bolong – Centrum med caféer"], tips: ["Hyr scooter (~600 kr/mån) – bilkö är ett helvete", "Köp lokalt SIM-kort (Telkomsel) direkt", "Drick aldrig kranvatten", "Respektera ceremonier – stäng av musik"], safety: "Säkert – var uppmärksam i trafik och vid stölder", internet: "Mycket bra – 100+ Mbps på de flesta caféer", costOfLiving: "Medel – 8 000–15 000 kr/mån", nightlife: "Old Man's, La Brisa, Finns Beach Club", transport: "Scooter eller Gojek/Grab" } },
+      { name: "Ubud", image: "https://images.unsplash.com/photo-1604999333679-b86d54738315?w=600&h=400&fit=crop", description: "Yoga, andlighet och risfält – det kulturella hjärtat av Bali.", swedes: "~400 svenskar", popularFor: ["Yoga", "Healing", "Volontär"], avgRent: "~5 000 kr/mån" },
+      { name: "Gili Islands", image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&h=400&fit=crop", description: "Tre paradiska öar – inga bilar, bara cyklar och hästkärror.", swedes: "~150 svenskar", popularFor: ["Dykning", "Snorkling", "Strandliv"], avgRent: "~4 500 kr/mån" },
+    ],
+  },
+
+  kambodja: {
+    name: "Kambodja",
+    flag: "🇰🇭",
+    heroImage: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=1200&h=600&fit=crop",
+    description: "Kambodja lockar med Angkor Wat, vänliga människor och meningsfulla volontärmöjligheter. Ett av Sydostasiens billigaste länder och perfekt för att göra skillnad.",
+    highlights: ["Världens största tempelkomplex – Angkor Wat", "Otroligt prisvärt", "Många volontärprojekt", "Genuint gästvänlig kultur"],
+    programs: [
+      { title: "Volontärarbete", description: "Undervisning och samhällsprojekt.", icon: Users },
+      { title: "Backpacking", description: "Tempel, stränder och kustlinje.", icon: Globe },
+      { title: "Undervisa engelska", description: "TEFL-jobb i Phnom Penh och Siem Reap.", icon: Briefcase },
+    ],
+    facts: [
+      { label: "Visum", value: "Visa on Arrival 30 dagar" },
+      { label: "Åldersgräns", value: "18+ år" },
+      { label: "Budget/månad", value: "~3 500 kr" },
+    ],
+    bestTime: "November – Mars (sval torrsäsong)",
+    currency: "Riel (KHR) – USD används överallt",
+    language: "Khmer (engelska i städer)",
+    communityStats: { total: "~150 svenskar bosatta", swedish: "~1 500 besökare/år", ageRange: "20–28 år vanligast" },
+    quickFacts: [
+      { icon: Calendar, label: "VoA", value: "30 dagar (~$30)" },
+      { icon: DollarSign, label: "Budget/dag", value: "~120–250 kr" },
+      { icon: Briefcase, label: "TEFL-lön", value: "~10 000–15 000 kr/mån" },
+      { icon: Plane, label: "Flygtid", value: "~13 timmar" },
+    ],
+    resources: [
+      {
+        category: "Visum & Myndigheter", icon: FileCheck,
+        links: [
+          { name: "Cambodia E-Visa (officiell)", url: "https://www.evisa.gov.kh", official: true },
+          { name: "Svenska ambassaden (Bangkok ackrediterad)", url: "https://www.swedenabroad.se/bangkok", official: true },
+        ],
+      },
+      {
+        category: "Volontär & Jobb", icon: Briefcase,
+        links: [
+          { name: "Volunteer World – Kambodja", url: "https://www.volunteerworld.com/en/volunteer-abroad/cambodia", official: false },
+          { name: "Workaway Kambodja", url: "https://www.workaway.info/en/country/cambodia", official: false },
+          { name: "CamHR – Lokala jobb", url: "https://www.camhr.com", official: false },
+        ],
+      },
+      {
+        category: "Boende & Resa", icon: MapPin,
+        links: [
+          { name: "Agoda – Kambodja", url: "https://www.agoda.com/country/cambodia.html", official: false },
+          { name: "12Go Asia – Kambodja", url: "https://12go.asia/en/cambodia", official: false },
+        ],
+      },
+      {
+        category: "Communities", icon: Users,
+        links: [
+          { name: "Svenskar i Kambodja (Facebook)", url: "https://www.facebook.com/groups/svenskarikambodja", official: false },
+          { name: "Expats in Cambodia", url: "https://www.facebook.com/groups/expatsincambodia", official: false },
+        ],
+      },
+    ],
+    cities: [
+      { name: "Siem Reap", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=400&fit=crop", description: "Porten till Angkor Wat – livligt med Pub Street och nattmarknader.", swedes: "~50 svenskar", popularFor: ["Volontär", "Tempel", "Backpacking"], avgRent: "~2 500 kr/mån" },
+      { name: "Phnom Penh", image: "https://images.unsplash.com/photo-1571406384350-3c4137e8b6f5?w=600&h=400&fit=crop", description: "Huvudstaden med rik historia och växande nomad-scen.", swedes: "~80 svenskar", popularFor: ["Undervisa", "NGO-arbete", "Praktik"], avgRent: "~3 500 kr/mån" },
+      { name: "Sihanoukville & Koh Rong", image: "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=600&h=400&fit=crop", description: "Kustlinje med paradisöar – perfekt för en strandpaus.", swedes: "~30 svenskar", popularFor: ["Strandjobb", "Dykning", "Hostel-arbete"], avgRent: "~3 000 kr/mån" },
+    ],
+  },
+
+  filippinerna: {
+    name: "Filippinerna",
+    flag: "🇵🇭",
+    heroImage: "https://images.unsplash.com/photo-1518509562904-e7ef99cddc85?w=1200&h=600&fit=crop",
+    description: "Med över 7 000 öar erbjuder Filippinerna några av världens bästa dykplatser, vita stränder och en otroligt gästvänlig kultur. Engelska talas överallt vilket gör det enkelt att arbeta och resa.",
+    highlights: ["7 641 öar att utforska", "Världens bästa dykning – Tubbataha & Coron", "Engelska talas överallt", "Vänligaste folket i Asien"],
+    programs: [
+      { title: "Dykcertifiering", description: "PADI-kurser i Coron, Moalboal och Malapascua.", icon: Sun },
+      { title: "Surfing", description: "Världsklass i Siargao – 'Cloud 9'.", icon: Globe },
+      { title: "Volontärarbete", description: "Samhällsprojekt på avlägsna öar.", icon: Users },
+    ],
+    facts: [
+      { label: "Visum", value: "Visumfritt 30 dagar" },
+      { label: "Åldersgräns", value: "18+ år" },
+      { label: "Budget/månad", value: "~4 500 kr" },
+    ],
+    bestTime: "December – Maj (torrsäsong)",
+    currency: "Filippinsk peso (PHP)",
+    language: "Filipino & engelska",
+    communityStats: { total: "~400 svenskar bosatta", swedish: "~2 000 besökare/år", ageRange: "22–32 år vanligast" },
+    quickFacts: [
+      { icon: Calendar, label: "Visumfritt", value: "30 dagar (förlängbart)" },
+      { icon: DollarSign, label: "Budget/dag", value: "~200–350 kr" },
+      { icon: Briefcase, label: "PADI Open Water", value: "~3 500 kr" },
+      { icon: Plane, label: "Flygtid", value: "~16 timmar" },
+    ],
+    resources: [
+      {
+        category: "Visum & Myndigheter", icon: FileCheck,
+        links: [
+          { name: "Bureau of Immigration", url: "https://immigration.gov.ph", official: true },
+          { name: "Svenska ambassaden i Manila", url: "https://www.swedenabroad.se/manila", official: true },
+        ],
+      },
+      {
+        category: "Dyk & Volontär", icon: Briefcase,
+        links: [
+          { name: "PADI Filippinerna", url: "https://www.padi.com/dive-shops/philippines", official: true },
+          { name: "Workaway Filippinerna", url: "https://www.workaway.info/en/country/philippines", official: false },
+          { name: "Volunteer World – Filippinerna", url: "https://www.volunteerworld.com/en/volunteer-abroad/philippines", official: false },
+        ],
+      },
+      {
+        category: "Boende & Resa", icon: MapPin,
+        links: [
+          { name: "Agoda – Filippinerna", url: "https://www.agoda.com/country/philippines.html", official: false },
+          { name: "12Go – Färjor & flyg", url: "https://12go.asia/en/philippines", official: false },
+        ],
+      },
+      {
+        category: "Communities", icon: Users,
+        links: [
+          { name: "Svenskar i Filippinerna (Facebook)", url: "https://www.facebook.com/groups/svenskarifilippinerna", official: false },
+          { name: "Expats in the Philippines", url: "https://www.facebook.com/groups/expatsinthephilippines", official: false },
+        ],
+      },
+    ],
+    cities: [
+      { name: "Palawan (El Nido & Coron)", image: "https://images.unsplash.com/photo-1518509562904-e7ef99cddc85?w=600&h=400&fit=crop", description: "Världens vackraste ö enligt flera resemagasin – kalkstenklippor och lagoner.", swedes: "~80 svenskar", popularFor: ["Island hopping", "Dykning", "Backpacking"], avgRent: "~4 000 kr/mån" },
+      { name: "Cebu & Bohol", image: "https://images.unsplash.com/photo-1572367988531-9eaae306dad6?w=600&h=400&fit=crop", description: "Centrala öar med valhajar i Oslob och chocolate hills på Bohol.", swedes: "~120 svenskar", popularFor: ["Dykning", "Volontär", "Engelska skolor"], avgRent: "~3 500 kr/mån" },
+      { name: "Siargao", image: "https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=600&h=400&fit=crop", description: "Surfhuvudstaden – avslappnat ö-vibe och växande nomad-scen.", swedes: "~60 svenskar", popularFor: ["Surf", "Digital Nomad", "Strandliv"], avgRent: "~4 500 kr/mån" },
+    ],
+  },
+
+  myanmar: {
+    name: "Myanmar",
+    flag: "🇲🇲",
+    heroImage: "https://images.unsplash.com/photo-1546412414-e1885e51149b?w=1200&h=600&fit=crop",
+    description: "Myanmar är Sydostasiens mest outforskade destination med gyllene tempel, Bagans drömskog av pagoder och en unik kultur. OBS: Kontrollera UD:s reseråd – politiskt instabilt sedan 2021.",
+    highlights: ["Bagans 2 000+ pagoder", "Genuin och oturistad kultur", "Inle Lake och flytande byar", "Mycket prisvärt"],
+    programs: [
+      { title: "Backpacking", description: "Klassisk runda Yangon – Bagan – Inle – Mandalay.", icon: Globe },
+      { title: "Volontärarbete", description: "Undervisning i lokala samhällen.", icon: Users },
+      { title: "Kulturresor", description: "Tempel, kloster och buddhistiska festivaler.", icon: Sun },
+    ],
+    facts: [
+      { label: "Visum", value: "E-Visa 28 dagar" },
+      { label: "Åldersgräns", value: "18+ år" },
+      { label: "Budget/månad", value: "~3 000 kr" },
+    ],
+    bestTime: "November – Februari (sval torrsäsong)",
+    currency: "Kyat (MMK) – USD ofta accepterat",
+    language: "Burmesiska",
+    communityStats: { total: "~50 svenskar bosatta", swedish: "~300 besökare/år", ageRange: "25–35 år vanligast" },
+    quickFacts: [
+      { icon: Calendar, label: "E-Visa", value: "28 dagar (~$50)" },
+      { icon: DollarSign, label: "Budget/dag", value: "~100–200 kr" },
+      { icon: Shield, label: "Säkerhet", value: "Kolla UD:s reseråd" },
+      { icon: Plane, label: "Flygtid", value: "~14 timmar" },
+    ],
+    resources: [
+      {
+        category: "Visum & Säkerhet", icon: FileCheck,
+        links: [
+          { name: "Myanmar E-Visa (officiell)", url: "https://evisa.moip.gov.mm", official: true },
+          { name: "UD:s reseinformation Myanmar", url: "https://www.swedenabroad.se/sv/utlandsresor/myanmar/", official: true },
+          { name: "Svenska ambassaden (Bangkok ackrediterad)", url: "https://www.swedenabroad.se/bangkok", official: true },
+        ],
+      },
+      {
+        category: "Resa & Boende", icon: MapPin,
+        links: [
+          { name: "Agoda – Myanmar", url: "https://www.agoda.com/country/myanmar.html", official: false },
+          { name: "12Go – Bussar Myanmar", url: "https://12go.asia/en/myanmar", official: false },
+        ],
+      },
+      {
+        category: "Communities", icon: Users,
+        links: [
+          { name: "Backpackers in Myanmar (Facebook)", url: "https://www.facebook.com/groups/backpackersinmyanmar", official: false },
+          { name: "r/myanmar (Reddit)", url: "https://www.reddit.com/r/myanmar", official: false },
+        ],
+      },
+    ],
+    cities: [
+      { name: "Yangon", image: "https://images.unsplash.com/photo-1546412414-e1885e51149b?w=600&h=400&fit=crop", description: "Tidigare huvudstad med koloniala byggnader och Shwedagon-pagoden.", swedes: "~30 svenskar", popularFor: ["Kultur", "Volontär", "Praktik"], avgRent: "~3 500 kr/mån" },
+      { name: "Bagan", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=600&h=400&fit=crop", description: "Slätten med över 2 000 tempel – soluppgång i luftballong är ikoniskt.", swedes: "~10 svenskar", popularFor: ["Tempel", "Foto", "Backpacking"], avgRent: "~2 500 kr/mån" },
+      { name: "Inle Lake & Mandalay", image: "https://images.unsplash.com/photo-1601824373985-3aa44a5e0bcc?w=600&h=400&fit=crop", description: "Inle med flytande byar och Mandalay som kulturellt centrum.", swedes: "~10 svenskar", popularFor: ["Kultur", "Trekking", "Backpacking"], avgRent: "~2 500 kr/mån" },
+    ],
+  },
 };
 
 const Destination = () => {
