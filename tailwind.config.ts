@@ -14,10 +14,10 @@ export default {
   	},
   	extend: {
   		fontFamily: {
-  			sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-  			display: ['Oswald', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-  			serif: ['Oswald', 'Inter', 'ui-serif', 'Georgia', 'serif'],
-  			mono: ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+  			sans: ['"Permanent Marker"', '"Caveat Brush"', 'cursive', 'system-ui', 'sans-serif'],
+  			display: ['"Permanent Marker"', '"Caveat Brush"', 'cursive', 'system-ui', 'sans-serif'],
+  			serif: ['"Permanent Marker"', '"Caveat Brush"', 'cursive', 'serif'],
+  			mono: ['"Permanent Marker"', '"Caveat Brush"', 'cursive', 'monospace'],
   		},
   		colors: {
   			border: 'hsl(var(--border))',
