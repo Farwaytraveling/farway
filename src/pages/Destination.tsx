@@ -4,7 +4,8 @@ import { Footer } from "@/components/Footer";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane, Syringe, AlertTriangle } from "lucide-react";
+import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
 
 type CityLink = {
   name: string;
