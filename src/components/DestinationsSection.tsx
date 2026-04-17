@@ -5,7 +5,7 @@ const destinations = [
   { country: "Australien", slug: "australien", flag: "🇦🇺", tags: ["Working Holiday"], image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop", isRegion: false },
   { country: "USA", slug: "usa", flag: "🇺🇸", tags: ["Au Pair", "Studier"], image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop", isRegion: false },
   { country: "Nya Zeeland", slug: "nya-zeeland", flag: "🇳🇿", tags: ["Working Holiday"], image: "https://images.unsplash.com/photo-1469521669194-babb45599def?w=600&h=400&fit=crop", isRegion: false },
-  { country: "Alperna", slug: "alperna", flag: "🏔️", tags: ["Skidsäsong"], image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&h=400&fit=crop", isRegion: true },
+  { country: "Alperna", slug: "alperna", flag: "🏔️", tags: ["Skidsäsong"], image: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=600&h=400&fit=crop", isRegion: true },
   { country: "Paris", slug: "paris", flag: "🗼", tags: ["Au Pair", "Studier"], image: "https://images.unsplash.com/photo-1431274172761-fca41d930114?w=600&h=400&fit=crop", isRegion: false },
   { country: "Sydostasien", slug: "sydostasien", flag: "🌴", tags: ["Backpacking"], image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&h=400&fit=crop", isRegion: true },
   { country: "Sydamerika", slug: "sydamerika", flag: "🌎", tags: ["Äventyr"], image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=400&fit=crop", isRegion: true },
