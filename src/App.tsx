@@ -13,6 +13,7 @@ import MapPage from "./pages/MapPage";
 import Alperna from "./pages/Alperna";
 import Sydostasien from "./pages/Sydostasien";
 import Sydamerika from "./pages/Sydamerika";
+import Budget from "./pages/Budget";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/alperna" element={<Alperna />} />
           <Route path="/sydostasien" element={<Sydostasien />} />
           <Route path="/sydamerika" element={<Sydamerika />} />
+          <Route path="/budget" element={<Budget />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

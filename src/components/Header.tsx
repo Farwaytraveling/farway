@@ -32,6 +32,7 @@ export const Header = () => {
             { href: "/ski-season", label: "Skidsäsong" },
             { href: "/studera-utomlands", label: "Studera" },
             { href: "/au-pair", label: "Au Pair" },
+            { href: "/budget", label: "Budget" },
           ].map((item) => (
             <Link
               key={item.href}
@@ -67,6 +68,7 @@ export const Header = () => {
               { href: "/ski-season", label: "Skidsäsong" },
               { href: "/studera-utomlands", label: "Studera utomlands" },
               { href: "/au-pair", label: "Au Pair" },
+              { href: "/budget", label: "Budgeträknaren" },
               { href: "/karta", label: "Världskarta" },
             ].map((item) => (
               <Link
