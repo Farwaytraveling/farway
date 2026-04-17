@@ -14,26 +14,10 @@ export default {
   	},
   	extend: {
   		fontFamily: {
-  			sans: [
-  				'"Comic Sans MS"',
-  				'"Comic Sans"',
-  				'cursive',
-  			],
-  			display: [
-  				'"Comic Sans MS"',
-  				'"Comic Sans"',
-  				'cursive',
-  			],
-  			serif: [
-  				'"Comic Sans MS"',
-  				'"Comic Sans"',
-  				'cursive',
-  			],
-  			mono: [
-  				'"Comic Sans MS"',
-  				'"Comic Sans"',
-  				'cursive',
-  			],
+  			sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			display: ['Oswald', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+  			serif: ['Oswald', 'Inter', 'ui-serif', 'Georgia', 'serif'],
+  			mono: ['"Space Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
   		},
   		colors: {
   			border: 'hsl(var(--border))',
