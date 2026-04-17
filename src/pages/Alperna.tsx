@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase } from "lucide-react";
+import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase, Users, Home as HomeIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
