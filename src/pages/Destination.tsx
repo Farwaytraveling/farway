@@ -4,7 +4,8 @@ import { Footer } from "@/components/Footer";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane } from "lucide-react";
+import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane, Syringe, AlertTriangle } from "lucide-react";
+import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
 
 type CityLink = {
   name: string;
@@ -1269,6 +1270,106 @@ const Destination = () => {
                 </div>
               </>
             )}
+
+            {/* Vaccinationer & Hälsa */}
+            {(() => {
+              const vacc = (slug && vaccinationData[slug]) || defaultVaccinationInfo;
+              const riskColors = {
+                låg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20",
+                medel: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
+                hög: "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
+              } as const;
+              return (
+                <div className="mb-16">
+                  <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+                    <Syringe className="w-6 h-6 inline-block mr-2 text-primary" />
+                    Vaccinationer & hälsa
+                  </h2>
+                  <p className="text-muted-foreground mb-6 text-sm">
+                    Allmän information – boka tid på en vaccinationscentral 6–8 veckor före avresa för personlig rådgivning.
+                  </p>
+
+                  <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 border border-border/60">
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className={`text-xs font-semibold px-3 py-1.5 rounded-full border ${riskColors[vacc.riskLevel]}`}>
+                        Risknivå: {vacc.riskLevel.toUpperCase()}
+                      </span>
+                      <span className="text-sm text-muted-foreground flex-1 min-w-[200px]">{vacc.summary}</span>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <div>
+                        <h3 className="font-semibold text-foreground text-sm mb-3 flex items-center gap-2">
+                          <Syringe className="w-4 h-4 text-primary" /> Rekommenderade vaccin
+                        </h3>
+                        <ul className="space-y-2">
+                          {vacc.recommended.map((v) => (
+                            <li key={v} className="text-sm text-muted-foreground flex items-start gap-2">
+                              <span className="text-primary mt-0.5">✓</span>
+                              <span>{v}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      {vacc.considerOnRisk.length > 0 && (
+                        <div>
+                          <h3 className="font-semibold text-foreground text-sm mb-3 flex items-center gap-2">
+                            <AlertTriangle className="w-4 h-4 text-amber-500" /> Överväg vid risk
+                          </h3>
+                          <ul className="space-y-2">
+                            {vacc.considerOnRisk.map((v) => (
+                              <li key={v} className="text-sm text-muted-foreground flex items-start gap-2">
+                                <span className="text-amber-500 mt-0.5">!</span>
+                                <span>{v}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="mt-6 p-4 rounded-xl bg-muted/40 border border-border/50">
+                      <h4 className="font-semibold text-foreground text-sm mb-1 flex items-center gap-2">
+                        🦟 Malaria
+                      </h4>
+                      <p className="text-sm text-muted-foreground">{vacc.malaria}</p>
+                    </div>
+
+                    {vacc.notes && vacc.notes.length > 0 && (
+                      <div className="mt-4 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                        <h4 className="font-semibold text-foreground text-sm mb-2 flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4 text-amber-600" /> Bra att veta
+                        </h4>
+                        <ul className="space-y-1.5">
+                          {vacc.notes.map((n) => (
+                            <li key={n} className="text-sm text-muted-foreground">• {n}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    <div className="mt-6 pt-6 border-t border-border/50">
+                      <h4 className="font-semibold text-foreground text-sm mb-3">Officiella källor & boka vaccin</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {vacc.resources.map((r) => (
+                          <a
+                            key={r.url}
+                            href={r.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors font-medium"
+                          >
+                            {r.name}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })()}
 
             {/* Cities */}
             <h2 className="font-display text-2xl font-bold text-foreground mb-2">
