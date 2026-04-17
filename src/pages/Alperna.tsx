@@ -57,6 +57,46 @@ const alpineDestinations = [
   },
 ];
 
+const facebookGroups = [
+  {
+    category: "Jobb",
+    icon: Briefcase,
+    description: "Hitta säsongsjobb direkt från arbetsgivare och andra säsongare.",
+    groups: [
+      { name: "Ski Season Jobs", url: "https://www.facebook.com/groups/skiseasonjobs/", members: "80k+" },
+      { name: "Seasonaires - Ski Season Jobs & Workers", url: "https://www.facebook.com/groups/seasonaires/", members: "60k+" },
+      { name: "Ski Season Jobs in the Alps", url: "https://www.facebook.com/groups/skiseasonjobsalps/", members: "40k+" },
+      { name: "Chalet Staff & Ski Season Jobs", url: "https://www.facebook.com/groups/chaletstaff/", members: "25k+" },
+      { name: "Verbier Job Board", url: "https://www.facebook.com/groups/verbierjobs/", members: "10k+" },
+    ],
+  },
+  {
+    category: "Svenskar i Alperna",
+    icon: Users,
+    description: "Nätverka med andra svenskar som bor och jobbar i Alperna.",
+    groups: [
+      { name: "Svenskar i Alperna", url: "https://www.facebook.com/groups/svenskarialperna/", members: "15k+" },
+      { name: "Svenskar i Schweiz", url: "https://www.facebook.com/groups/svenskariSchweiz/", members: "12k+" },
+      { name: "Svenskar i Österrike", url: "https://www.facebook.com/groups/svenskariosterrike/", members: "8k+" },
+      { name: "Svenskar i Frankrike", url: "https://www.facebook.com/groups/svenskarifrankrike/", members: "20k+" },
+      { name: "Svenskar i Chamonix", url: "https://www.facebook.com/groups/svenskarichamonix/", members: "3k+" },
+    ],
+  },
+  {
+    category: "Boende",
+    icon: HomeIcon,
+    description: "Hitta lägenheter, rum och säsongsboende på alporterna.",
+    groups: [
+      { name: "Chamonix Accommodation & Housing", url: "https://www.facebook.com/groups/chamonixaccommodation/", members: "30k+" },
+      { name: "Verbier Accommodation", url: "https://www.facebook.com/groups/verbieraccommodation/", members: "15k+" },
+      { name: "Val d'Isère & Tignes Accommodation", url: "https://www.facebook.com/groups/valdisereaccommodation/", members: "12k+" },
+      { name: "Méribel Accommodation", url: "https://www.facebook.com/groups/meribelaccommodation/", members: "10k+" },
+      { name: "St. Anton Accommodation & Jobs", url: "https://www.facebook.com/groups/stantonaccommodation/", members: "8k+" },
+      { name: "Zermatt Housing & Jobs", url: "https://www.facebook.com/groups/zermatthousing/", members: "7k+" },
+    ],
+  },
+];
+
 const Alperna = () => {
   return (
     <div className="min-h-screen bg-background">
