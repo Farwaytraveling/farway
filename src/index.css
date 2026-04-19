@@ -138,14 +138,50 @@
     @apply border-border;
   }
 
+  html {
+    font-size: 17px;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p {
+    line-height: 1.75;
+    margin-bottom: 0.85em;
+    max-width: 70ch;
+  }
+
+  li {
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display text-foreground;
     color: hsl(222 47% 11%);
     font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { margin-bottom: 0.5em; }
+  h2 { margin-bottom: 0.5em; line-height: 1.25; }
+  h3 { margin-bottom: 0.4em; line-height: 1.3; }
+
+  /* Mjukare, mer läsbar muted-text */
+  .text-muted-foreground {
+    line-height: 1.7;
   }
 }
 
