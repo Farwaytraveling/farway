@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Clock, DollarSign, Calendar, MapPin, Sparkles, ArrowRight, Mountain } from "lucide-react";
+import { Clock, DollarSign, Calendar, MapPin, Sparkles, ArrowRight, Mountain, Info } from "lucide-react";
 import heroImg from "@/assets/hero-ski.jpg";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,6 +10,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ResortDetailDialog } from "@/components/ResortDetailDialog";
+import { resortDetails, type ResortDetail } from "@/data/skiResortDetails";
 
 const faqItems = [
   { question: "Hur hittar jag säsongsjobb på skidort?", answer: "Börja söka tidigt - helst 3-6 månader innan säsongen startar. Använd jobbsajter specifika för varje land, kontakta skidorter direkt via deras hemsidor, eller gå via rekryteringsföretag som specialiserar sig på säsongsarbete." },
@@ -64,6 +67,17 @@ const skiDestinations = [
 ];
 
 const SkiSeason = () => {
+  const [selectedResort, setSelectedResort] = useState<ResortDetail | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openResort = (name: string) => {
+    const detail = resortDetails[name];
+    if (detail) {
+      setSelectedResort(detail);
+      setDialogOpen(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -168,13 +182,28 @@ const SkiSeason = () => {
                           <h4 className="font-semibold text-foreground">Populära skidorter</h4>
                         </div>
                         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                          {destination.resorts.map((resort) => (
-                            <div key={resort.name} className="bg-muted/30 rounded-xl p-4 hover:bg-primary/5 transition-colors border border-transparent hover:border-primary/15">
-                              <h5 className="font-semibold text-foreground mb-1">{resort.name}</h5>
-                              <p className="text-xs text-primary font-medium mb-2">{resort.type}</p>
-                              <p className="text-xs text-muted-foreground">{resort.jobs}</p>
-                            </div>
-                          ))}
+                          {destination.resorts.map((resort) => {
+                            const hasDetail = !!resortDetails[resort.name];
+                            return (
+                              <button
+                                key={resort.name}
+                                type="button"
+                                onClick={() => openResort(resort.name)}
+                                disabled={!hasDetail}
+                                className="text-left bg-muted/30 rounded-xl p-4 hover:bg-primary/5 transition-colors border border-transparent hover:border-primary/30 disabled:opacity-60 disabled:cursor-not-allowed group relative"
+                              >
+                                <div className="flex items-start justify-between gap-2">
+                                  <h5 className="font-semibold text-foreground mb-1 group-hover:text-primary transition-colors">{resort.name}</h5>
+                                  {hasDetail && <Info className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary flex-shrink-0 mt-0.5" />}
+                                </div>
+                                <p className="text-xs text-primary font-medium mb-2">{resort.type}</p>
+                                <p className="text-xs text-muted-foreground">{resort.jobs}</p>
+                                {hasDetail && (
+                                  <p className="text-[10px] text-primary/70 font-medium mt-2 uppercase tracking-wider">Klicka för mer info →</p>
+                                )}
+                              </button>
+                            );
+                          })}
                         </div>
                       </div>
                     </div>
@@ -241,6 +270,7 @@ const SkiSeason = () => {
         </section>
       </main>
       <Footer />
+      <ResortDetailDialog resort={selectedResort} open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };
