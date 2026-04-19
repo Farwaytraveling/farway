@@ -775,7 +775,7 @@ const destinationData: Record<string, DestinationInfo> = {
     bestTime: "Året runt",
     currency: "Euro (EUR)",
     language: "Franska",
-    communityStats: { total: "~30 000 svenskar i Frankrike", swedish: "~500 svenskar/år", ageRange: "19–27 år vanligast" },
+    communityStats: { total: "~30 000 svenskar i Frankrike", swedish: "~1 500 svenskar/år", ageRange: "19–27 år vanligast" },
     quickFacts: [
       { icon: FileCheck, label: "Visum", value: "Inget krävs (EU)" },
       { icon: DollarSign, label: "Au Pair fickpengar", value: "~€300/mån" },
