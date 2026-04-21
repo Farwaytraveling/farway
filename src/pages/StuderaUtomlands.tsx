@@ -355,6 +355,118 @@ const StuderaUtomlands = () => {
           </div>
         </section>
 
+        {/* Swedish Universities - Exchange opportunities */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-12">
+              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">🇸🇪 Via ditt svenska universitet</p>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                Sveriges 5 bästa universitet för utbyte
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                Det enklaste – och billigaste – sättet att studera utomlands är via ditt svenska universitet. Här är de 5 lärosäten med flest och bästa utbytesavtal.
+              </p>
+            </div>
+
+            <Tabs defaultValue={swedishUniversities[0].shortName} className="max-w-5xl mx-auto">
+              <TabsList className="grid grid-cols-2 sm:grid-cols-5 h-auto gap-2 bg-transparent mb-8 p-0">
+                {swedishUniversities.map((uni) => (
+                  <TabsTrigger
+                    key={uni.shortName}
+                    value={uni.shortName}
+                    className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-card border border-border/60 rounded-xl py-3 px-4 font-semibold text-sm h-auto flex-col gap-0.5"
+                  >
+                    <span className="text-base">{uni.shortName}</span>
+                    <span className="text-[10px] font-normal opacity-70 hidden sm:block">{uni.name.split(" ")[0]}</span>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {swedishUniversities.map((uni) => (
+                <TabsContent key={uni.shortName} value={uni.shortName} className="mt-0">
+                  <div className={`bg-gradient-to-br ${uni.color} rounded-3xl border border-border/60 p-6 sm:p-10 shadow-sm`}>
+                    <div className="mb-8 pb-6 border-b border-border/40">
+                      <div className="flex items-center gap-2 mb-2">
+                        <GraduationCap className="w-5 h-5 text-primary" />
+                        <span className="text-xs font-medium text-primary uppercase tracking-wider">{uni.rank}</span>
+                      </div>
+                      <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-2">{uni.name}</h3>
+                      <p className="text-muted-foreground leading-relaxed max-w-2xl">{uni.description}</p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-4 mb-8">
+                      <div className="bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/40">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                          <Users className="w-3.5 h-3.5" /> Studenter
+                        </div>
+                        <div className="font-semibold text-foreground">{uni.students}</div>
+                      </div>
+                      <div className="bg-background/60 backdrop-blur-sm rounded-xl p-4 border border-border/40">
+                        <div className="flex items-center gap-2 text-xs text-muted-foreground uppercase tracking-wider mb-1">
+                          <Globe2 className="w-3.5 h-3.5" /> Utbytesavtal
+                        </div>
+                        <div className="font-semibold text-foreground">{uni.exchangeCount}</div>
+                      </div>
+                    </div>
+
+                    <div className="mb-8">
+                      <h4 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                        <span className="text-primary">✈️</span> Möjligheter du har via {uni.shortName}
+                      </h4>
+                      <ul className="space-y-2.5">
+                        {uni.opportunities.map((opp) => (
+                          <li key={opp} className="flex items-start gap-3 text-foreground/90">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                            <span className="leading-relaxed">{opp}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mb-8">
+                      <h4 className="font-display text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+                        <span className="text-primary">🌍</span> Mest populära destinationer
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {uni.topDestinations.map((dest) => (
+                          <span key={dest} className="text-sm font-medium bg-background/80 text-foreground border border-border/60 px-3 py-1.5 rounded-full">
+                            {dest}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="bg-primary/10 border border-primary/20 rounded-xl p-5 mb-6">
+                      <div className="flex items-start gap-3">
+                        <DollarSign className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                        <div>
+                          <div className="font-semibold text-foreground mb-1">Så finansierar du det</div>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{uni.fundingTip}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <a
+                      href={uni.applyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold px-6 py-3 rounded-xl transition-colors group"
+                    >
+                      Läs mer om {uni.shortName}:s utbyten
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
+
+            <p className="text-center text-sm text-muted-foreground mt-8 max-w-2xl mx-auto">
+              💡 <strong>Tips:</strong> Ansök 6–12 månader innan utbytestermin. CSN täcker både studieavgift och uppehälle utomlands – du betalar inget extra.
+            </p>
+          </div>
+        </section>
+
         {/* Language Schools */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30" />
