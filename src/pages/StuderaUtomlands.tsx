@@ -1,6 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Clock, DollarSign, BookOpen, Languages, ArrowRight } from "lucide-react";
+import { Clock, DollarSign, BookOpen, Languages, ArrowRight, GraduationCap, Globe2, Users } from "lucide-react";
 import heroImg from "@/assets/hero-studera.jpg";
 
 import {
@@ -9,6 +9,110 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
+
+const swedishUniversities = [
+  {
+    name: "Lunds universitet",
+    shortName: "LU",
+    rank: "#1 i Sverige för utbyten",
+    students: "~30 000 studenter",
+    exchangeCount: "600+ partneruniversitet i 70+ länder",
+    description: "Lund är Sveriges mest internationella universitet med flest utbytesavtal. Stark inom alla fakulteter – från juridik till teknik.",
+    opportunities: [
+      "Erasmus+ till hela Europa (300+ avtal)",
+      "Bilaterala avtal med Berkeley, NUS Singapore, University of Tokyo",
+      "Sommarkurser i Kina, Japan och Sydkorea",
+      "Double degree-program inom ekonomi och ingenjörsvetenskap",
+      "Minor Field Studies (MFS) – fältstudier i utvecklingsländer",
+    ],
+    topDestinations: ["UC Berkeley", "NUS Singapore", "Sciences Po", "University of Melbourne", "HKU"],
+    fundingTip: "CSN + Erasmus-stipendium (€350-500/mån) + Lunds egna resestipendier upp till 25 000 kr.",
+    applyUrl: "https://www.lunduniversity.lu.se/study-abroad",
+    color: "from-blue-500/20 to-blue-600/5",
+  },
+  {
+    name: "Uppsala universitet",
+    shortName: "UU",
+    rank: "Nordens äldsta universitet",
+    students: "~50 000 studenter",
+    exchangeCount: "400+ partneruniversitet i 50+ länder",
+    description: "Uppsala har starka avtal i Asien och Nordamerika. Särskilt välutvecklat inom medicin, naturvetenskap och humaniora.",
+    opportunities: [
+      "Erasmus+ inom hela EU/EES",
+      "Avtal med Ivy League: Brown, Cornell, Dartmouth",
+      "Asienprogram med Kyoto, Seoul National, Peking University",
+      "MFS-stipendier för uppsats utomlands",
+      "Linnaeus-Palme för utbyten med utvecklingsländer",
+    ],
+    topDestinations: ["Brown University", "Kyoto University", "ANU Australien", "Sciences Po", "ETH Zürich"],
+    fundingTip: "CSN + Erasmus-bidrag + Uppsalas resestipendium (10 000-30 000 kr beroende på destination).",
+    applyUrl: "https://www.uu.se/en/education/exchange",
+    color: "from-amber-500/20 to-amber-600/5",
+  },
+  {
+    name: "Stockholms universitet",
+    shortName: "SU",
+    rank: "Störst i huvudstaden",
+    students: "~33 000 studenter",
+    exchangeCount: "300+ partneruniversitet i 50+ länder",
+    description: "SU har stort fokus på samhällsvetenskap, juridik och humaniora. Många utbyten i USA, Latinamerika och Asien.",
+    opportunities: [
+      "Erasmus+ till alla EU-länder",
+      "Nordplus-utbyte inom Norden",
+      "Bilaterala avtal med UCLA, University of Toronto, UBC",
+      "Latinamerika-program (UNAM, USP São Paulo, UC Chile)",
+      "Forskarutbildning utomlands via SU:s nätverk",
+    ],
+    topDestinations: ["UCLA", "University of Toronto", "Sciences Po", "UNAM Mexiko", "Hong Kong U"],
+    fundingTip: "CSN + Erasmus + SU:s resestipendier för uppsatsarbete utomlands.",
+    applyUrl: "https://www.su.se/english/education/study-abroad",
+    color: "from-rose-500/20 to-rose-600/5",
+  },
+  {
+    name: "KTH Royal Institute of Technology",
+    shortName: "KTH",
+    rank: "Sveriges främsta tekniska högskola",
+    students: "~18 000 studenter",
+    exchangeCount: "250+ partneruniversitet i 40+ länder",
+    description: "KTH har de starkaste tekniska utbytena i Sverige. Double degree med MIT, ETH och Tokyo Tech – guld värda för en ingenjörskarriär.",
+    opportunities: [
+      "Double Degree med MIT, Georgia Tech, Tsinghua, KAIST",
+      "Erasmus Mundus-program (helt finansierade master)",
+      "CLUSTER – europeiska tekniska universitets-alliansen",
+      "Sommarforskning vid Caltech, Stanford, ETH",
+      "Praktik utomlands genom IAESTE",
+    ],
+    topDestinations: ["MIT", "ETH Zürich", "Tokyo Tech", "Tsinghua", "TU Delft"],
+    fundingTip: "CSN + Erasmus + KTH Opportunities Fund (upp till 50 000 kr för utbyten utanför EU).",
+    applyUrl: "https://www.kth.se/en/studies/exchange",
+    color: "from-emerald-500/20 to-emerald-600/5",
+  },
+  {
+    name: "Handelshögskolan i Stockholm",
+    shortName: "SSE",
+    rank: "Topp-50 globalt inom ekonomi",
+    students: "~2 000 studenter",
+    exchangeCount: "60+ elituniversitet i 30+ länder",
+    description: "SSE har endast partnerskap med världens bästa handelshögskolor. Nästan alla studenter åker på utbyte – ofta till Wharton, HEC eller LSE.",
+    opportunities: [
+      "Utbyte med Wharton, HEC Paris, LSE, Bocconi",
+      "CEMS Master in Management – 30 elituniversitet globalt",
+      "Double degree med HEC, ESADE, NUS Singapore",
+      "Praktik via SSE Career Services hos McKinsey, BCG, Goldman",
+      "Studieresor till Silicon Valley, Hong Kong, Tokyo",
+    ],
+    topDestinations: ["Wharton (UPenn)", "HEC Paris", "LSE", "Bocconi", "NUS Singapore"],
+    fundingTip: "CSN + SSE:s resestipendier + alumni-finansierade scholarships för utbytesstudenter.",
+    applyUrl: "https://www.hhs.se/en/education/exchange-studies/",
+    color: "from-purple-500/20 to-purple-600/5",
+  },
+];
 
 const studyDestinations = [
   {
