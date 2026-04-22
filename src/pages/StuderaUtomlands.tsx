@@ -562,33 +562,83 @@ const StuderaUtomlands = () => {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {languageSchools.map((school) => (
-                <a
+                <div
                   key={school.language}
-                  href={school.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 transition-all duration-300"
+                  className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:border-primary/20 transition-all duration-300 flex flex-col"
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-3">
                     <span className="text-4xl">{school.flag}</span>
-                    <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{school.language}</h3>
+                    <h3 className="font-semibold text-lg text-foreground">{school.language}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-1 mb-4">
+                  <div className="flex flex-wrap gap-1 mb-3">
                     {school.countries.map((c) => (
                       <span key={c} className="text-xs bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full">{c}</span>
                     ))}
                   </div>
-                  <div className="text-sm text-muted-foreground space-y-1.5">
+                  <div className="text-sm text-muted-foreground space-y-1.5 mb-3">
                     <div>📅 {school.duration}</div>
                     <div>💰 {school.cost}</div>
                   </div>
-                  <div className="mt-4 flex items-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-all translate-x-0 group-hover:translate-x-1">
-                    Hitta kurser <ArrowRight className="w-3 h-3 ml-1" />
+                  <p className="text-sm text-foreground/80 italic mb-4 leading-relaxed">
+                    💡 {school.bestFor}
+                  </p>
+                  <div className="mt-auto pt-4 border-t border-border/60">
+                    <p className="text-xs font-semibold text-foreground/70 mb-2 uppercase tracking-wide">Boka kurs hos:</p>
+                    <div className="flex flex-col gap-1.5">
+                      {school.providers.map((p) => (
+                        <a
+                          key={p.name}
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-primary hover:underline flex items-center gap-1 group/link"
+                        >
+                          <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
+                          {p.name}
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </a>
+                </div>
               ))}
+            </div>
+
+            {/* Language providers / booking platforms */}
+            <div className="mt-16 max-w-5xl mx-auto">
+              <div className="text-center mb-8">
+                <p className="text-sm font-medium text-primary mb-2 tracking-wide uppercase">🎒 Var bokar du?</p>
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                  Svenska & internationella bokningssidor
+                </h3>
+                <p className="text-muted-foreground max-w-xl mx-auto">
+                  Jämför skolor, läs recensioner och boka allt på ett ställe – ofta till samma pris som direkt.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {languageProviders.map((p) => (
+                  <a
+                    key={p.name}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:-translate-y-0.5 hover:border-primary/30 transition-all duration-300"
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{p.name}</h4>
+                      <span className="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-full whitespace-nowrap">{p.tag}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{p.description}</p>
+                    <div className="flex items-center text-sm text-primary font-medium">
+                      Besök sajten <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <p className="text-center text-sm text-muted-foreground mt-8">
+                💡 <strong>CSN-tips:</strong> Språkkurser på minst 13 veckor i CSN-godkänt land berättigar till studiemedel. Kolla på <a href="https://www.csn.se/bidrag-och-lan/studiestod/utomlands.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">csn.se</a> innan du bokar.
+              </p>
             </div>
           </div>
         </section>
