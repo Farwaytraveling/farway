@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
@@ -142,6 +143,11 @@ const auPairCountries = [
 const AuPair = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Au Pair utomlands – USA, Frankrike, Tyskland, Spanien | Farway"
+        description="Bli au pair i USA, Frankrike, Tyskland, Spanien, Italien eller Storbritannien. Krav, fickpengar, visum och bästa plattformar – samlat för svenska ungdomar."
+        canonical="https://farway.se/au-pair"
+      />
       <Header />
       <main>
         {/* Hero Section */}

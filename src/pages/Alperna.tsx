@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase, Users, Home as HomeIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -100,11 +101,16 @@ const facebookGroups = [
 const Alperna = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Alperna – jobba, åk skidor & vandra | Frankrike, Schweiz, Österrike | Farway"
+        description="Allt om Alperna för svenska ungdomar: skidsäsong, sommarvandring, au pair och språkresor i Frankrike, Schweiz, Österrike, Italien och Andorra."
+        canonical="https://farway.se/alperna"
+      />
       <Header />
 
       {/* Hero */}
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-sky-100 via-blue-50 to-slate-100 dark:from-sky-950 dark:via-blue-950 dark:to-slate-900" />
+        <div className="absolute inset-0 bg-region-alpine-soft" />
         <div className="absolute inset-0 opacity-10">
           {["⛷️", "🏔️", "❄️", "🎿", "🏂"].map((emoji, i) => (
             <span key={i} className="absolute text-4xl animate-pulse" style={{ left: `${15 + i * 18}%`, top: `${20 + (i % 3) * 25}%`, animationDelay: `${i * 0.5}s` }}>

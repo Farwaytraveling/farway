@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { useParams, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -265,7 +266,7 @@ const destinationData: Record<string, DestinationInfo> = {
     facts: [
       { label: "Visumlängd", value: "2 år (YMS)" },
       { label: "Åldersgräns", value: "18–30 år" },
-      { label: "Visumavgift", value: "~£298" },
+      { label: "Visumavgift", value: "£319 + IHS" },
     ],
     bestTime: "Året runt",
     currency: "Brittiskt pund (GBP)",
@@ -273,8 +274,8 @@ const destinationData: Record<string, DestinationInfo> = {
     communityStats: { total: "~100 000 svenskar bosatta", swedish: "~3 000 unga/år", ageRange: "20–30 år vanligast" },
     quickFacts: [
       { icon: Calendar, label: "Visum giltighetstid", value: "2 år" },
-      { icon: DollarSign, label: "Visumavgift", value: "~£298" },
-      { icon: Briefcase, label: "National Insurance Number", value: "Krävs för jobb" },
+      { icon: DollarSign, label: "Avgift + IHS", value: "£319 + £776/år" },
+      { icon: Briefcase, label: "Sparkapital", value: "£2 530 krävs" },
       { icon: Plane, label: "Ålderskrav", value: "18–30 år" },
     ],
     resources: [
@@ -1173,6 +1174,12 @@ const Destination = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEO
+        title={`${dest.name} – guide för svenska ungdomar | Farway`}
+        description={`${dest.name}: visum, jobb, boende, städer och praktiska tips för dig som vill jobba, plugga eller resa till ${dest.name}. Faktagranskat och gratis.`}
+        canonical={`https://farway.se/destination/${slug}`}
+        ogImage={dest.heroImage}
+      />
       <Header />
       <main className="flex-1">
         {/* Hero */}
@@ -1316,12 +1323,12 @@ const Destination = () => {
                       {vacc.considerOnRisk.length > 0 && (
                         <div>
                           <h3 className="font-semibold text-foreground text-sm mb-3 flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-500" /> Överväg vid risk
+                            <AlertTriangle className="w-4 h-4 text-warning" /> Överväg vid risk
                           </h3>
                           <ul className="space-y-2">
                             {vacc.considerOnRisk.map((v) => (
                               <li key={v} className="text-sm text-muted-foreground flex items-start gap-2">
-                                <span className="text-amber-500 mt-0.5">!</span>
+                                <span className="text-warning mt-0.5">!</span>
                                 <span>{v}</span>
                               </li>
                             ))}
@@ -1338,9 +1345,9 @@ const Destination = () => {
                     </div>
 
                     {vacc.notes && vacc.notes.length > 0 && (
-                      <div className="mt-4 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                      <div className="mt-4 p-4 rounded-xl bg-warning/5 border border-warning/20">
                         <h4 className="font-semibold text-foreground text-sm mb-2 flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-amber-600" /> Bra att veta
+                          <AlertTriangle className="w-4 h-4 text-warning" /> Bra att veta
                         </h4>
                         <ul className="space-y-1.5">
                           {vacc.notes.map((n) => (
@@ -1376,10 +1383,10 @@ const Destination = () => {
             {(() => {
               const ud = (slug && udTravelInfo[slug]) || defaultUDInfo;
               const udRiskColors: Record<string, string> = {
-                "låg": "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20",
-                "medel": "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
-                "hög": "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
-                "avrådan": "bg-red-600/15 text-red-800 dark:text-red-300 border-red-600/30",
+                "låg": "bg-success/10 text-success border-success/20",
+                "medel": "bg-warning/10 text-warning-foreground border-warning/20",
+                "hög": "bg-danger/10 text-danger border-danger/20",
+                "avrådan": "bg-danger/15 text-danger border-danger/30",
               };
               const udRiskLabel: Record<string, string> = {
                 "låg": "LÅG RISK",
@@ -1462,7 +1469,7 @@ const Destination = () => {
                       </div>
                     </div>
 
-                    <div className="text-xs text-muted-foreground bg-amber-500/5 border border-amber-500/20 rounded-xl p-3">
+                    <div className="text-xs text-muted-foreground bg-warning/5 border border-warning/20 rounded-xl p-3">
                       <strong className="text-foreground">UD jourtjänst (24/7):</strong>{" "}
                       <a href="tel:+4684055005" className="text-primary hover:underline">+46 8 405 50 05</a> – vid akut nöd utomlands.
                     </div>

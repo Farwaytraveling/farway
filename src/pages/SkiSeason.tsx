@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, Calendar, MapPin, Sparkles, ArrowRight, Mountain, Info } from "lucide-react";
 import heroImg from "@/assets/hero-ski.jpg";
 import { Button } from "@/components/ui/button";
@@ -80,6 +81,11 @@ const SkiSeason = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Skidsäsong i Alperna 2025/2026 – jobba i Österrike, Schweiz, Frankrike | Farway"
+        description="Allt om att jobba en skidsäsong: Österrike, Schweiz, Frankrike, Italien, Andorra, Japan & Kanada. Löner, jobb, ansökan och bästa skidorterna – samlad guide."
+        canonical="https://farway.se/ski-season"
+      />
       <Header />
       <main>
         {/* Hero Section */}

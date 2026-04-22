@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Briefcase, Clock, DollarSign, User, ExternalLink, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
@@ -149,6 +150,11 @@ const workingHolidayCountries = [
 const WorkingHoliday = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Working Holiday-visum 2025 – Australien, Kanada, Japan & fler | Farway"
+        description="Komplett guide till Working Holiday-visum för svenskar: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Argentina m.fl. Krav, åldersgränser, kostnader och hur du ansöker."
+        canonical="https://farway.se/working-holiday"
+      />
       <Header />
       <main>
         {/* Hero Section */}

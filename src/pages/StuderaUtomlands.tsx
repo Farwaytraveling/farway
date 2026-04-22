@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, BookOpen, Languages, ArrowRight, GraduationCap, Globe2, Users } from "lucide-react";
 import heroImg from "@/assets/hero-studera.jpg";
 
@@ -323,6 +324,11 @@ const faqItems = [
 const StuderaUtomlands = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Studera utomlands – Erasmus, utbyte & språkkurser | Farway"
+        description="Komplett guide för svenska studenter: Erasmus+, utbytesstudier, språkkurser och CSN utomlands. Universitet, ansökan, finansiering och de bästa destinationerna."
+        canonical="https://farway.se/studera-utomlands"
+      />
       <Header />
       <main>
         {/* Hero Section */}
