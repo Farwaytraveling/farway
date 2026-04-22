@@ -34,7 +34,7 @@ export const countryBudgets: Record<string, CountryCost> = {
     transport: { budget: 80, medel: 150, komfort: 300 },
     activities: { budget: 120, medel: 280, komfort: 550 },
     flight: 13000,
-    visa: 2500,
+    visa: 2800,
     insuranceMonthly: 600,
   },
   thailand: {
@@ -214,7 +214,7 @@ export const countryBudgets: Record<string, CountryCost> = {
     transport: { budget: 100, medel: 220, komfort: 450 },
     activities: { budget: 150, medel: 320, komfort: 650 },
     flight: 2500,
-    visa: 0,
+    visa: 24000, // YMS £319 + IHS £776/år × 2 år ≈ £1 871
     insuranceMonthly: 450,
   },
   japan: {
