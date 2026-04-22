@@ -1,8 +1,9 @@
-import { Globe, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { DestinationSearch } from "./DestinationSearch";
+import farwayLogo from "@/assets/farway-logo.png";
 
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -11,13 +12,14 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border/40">
       <div className="container mx-auto px-4 h-16 flex items-center gap-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <Globe className="w-4 h-4 text-primary-foreground" />
-          </div>
-          <span className="font-display font-bold text-lg text-foreground tracking-tight">
-            Farway
-          </span>
+        <Link to="/" className="flex items-center shrink-0" aria-label="Farway – startsida">
+          <img
+            src={farwayLogo}
+            alt="Farway"
+            className="h-10 w-auto object-contain"
+            width={160}
+            height={40}
+          />
         </Link>
 
         {/* Center search — hidden on mobile, shown on sm+ */}
