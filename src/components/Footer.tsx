@@ -1,16 +1,28 @@
-import { Instagram, Facebook, Youtube, Mail, ArrowUpRight } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import farwayLogo from "@/assets/farway-logo.png";
 
 const footerLinks = {
   program: [
     { label: "Working Holiday", href: "/working-holiday" },
-    { label: "Skidsäsong i Alperna", href: "/ski-season" },
-    { label: "Studera utomlands", href: "/studera-utomlands" },
     { label: "Au Pair", href: "/au-pair" },
+    { label: "Skidsäsong", href: "/ski-season" },
+    { label: "Studera utomlands", href: "/studera-utomlands" },
+    { label: "Budgeträknaren", href: "/budget" },
   ],
-  destinations: ["Australien", "Nya Zeeland", "USA", "Paris", "Alperna", "Sydostasien", "Sydamerika"],
-  company: ["Om oss", "Blogg", "Integritetspolicy"],
+  regions: [
+    { label: "Alperna", href: "/alperna" },
+    { label: "Sydostasien", href: "/sydostasien" },
+    { label: "Sydamerika", href: "/sydamerika" },
+    { label: "Karta över världen", href: "/karta" },
+  ],
+  destinations: [
+    { label: "Australien", href: "/destination/australien" },
+    { label: "Frankrike", href: "/destination/frankrike" },
+    { label: "Storbritannien", href: "/destination/storbritannien" },
+    { label: "Spanien", href: "/destination/spanien" },
+    { label: "Thailand", href: "/destination/thailand" },
+  ],
 };
 
 export const Footer = () => {
@@ -30,25 +42,25 @@ export const Footer = () => {
               />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs">
-              Sveriges ledande jämförelsetjänst för Working Holiday, Au Pair och andra utlandsprogram.
+              Sveriges samlade guide för dig som vill jobba, studera eller resa utomlands. Helt gratis, utan inloggning.
             </p>
             <div className="flex gap-2">
-              {[
-                { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/farwaytraveling/" },
-                { icon: Facebook, label: "Facebook", href: "#" },
-                { icon: Youtube, label: "Youtube", href: "#" },
-              ].map(({ icon: Icon, label, href }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:text-primary flex items-center justify-center transition-all text-muted-foreground"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+              <a
+                href="https://www.instagram.com/farwaytraveling/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Farway på Instagram"
+                className="w-9 h-9 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:text-primary flex items-center justify-center transition-all text-muted-foreground"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:farwaytravelling@gmail.com"
+                aria-label="Mejla Farway"
+                className="w-9 h-9 rounded-lg bg-card border border-border/60 hover:border-primary/30 hover:text-primary flex items-center justify-center transition-all text-muted-foreground"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
@@ -66,47 +78,47 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Destinationer */}
+          {/* Regioner */}
           <div>
-            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Destinationer</h4>
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Regioner</h4>
             <ul className="space-y-2.5">
-              {footerLinks.destinations.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {item}
-                  </a>
+              {footerLinks.regions.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Kontakt & Företag */}
+          {/* Destinationer & Kontakt */}
           <div>
-            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Kontakt</h4>
+            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Destinationer</h4>
+            <ul className="space-y-2.5 mb-6">
+              {footerLinks.destinations.map((item) => (
+                <li key={item.label}>
+                  <Link to={item.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Kontakt</h4>
             <a
               href="mailto:farwaytravelling@gmail.com"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5 mb-6"
+              className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
             >
               <Mail className="w-4 h-4" />
               farwaytravelling@gmail.com
             </a>
-
-            <h4 className="font-semibold text-sm text-foreground mb-4 uppercase tracking-wider">Företag</h4>
-            <ul className="space-y-2.5">
-              {footerLinks.company.map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
 
         <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Farway. Alla rättigheter förbehållna.
+            © {new Date().getFullYear()} Farway. All information på sidan är vägledande och kan ändras – kontrollera alltid hos officiella myndigheter innan du reser.
           </p>
           <p className="text-xs text-muted-foreground">
             Gjord med ❤️ i Sverige
