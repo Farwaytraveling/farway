@@ -43,6 +43,22 @@
 
     --radius: 0.5rem;
 
+    /* Semantic status tokens (vaccin, UD-risk, varningar) */
+    --success: 152 60% 36%;
+    --success-foreground: 152 60% 96%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 12%;
+    --danger: 0 72% 50%;
+    --danger-foreground: 0 0% 98%;
+
+    /* Region tokens (regional landningssidor) */
+    --region-alpine: 200 65% 45%;
+    --region-alpine-soft: 200 70% 92%;
+    --region-tropical: 158 55% 40%;
+    --region-tropical-soft: 158 60% 92%;
+    --region-latin: 25 85% 50%;
+    --region-latin-soft: 30 85% 92%;
+
     /* Corporate gradients */
     --gradient-hero: linear-gradient(135deg, hsl(215 50% 23%) 0%, hsl(200 40% 35%) 100%);
     --gradient-warm: linear-gradient(135deg, hsl(175 40% 40%) 0%, hsl(190 35% 45%) 100%);
@@ -107,6 +123,20 @@
     --border: 215 19% 34%;
     --input: 215 19% 34%;
     --ring: 198 93% 59%;
+
+    --success: 152 55% 50%;
+    --success-foreground: 152 55% 12%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 38 92% 12%;
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 98%;
+
+    --region-alpine: 200 80% 65%;
+    --region-alpine-soft: 200 50% 22%;
+    --region-tropical: 158 60% 55%;
+    --region-tropical-soft: 158 50% 18%;
+    --region-latin: 25 90% 60%;
+    --region-latin-soft: 25 50% 20%;
     --chart-1: 199 95% 73%;
     --chart-2: 211 96% 78%;
     --chart-3: 215 20% 65%;
