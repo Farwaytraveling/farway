@@ -90,8 +90,8 @@ const destinationData: Record<string, DestinationInfo> = {
     language: "Engelska",
     communityStats: { total: "~11 000 svenskar bosatta", swedish: "~4 000 med WHV/år", ageRange: "18–30 år vanligast" },
     quickFacts: [
-      { icon: Calendar, label: "Visum giltighetstid", value: "12 månader" },
-      { icon: DollarSign, label: "Visumavgift", value: "~$510 AUD" },
+      { icon: Calendar, label: "Visum giltighetstid", value: "12 månader (förlängbart till 36)" },
+      { icon: DollarSign, label: "Visumavgift", value: "~670 AUD" },
       { icon: Briefcase, label: "Max arbete/arbetsgivare", value: "6 månader" },
       { icon: Plane, label: "Ålderskrav", value: "18–30 år" },
     ],
@@ -197,7 +197,7 @@ const destinationData: Record<string, DestinationInfo> = {
     communityStats: { total: "~30 000 svenskar bosatta", swedish: "~2 000 unga/år", ageRange: "19–28 år vanligast" },
     quickFacts: [
       { icon: FileCheck, label: "Visum", value: "Inget krävs (EU)" },
-      { icon: DollarSign, label: "Minimilön", value: "~€1 767/mån brutto" },
+      { icon: DollarSign, label: "Minimilön (SMIC)", value: "~€1 802/mån brutto" },
       { icon: Briefcase, label: "Populäraste jobben", value: "Ski, Au Pair, Hotell" },
       { icon: Plane, label: "Flygtid från Sverige", value: "~2,5 timmar" },
     ],
