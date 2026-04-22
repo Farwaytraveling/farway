@@ -80,7 +80,7 @@ const Sydostasien = () => {
 
       {/* Hero */}
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-100 via-teal-50 to-amber-50 dark:from-emerald-950 dark:via-teal-950 dark:to-amber-950" />
+        <div className="absolute inset-0 bg-region-tropical-soft" />
         <div className="absolute inset-0 opacity-10">
           {["🌴", "🐘", "🏝️", "🛕", "🍜"].map((emoji, i) => (
             <span key={i} className="absolute text-4xl animate-pulse" style={{ left: `${10 + i * 20}%`, top: `${15 + (i % 3) * 25}%`, animationDelay: `${i * 0.4}s` }}>
@@ -89,7 +89,7 @@ const Sydostasien = () => {
           ))}
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 bg-region-tropical/10 text-region-tropical px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Globe className="w-4 h-4" />
             Sydostasien
           </div>
@@ -113,8 +113,8 @@ const Sydostasien = () => {
               { icon: Globe, label: "Visum", value: "Enkelt/VoA" },
             ].map((fact) => (
               <div key={fact.label} className="text-center">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-2">
-                  <fact.icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="w-10 h-10 rounded-xl bg-region-tropical/10 flex items-center justify-center mx-auto mb-2">
+                  <fact.icon className="w-5 h-5 text-region-tropical" />
                 </div>
                 <div className="text-sm font-semibold text-foreground">{fact.value}</div>
                 <div className="text-xs text-muted-foreground">{fact.label}</div>
@@ -148,7 +148,7 @@ const Sydostasien = () => {
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {dest.highlights.map((h) => (
-                    <span key={h} className="bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs px-2.5 py-1 rounded-full font-medium">{h}</span>
+                    <span key={h} className="bg-region-tropical/10 text-region-tropical text-xs px-2.5 py-1 rounded-full font-medium">{h}</span>
                   ))}
                 </div>
                 <Link to={`/destination/${dest.slug}`} className="mt-auto">

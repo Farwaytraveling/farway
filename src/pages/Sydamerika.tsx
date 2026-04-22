@@ -90,7 +90,7 @@ const Sydamerika = () => {
 
       {/* Hero */}
       <section className="relative pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-100 via-orange-50 to-red-50 dark:from-amber-950 dark:via-orange-950 dark:to-red-950" />
+        <div className="absolute inset-0 bg-region-latin-soft" />
         <div className="absolute inset-0 opacity-10">
           {["🦜", "🌎", "🎶", "⛰️", "🌺"].map((emoji, i) => (
             <span key={i} className="absolute text-4xl animate-pulse" style={{ left: `${10 + i * 20}%`, top: `${15 + (i % 3) * 25}%`, animationDelay: `${i * 0.4}s` }}>
@@ -99,7 +99,7 @@ const Sydamerika = () => {
           ))}
         </div>
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-700 dark:text-amber-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <div className="inline-flex items-center gap-2 bg-region-latin/10 text-region-latin px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Compass className="w-4 h-4" />
             Sydamerika
           </div>
@@ -123,8 +123,8 @@ const Sydamerika = () => {
               { icon: Music, label: "Kultur", value: "Tango, Samba, Salsa" },
             ].map((fact) => (
               <div key={fact.label} className="text-center">
-                <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center mx-auto mb-2">
-                  <fact.icon className="w-5 h-5 text-amber-600 dark:text-amber-400" />
+                <div className="w-10 h-10 rounded-xl bg-region-latin/10 flex items-center justify-center mx-auto mb-2">
+                  <fact.icon className="w-5 h-5 text-region-latin" />
                 </div>
                 <div className="text-sm font-semibold text-foreground">{fact.value}</div>
                 <div className="text-xs text-muted-foreground">{fact.label}</div>
@@ -158,7 +158,7 @@ const Sydamerika = () => {
                 </div>
                 <div className="flex flex-wrap gap-1.5 mb-4">
                   {dest.highlights.map((h) => (
-                    <span key={h} className="bg-amber-500/10 text-amber-700 dark:text-amber-400 text-xs px-2.5 py-1 rounded-full font-medium">{h}</span>
+                    <span key={h} className="bg-region-latin/10 text-region-latin text-xs px-2.5 py-1 rounded-full font-medium">{h}</span>
                   ))}
                 </div>
                 <Link to={`/destination/${dest.slug}`} className="mt-auto">

@@ -1323,12 +1323,12 @@ const Destination = () => {
                       {vacc.considerOnRisk.length > 0 && (
                         <div>
                           <h3 className="font-semibold text-foreground text-sm mb-3 flex items-center gap-2">
-                            <AlertTriangle className="w-4 h-4 text-amber-500" /> Överväg vid risk
+                            <AlertTriangle className="w-4 h-4 text-warning" /> Överväg vid risk
                           </h3>
                           <ul className="space-y-2">
                             {vacc.considerOnRisk.map((v) => (
                               <li key={v} className="text-sm text-muted-foreground flex items-start gap-2">
-                                <span className="text-amber-500 mt-0.5">!</span>
+                                <span className="text-warning mt-0.5">!</span>
                                 <span>{v}</span>
                               </li>
                             ))}
@@ -1345,9 +1345,9 @@ const Destination = () => {
                     </div>
 
                     {vacc.notes && vacc.notes.length > 0 && (
-                      <div className="mt-4 p-4 rounded-xl bg-amber-500/5 border border-amber-500/20">
+                      <div className="mt-4 p-4 rounded-xl bg-warning/5 border border-warning/20">
                         <h4 className="font-semibold text-foreground text-sm mb-2 flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-amber-600" /> Bra att veta
+                          <AlertTriangle className="w-4 h-4 text-warning" /> Bra att veta
                         </h4>
                         <ul className="space-y-1.5">
                           {vacc.notes.map((n) => (
@@ -1383,10 +1383,10 @@ const Destination = () => {
             {(() => {
               const ud = (slug && udTravelInfo[slug]) || defaultUDInfo;
               const udRiskColors: Record<string, string> = {
-                "låg": "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20",
-                "medel": "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20",
-                "hög": "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20",
-                "avrådan": "bg-red-600/15 text-red-800 dark:text-red-300 border-red-600/30",
+                "låg": "bg-success/10 text-success border-success/20",
+                "medel": "bg-warning/10 text-warning-foreground border-warning/20",
+                "hög": "bg-danger/10 text-danger border-danger/20",
+                "avrådan": "bg-danger/15 text-danger border-danger/30",
               };
               const udRiskLabel: Record<string, string> = {
                 "låg": "LÅG RISK",
