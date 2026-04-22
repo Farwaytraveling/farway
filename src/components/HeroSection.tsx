@@ -15,13 +15,16 @@ export const HeroSection = () => {
     <>
       {/* Welcome hero */}
       <section className="bg-gradient-to-b from-primary/5 to-background py-16 sm:py-24 text-center">
-        <div className="container mx-auto px-4 max-w-2xl">
+        <div className="container mx-auto px-4 max-w-3xl">
           <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4 font-display">Farway</p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground font-display uppercase tracking-wide">
+          <h1
+            className="text-primary leading-[0.95] tracking-tight text-6xl sm:text-7xl lg:text-8xl"
+            style={{ fontFamily: '"Caveat Brush", cursive' }}
+          >
             Hitta din väg<br />
-            <span className="italic text-primary">ut i världen.</span>
+            ut i världen
           </h1>
-          <p className="mt-6 text-muted-foreground text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+          <p className="mt-8 text-muted-foreground text-base sm:text-lg max-w-md mx-auto leading-relaxed">
             Utforska program, destinationer och möjligheter för dig som vill jobba, studera eller uppleva något nytt utomlands.
           </p>
         </div>
