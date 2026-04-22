@@ -20,7 +20,7 @@ export const DestinationsSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {destinations.map((dest) => (
             <Link
-              to={dest.isRegion ? `/${dest.slug}` : `/destination/${dest.slug}`}
+              to={dest.customPath ?? (dest.isRegion ? `/${dest.slug}` : `/destination/${dest.slug}`)}
               key={dest.country}
               className="group rounded-xl overflow-hidden bg-card border border-border/50 hover:shadow-medium transition-all duration-300"
             >
