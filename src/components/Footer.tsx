@@ -1,5 +1,6 @@
-import { Globe, Instagram, Facebook, Youtube, Mail, ArrowUpRight } from "lucide-react";
+import { Instagram, Facebook, Youtube, Mail, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import farwayLogo from "@/assets/farway-logo.png";
 
 const footerLinks = {
   program: [
@@ -19,13 +20,14 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2.5 mb-4 group">
-              <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
-                <Globe className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="font-display font-bold text-lg text-foreground">
-                Farway
-              </span>
+            <Link to="/" className="inline-flex items-center mb-4 group" aria-label="Farway – startsida">
+              <img
+                src={farwayLogo}
+                alt="Farway – din väg ut i världen"
+                className="h-12 w-auto object-contain"
+                width={192}
+                height={48}
+              />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed mb-6 max-w-xs">
               Sveriges ledande jämförelsetjänst för Working Holiday, Au Pair och andra utlandsprogram.
