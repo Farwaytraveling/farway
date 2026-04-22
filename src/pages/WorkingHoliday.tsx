@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     question: "Vilka krav måste jag uppfylla?",
-    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18-30 år (vissa länder upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med pengar för att försörja dig initialt (ofta runt 5,000 AUD/NZD/CAD), ha en returbiljett eller pengar för en, samt ha en giltig reseförsäkring."
+    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18–30 år (Kanada upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med sparpengar (vanligtvis 5 000 AUD/NZD/CAD ≈ 35 000–45 000 SEK), ha en returbiljett eller pengar för en, samt en giltig reseförsäkring som täcker hela vistelsen."
   },
   {
     question: "Hur lång tid tar ansökningsprocessen?",
@@ -50,45 +50,100 @@ const workingHolidayCountries = [
     country: "Australien",
     flag: "🇦🇺",
     visaType: "Working Holiday (subclass 417)",
-    ageLimit: "18-30 år",
+    ageLimit: "18–30 år",
     duration: "12 månader",
-    cost: "~$510 AUD",
-    description: "Det klassiska valet för svenskar. Jobba på caféer, farms eller i storstäder som Sydney och Melbourne.",
-    highlights: ["Förlängningsbart upp till 3 år", "Farm work", "Surfing & Outback"],
+    cost: "~670 AUD",
+    description: "Det klassiska valet för svenskar. Jobba på caféer, farms eller i storstäder som Sydney och Melbourne. Som svensk får du ansöka inifrån eller utanför Australien.",
+    highlights: ["Förlängningsbart till 3 år", "Farm work öppnar år 2", "Engelska räcker"],
     applyUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
   },
   {
     country: "Nya Zeeland",
     flag: "🇳🇿",
     visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
+    ageLimit: "18–30 år",
     duration: "12 månader",
-    cost: "~$280 NZD",
-    description: "Perfekt för naturälskare. Kombinera arbete med äventyr i ett av världens vackraste länder.",
+    cost: "~770 NZD",
+    description: "Perfekt för naturälskare. Kombinera arbete med äventyr – från vingårdsarbete i Marlborough till skidsäsong i Queenstown.",
     highlights: ["Extremsporter", "Filmlandskap", "Vingårdsarbete"],
-    applyUrl: "https://www.immigration.govt.nz/new-zealand-visas/apply-for-a-visa/about-visa/sweden-working-holiday-visa",
+    applyUrl: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/sweden-working-holiday-visa",
   },
   {
     country: "Kanada",
     flag: "🇨🇦",
     visaType: "International Experience Canada (IEC)",
-    ageLimit: "18-35 år",
-    duration: "12-24 månader",
-    cost: "~$250 CAD",
-    description: "Jobba i storstäder eller på skidorter. Kanadas IEC-program är populärt men begränsat i antal.",
-    highlights: ["Skidsäsong", "Storstäder", "Lotterisystem"],
+    ageLimit: "18–35 år",
+    duration: "12–24 månader",
+    cost: "~272 CAD",
+    description: "Jobba i storstäder eller på skidorter. Kanadas IEC-program har en årlig kvot och fungerar via 'pool of candidates' – ansök tidigt på säsongen.",
+    highlights: ["Längst upp till 35 år", "Skidsäsong i Whistler", "Pool-system"],
     applyUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
   },
   {
     country: "Japan",
     flag: "🇯🇵",
     visaType: "Working Holiday Visa",
-    ageLimit: "18-30 år",
+    ageLimit: "18–30 år",
     duration: "12 månader",
     cost: "Gratis",
-    description: "Upplev japansk kultur på djupet. Jobba på hostels, språkskolor eller inom tech.",
-    highlights: ["Gratis visum", "Unik kultur", "Tech & tradition"],
-    applyUrl: "https://www.se.emb-japan.go.jp/",
+    description: "Upplev japansk kultur på djupet. Begränsad kvot för svenskar – sök i god tid via japanska ambassaden i Stockholm.",
+    highlights: ["Gratis visum", "Unik kultur", "Begränsad kvot"],
+    applyUrl: "https://www.se.emb-japan.go.jp/itpr_sv/visa_working_holiday.html",
+  },
+  {
+    country: "Sydkorea",
+    flag: "🇰🇷",
+    visaType: "H-1 Working Holiday Visa",
+    ageLimit: "18–30 år",
+    duration: "12 månader",
+    cost: "Gratis",
+    description: "Asiens nya het – Seoul växer snabbt som hub för digitala nomader, K-pop och tech. Många jobbar som engelsklärare eller på hostels.",
+    highlights: ["Gratis visum", "K-kultur", "Engelsklärarjobb"],
+    applyUrl: "https://overseas.mofa.go.kr/se-en/index.do",
+  },
+  {
+    country: "Argentina",
+    flag: "🇦🇷",
+    visaType: "Programa Vacaciones y Trabajo",
+    ageLimit: "18–30 år",
+    duration: "12 månader",
+    cost: "~150 USD",
+    description: "Sveriges enda WHV-avtal i Sydamerika. Buenos Aires bjuder på tango, biff och ett vibbande nattliv – perfekt för att lära sig spanska.",
+    highlights: ["Spanska", "Patagonien", "Buenos Aires"],
+    applyUrl: "https://www.cancilleria.gob.ar/en/services/foreign/sweden",
+  },
+  {
+    country: "Hongkong",
+    flag: "🇭🇰",
+    visaType: "Working Holiday Scheme",
+    ageLimit: "18–30 år",
+    duration: "12 månader",
+    cost: "~230 HKD",
+    description: "Asiens finanshuvudstad i fickformat. Hög lönenivå, engelska överallt och språngbräda till resten av Asien.",
+    highlights: ["Hög lön", "Engelska funkar", "Asien-hub"],
+    applyUrl: "https://www.immd.gov.hk/eng/services/visas/working_holiday.html",
+  },
+  {
+    country: "Taiwan",
+    flag: "🇹🇼",
+    visaType: "Working Holiday Visa",
+    ageLimit: "18–30 år",
+    duration: "6–12 månader",
+    cost: "Gratis",
+    description: "Taipei är ett av Asiens säkraste och mest gästvänliga huvudstäder. Stark bubbel-tea-kultur, fantastisk mat och billigt boende.",
+    highlights: ["Gratis visum", "Säkert", "Mandarin-möjlighet"],
+    applyUrl: "https://www.roc-taiwan.org/se_en/post/107.html",
+  },
+  {
+    country: "Uruguay",
+    flag: "🇺🇾",
+    visaType: "Programa Vacaciones y Trabajo",
+    ageLimit: "18–30 år",
+    duration: "12 månader",
+    cost: "~70 USD",
+    description: "Sydamerikas mest stabila och säkra land. Avslappnad atlantkust, mate-kultur och lugn rytm – mindre kaotiskt än grannländerna.",
+    highlights: ["Säkraste i Sydamerika", "Spanska", "Avslappnat"],
+    applyUrl: "https://www.gub.uy/ministerio-relaciones-exteriores/",
   },
 ];
 const WorkingHoliday = () => {
@@ -136,7 +191,7 @@ const WorkingHoliday = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                4 länder med avtal
+                9 länder med avtal
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Vart vill du åka?
@@ -226,11 +281,11 @@ const WorkingHoliday = () => {
                 <div className="bg-card rounded-2xl border border-border/60 p-6 shadow-sm">
                   <p className="text-foreground font-medium mb-2">💡 Visste du att...</p>
                   <p className="text-muted-foreground">
-                    Sverige har Working Holiday-avtal med ett antal länder runt om i världen. De flesta kräver att du är mellan 18–30 år, men Kanada och Argentina tillåter sökande upp till 35 år.
+                    Sverige har Working Holiday-avtal med 9 länder: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Hongkong, Taiwan, Argentina och Uruguay. De flesta är öppna för 18–30-åringar, men Kanada tillåter upp till 35 år.
                   </p>
                 </div>
                 <p>
-                  Ansökningsprocessen varierar mellan länder. Vissa, som Japan och Chile, erbjuder gratis visum medan andra som Australien har en ansökningsavgift. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
+                  Ansökningsprocessen varierar mellan länder. Japan, Sydkorea och Taiwan erbjuder gratis visum, medan Australien tar ut ~670 AUD och Nya Zeeland ~770 NZD. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
                 </p>
               </div>
             </div>

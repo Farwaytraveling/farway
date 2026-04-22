@@ -25,7 +25,7 @@ const faqItems = [
   },
   {
     question: "Hur mycket fickpengar får jag?",
-    answer: "Fickpengarna varierar stort mellan länder. I USA garanteras minst $195.75/vecka, i Tyskland ca €280/månad, i Frankrike €80-100/vecka. Inom EU är beloppen ofta lägre men kost och logi ingår alltid. Vissa familjer erbjuder extra förmåner som språkkurser eller resebidrag."
+    answer: "Fickpengarna varierar stort mellan länder. I USA garanteras minst $195,75/vecka (ofta högre i praktiken – många familjer betalar $250–400). I Tyskland ca €280/månad, i Frankrike €70–100/vecka och i Spanien €60–80/vecka. Inom EU är beloppen ofta lägre men kost och logi ingår alltid – du sparar därför nästan allt du tjänar."
   },
   {
     question: "Behöver jag visum som svensk?",
@@ -50,11 +50,11 @@ const auPairCountries = [
     country: "Storbritannien",
     flag: "🇬🇧",
     programType: "Youth Mobility Scheme",
-    ageLimit: "18-30 år",
+    ageLimit: "18–30 år",
     duration: "Upp till 24 månader",
-    cost: "~£298 GBP",
-    weeklyPay: "£85-150/vecka",
-    description: "London är en av världens mest spännande städer. Förbättra din engelska medan du bor hos en brittisk familj och upplever allt från teatrar till pubar.",
+    cost: "~£319 GBP + £1 035 IHS",
+    weeklyPay: "£90–170/vecka",
+    description: "London är en av världens mest spännande städer. Förbättra din engelska medan du bor hos en brittisk familj och upplever allt från teatrar till pubar. Obs: inkluderar Immigration Health Surcharge.",
     highlights: ["London", "Engelska", "Kulturupplevelser"],
     cities: ["London", "Cambridge", "Oxford", "Brighton", "Bath"],
     applyUrl: "https://www.gov.uk/youth-mobility",
@@ -62,24 +62,24 @@ const auPairCountries = [
   {
     country: "Frankrike",
     flag: "🇫🇷",
-    programType: "Au Pair Visa",
-    ageLimit: "18-30 år",
-    duration: "6-12 månader",
-    cost: "Gratis visum",
-    weeklyPay: "€80-100/vecka",
+    programType: "Au Pair (inget visum krävs)",
+    ageLimit: "18–30 år",
+    duration: "6–12 månader",
+    cost: "Inget visum behövs (EU)",
+    weeklyPay: "€80–100/vecka",
     description: "Lär dig franska medan du bor i Paris – världens mest romantiska stad. Fantastisk mat, kultur och ett rikt socialt liv väntar.",
     highlights: ["Paris", "Franska", "Kultur & mat"],
     cities: ["Paris", "Lyon", "Marseille", "Nice", "Bordeaux"],
-    applyUrl: "https://france-visas.gouv.fr/",
+    applyUrl: "https://www.aupairworld.com/en/au_pair_program/france",
   },
   {
     country: "Spanien",
     flag: "🇪🇸",
     programType: "Au Pair (inget visum krävs)",
-    ageLimit: "18-30 år",
-    duration: "3-12 månader",
+    ageLimit: "18–30 år",
+    duration: "3–12 månader",
     cost: "Inget visum behövs (EU)",
-    weeklyPay: "€60-80/vecka",
+    weeklyPay: "€70–80/vecka",
     description: "Sol, strand och spanska! Bo hos en familj i Barcelona och njut av Gaudís arkitektur, strandliv och ett fantastiskt nattliv.",
     highlights: ["Barcelona", "Spanska", "Sol & strand"],
     cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Málaga"],
@@ -89,10 +89,10 @@ const auPairCountries = [
     country: "Australien",
     flag: "🇦🇺",
     programType: "Working Holiday Visa (subclass 462)",
-    ageLimit: "18-30 år",
+    ageLimit: "18–30 år",
     duration: "Upp till 12 månader",
-    cost: "~$510 AUD",
-    weeklyPay: "$200-350 AUD/vecka",
+    cost: "~670 AUD",
+    weeklyPay: "$250–350 AUD/vecka",
     description: "Kombinera au pair med det australiska äventyret. Upplev surfkultur, vilda djur och en avslappnad livsstil medan du bor hos en australisk familj.",
     highlights: ["Sydney", "Engelska", "Strandliv"],
     cities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Gold Coast"],
@@ -102,14 +102,40 @@ const auPairCountries = [
     country: "Italien",
     flag: "🇮🇹",
     programType: "Au Pair (inget visum krävs)",
-    ageLimit: "18-30 år",
-    duration: "3-12 månader",
+    ageLimit: "18–30 år",
+    duration: "3–12 månader",
     cost: "Inget visum behövs (EU)",
-    weeklyPay: "€60-80/vecka",
+    weeklyPay: "€65–90/vecka",
     description: "Lev la dolce vita! Lär dig italienska medan du bor hos en familj i Rom eller Milano – med pasta, gelato och historia runt varje hörn.",
     highlights: ["Rom", "Italienska", "Mat & historia"],
     cities: ["Rom", "Milano", "Florens", "Neapel", "Turin"],
     applyUrl: "https://www.aupairworld.com/en/au_pair_program/italy",
+  },
+  {
+    country: "USA",
+    flag: "🇺🇸",
+    programType: "J-1 Au Pair Visa",
+    ageLimit: "18–26 år",
+    duration: "12 månader (+ 6/9/12 ext.)",
+    cost: "~$3 000–4 500 (program)",
+    weeklyPay: "Min $195,75/vecka",
+    description: "Det mest reglerade och tryggaste au pair-programmet. Kost, logi, $500 mot collegekurser och full försäkring ingår. Sponsras av godkända byråer som Cultural Care eller AuPairCare.",
+    highlights: ["Reglerat program", "College-bidrag", "Travel month"],
+    cities: ["New York", "San Francisco", "Boston", "Chicago", "Los Angeles"],
+    applyUrl: "https://j1visa.state.gov/programs/au-pair",
+  },
+  {
+    country: "Tyskland",
+    flag: "🇩🇪",
+    programType: "Au Pair (inget visum krävs)",
+    ageLimit: "18–26 år",
+    duration: "6–12 månader",
+    cost: "Inget visum behövs (EU)",
+    weeklyPay: "~€280/månad + språkkursbidrag",
+    description: "Tyskland har en officiell au pair-modell genom Bundesagentur für Arbeit. Familjen ska bidra med €70/mån till språkkurs och en månads betald semester ingår.",
+    highlights: ["Officiellt reglerat", "Språkkursbidrag €70/mån", "Berlin & München"],
+    cities: ["Berlin", "München", "Hamburg", "Köln", "Frankfurt"],
+    applyUrl: "https://www.aupairworld.com/en/au_pair_program/germany",
   },
 ];
 
@@ -159,13 +185,13 @@ const AuPair = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                5 populära länder
+                7 populära länder
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Hitta din värdfamilj
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                London, Paris, Barcelona, Sydney eller Rom – välj din drömstad.
+                Från London till New York – välj din drömstad och drömfamilj.
               </p>
             </div>
 

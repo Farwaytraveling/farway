@@ -17,8 +17,8 @@ const faqItems = [
   { question: "Hur hittar jag säsongsjobb på skidort?", answer: "Börja söka tidigt - helst 3-6 månader innan säsongen startar. Använd jobbsajter specifika för varje land, kontakta skidorter direkt via deras hemsidor, eller gå via rekryteringsföretag som specialiserar sig på säsongsarbete." },
   { question: "Behöver jag erfarenhet för att få jobb?", answer: "Nej, många jobb kräver ingen tidigare erfarenhet. Positioner som diskare, städare, liftvärd eller barbacka är ofta öppna för nybörjare. Har du erfarenhet av restaurang, bar eller kundservice ökar dina chanser." },
   { question: "Ingår boende och liftkort?", answer: "De flesta arbetsgivare erbjuder subventionerat eller gratis boende - detta är standard i branschen. Liftkort ingår ofta, men villkoren varierar. Fråga alltid om detta vid anställning." },
-  { question: "Hur mycket kan jag tjäna?", answer: "Lönerna varierar kraftigt. I Schweiz kan du tjäna CHF 3,500-4,500/mån, medan lönen i Österrike ligger på €1,200-1,800/mån. Kom ihåg att boende ofta ingår." },
-  { question: "Behöver jag visum för att jobba i Alperna?", answer: "Som svensk (EU-medborgare) kan du jobba fritt i alla EU-länder samt Schweiz utan visum. För Andorra krävs arbetstillstånd. För Kanada, Japan och Nya Zeeland behöver du Working Holiday-visum." },
+  { question: "Hur mycket kan jag tjäna?", answer: "Lönerna varierar kraftigt. I Schweiz tjänar säsongspersonal vanligtvis CHF 3 200–4 500/månad enligt branschens kollektivavtal (L-GAV). I Österrike ligger lönen på €1 600–2 000/månad enligt Hotel- und Gastgewerbe-KV, och i Frankrike runt SMIC (€1 800–1 900/månad brutto). Kost och logi ingår nästan alltid – så det mesta du tjänar är sparbart." },
+  { question: "Behöver jag visum för att jobba i Alperna?", answer: "Som svensk EU-medborgare kan du jobba fritt i alla EU-länder samt Schweiz utan visum (Schweiz baseras på personrörlighetsavtalet). För Andorra krävs arbetstillstånd via arbetsgivaren. För Kanada, Japan och Nya Zeeland behöver du Working Holiday-visum." },
   { question: "Hur bra måste jag kunna skida?", answer: "För de flesta jobb behöver du inte vara en expert på skidor. Många jobbar hela säsongen och lär sig skida på fritiden. För jobb som skidlärare krävs hög skidnivå och certifikat." },
   { question: "När börjar och slutar säsongen?", answer: "I Europa (Alperna) pågår säsongen vanligtvis från december till april. Glaciärorter som Zermatt har längre säsonger. I södra halvklotet (Nya Zeeland) är säsongen juni-oktober. Japan har säsong december-mars." },
   { question: "Kan jag åka med vänner?", answer: "Absolut! Många åker med vänner och söker jobb tillsammans. Vissa arbetsgivare föredrar att anställa grupper. Delat boende är standard." },
@@ -26,7 +26,7 @@ const faqItems = [
 
 const skiDestinations = [
   {
-    country: "Österrike", flag: "🇦🇹", region: "Tyrolen & Salzburg", season: "December - April", avgSalary: "€1,200-1,800/mån",
+    country: "Österrike", flag: "🇦🇹", region: "Tyrolen & Salzburg", season: "December – April", avgSalary: "€1 600–2 000/mån",
     description: "Österrike är hjärtat av Alperna med världsberömda skidorter och ett livligt après-ski. Perfekt för dig som vill kombinera bra löner med legendariskt festliv.",
     resorts: [
       { name: "St. Anton", type: "Party & Powder", jobs: "Barer, hotell, liftar" },
@@ -39,7 +39,7 @@ const skiDestinations = [
     jobUrl: "https://www.jobs.at/", visaInfo: "EU-medborgare behöver inget visum",
   },
   {
-    country: "Schweiz", flag: "🇨🇭", region: "Valais & Graubünden", season: "November - April", avgSalary: "CHF 3,500-4,500/mån",
+    country: "Schweiz", flag: "🇨🇭", region: "Valais & Graubünden", season: "November – April", avgSalary: "CHF 3 200–4 500/mån",
     description: "Schweiz erbjuder de högsta lönerna i Alperna och spektakulära skidområden. Här kan du spara rejält medan du lever i bergen.",
     resorts: [
       { name: "Zermatt", type: "Ikoniskt", jobs: "Hotell, restauranger" },
@@ -52,7 +52,7 @@ const skiDestinations = [
     jobUrl: "https://www.jobs.ch/", visaInfo: "EU-medborgare kan jobba fritt",
   },
   {
-    country: "Frankrike", flag: "🇫🇷", region: "Franska Alperna", season: "December - April", avgSalary: "€1,100-1,600/mån",
+    country: "Frankrike", flag: "🇫🇷", region: "Franska Alperna", season: "December – April", avgSalary: "€1 800–2 100/mån",
     description: "Frankrike har några av världens största sammanlänkade skidområden. Fantastisk mat, bra skidåkning och en avslappnad livsstil.",
     resorts: [
       { name: "Val d'Isère", type: "Legendariskt", jobs: "Barer, hotell, liftar" },
@@ -105,7 +105,7 @@ const SkiSeason = () => {
                 {[
                   { icon: Calendar, text: "Nov – April (Europa)" },
                   { icon: Clock, text: "3–6 månader" },
-                  { icon: DollarSign, text: "€1,000–4,500/mån" },
+                  { icon: DollarSign, text: "€1 600–4 500/mån" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/15 rounded-full px-5 py-2.5 text-primary-foreground">
                     <item.icon className="w-4 h-4" />
