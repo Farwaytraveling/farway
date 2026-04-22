@@ -266,7 +266,7 @@ const destinationData: Record<string, DestinationInfo> = {
     facts: [
       { label: "Visumlängd", value: "2 år (YMS)" },
       { label: "Åldersgräns", value: "18–30 år" },
-      { label: "Visumavgift", value: "~£298" },
+      { label: "Visumavgift", value: "£319 + IHS" },
     ],
     bestTime: "Året runt",
     currency: "Brittiskt pund (GBP)",
@@ -274,8 +274,8 @@ const destinationData: Record<string, DestinationInfo> = {
     communityStats: { total: "~100 000 svenskar bosatta", swedish: "~3 000 unga/år", ageRange: "20–30 år vanligast" },
     quickFacts: [
       { icon: Calendar, label: "Visum giltighetstid", value: "2 år" },
-      { icon: DollarSign, label: "Visumavgift", value: "~£298" },
-      { icon: Briefcase, label: "National Insurance Number", value: "Krävs för jobb" },
+      { icon: DollarSign, label: "Avgift + IHS", value: "£319 + £776/år" },
+      { icon: Briefcase, label: "Sparkapital", value: "£2 530 krävs" },
       { icon: Plane, label: "Ålderskrav", value: "18–30 år" },
     ],
     resources: [
@@ -1174,6 +1174,12 @@ const Destination = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEO
+        title={`${dest.name} – guide för svenska ungdomar | Farway`}
+        description={`${dest.name}: visum, jobb, boende, städer och praktiska tips för dig som vill jobba, plugga eller resa till ${dest.name}. Faktagranskat och gratis.`}
+        canonical={`https://farway.se/destination/${slug}`}
+        ogImage={dest.heroImage}
+      />
       <Header />
       <main className="flex-1">
         {/* Hero */}
