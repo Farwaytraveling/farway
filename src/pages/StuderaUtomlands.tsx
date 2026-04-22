@@ -304,11 +304,11 @@ const faqItems = [
   },
   {
     question: "Kan jag arbeta under studierna?",
-    answer: "Inom EU har du full arbetsrätt. I USA tillåter F-1 visum 20 timmar/vecka på campus. Australien tillåter 48 timmar per 14 dagar. Storbritannien tillåter 20 timmar/vecka under terminen. Kontrollera alltid ditt visums villkor för att inte riskera det."
+    answer: "Inom EU har du full arbetsrätt. I USA tillåter F-1-visum 20 timmar/vecka på campus under terminen och heltid på lov. Australien tillåter 48 timmar per 14 dagar under terminen och obegränsat på lov. Storbritannien tillåter 20 timmar/vecka under terminen för fulltidsstudenter. Kontrollera alltid ditt visums villkor – brott mot dem kan leda till att visumet dras in."
   },
   {
     question: "Vad kostar det att studera utomlands?",
-    answer: "Kostnaderna varierar enormt. Tyskland och Frankrike har nästan gratis offentliga universitet. Nederländerna kostar ca €2,200/år för EU-studenter. USA och Storbritannien är dyrast med $20,000-50,000/år. Lägg till levnadskostnader: €800-2,000/månad beroende på stad."
+    answer: "Kostnaderna varierar enormt. Tyskland har inga terminsavgifter på offentliga universitet (endast en semesteravgift på ca €150–350/termin). Frankrike har låga avgifter (~€175/år för kandidat, €250/år för master på offentliga universitet). Nederländerna kostar ca €2 500/år för EU-studenter. USA och Storbritannien är dyrast med $20 000–60 000/år. Lägg till levnadskostnader: €800–2 200/månad beroende på stad."
   },
   {
     question: "Hur lång tid varar en språkkurs?",

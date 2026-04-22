@@ -12,7 +12,7 @@ const seaDestinations = [
     description: "Svenskarnas absoluta favorit i Sydostasien. Från Bangkoks tempel till Koh Phi Phis stränder – Thailand har allt för backpackern, volontären och den digitala nomaden.",
     activities: ["Backpacking", "Dykning", "Yoga", "Volontär", "Digital Nomad"],
     budget: "~5 000 kr/mån",
-    visa: "Turistvisum 60 dagar",
+    visa: "Visumfritt 60 dagar",
     slug: "thailand",
   },
   {
@@ -22,7 +22,7 @@ const seaDestinations = [
     description: "Vietnam erbjuder en otrolig blandning av historia, natur och gatumat. Populärt att köra motorcykel från norr till söder.",
     activities: ["Backpacking", "Undervisa engelska", "Digital Nomad", "Mat"],
     budget: "~4 000 kr/mån",
-    visa: "E-Visa 90 dagar",
+    visa: "Visumfritt 45 dagar (e-Visa upp till 90)",
     slug: "vietnam",
   },
   {
@@ -32,7 +32,7 @@ const seaDestinations = [
     description: "Bali har blivit en av världens mest populära platser för digitala nomader och yogaälskare. Utanför Bali väntar tusentals öar att utforska.",
     activities: ["Surfing", "Yoga", "Digital Nomad", "Dykning", "Volontär"],
     budget: "~6 000 kr/mån",
-    visa: "Visa on Arrival 30 dagar",
+    visa: "VoA 30 dagar (förlängbart)",
     slug: "indonesien",
   },
   {
