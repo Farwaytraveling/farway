@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase, Users, Home as HomeIcon, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -100,6 +101,11 @@ const facebookGroups = [
 const Alperna = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Alperna – jobba, åk skidor & vandra | Frankrike, Schweiz, Österrike | Farway"
+        description="Allt om Alperna för svenska ungdomar: skidsäsong, sommarvandring, au pair och språkresor i Frankrike, Schweiz, Österrike, Italien och Andorra."
+        canonical="https://farway.se/alperna"
+      />
       <Header />
 
       {/* Hero */}

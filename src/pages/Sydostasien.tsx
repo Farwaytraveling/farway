@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Palmtree, MapPin, ArrowRight, Wallet, Thermometer, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -70,6 +71,11 @@ const seaDestinations = [
 const Sydostasien = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Sydostasien – Thailand, Vietnam, Bali & Filippinerna | Farway"
+        description="Backpacka, dyk, surfa eller bli digital nomad i Sydostasien. Guide till Thailand, Vietnam, Indonesien, Filippinerna, Kambodja, Laos och Malaysia."
+        canonical="https://farway.se/sydostasien"
+      />
       <Header />
 
       {/* Hero */}

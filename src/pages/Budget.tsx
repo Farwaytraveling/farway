@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -77,6 +78,11 @@ const Budget = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Budgetkalkylator för utlandsåret – räkna ut din reskostnad | Farway"
+        description="Räkna ut vad ditt utlandsår kostar. Budget för Working Holiday, skidsäsong, backpacking och språkkurser i 20+ länder – flyg, boende, mat och försäkring."
+        canonical="https://farway.se/budget"
+      />
       <Header />
       <main className="pt-[calc(4rem+2.75rem+1px)] sm:pt-[calc(4rem+1px)]">
         {/* Hero */}

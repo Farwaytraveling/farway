@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SEO } from "@/components/SEO";
 import { MapPin, ArrowRight, Wallet, Music, Globe, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -80,6 +81,11 @@ const saDestinations = [
 const Sydamerika = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Sydamerika – Argentina, Brasilien, Colombia, Peru & Chile | Farway"
+        description="Allt om Sydamerika för svenska ungdomar: Working Holiday, språkkurser, backpacking och digital nomad-liv i Argentina, Brasilien, Colombia, Peru och Chile."
+        canonical="https://farway.se/sydamerika"
+      />
       <Header />
 
       {/* Hero */}
