@@ -281,11 +281,11 @@ const WorkingHoliday = () => {
                 <div className="bg-card rounded-2xl border border-border/60 p-6 shadow-sm">
                   <p className="text-foreground font-medium mb-2">💡 Visste du att...</p>
                   <p className="text-muted-foreground">
-                    Sverige har Working Holiday-avtal med ett antal länder runt om i världen. De flesta kräver att du är mellan 18–30 år, men Kanada och Argentina tillåter sökande upp till 35 år.
+                    Sverige har Working Holiday-avtal med 9 länder: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Hongkong, Taiwan, Argentina och Uruguay. De flesta är öppna för 18–30-åringar, men Kanada tillåter upp till 35 år.
                   </p>
                 </div>
                 <p>
-                  Ansökningsprocessen varierar mellan länder. Vissa, som Japan och Chile, erbjuder gratis visum medan andra som Australien har en ansökningsavgift. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
+                  Ansökningsprocessen varierar mellan länder. Japan, Sydkorea och Taiwan erbjuder gratis visum, medan Australien tar ut ~670 AUD och Nya Zeeland ~770 NZD. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
                 </p>
               </div>
             </div>
