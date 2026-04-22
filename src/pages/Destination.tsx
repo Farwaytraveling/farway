@@ -1469,7 +1469,7 @@ const Destination = () => {
                       </div>
                     </div>
 
-                    <div className="text-xs text-muted-foreground bg-amber-500/5 border border-amber-500/20 rounded-xl p-3">
+                    <div className="text-xs text-muted-foreground bg-warning/5 border border-warning/20 rounded-xl p-3">
                       <strong className="text-foreground">UD jourtjänst (24/7):</strong>{" "}
                       <a href="tel:+4684055005" className="text-primary hover:underline">+46 8 405 50 05</a> – vid akut nöd utomlands.
                     </div>
