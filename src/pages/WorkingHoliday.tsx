@@ -17,7 +17,7 @@ const faqItems = [
   },
   {
     question: "Vilka krav måste jag uppfylla?",
-    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18-30 år (vissa länder upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med pengar för att försörja dig initialt (ofta runt 5,000 AUD/NZD/CAD), ha en returbiljett eller pengar för en, samt ha en giltig reseförsäkring."
+    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18–30 år (Kanada upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med sparpengar (vanligtvis 5 000 AUD/NZD/CAD ≈ 35 000–45 000 SEK), ha en returbiljett eller pengar för en, samt en giltig reseförsäkring som täcker hela vistelsen."
   },
   {
     question: "Hur lång tid tar ansökningsprocessen?",
@@ -191,7 +191,7 @@ const WorkingHoliday = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                4 länder med avtal
+                9 länder med avtal
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Vart vill du åka?
