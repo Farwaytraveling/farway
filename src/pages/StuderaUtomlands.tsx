@@ -157,50 +157,131 @@ const languageSchools = [
   {
     language: "Engelska",
     flag: "🇬🇧",
-    countries: ["Malta", "Irland", "Australien", "Kanada"],
-    duration: "2-52 veckor",
-    cost: "€200-500/vecka",
-    url: "https://www.languagecourse.net/",
+    countries: ["Malta", "Irland", "Australien", "Kanada", "USA"],
+    duration: "2–52 veckor",
+    cost: "€200–500/vecka",
+    bestFor: "Snabbast väg till flytande engelska – välj Malta för budget eller Irland för EU-arbetsrätt.",
+    providers: [
+      { name: "EF Education First", url: "https://www.ef.se/sprakresor/" },
+      { name: "Kaplan International", url: "https://www.kaplaninternational.com/" },
+      { name: "EC English", url: "https://www.ecenglish.com/" },
+    ],
   },
   {
     language: "Spanska",
     flag: "🇪🇸",
-    countries: ["Spanien", "Costa Rica", "Colombia", "Argentina"],
-    duration: "1-24 veckor",
-    cost: "€150-400/vecka",
-    url: "https://www.donquijote.org/",
+    countries: ["Spanien", "Costa Rica", "Colombia", "Argentina", "Mexiko"],
+    duration: "1–24 veckor",
+    cost: "€150–400/vecka",
+    bestFor: "Latinamerika är billigast och bäst för uttal. Spanien har flest kurser och DELE-certifikat.",
+    providers: [
+      { name: "don Quijote", url: "https://www.donquijote.org/" },
+      { name: "Enforex", url: "https://www.enforex.com/" },
+      { name: "ESL Sprakresor", url: "https://www.esl.se/sv/sprakresor/spanska" },
+    ],
   },
   {
     language: "Franska",
     flag: "🇫🇷",
-    countries: ["Frankrike", "Schweiz", "Kanada", "Marocko"],
-    duration: "1-24 veckor",
-    cost: "€200-500/vecka",
-    url: "https://www.alliancefr.org/en",
+    countries: ["Frankrike", "Schweiz", "Kanada", "Marocko", "Belgien"],
+    duration: "1–24 veckor",
+    cost: "€200–500/vecka",
+    bestFor: "Nice och Montpellier är billigare än Paris. DELF/DALF-certifikat öppnar dörrar i hela frankofonin.",
+    providers: [
+      { name: "Alliance Française", url: "https://www.alliancefr.org/en" },
+      { name: "EF Frankrike", url: "https://www.ef.se/sprakresor/franska/" },
+      { name: "Accent Français", url: "https://www.accentfrancais.com/" },
+    ],
   },
   {
     language: "Tyska",
     flag: "🇩🇪",
     countries: ["Tyskland", "Österrike", "Schweiz"],
-    duration: "2-24 veckor",
-    cost: "€180-400/vecka",
-    url: "https://www.goethe.de/en/",
+    duration: "2–24 veckor",
+    cost: "€180–400/vecka",
+    bestFor: "Goethe-Institut är guldstandard om du vill plugga vidare på tyskt universitet (kräver C1/C2).",
+    providers: [
+      { name: "Goethe-Institut", url: "https://www.goethe.de/en/" },
+      { name: "DID Deutsch-Institut", url: "https://www.did.de/en/" },
+      { name: "Kilroy språkresor", url: "https://www.kilroy.se/sprakresor" },
+    ],
   },
   {
     language: "Japanska",
     flag: "🇯🇵",
     countries: ["Japan"],
-    duration: "2-52 veckor",
-    cost: "€200-450/vecka",
-    url: "https://gogonihon.com/en/",
+    duration: "2–52 veckor",
+    cost: "€200–450/vecka",
+    bestFor: "För 6+ månader behöver du studentvisum – då får du även deltidsarbeta 28 timmar/vecka.",
+    providers: [
+      { name: "Go! Go! Nihon", url: "https://gogonihon.com/en/" },
+      { name: "GenkiJACS", url: "https://genkijacs.com/" },
+      { name: "ISI Language School", url: "https://www.isi-global.com/en/" },
+    ],
   },
   {
     language: "Italienska",
     flag: "🇮🇹",
     countries: ["Italien"],
-    duration: "1-24 veckor",
-    cost: "€150-350/vecka",
-    url: "https://www.studyitalian.it/",
+    duration: "1–24 veckor",
+    cost: "€150–350/vecka",
+    bestFor: "Florens och Siena har mest svenska studenter. Kombinera gärna med konst- eller matlagningskurs.",
+    providers: [
+      { name: "Scuola Leonardo da Vinci", url: "https://www.scuolaleonardo.com/" },
+      { name: "Dante Alighieri", url: "https://ladante.it/en/" },
+      { name: "EF Italien", url: "https://www.ef.se/sprakresor/italienska/" },
+    ],
+  },
+  {
+    language: "Portugisiska",
+    flag: "🇵🇹",
+    countries: ["Portugal", "Brasilien"],
+    duration: "2–24 veckor",
+    cost: "€150–380/vecka",
+    bestFor: "Lissabon är ett av Europas billigaste alternativ. Brasilien för den som vill kombinera språk + surf.",
+    providers: [
+      { name: "CIAL Lissabon", url: "https://www.cial.pt/en/" },
+      { name: "Fast Forward Brasilien", url: "https://www.fastforward.com.br/en/" },
+    ],
+  },
+  {
+    language: "Mandarin",
+    flag: "🇨🇳",
+    countries: ["Kina", "Taiwan"],
+    duration: "4–48 veckor",
+    cost: "€180–400/vecka",
+    bestFor: "Taiwan är friare och har traditionella tecken. Confucius Institute erbjuder ofta stipendier.",
+    providers: [
+      { name: "LTL Mandarin School", url: "https://ltl-school.com/" },
+      { name: "Mandarin House", url: "https://www.mandarinhouse.com/" },
+    ],
+  },
+];
+
+const languageProviders = [
+  {
+    name: "EF Education First",
+    description: "Svenskt företag med 50+ destinationer. Allt-inkluderat-paket med boende, transfer och aktiviteter – tryggt val för förstagångsresenärer.",
+    url: "https://www.ef.se/sprakresor/",
+    tag: "Mest populär hos svenskar",
+  },
+  {
+    name: "Kilroy",
+    description: "Specialiserade på unga resenärer (18–30). Personlig rådgivning på svenska och flexibla bokningar – bra för längre kurser.",
+    url: "https://www.kilroy.se/sprakresor",
+    tag: "Personlig rådgivning",
+  },
+  {
+    name: "ESL Språkresor",
+    description: "Europas största jämförelsesajt för språkresor. Hitta och boka kurser hos 350+ skolor till samma pris som direkt – med svensk support.",
+    url: "https://www.esl.se/",
+    tag: "Jämför skolor",
+  },
+  {
+    name: "Languagecourse.net",
+    description: "Oberoende jämförelseplattform med 30 000+ recensioner. Lägsta pris-garanti och ofta billigare än att boka direkt hos skolan.",
+    url: "https://www.languagecourse.net/",
+    tag: "Bästa pris",
   },
 ];
 
@@ -481,33 +562,83 @@ const StuderaUtomlands = () => {
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
               {languageSchools.map((school) => (
-                <a
+                <div
                   key={school.language}
-                  href={school.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20 transition-all duration-300"
+                  className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:border-primary/20 transition-all duration-300 flex flex-col"
                 >
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-3">
                     <span className="text-4xl">{school.flag}</span>
-                    <h3 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{school.language}</h3>
+                    <h3 className="font-semibold text-lg text-foreground">{school.language}</h3>
                   </div>
-                  <div className="flex flex-wrap gap-1 mb-4">
+                  <div className="flex flex-wrap gap-1 mb-3">
                     {school.countries.map((c) => (
                       <span key={c} className="text-xs bg-muted/60 text-muted-foreground px-2 py-0.5 rounded-full">{c}</span>
                     ))}
                   </div>
-                  <div className="text-sm text-muted-foreground space-y-1.5">
+                  <div className="text-sm text-muted-foreground space-y-1.5 mb-3">
                     <div>📅 {school.duration}</div>
                     <div>💰 {school.cost}</div>
                   </div>
-                  <div className="mt-4 flex items-center text-sm text-primary font-medium opacity-0 group-hover:opacity-100 transition-all translate-x-0 group-hover:translate-x-1">
-                    Hitta kurser <ArrowRight className="w-3 h-3 ml-1" />
+                  <p className="text-sm text-foreground/80 italic mb-4 leading-relaxed">
+                    💡 {school.bestFor}
+                  </p>
+                  <div className="mt-auto pt-4 border-t border-border/60">
+                    <p className="text-xs font-semibold text-foreground/70 mb-2 uppercase tracking-wide">Boka kurs hos:</p>
+                    <div className="flex flex-col gap-1.5">
+                      {school.providers.map((p) => (
+                        <a
+                          key={p.name}
+                          href={p.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-primary hover:underline flex items-center gap-1 group/link"
+                        >
+                          <ArrowRight className="w-3 h-3 transition-transform group-hover/link:translate-x-0.5" />
+                          {p.name}
+                        </a>
+                      ))}
+                    </div>
                   </div>
-                </a>
+                </div>
               ))}
+            </div>
+
+            {/* Language providers / booking platforms */}
+            <div className="mt-16 max-w-5xl mx-auto">
+              <div className="text-center mb-8">
+                <p className="text-sm font-medium text-primary mb-2 tracking-wide uppercase">🎒 Var bokar du?</p>
+                <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-3">
+                  Svenska & internationella bokningssidor
+                </h3>
+                <p className="text-muted-foreground max-w-xl mx-auto">
+                  Jämför skolor, läs recensioner och boka allt på ett ställe – ofta till samma pris som direkt.
+                </p>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-5">
+                {languageProviders.map((p) => (
+                  <a
+                    key={p.name}
+                    href={p.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-card rounded-2xl border border-border/60 p-6 hover:shadow-lg hover:-translate-y-0.5 hover:border-primary/30 transition-all duration-300"
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-3">
+                      <h4 className="font-semibold text-lg text-foreground group-hover:text-primary transition-colors">{p.name}</h4>
+                      <span className="text-xs bg-primary/10 text-primary px-2.5 py-1 rounded-full whitespace-nowrap">{p.tag}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">{p.description}</p>
+                    <div className="flex items-center text-sm text-primary font-medium">
+                      Besök sajten <ArrowRight className="w-3 h-3 ml-1 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </a>
+                ))}
+              </div>
+              <p className="text-center text-sm text-muted-foreground mt-8">
+                💡 <strong>CSN-tips:</strong> Språkkurser på minst 13 veckor i CSN-godkänt land berättigar till studiemedel. Kolla på <a href="https://www.csn.se/bidrag-och-lan/studiestod/utomlands.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">csn.se</a> innan du bokar.
+              </p>
             </div>
           </div>
         </section>
