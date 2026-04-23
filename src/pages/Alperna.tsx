@@ -49,16 +49,6 @@ const alpineDestinations = [
     season: "Dec–Apr (vinter) / Jun–Sep (sommar)",
     slug: "italien",
   },
-  {
-    country: "Andorra",
-    flag: "🇦🇩",
-    regions: ["Grandvalira", "Vallnord"],
-    description: "Litet furstendöme i Pyrenéerna med skattefria priser, sol och överraskande bra skidåkning.",
-    highlights: ["Skattefritt", "Soligt klimat", "Budgetvänligt"],
-    activities: ["Skidsäsong"],
-    season: "Dec–Apr",
-    slug: "andorra",
-  },
 ];
 
 const facebookGroups = [
@@ -117,7 +107,7 @@ const Alperna = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Alperna – jobba, åk skidor & vandra | Frankrike, Schweiz, Österrike | Farway"
-        description="Allt om Alperna för svenska ungdomar: skidsäsong, sommarvandring, au pair och språkresor i Frankrike, Schweiz, Österrike, Italien och Andorra."
+        description="Allt om Alperna för svenska ungdomar: skidsäsong, sommarvandring, au pair och språkresor i Frankrike, Schweiz, Österrike och Italien."
         canonical="https://farway.se/alperna"
       />
       <Header />
