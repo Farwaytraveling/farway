@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase, Users, Home as HomeIcon, ExternalLink } from "lucide-react";
+import { Mountain, MapPin, Snowflake, Sun, ArrowRight, Briefcase, Users, Home as HomeIcon, ExternalLink, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ResortDetailDialog } from "@/components/ResortDetailDialog";
+import { resortDetails, type ResortDetail } from "@/data/skiResortDetails";
 
 const alpineDestinations = [
   {
@@ -99,6 +102,17 @@ const facebookGroups = [
 ];
 
 const Alperna = () => {
+  const [selectedResort, setSelectedResort] = useState<ResortDetail | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const openResort = (name: string) => {
+    const detail = resortDetails[name];
+    if (detail) {
+      setSelectedResort(detail);
+      setDialogOpen(true);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -173,11 +187,23 @@ const Alperna = () => {
 
                 <div className="grid md:grid-cols-2 gap-4 mt-4">
                   <div>
-                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Populära orter</p>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Populära orter <span className="text-muted-foreground/70 normal-case font-normal">(klicka för info)</span></p>
                     <div className="flex flex-wrap gap-2">
-                      {dest.regions.map((r) => (
-                        <span key={r} className="bg-secondary text-secondary-foreground text-xs px-3 py-1 rounded-full">{r}</span>
-                      ))}
+                      {dest.regions.map((r) => {
+                        const hasDetail = !!resortDetails[r];
+                        return (
+                          <button
+                            key={r}
+                            type="button"
+                            onClick={() => openResort(r)}
+                            disabled={!hasDetail}
+                            className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground text-xs px-3 py-1 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+                          >
+                            {r}
+                            {hasDetail && <Info className="w-3 h-3" />}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
                   <div>
@@ -276,6 +302,7 @@ const Alperna = () => {
       </section>
 
       <Footer />
+      <ResortDetailDialog resort={selectedResort} open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };
