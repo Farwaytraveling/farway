@@ -19,7 +19,7 @@ const faqItems = [
   { question: "Behöver jag erfarenhet för att få jobb?", answer: "Nej, många jobb kräver ingen tidigare erfarenhet. Positioner som diskare, städare, liftvärd eller barbacka är ofta öppna för nybörjare. Har du erfarenhet av restaurang, bar eller kundservice ökar dina chanser." },
   { question: "Ingår boende och liftkort?", answer: "De flesta arbetsgivare erbjuder subventionerat eller gratis boende - detta är standard i branschen. Liftkort ingår ofta, men villkoren varierar. Fråga alltid om detta vid anställning." },
   { question: "Hur mycket kan jag tjäna?", answer: "Lönerna varierar kraftigt. I Schweiz tjänar säsongspersonal vanligtvis CHF 3 200–4 500/månad enligt branschens kollektivavtal (L-GAV). I Österrike ligger lönen på €1 600–2 000/månad enligt Hotel- und Gastgewerbe-KV, och i Frankrike runt SMIC (€1 800–1 900/månad brutto). Kost och logi ingår nästan alltid – så det mesta du tjänar är sparbart." },
-  { question: "Behöver jag visum för att jobba i Alperna?", answer: "Som svensk EU-medborgare kan du jobba fritt i alla EU-länder samt Schweiz utan visum (Schweiz baseras på personrörlighetsavtalet). För Andorra krävs arbetstillstånd via arbetsgivaren. För Kanada, Japan och Nya Zeeland behöver du Working Holiday-visum." },
+  { question: "Behöver jag visum för att jobba i Alperna?", answer: "Som svensk EU-medborgare kan du jobba fritt i alla EU-länder samt Schweiz utan visum (Schweiz baseras på personrörlighetsavtalet). För Kanada, Japan och Nya Zeeland behöver du Working Holiday-visum." },
   { question: "Hur bra måste jag kunna skida?", answer: "För de flesta jobb behöver du inte vara en expert på skidor. Många jobbar hela säsongen och lär sig skida på fritiden. För jobb som skidlärare krävs hög skidnivå och certifikat." },
   { question: "När börjar och slutar säsongen?", answer: "I Europa (Alperna) pågår säsongen vanligtvis från december till april. Glaciärorter som Zermatt har längre säsonger. I södra halvklotet (Nya Zeeland) är säsongen juni-oktober. Japan har säsong december-mars." },
   { question: "Kan jag åka med vänner?", answer: "Absolut! Många åker med vänner och söker jobb tillsammans. Vissa arbetsgivare föredrar att anställa grupper. Delat boende är standard." },
@@ -83,7 +83,7 @@ const SkiSeason = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Skidsäsong i Alperna 2025/2026 – jobba i Österrike, Schweiz, Frankrike | Farway"
-        description="Allt om att jobba en skidsäsong: Österrike, Schweiz, Frankrike, Italien, Andorra, Japan & Kanada. Löner, jobb, ansökan och bästa skidorterna – samlad guide."
+        description="Allt om att jobba en skidsäsong: Österrike, Schweiz, Frankrike, Italien, Japan & Kanada. Löner, jobb, ansökan och bästa skidorterna – samlad guide."
         canonical="https://farway.se/ski-season"
       />
       <Header />
