@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Briefcase, Home, Users, ExternalLink, Lightbulb, MapPin } from "lucide-react";
+import { Briefcase, Home, Users, ExternalLink, Lightbulb, MapPin, Calendar, Mountain, Ticket, Plane, Globe, Bus, CheckSquare } from "lucide-react";
 import type { ResortDetail } from "@/data/skiResortDetails";
 
 type Props = {
@@ -10,6 +10,14 @@ type Props = {
 
 export const ResortDetailDialog = ({ resort, open, onOpenChange }: Props) => {
   if (!resort) return null;
+
+  const facts = [
+    { icon: Calendar, label: "Säsong", value: resort.season },
+    { icon: Mountain, label: "Höjd", value: resort.altitude },
+    { icon: MapPin, label: "Skidområde", value: resort.skiArea },
+    { icon: Ticket, label: "Liftkort", value: resort.liftPassPrice },
+    { icon: Plane, label: "Flygplats", value: resort.nearestAirport },
+  ];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -31,6 +39,26 @@ export const ResortDetailDialog = ({ resort, open, onOpenChange }: Props) => {
 
         <div className="space-y-6 mt-2">
           <p className="text-muted-foreground leading-relaxed">{resort.description}</p>
+
+          {/* Snabbfakta */}
+          <section>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
+              Snabbfakta
+            </p>
+            <div className="grid sm:grid-cols-2 gap-2">
+              {facts.map((f) => (
+                <div key={f.label} className="flex items-start gap-3 bg-muted/40 rounded-xl p-3 border border-border/40">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <f.icon className="w-4 h-4 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] uppercase tracking-wider text-muted-foreground">{f.label}</p>
+                    <p className="text-sm font-medium text-foreground leading-tight">{f.value}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
           {/* Best for */}
           <div>
@@ -83,11 +111,62 @@ export const ResortDetailDialog = ({ resort, open, onOpenChange }: Props) => {
 
           {/* Job links */}
           <section>
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
-              Hitta jobb
-            </p>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Briefcase className="w-4 h-4 text-primary" />
+              </div>
+              <h3 className="font-display text-lg font-semibold text-foreground">Hitta jobb</h3>
+            </div>
             <div className="space-y-2">
               {resort.jobLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between gap-3 p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 hover:bg-primary/5 transition-all group"
+                >
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary">{link.name}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary" />
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Officiella länkar */}
+          <section>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Globe className="w-4 h-4 text-primary" />
+              </div>
+              <h3 className="font-display text-lg font-semibold text-foreground">Officiellt & pistkartor</h3>
+            </div>
+            <div className="space-y-2">
+              {resort.officialLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between gap-3 p-3 rounded-xl bg-card border border-border/60 hover:border-primary/40 hover:bg-primary/5 transition-all group"
+                >
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary">{link.name}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary" />
+                </a>
+              ))}
+            </div>
+          </section>
+
+          {/* Resa & transport */}
+          <section>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Bus className="w-4 h-4 text-primary" />
+              </div>
+              <h3 className="font-display text-lg font-semibold text-foreground">Ta dig dit</h3>
+            </div>
+            <div className="space-y-2">
+              {resort.travelLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.url}
@@ -124,6 +203,24 @@ export const ResortDetailDialog = ({ resort, open, onOpenChange }: Props) => {
                 </a>
               ))}
             </div>
+          </section>
+
+          {/* Checklista */}
+          <section>
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                <CheckSquare className="w-4 h-4 text-primary" />
+              </div>
+              <h3 className="font-display text-lg font-semibold text-foreground">Checklista innan avresa</h3>
+            </div>
+            <ul className="space-y-2 bg-muted/40 rounded-xl p-4 border border-border/40">
+              {resort.checklist.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
+                  <span className="text-primary mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </section>
 
           {/* Swedish tip */}
