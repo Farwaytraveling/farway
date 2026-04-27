@@ -152,6 +152,18 @@ const studyDestinations = [
     cities: ["Barcelona", "Madrid", "Valencia"],
     applyUrl: "https://www.studying-in-spain.com/",
   },
+  {
+    country: "Italien",
+    flag: "🇮🇹",
+    programType: "Studentvisum (EU: inget krävs)",
+    ageLimit: "Ingen gräns",
+    duration: "1-5 år",
+    cost: "€900-4,000/år (offentliga)",
+    description: "Milano är Italiens designhuvudstad med Bocconi, Politecnico och NABA. Kombinera världsledande mode-, ekonomi- och arkitekturstudier med italiensk livsstil.",
+    highlights: ["Bocconi & Politecnico", "Mode & design", "Italienska"],
+    cities: ["Milano", "Rom", "Florens"],
+    applyUrl: "https://www.universitaly.it/",
+  },
 ];
 
 const languageSchools = [
@@ -345,10 +357,10 @@ const StuderaUtomlands = () => {
                 Studera utomlands
               </h1>
               <p className="text-xl sm:text-2xl text-white/90 mb-4 font-light leading-relaxed">
-                Studera i London, Paris eller Barcelona.
+                Studera i London, Paris, Barcelona eller Milano.
               </p>
               <p className="text-lg text-white/70 mb-10 max-w-xl">
-                Europas tre mest populära studentstäder – universitetsstudier, språkkurser eller utbytesprogram.
+                Europas mest populära studentstäder – universitetsstudier, språkkurser eller utbytesprogram.
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2.5 text-white">
@@ -376,12 +388,12 @@ const StuderaUtomlands = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-14">
-              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">3 studiedestinationer</p>
+              <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">4 studiedestinationer</p>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Europas bästa studentstäder
               </h2>
               <p className="text-muted-foreground max-w-lg mx-auto text-lg">
-                London, Paris och Barcelona – tre världsstäder med universitet i toppklass.
+                London, Paris, Barcelona och Milano – fyra världsstäder med universitet i toppklass.
               </p>
             </div>
 
