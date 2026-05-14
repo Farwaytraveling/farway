@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin } from "lucide-react";
+import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin, BookOpen, ExternalLink } from "lucide-react";
 import {
   countryBudgets,
   detectActivity,
@@ -334,6 +334,117 @@ const Budget = () => {
                 </div>
               )}
             </div>
+          </div>
+        </section>
+
+        {/* Sources & methodology */}
+        <section className="border-t border-border/40 bg-muted/20">
+          <div className="container mx-auto px-4 py-12 max-w-4xl">
+            <div className="flex items-center gap-2 text-primary mb-3">
+              <BookOpen className="w-5 h-5" />
+              <span className="text-sm font-medium uppercase tracking-wider">Källor & metod</span>
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-3">
+              Var kommer siffrorna ifrån?
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-2xl">
+              All data är ett genomsnitt från flera oberoende källor (2024–2025). Vi uppdaterar löpande – men växelkurser, säsong och personliga val gör att din verkliga kostnad kan skilja sig 20–30 % åt båda håll.
+            </p>
+
+            <div className="grid sm:grid-cols-2 gap-4 mb-8">
+              {[
+                {
+                  cat: "Boende, mat & transport",
+                  desc: "Genomsnittliga dagskostnader per land och resestil (hostel/Airbnb/hotell).",
+                  sources: [
+                    { name: "Numbeo Cost of Living", url: "https://www.numbeo.com/cost-of-living/" },
+                    { name: "Budget Your Trip", url: "https://www.budgetyourtrip.com/" },
+                    { name: "Nomad List", url: "https://nomadlist.com/" },
+                  ],
+                },
+                {
+                  cat: "Flygpriser t/r från Sverige",
+                  desc: "Median för ekonomi t/r från Stockholm/Köpenhamn under låg- och högsäsong.",
+                  sources: [
+                    { name: "Google Flights", url: "https://www.google.com/travel/flights" },
+                    { name: "Skyscanner", url: "https://www.skyscanner.se/" },
+                    { name: "Momondo", url: "https://www.momondo.se/" },
+                  ],
+                },
+                {
+                  cat: "Visum & arbetstillstånd",
+                  desc: "Officiella avgifter från respektive lands migrationsmyndighet.",
+                  sources: [
+                    { name: "Australien (Home Affairs)", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417" },
+                    { name: "Nya Zeeland (INZ)", url: "https://www.immigration.govt.nz/" },
+                    { name: "UK Student Visa (gov.uk)", url: "https://www.gov.uk/student-visa" },
+                    { name: "Kanada (IRCC)", url: "https://www.canada.ca/en/immigration-refugees-citizenship.html" },
+                  ],
+                },
+                {
+                  cat: "Reseförsäkring",
+                  desc: "Snittpriser för månadsförsäkring för 18–35-åringar (utan hemförsäkring).",
+                  sources: [
+                    { name: "Gouda Reseförsäkring", url: "https://www.gouda-rf.se/" },
+                    { name: "ERV", url: "https://www.erv.se/" },
+                    { name: "If Reseförsäkring", url: "https://www.if.se/privat/forsakringar/reseforsakring" },
+                  ],
+                },
+                {
+                  cat: "Skidsäsong (liftkort, säsongspass)",
+                  desc: "Säsongspriser för Alperna och Nordamerika 2024/25.",
+                  sources: [
+                    { name: "Skiresort.info", url: "https://www.skiresort.info/" },
+                    { name: "Epic Pass (Vail)", url: "https://www.epicpass.com/" },
+                    { name: "Ikon Pass", url: "https://www.ikonpass.com/" },
+                  ],
+                },
+                {
+                  cat: "Studier & språkkurser",
+                  desc: "Avgifter från officiella universitetssidor och CSN:s utlandsbelopp.",
+                  sources: [
+                    { name: "CSN – studier utomlands", url: "https://www.csn.se/bidrag-och-lan/utlandsstudier-med-studiemedel.html" },
+                    { name: "EF Education First", url: "https://www.ef.se/sprakresor/" },
+                    { name: "Kilroy", url: "https://www.kilroy.se/" },
+                  ],
+                },
+              ].map((cat) => (
+                <Card key={cat.cat}>
+                  <CardContent className="pt-5">
+                    <h3 className="font-semibold text-foreground mb-1.5">{cat.cat}</h3>
+                    <p className="text-sm text-muted-foreground mb-3 leading-relaxed">{cat.desc}</p>
+                    <ul className="space-y-1.5">
+                      {cat.sources.map((s) => (
+                        <li key={s.name}>
+                          <a
+                            href={s.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+                          >
+                            {s.name}
+                            <ExternalLink className="w-3 h-3" />
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            <Card className="bg-background/60">
+              <CardHeader>
+                <CardTitle className="font-display text-base">Så räknar vi</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-muted-foreground space-y-2.5 leading-relaxed">
+                <p><strong className="text-foreground">Resestil:</strong> "Budget" = hostel/delat rum, gatumat, kollektivt. "Medel" = privatrum/Airbnb, restaurang ibland. "Komfort" = hotell, taxi, mer aktiviteter.</p>
+                <p><strong className="text-foreground">Aktivitetsjustering:</strong> Skidsäsong drar upp aktivitetsbudgeten 50 % + 8 000 kr för säsongskort. Au pair sänker boende/mat (värdfamilj betalar). Working holiday räknar uppstart i 2–3 månader eftersom du tjänar pengar på plats.</p>
+                <p><strong className="text-foreground">Buffert:</strong> 12 % läggs på allt för oväntade kostnader – tappad telefon, bot, extra resa hem osv. Erfarna resenärer rekommenderar 10–15 %.</p>
+                <p><strong className="text-foreground">Vad som inte ingår:</strong> Kostnader hemma i Sverige (Spotify, mobil, försäkringar du behåller), shopping, present till familj, kostsamma incidenter (sjukhus utan försäkring).</p>
+                <p className="text-xs italic pt-2 border-t border-border/40">Senast uppdaterat: våren 2025. Hör av dig till <a href="mailto:farwaytravelling@gmail.com" className="text-primary hover:underline">farwaytravelling@gmail.com</a> om du hittar siffror som ser fel ut.</p>
+              </CardContent>
+            </Card>
           </div>
         </section>
       </main>
