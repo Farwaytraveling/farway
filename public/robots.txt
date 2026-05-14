@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://farway.se/sitemap.xml
+Sitemap: https://farway.lovable.app/sitemap.xml
