@@ -454,6 +454,212 @@ const StuderaUtomlands = () => {
           </div>
         </section>
 
+        {/* London Deep Dive */}
+        <section className="py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/30 to-background" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-5xl mx-auto">
+              <div className="text-center mb-12">
+                <p className="text-sm font-medium text-primary mb-3 tracking-wide uppercase">🇬🇧 Studera i London</p>
+                <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                  London – världens studentstad nr 1
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+                  Rankad som världens bästa studentstad av QS sex år i rad. 40+ universitet, 400 000+ studenter och en av planetens mest internationella miljöer.
+                </p>
+              </div>
+
+              {/* Quick stats */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-12">
+                {[
+                  { icon: GraduationCap, label: "Universitet", value: "40+" },
+                  { icon: Users, label: "Studenter", value: "400 000+" },
+                  { icon: Globe2, label: "Internationella", value: "≈ 30 %" },
+                  { icon: CalendarDays, label: "Master tar", value: "1 år" },
+                ].map((s) => (
+                  <div key={s.label} className="bg-card border border-border/60 rounded-xl p-4 text-center">
+                    <s.icon className="w-5 h-5 text-primary mx-auto mb-2" />
+                    <div className="font-display text-xl font-bold text-foreground">{s.value}</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-wider mt-0.5">{s.label}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Top universities */}
+              <h3 className="font-display text-2xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <GraduationCap className="w-6 h-6 text-primary" /> Topp-universiteten
+              </h3>
+              <div className="grid sm:grid-cols-2 gap-4 mb-12">
+                {[
+                  {
+                    name: "Imperial College London",
+                    rank: "QS #2 i världen",
+                    focus: "Teknik, naturvetenskap, medicin & ekonomi",
+                    url: "https://www.imperial.ac.uk/study/",
+                  },
+                  {
+                    name: "UCL – University College London",
+                    rank: "QS topp 10",
+                    focus: "Brett utbud: arkitektur, AI, juridik, medicin",
+                    url: "https://www.ucl.ac.uk/prospective-students/",
+                  },
+                  {
+                    name: "LSE – London School of Economics",
+                    rank: "Topp 5 i världen inom samhällsvetenskap",
+                    focus: "Ekonomi, statsvetenskap, internationella relationer",
+                    url: "https://www.lse.ac.uk/study-at-lse",
+                  },
+                  {
+                    name: "King's College London",
+                    rank: "QS topp 40",
+                    focus: "Medicin, juridik, humaniora, war studies",
+                    url: "https://www.kcl.ac.uk/study",
+                  },
+                  {
+                    name: "Queen Mary University of London",
+                    rank: "Russell Group",
+                    focus: "Bra mix till lägre antagningskrav – East London",
+                    url: "https://www.qmul.ac.uk/undergraduate/",
+                  },
+                  {
+                    name: "Central Saint Martins (UAL)",
+                    rank: "Världens främsta konst- & designskola",
+                    focus: "Mode, grafisk design, scenkonst",
+                    url: "https://www.arts.ac.uk/colleges/central-saint-martins",
+                  },
+                ].map((u) => (
+                  <a
+                    key={u.name}
+                    href={u.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group bg-card border border-border/60 rounded-2xl p-5 hover:shadow-lg hover:-translate-y-0.5 hover:border-primary/30 transition-all"
+                  >
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors">{u.name}</h4>
+                      <ArrowRight className="w-4 h-4 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all flex-shrink-0 mt-1" />
+                    </div>
+                    <div className="text-xs font-medium text-primary mb-2">{u.rank}</div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{u.focus}</p>
+                  </a>
+                ))}
+              </div>
+
+              {/* Costs */}
+              <h3 className="font-display text-2xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <PoundSterling className="w-6 h-6 text-primary" /> Vad kostar det?
+              </h3>
+              <div className="bg-card border border-border/60 rounded-2xl overflow-hidden mb-12">
+                <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-border/60">
+                  <div className="p-6">
+                    <div className="text-xs font-medium text-primary uppercase tracking-wider mb-3">Terminsavgifter (per år)</div>
+                    <ul className="space-y-2.5 text-sm">
+                      <li className="flex justify-between"><span className="text-muted-foreground">Bachelor</span><span className="font-semibold text-foreground">£18 000–35 000</span></li>
+                      <li className="flex justify-between"><span className="text-muted-foreground">Master (1 år)</span><span className="font-semibold text-foreground">£20 000–40 000</span></li>
+                      <li className="flex justify-between"><span className="text-muted-foreground">LSE / Imperial / UCL</span><span className="font-semibold text-foreground">£28 000–45 000</span></li>
+                    </ul>
+                  </div>
+                  <div className="p-6">
+                    <div className="text-xs font-medium text-primary uppercase tracking-wider mb-3">Levnadskostnader (per månad)</div>
+                    <ul className="space-y-2.5 text-sm">
+                      <li className="flex justify-between"><span className="text-muted-foreground">Studentboende</span><span className="font-semibold text-foreground">£900–1 600</span></li>
+                      <li className="flex justify-between"><span className="text-muted-foreground">Mat & vardag</span><span className="font-semibold text-foreground">£300–450</span></li>
+                      <li className="flex justify-between"><span className="text-muted-foreground">Tube (18+ Student)</span><span className="font-semibold text-foreground">£100–160</span></li>
+                      <li className="flex justify-between"><span className="text-muted-foreground">UKVI minimum</span><span className="font-semibold text-foreground">£1 483/mån</span></li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="bg-primary/5 border-t border-primary/10 px-6 py-4 text-sm text-foreground/80">
+                  💡 <strong>CSN täcker det mesta:</strong> Maxbidrag + lån för studier i London ≈ <strong>14 700 kr/mån</strong> + extra lån för terminsavgifter. Räkna med att toppa upp 2 000–4 000 kr/mån för London-livsstil.
+                </div>
+              </div>
+
+              {/* Visa & application */}
+              <div className="grid md:grid-cols-2 gap-5 mb-12">
+                <div className="bg-card border border-border/60 rounded-2xl p-6">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                    <FileText className="w-5 h-5 text-primary" /> Student Visa (post-Brexit)
+                  </h3>
+                  <ul className="space-y-2 text-sm text-foreground/85">
+                    <li>• Visumavgift: <strong>£524</strong></li>
+                    <li>• Immigration Health Surcharge (IHS): <strong>£776/år</strong> – ger full NHS-vård</li>
+                    <li>• CAS från ditt universitet krävs (skickas efter antagning)</li>
+                    <li>• Bevis på medel: ca <strong>£13 347</strong> för 9 mån i London</li>
+                    <li>• Får jobba <strong>20 timmar/vecka</strong> under termin, heltid på lov</li>
+                    <li>• <strong>Graduate Route:</strong> 2 år arbetstillstånd efter examen</li>
+                  </ul>
+                  <a href="https://www.gov.uk/student-visa" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-primary font-medium mt-4 hover:underline">
+                    Ansök på gov.uk <ArrowRight className="w-3 h-3 ml-1" />
+                  </a>
+                </div>
+                <div className="bg-card border border-border/60 rounded-2xl p-6">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3 flex items-center gap-2">
+                    <CalendarDays className="w-5 h-5 text-primary" /> Så ansöker du via UCAS
+                  </h3>
+                  <ol className="space-y-2 text-sm text-foreground/85 list-decimal list-inside">
+                    <li>Skapa konto på <strong>UCAS</strong> (september året innan)</li>
+                    <li>Välj upp till <strong>5 program</strong> (bachelor)</li>
+                    <li>Skriv <strong>Personal Statement</strong> (4 000 tecken)</li>
+                    <li>Skicka in IELTS/TOEFL eller Cambridge English (oftast IELTS 6.5+)</li>
+                    <li>Deadline: <strong>31 januari</strong> (Oxbridge & medicin: 16 oktober)</li>
+                    <li>Master: ansök <strong>direkt till universitetet</strong>, ofta rullande</li>
+                  </ol>
+                  <a href="https://www.ucas.com/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-sm text-primary font-medium mt-4 hover:underline">
+                    Till UCAS <ArrowRight className="w-3 h-3 ml-1" />
+                  </a>
+                </div>
+              </div>
+
+              {/* Neighborhoods */}
+              <h3 className="font-display text-2xl font-bold text-foreground mb-5 flex items-center gap-2">
+                <Home className="w-6 h-6 text-primary" /> Var bor studenterna?
+              </h3>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+                {[
+                  { area: "Camden & King's Cross", vibe: "Nära UCL & SOAS, livlig musikscen, marknader." },
+                  { area: "Shoreditch & Hackney", vibe: "Hipster East London, billigare, bra för QMUL & UAL." },
+                  { area: "South Kensington", vibe: "Kring Imperial – museer, tryggt, dyrare." },
+                  { area: "Brixton & Clapham", vibe: "Sociala studentområden, bra pubar, billigare hyror." },
+                  { area: "Stratford", vibe: "Modernt, bra för QMUL, snabb tube till centrum." },
+                  { area: "Bloomsbury", vibe: "Akademiska hjärtat – UCL, Birkbeck, British Museum runt hörnet." },
+                ].map((n) => (
+                  <div key={n.area} className="bg-card border border-border/60 rounded-xl p-4">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <MapPin className="w-4 h-4 text-primary" />
+                      <h4 className="font-semibold text-foreground text-sm">{n.area}</h4>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{n.vibe}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Resources */}
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl p-6 sm:p-8">
+                <h3 className="font-display text-xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <Train className="w-5 h-5 text-primary" /> Praktiska länkar för London
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5 text-sm">
+                  {[
+                    { label: "UCAS – ansök till bachelor", url: "https://www.ucas.com/" },
+                    { label: "UK Student Visa", url: "https://www.gov.uk/student-visa" },
+                    { label: "CSN – studier i Storbritannien", url: "https://www.csn.se/bidrag-och-lan/studiestod/utomlands.html" },
+                    { label: "SpareRoom – hyra rum", url: "https://www.spareroom.co.uk/" },
+                    { label: "Unite Students – studentboende", url: "https://www.unitestudents.com/" },
+                    { label: "TfL – student-Oyster", url: "https://tfl.gov.uk/fares/free-and-discounted-travel/18-student-oyster-photocard" },
+                    { label: "Chevening Scholarships (master)", url: "https://www.chevening.org/" },
+                    { label: "British Council – studera i UK", url: "https://study-uk.britishcouncil.org/" },
+                  ].map((l) => (
+                    <a key={l.label} href={l.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors group">
+                      <ArrowRight className="w-3.5 h-3.5 text-primary group-hover:translate-x-0.5 transition-transform" />
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Swedish Universities - Exchange opportunities */}
         <section className="py-20 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
