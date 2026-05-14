@@ -642,10 +642,10 @@ const StuderaUtomlands = () => {
                   {[
                     { label: "UCAS – ansök till bachelor", url: "https://www.ucas.com/" },
                     { label: "UK Student Visa", url: "https://www.gov.uk/student-visa" },
-                    { label: "CSN – studier i Storbritannien", url: "https://www.csn.se/bidrag-och-lan/studiestod/utomlands.html" },
+                    { label: "CSN – studier i Storbritannien", url: "https://www.csn.se/bidrag-och-lan/utlandsstudier-med-studiemedel.html" },
                     { label: "SpareRoom – hyra rum", url: "https://www.spareroom.co.uk/" },
                     { label: "Unite Students – studentboende", url: "https://www.unitestudents.com/" },
-                    { label: "TfL – student-Oyster", url: "https://tfl.gov.uk/fares/free-and-discounted-travel/18-student-oyster-photocard" },
+                    { label: "TfL – student-Oyster", url: "https://tfl.gov.uk/fares/free-and-discounted-travel" },
                     { label: "Chevening Scholarships (master)", url: "https://www.chevening.org/" },
                     { label: "British Council – studera i UK", url: "https://study-uk.britishcouncil.org/" },
                   ].map((l) => (
@@ -861,7 +861,7 @@ const StuderaUtomlands = () => {
                 ))}
               </div>
               <p className="text-center text-sm text-muted-foreground mt-8">
-                💡 <strong>CSN-tips:</strong> Språkkurser på minst 13 veckor i CSN-godkänt land berättigar till studiemedel. Kolla på <a href="https://www.csn.se/bidrag-och-lan/studiestod/utomlands.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">csn.se</a> innan du bokar.
+                💡 <strong>CSN-tips:</strong> Språkkurser på minst 13 veckor i CSN-godkänt land berättigar till studiemedel. Kolla på <a href="https://www.csn.se/bidrag-och-lan/utlandsstudier-med-studiemedel.html" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">csn.se</a> innan du bokar.
               </p>
             </div>
           </div>
