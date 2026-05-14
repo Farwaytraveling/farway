@@ -73,6 +73,40 @@ const Budget = () => {
     };
   }, [country, duration, style, activityProfile]);
 
+  // Working Holiday income estimation
+  const whEstimate = useMemo(() => {
+    if (!country || !result) return null;
+    const wage = whWages[country.slug];
+    if (!wage) return null;
+    const isWH = isWorkingHoliday(activity) || activityProfile.label === "Working Holiday";
+    if (!isWH) return null;
+
+    // Assume ~3 weeks of job hunting / no income, then steady work for the rest.
+    const totalWeeks = result.days / 7;
+    const workingWeeks = Math.max(0, totalWeeks - 3);
+    const weeklyGross = wage.typicalHourly * wage.typicalHoursPerWeek;
+    const weeklyMin = wage.minHourly * wage.typicalHoursPerWeek;
+    const grossIncome = weeklyGross * workingWeeks;
+    const minIncome = weeklyMin * workingWeeks;
+    const netIncome = grossIncome * (1 - wage.taxRate);
+    const netMin = minIncome * (1 - wage.taxRate);
+    const monthlyNet = netIncome / Math.max(1, result.months);
+    const coverage = result.total > 0 ? netIncome / result.total : 0;
+    const netAfterCosts = netIncome - result.total;
+
+    return {
+      wage,
+      workingWeeks,
+      weeklyGross,
+      grossIncome,
+      netIncome,
+      netMin,
+      monthlyNet,
+      coverage,
+      netAfterCosts,
+    };
+  }, [country, result, activity, activityProfile]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
