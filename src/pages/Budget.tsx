@@ -7,11 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin, BookOpen, ExternalLink } from "lucide-react";
+import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin, BookOpen, ExternalLink, Briefcase, TrendingUp } from "lucide-react";
 import {
   countryBudgets,
   detectActivity,
   findCountry,
+  whWages,
+  isWorkingHoliday,
   type CostStyle,
 } from "@/data/budgetData";
 import { recommendedCities } from "@/data/recommendedCities";
@@ -70,6 +72,40 @@ const Budget = () => {
       months,
     };
   }, [country, duration, style, activityProfile]);
+
+  // Working Holiday income estimation
+  const whEstimate = useMemo(() => {
+    if (!country || !result) return null;
+    const wage = whWages[country.slug];
+    if (!wage) return null;
+    const isWH = isWorkingHoliday(activity) || activityProfile.label === "Working Holiday";
+    if (!isWH) return null;
+
+    // Assume ~3 weeks of job hunting / no income, then steady work for the rest.
+    const totalWeeks = result.days / 7;
+    const workingWeeks = Math.max(0, totalWeeks - 3);
+    const weeklyGross = wage.typicalHourly * wage.typicalHoursPerWeek;
+    const weeklyMin = wage.minHourly * wage.typicalHoursPerWeek;
+    const grossIncome = weeklyGross * workingWeeks;
+    const minIncome = weeklyMin * workingWeeks;
+    const netIncome = grossIncome * (1 - wage.taxRate);
+    const netMin = minIncome * (1 - wage.taxRate);
+    const monthlyNet = netIncome / Math.max(1, result.months);
+    const coverage = result.total > 0 ? netIncome / result.total : 0;
+    const netAfterCosts = netIncome - result.total;
+
+    return {
+      wage,
+      workingWeeks,
+      weeklyGross,
+      grossIncome,
+      netIncome,
+      netMin,
+      monthlyNet,
+      coverage,
+      netAfterCosts,
+    };
+  }, [country, result, activity, activityProfile]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -283,6 +319,85 @@ const Budget = () => {
                       </div>
                     </CardContent>
                   </Card>
+
+                  {/* Working Holiday income */}
+                  {whEstimate && (
+                    <Card className="bg-gradient-to-br from-emerald-500/10 to-primary/5 border-emerald-500/20">
+                      <CardHeader>
+                        <CardTitle className="font-display text-base flex items-center gap-2">
+                          <Briefcase className="w-4 h-4 text-emerald-600" />
+                          Så mycket tjänar du på plats
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="grid grid-cols-2 gap-3">
+                          <div className="bg-background/60 rounded-lg p-3">
+                            <p className="text-xs text-muted-foreground">Typisk timlön</p>
+                            <p className="font-mono font-semibold text-foreground">{formatSEK(whEstimate.wage.typicalHourly)}/h</p>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">min: {formatSEK(whEstimate.wage.minHourly)}/h</p>
+                          </div>
+                          <div className="bg-background/60 rounded-lg p-3">
+                            <p className="text-xs text-muted-foreground">Veckolön (brutto)</p>
+                            <p className="font-mono font-semibold text-foreground">{formatSEK(whEstimate.weeklyGross)}</p>
+                            <p className="text-[10px] text-muted-foreground mt-0.5">{whEstimate.wage.typicalHoursPerWeek} h/v</p>
+                          </div>
+                        </div>
+
+                        <div className="border-t border-border/40 pt-3 space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Bruttoinkomst ({whEstimate.workingWeeks.toFixed(0)} arbetsveckor)</span>
+                            <span className="font-mono font-semibold text-foreground">{formatSEK(whEstimate.grossIncome)}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">– Skatt ({(whEstimate.wage.taxRate * 100).toFixed(0)} %)</span>
+                            <span className="font-mono text-muted-foreground">−{formatSEK(whEstimate.grossIncome - whEstimate.netIncome)}</span>
+                          </div>
+                          <div className="flex justify-between text-base pt-1 border-t border-border/40">
+                            <span className="font-semibold text-foreground">Netto i fickan</span>
+                            <span className="font-mono font-bold text-emerald-700 dark:text-emerald-400">{formatSEK(whEstimate.netIncome)}</span>
+                          </div>
+                          <p className="text-xs text-muted-foreground text-right">
+                            ≈ {formatSEK(whEstimate.monthlyNet)} per månad
+                          </p>
+                        </div>
+
+                        <div className="bg-background/60 rounded-lg p-4">
+                          <div className="flex items-center gap-2 mb-2">
+                            <TrendingUp className="w-4 h-4 text-primary" />
+                            <p className="text-sm font-semibold text-foreground">Räcker det till resan?</p>
+                          </div>
+                          {whEstimate.netAfterCosts >= 0 ? (
+                            <p className="text-sm text-foreground">
+                              Ja – din inkomst täcker hela budgeten ({(whEstimate.coverage * 100).toFixed(0)} %) och du har <strong className="text-emerald-700 dark:text-emerald-400">{formatSEK(whEstimate.netAfterCosts)}</strong> kvar att spara eller resa vidare på.
+                            </p>
+                          ) : (
+                            <p className="text-sm text-foreground">
+                              Inkomsten täcker <strong>{(whEstimate.coverage * 100).toFixed(0)} %</strong> av budgeten. Du behöver ta med ca <strong className="text-foreground">{formatSEK(Math.abs(whEstimate.netAfterCosts))}</strong> hemifrån.
+                            </p>
+                          )}
+                          <p className="text-xs text-muted-foreground mt-2">
+                            Räknar med 3 veckor utan inkomst i början (jobbsökande/uppstart).
+                          </p>
+                        </div>
+
+                        <div className="bg-background/60 rounded-lg p-4">
+                          <p className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Populära jobb</p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {whEstimate.wage.popularJobs.map((j) => (
+                              <span key={j} className="text-xs bg-primary/10 text-primary border border-primary/20 px-2.5 py-0.5 rounded-full">{j}</span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <p className="text-xs text-muted-foreground italic leading-relaxed">
+                          {whEstimate.wage.notes} Källa:{" "}
+                          <a href={whEstimate.wage.sourceUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                            {whEstimate.wage.sourceLabel}
+                          </a>
+                        </p>
+                      </CardContent>
+                    </Card>
+                  )}
 
                   {/* Recommended cities */}
                   {country && recommendedCities[country.slug] && (
