@@ -359,3 +359,83 @@ export function findCountry(query: string): { slug: string; data: CountryCost } 
   }
   return null;
 }
+
+// ===== Working Holiday wage estimates =====
+// Hourly minimum/typical wage in SEK (after currency conversion, 2024–2025).
+// Sources: Fair Work Australia, employment.govt.nz, gov.uk minimum wage,
+// Canada.ca provincial minimums, MHLW Japan.
+export interface WHWage {
+  country: string;
+  minHourly: number; // legal minimum in SEK
+  typicalHourly: number; // realistic average for backpacker jobs (hospo/farm/retail)
+  typicalHoursPerWeek: number;
+  taxRate: number; // approx effective tax for non-residents
+  popularJobs: string[];
+  sourceUrl: string;
+  sourceLabel: string;
+  notes: string;
+}
+
+export const whWages: Record<string, WHWage> = {
+  australien: {
+    country: "Australien",
+    minHourly: 165, // AUD 24.10/h × ~6.85
+    typicalHourly: 200, // AUD 28–32 hospo/farm
+    typicalHoursPerWeek: 38,
+    taxRate: 0.15, // 15 % WH-skatt upp till AUD 45k
+    popularJobs: ["Café/bar", "Frukt-/grönsaksplockning", "Bygg/labour", "Au pair", "Skidort"],
+    sourceUrl: "https://www.fairwork.gov.au/pay-and-wages/minimum-wages",
+    sourceLabel: "Fair Work Australia",
+    notes: "Minimilön 24,10 AUD/h (juli 2024). 88 dagars lantarbete krävs för andra året.",
+  },
+  "nya-zeeland": {
+    country: "Nya Zeeland",
+    minHourly: 150, // NZD 23.15/h × ~6.5
+    typicalHourly: 175,
+    typicalHoursPerWeek: 38,
+    taxRate: 0.105, // 10,5 % upp till NZD 14k, sen 17,5 %
+    popularJobs: ["Vingårdar", "Ski resorts", "Café/restaurang", "Frukt", "Hostel reception"],
+    sourceUrl: "https://www.employment.govt.nz/pay-and-hours/pay-and-wages/minimum-wage/",
+    sourceLabel: "employment.govt.nz",
+    notes: "Minimilön 23,15 NZD/h (april 2024). Säsongsarbete betalar ofta över min.",
+  },
+  kanada: {
+    country: "Kanada",
+    minHourly: 130, // CAD 17.30/h federal × ~7.6
+    typicalHourly: 160, // CAD 20–24
+    typicalHoursPerWeek: 35,
+    taxRate: 0.15,
+    popularJobs: ["Skidort (Whistler/Banff)", "Café/restaurang", "Detaljhandel", "Hostel"],
+    sourceUrl: "https://www.canada.ca/en/employment-social-development/services/labour-standards/reports/minimum-wage.html",
+    sourceLabel: "Canada.ca",
+    notes: "Minimilön varierar per provins (BC: 17,40 CAD, Alberta: 15 CAD).",
+  },
+  storbritannien: {
+    country: "Storbritannien",
+    minHourly: 155, // £12.21/h (apr 2025, 21+) × ~12.7
+    typicalHourly: 175,
+    typicalHoursPerWeek: 37,
+    taxRate: 0.20, // grundläggande skattesats över personal allowance
+    popularJobs: ["Pub/bar", "Café", "Detaljhandel", "Hotell", "Hospitality London"],
+    sourceUrl: "https://www.gov.uk/national-minimum-wage-rates",
+    sourceLabel: "gov.uk",
+    notes: "National Living Wage £12,21/h (april 2025, 21+). Tjänar över £12 570/år = skatt.",
+  },
+  japan: {
+    country: "Japan",
+    minHourly: 75, // JPY 1055/h national avg × ~0.07
+    typicalHourly: 95, // JPY 1200–1400 Tokyo
+    typicalHoursPerWeek: 28, // visumtak för deltid
+    taxRate: 0.10,
+    popularJobs: ["Ski resort", "Engelsklärare", "Café", "Hostel", "Konvenientstore"],
+    sourceUrl: "https://www.mhlw.go.jp/english/policy/employ-labour/minimum-wage/",
+    sourceLabel: "MHLW Japan",
+    notes: "Minimilön varierar per region (Tokyo 1 163 JPY, snitt 1 055 JPY okt 2024).",
+  },
+};
+
+// Detect if user input mentions working holiday
+export function isWorkingHoliday(text: string): boolean {
+  const lower = text.toLowerCase();
+  return /working\s*holiday|jobba|arbeta|wh[\s-]?visa/.test(lower);
+}
