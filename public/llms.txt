@@ -1,0 +1,38 @@
+# Farway
+
+> Sveriges samlade guide för unga som vill jobba, studera eller resa utomlands. Working Holiday, Au Pair, skidsäsong, språkresor och studier – faktagranskat och gratis.
+
+Farway är en svensk informationsplattform riktad till ungdomar som vill ut i världen. Allt innehåll är på svenska, kostnadsfritt och utan inloggning. Vi täcker visumregler, budget, destinationer och praktiska guider.
+
+## Pages
+
+- [Startsida](/): Översikt över Farways guider och populära destinationer.
+- [Working Holiday](/working-holiday): Allt om Working Holiday-visum för Australien, Nya Zeeland, Kanada, Japan och Storbritannien.
+- [Au Pair](/au-pair): Guide till att jobba som au pair utomlands.
+- [Skidsäsong](/ski-season): Säsongsjobb i Alperna och andra skidområden.
+- [Studera utomlands](/studera-utomlands): Universitet, språkkurser och utbytesstudier.
+- [Budget](/budget): Smart budgetkalkylator med inkomstuppskattning för Working Holiday.
+- [Karta](/karta): Interaktiv världskarta med destinationer och teman.
+- [Alperna](/alperna): Regional hub för skidsäsong i Alperna.
+- [Sydostasien](/sydostasien): Regional guide till Thailand, Vietnam, Indonesien m.fl.
+- [Sydamerika](/sydamerika): Regional guide till Argentina, Brasilien m.fl.
+
+## Destinations
+
+- [Australien](/destination/australien): Working Holiday, jobb och resor i Australien.
+- [Nya Zeeland](/destination/nya-zeeland): Working Holiday och säsongsjobb.
+- [Kanada](/destination/kanada): Working Holiday och vintersäsong.
+- [Japan](/destination/japan): Working Holiday, skidsäsong och studier.
+- [Storbritannien](/destination/storbritannien): Studier och Youth Mobility.
+- [Frankrike](/destination/frankrike): Au pair, skidsäsong och språkstudier.
+- [Spanien](/destination/spanien): Språkkurser och au pair.
+- [Italien](/destination/italien): Studier och språkresor.
+- [Thailand](/destination/thailand): Backpacking och volontärarbete.
+- [Indonesien](/destination/indonesien): Bali, surf och digital nomad.
+- [Vietnam](/destination/vietnam): Backpacking och engelskaundervisning.
+- [Argentina](/destination/argentina): Språkresor och äventyr.
+- [Brasilien](/destination/brasilien): Kultur, språk och resor.
+
+## Optional
+
+- [Kontakt via Instagram](https://www.instagram.com/farwaytraveling/): @farwaytraveling.
