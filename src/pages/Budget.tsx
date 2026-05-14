@@ -7,11 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin, BookOpen, ExternalLink } from "lucide-react";
+import { Calculator, Wallet, Plane, Home, Utensils, Bus, Sparkles, Shield, Info, AlertCircle, MapPin, BookOpen, ExternalLink, Briefcase, TrendingUp } from "lucide-react";
 import {
   countryBudgets,
   detectActivity,
   findCountry,
+  whWages,
+  isWorkingHoliday,
   type CostStyle,
 } from "@/data/budgetData";
 import { recommendedCities } from "@/data/recommendedCities";
