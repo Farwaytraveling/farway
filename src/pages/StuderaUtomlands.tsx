@@ -100,7 +100,7 @@ const swedishUniversities = [
     rank: "Topp-50 globalt inom ekonomi",
     students: "~2 000 studenter",
     exchangeCount: "60+ elituniversitet i 30+ länder",
-    description: "SSE har endast partnerskap med världens bästa handelshögskolor. Nästan alla studenter åker på utbyte – ofta till Wharton, HEC eller LSE.",
+    description: "SSE samarbetar endast med världens bästa handelshögskolor. Nästan alla studenter åker på utbyte – ofta till Wharton, HEC eller LSE.",
     opportunities: [
       "Utbyte med Wharton, HEC Paris, LSE, Bocconi",
       "CEMS Master in Management – 30 elituniversitet globalt",

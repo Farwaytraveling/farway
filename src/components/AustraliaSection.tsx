@@ -106,7 +106,7 @@ export const AustraliaSection = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <p className="text-muted-foreground mb-4">Vill du ha hjälp att planera din resa? Våra partners kan hjälpa dig.</p>
+          <p className="text-muted-foreground mb-4">Vill du ha hjälp att planera din resa? Boka via företagen nedan.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild variant="default" size="lg" className="rounded-xl">
               <a href="https://www.kilroy.se/australien" target="_blank" rel="noopener noreferrer">
