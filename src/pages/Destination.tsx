@@ -1177,7 +1177,7 @@ const Destination = () => {
       <SEO
         title={`${dest.name} – guide för svenska ungdomar | Farway`}
         description={`${dest.name}: visum, jobb, boende, städer och praktiska tips för dig som vill jobba, plugga eller resa till ${dest.name}. Faktagranskat och gratis.`}
-        canonical={`https://farway.se/destination/${slug}`}
+        canonical={`https://farway.lovable.app/destination/${slug}`}
         ogImage={dest.heroImage}
       />
       <Header />

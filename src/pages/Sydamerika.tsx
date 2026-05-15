@@ -84,7 +84,7 @@ const Sydamerika = () => {
       <SEO
         title="Sydamerika – Argentina, Brasilien, Colombia, Peru & Chile | Farway"
         description="Allt om Sydamerika för svenska ungdomar: Working Holiday, språkkurser, backpacking och digital nomad-liv i Argentina, Brasilien, Colombia, Peru och Chile."
-        canonical="https://farway.se/sydamerika"
+        canonical="https://farway.lovable.app/sydamerika"
       />
       <Header />
 

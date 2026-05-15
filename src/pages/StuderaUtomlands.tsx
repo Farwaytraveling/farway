@@ -339,7 +339,7 @@ const StuderaUtomlands = () => {
       <SEO
         title="Studera utomlands – Erasmus, utbyte & språkkurser | Farway"
         description="Komplett guide för svenska studenter: Erasmus+, utbytesstudier, språkkurser och CSN utomlands. Universitet, ansökan, finansiering och de bästa destinationerna."
-        canonical="https://farway.se/studera-utomlands"
+        canonical="https://farway.lovable.app/studera-utomlands"
       />
       <Header />
       <main>

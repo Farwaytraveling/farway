@@ -108,7 +108,7 @@ const Alperna = () => {
       <SEO
         title="Alperna – jobba, åk skidor & vandra | Frankrike, Schweiz, Österrike | Farway"
         description="Allt om Alperna för svenska ungdomar: skidsäsong, sommarvandring, au pair och språkresor i Frankrike, Schweiz, Österrike och Italien."
-        canonical="https://farway.se/alperna"
+        canonical="https://farway.lovable.app/alperna"
       />
       <Header />
 

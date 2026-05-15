@@ -10,7 +10,7 @@ const Index = () => {
       <SEO
         title="Farway – Din väg ut i världen | Working Holiday, Au Pair, Skidsäsong"
         description="Sveriges samlade guide för dig som vill jobba, studera eller resa utomlands. Working Holiday, Au Pair, skidsäsong, språkresor – faktagranskat och gratis."
-        canonical="https://farway.se/"
+        canonical="https://farway.lovable.app/"
       />
       <Header />
       <main className="pt-[calc(4rem+2.75rem+1px)] sm:pt-[calc(4rem+1px)]">
