@@ -84,7 +84,7 @@ const SkiSeason = () => {
       <SEO
         title="Skidsäsong i Alperna 2025/2026 – jobba i Österrike, Schweiz, Frankrike | Farway"
         description="Allt om att jobba en skidsäsong: Österrike, Schweiz, Frankrike, Italien, Japan & Kanada. Löner, jobb, ansökan och bästa skidorterna – samlad guide."
-        canonical="https://farway.se/ski-season"
+        canonical="https://farway.lovable.app/ski-season"
       />
       <Header />
       <main>

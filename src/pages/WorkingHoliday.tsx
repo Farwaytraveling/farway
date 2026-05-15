@@ -153,7 +153,7 @@ const WorkingHoliday = () => {
       <SEO
         title="Working Holiday-visum 2025 – Australien, Kanada, Japan & fler | Farway"
         description="Komplett guide till Working Holiday-visum för svenskar: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Argentina m.fl. Krav, åldersgränser, kostnader och hur du ansöker."
-        canonical="https://farway.se/working-holiday"
+        canonical="https://farway.lovable.app/working-holiday"
       />
       <Header />
       <main>

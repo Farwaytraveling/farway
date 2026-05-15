@@ -117,7 +117,7 @@ const Budget = () => {
       <SEO
         title="Budgetkalkylator för utlandsåret – räkna ut din reskostnad | Farway"
         description="Räkna ut vad ditt utlandsår kostar. Budget för Working Holiday, skidsäsong, backpacking och språkkurser i 20+ länder – flyg, boende, mat och försäkring."
-        canonical="https://farway.se/budget"
+        canonical="https://farway.lovable.app/budget"
       />
       <Header />
       <main className="pt-[calc(4rem+2.75rem+1px)] sm:pt-[calc(4rem+1px)]">

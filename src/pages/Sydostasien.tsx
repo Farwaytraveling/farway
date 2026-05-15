@@ -74,7 +74,7 @@ const Sydostasien = () => {
       <SEO
         title="Sydostasien – Thailand, Vietnam, Bali & Filippinerna | Farway"
         description="Backpacka, dyk, surfa eller bli digital nomad i Sydostasien. Guide till Thailand, Vietnam, Indonesien, Filippinerna, Kambodja, Laos och Malaysia."
-        canonical="https://farway.se/sydostasien"
+        canonical="https://farway.lovable.app/sydostasien"
       />
       <Header />
 

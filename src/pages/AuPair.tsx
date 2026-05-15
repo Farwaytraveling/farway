@@ -146,7 +146,7 @@ const AuPair = () => {
       <SEO
         title="Au Pair utomlands – USA, Frankrike, Tyskland, Spanien | Farway"
         description="Bli au pair i USA, Frankrike, Tyskland, Spanien, Italien eller Storbritannien. Krav, fickpengar, visum och bästa plattformar – samlat för svenska ungdomar."
-        canonical="https://farway.se/au-pair"
+        canonical="https://farway.lovable.app/au-pair"
       />
       <Header />
       <main>
