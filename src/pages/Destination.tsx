@@ -14,6 +14,8 @@ import aixImage from "@/assets/aix-en-provence.jpg";
 import portoImage from "@/assets/porto.jpg";
 import sagresImage from "@/assets/sagres.jpg";
 import florensImage from "@/assets/florens.jpg";
+import edinburghImage from "@/assets/edinburgh.jpg";
+import manchesterImage from "@/assets/manchester.jpg";
 
 type CityLink = {
   name: string;
@@ -315,8 +317,8 @@ const destinationData: Record<string, DestinationInfo> = {
     ],
     cities: [
       { name: "London", image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=400&fit=crop", description: "Världens mest internationella stad med oändliga möjligheter inom alla branscher.", swedes: "~50 000 svenskar", popularFor: ["Finans & bank", "Hospitality", "Tech & startup"], avgRent: "~12 000 kr/mån", detailedInfo: { neighborhoods: ["Shoreditch – Tech och hipsterkultur", "Clapham – Populärt bland skandinaver", "Camden – Alternativt med marknader", "Canary Wharf – Finansdistrikt"], tips: ["Oyster Card eller kontaktlöst för tunnelbanan", "Skaffa UK-bankkonto med Monzo eller Revolut", "Pub-kultur är viktig för nätverkande", "Zonerna avgör hyran – zon 2-3 bäst värdee"], safety: "Generellt säkert – var uppmärksam sent på kvällen", internet: "Utmärkt", costOfLiving: "Mycket hög – 15 000–22 000 kr/mån", nightlife: "Världsklass – Soho, Shoreditch, Brixton", transport: "Bäst i Europa – tube, bussar, Overground" } },
-      { name: "Edinburgh", image: "https://images.unsplash.com/photo-1506377585622-bedcbb5f7f0c?w=600&h=400&fit=crop", description: "Skottlands vackra huvudstad med festivaler, historia och fantastisk natur.", swedes: "~3 000 svenskar", popularFor: ["Festival-jobb", "Studier", "Hospitality"], avgRent: "~9 000 kr/mån" },
-      { name: "Manchester", image: "https://images.unsplash.com/photo-1515586838455-8f8045940928?w=600&h=400&fit=crop", description: "Nordens kulturhuvudstad med musik, fotboll och en växande tech-scen.", swedes: "~2 000 svenskar", popularFor: ["Media & musik", "Tech", "Studier"], avgRent: "~8 000 kr/mån" },
+      { name: "Edinburgh", image: edinburghImage, description: "Skottlands vackra huvudstad med festivaler, historia och fantastisk natur.", swedes: "~3 000 svenskar", popularFor: ["Festival-jobb", "Studier", "Hospitality"], avgRent: "~9 000 kr/mån" },
+      { name: "Manchester", image: manchesterImage, description: "Nordens kulturhuvudstad med musik, fotboll och en växande tech-scen.", swedes: "~2 000 svenskar", popularFor: ["Media & musik", "Tech", "Studier"], avgRent: "~8 000 kr/mån" },
     ],
   },
 
