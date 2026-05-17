@@ -10,6 +10,7 @@ import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
 import { udTravelInfo, defaultUDInfo } from "@/data/udTravelInfo";
 import lyonImage from "@/assets/lyon.jpg";
 import bordeauxImage from "@/assets/bordeaux.jpg";
+import aixImage from "@/assets/aix-en-provence.jpg";
 
 type CityLink = {
   name: string;
