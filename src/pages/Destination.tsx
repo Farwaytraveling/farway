@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane, Syringe, AlertTriangle } from "lucide-react";
 import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
 import { udTravelInfo, defaultUDInfo } from "@/data/udTravelInfo";
+import lyonImage from "@/assets/lyon.jpg";
 
 type CityLink = {
   name: string;
