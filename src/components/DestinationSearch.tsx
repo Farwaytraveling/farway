@@ -49,6 +49,7 @@ const destinations: Destination[] = [
   { name: "Storbritannien", flag: "🇬🇧", region: "Europa", visaInfo: "Youth Mobility Scheme, 18-30 år", slug: "storbritannien", activities: ["au-pair", "studera"] },
   { name: "Spanien", flag: "🇪🇸", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "spanien", activities: ["au-pair", "studera"] },
   { name: "Italien", flag: "🇮🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "italien", activities: ["skidsasong", "au-pair", "studera"] },
+  { name: "Portugal", flag: "🇵🇹", region: "Europa", visaInfo: "EU-medborgare, fritt", slug: "portugal", activities: ["au-pair", "studera"] },
   { name: "Thailand", flag: "🇹🇭", region: "Asien", visaInfo: "Visumfritt 30 dagar", slug: "thailand", activities: [] },
   { name: "Vietnam", flag: "🇻🇳", region: "Asien", visaInfo: "E-visum krävs", slug: "vietnam", activities: [] },
   { name: "Indonesien", flag: "🇮🇩", region: "Asien", visaInfo: "Visa on arrival", slug: "indonesien", activities: [] },
