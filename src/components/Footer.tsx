@@ -115,13 +115,17 @@ export const Footer = () => {
             </ul>
 
             <h4 className="font-semibold text-sm text-foreground mb-3 uppercase tracking-wider">Kontakt</h4>
-            <a
-              href="mailto:farwaytravelling@gmail.com"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
-            >
-              <Mail className="w-4 h-4" />
-              farwaytravelling@gmail.com
-            </a>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="mailto:farwaytravelling@gmail.com"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1.5"
+                >
+                  <Mail className="w-4 h-4" />
+                  Kontakta oss
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
