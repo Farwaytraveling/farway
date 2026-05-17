@@ -22,6 +22,15 @@ const footerLinks = {
     { label: "Storbritannien", href: "/destination/storbritannien" },
     { label: "Spanien", href: "/destination/spanien" },
     { label: "Thailand", href: "/destination/thailand" },
+    { label: "Italien", href: "/destination/italien" },
+    { label: "Portugal", href: "/destination/portugal" },
+    { label: "USA", href: "/destination/usa" },
+    { label: "Nya Zeeland", href: "/destination/nya-zeeland" },
+    { label: "Vietnam", href: "/destination/vietnam" },
+    { label: "Indonesien", href: "/destination/indonesien" },
+    { label: "Kambodja", href: "/destination/kambodja" },
+    { label: "Filippinerna", href: "/destination/filippinerna" },
+    { label: "Myanmar", href: "/destination/myanmar" },
   ],
 };
 
