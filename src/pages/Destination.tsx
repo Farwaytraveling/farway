@@ -247,7 +247,7 @@ const destinationData: Record<string, DestinationInfo> = {
     ],
     cities: [
       { name: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Ljusets stad med oändliga möjligheter för au pair, studier och praktik.", swedes: "~15 000 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån", detailedInfo: { neighborhoods: ["Le Marais – Trendigt med gallerier och caféer", "Montmartre – Konstnärskvarter med charm", "16:e arr. – Populärt bland au pair-familjer", "Saint-Germain – Studentkvarter vid Seine"], tips: ["Skaffa Navigo-kort för kollektivtrafiken", "Franska är ett måste – engelska räcker inte", "Boulangerierna stänger måndagar", "Museikort ger rabatt på 60+ museer"], safety: "Generellt säkert – var uppmärksam på ficktjuvar i turistområden", internet: "Utmärkt – WiFi överallt", costOfLiving: "Hög – 12 000–18 000 kr/mån", nightlife: "Fantastiskt – Oberkampf, Bastille, Pigalle", transport: "Världsklass – metro, buss, RER" } },
-      { name: "Lyon", image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=600&h=400&fit=crop", description: "Gastronomiska huvudstaden med billigare levnadskostnader än Paris.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
+      { name: "Lyon", image: "" + lyonImage + "", description: "Gastronomiska huvudstaden med billigare levnadskostnader än Paris.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
       { name: "Bordeaux", image: "https://images.unsplash.com/photo-1565368228429-b9a0248b8b30?w=600&h=400&fit=crop", description: "Vinregionens huvudstad med vacker arkitektur och studentliv.", swedes: "~800 svenskar", popularFor: ["Vinbranschen", "Språkstudier", "Au Pair"], avgRent: "~7 500 kr/mån" },
       { name: "Chamonix", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop", description: "Skiddestination vid Mont Blanc – epicentrum för säsongsarbete.", swedes: "~300 svenskar/säsong", popularFor: ["Skidlärare", "Bar & restaurang", "Hotellpersonal"], avgRent: "~7 000 kr/mån" },
     ],
@@ -824,7 +824,7 @@ const destinationData: Record<string, DestinationInfo> = {
     cities: [
       { name: "Paris (Centrala)", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Hjärtat av Paris med Eiffeltornet och Louvren.", swedes: "~15 000 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån" },
       { name: "Bordeaux", image: "https://images.unsplash.com/photo-1565368228429-b9a0248b8b30?w=600&h=400&fit=crop", description: "Vinregionens huvudstad.", swedes: "~800 svenskar", popularFor: ["Vinbranschen", "Språkstudier", "Au Pair"], avgRent: "~7 500 kr/mån" },
-      { name: "Lyon", image: "https://images.unsplash.com/photo-1524396309943-e03f5249f002?w=600&h=400&fit=crop", description: "Gastronomiska huvudstaden.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
+      { name: "Lyon", image: "" + lyonImage + "", description: "Gastronomiska huvudstaden.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
     ],
   },
 
