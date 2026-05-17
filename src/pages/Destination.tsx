@@ -11,6 +11,8 @@ import { udTravelInfo, defaultUDInfo } from "@/data/udTravelInfo";
 import lyonImage from "@/assets/lyon.jpg";
 import bordeauxImage from "@/assets/bordeaux.jpg";
 import aixImage from "@/assets/aix-en-provence.jpg";
+import portoImage from "@/assets/porto.jpg";
+import sagresImage from "@/assets/sagres.jpg";
 
 type CityLink = {
   name: string;
@@ -732,7 +734,7 @@ const destinationData: Record<string, DestinationInfo> = {
       },
       {
         name: "Porto",
-        image: "https://images.unsplash.com/photo-1555990538-32202afcd45a?w=600&h=400&fit=crop",
+        image: portoImage,
         description: "Charmig hamnstad vid Douro-floden – kakelfasader, portvin och en mer avslappnad ton än Lissabon.",
         swedes: "~600 svenskar",
         popularFor: ["Språkkurser", "Studier (Erasmus)", "Digital nomad"],
@@ -800,7 +802,7 @@ const destinationData: Record<string, DestinationInfo> = {
       },
       {
         name: "Sagres & Algarve",
-        image: "https://images.unsplash.com/photo-1591458189476-1bd2336e561a?w=600&h=400&fit=crop",
+        image: sagresImage,
         description: "Europas sydvästligaste hörn – klippkust, många surfbreaks och Algarves stränder runt hörnet.",
         swedes: "~400 svenskar (säsong)",
         popularFor: ["Surfcamp", "Yoga retreats", "Säsongsjobb"],
