@@ -13,6 +13,7 @@ import bordeauxImage from "@/assets/bordeaux.jpg";
 import aixImage from "@/assets/aix-en-provence.jpg";
 import portoImage from "@/assets/porto.jpg";
 import sagresImage from "@/assets/sagres.jpg";
+import florensImage from "@/assets/florens.jpg";
 
 type CityLink = {
   name: string;
@@ -519,7 +520,7 @@ const destinationData: Record<string, DestinationInfo> = {
     cities: [
       { name: "Rom", image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600&h=400&fit=crop", description: "Den eviga staden med antik historia, fantastisk mat och oändlig charm.", swedes: "~2 000 svenskar", popularFor: ["Au Pair", "Studier", "Turismjobb"], avgRent: "~7 000 kr/mån", detailedInfo: { neighborhoods: ["Trastevere – Mysigt med kvällsliv", "Monti – Hippt och centralt", "Testaccio – Autentiskt med matkultur", "Prati – Lugnt nära Vatikanen"], tips: ["Skaffa ATAC-kort för kollektivtrafiken", "Italienska krävs för de flesta jobb", "Undvik turistfällor nära Colosseum", "Lunchmenyer (pranzo) är billiga"], safety: "Generellt säkert – ficktjuvar vid turistattraktioner", internet: "Bra i centrala delar", costOfLiving: "Medel – 9 000–13 000 kr/mån", nightlife: "Fantastiskt – Trastevere, Testaccio, San Lorenzo", transport: "Metro, bussar och spårvagnar" } },
       { name: "Milano", image: "https://images.unsplash.com/photo-1520440229-6469a149ac59?w=600&h=400&fit=crop", description: "Modehuvudstaden med internationell affärsvärld och design.", swedes: "~1 500 svenskar", popularFor: ["Mode-praktik", "Design", "Finans"], avgRent: "~9 000 kr/mån" },
-      { name: "Florens", image: "https://images.unsplash.com/photo-1543429776-2782fc8e4132?w=600&h=400&fit=crop", description: "Renässansstaden med konst, vin och toskansk charm.", swedes: "~800 svenskar", popularFor: ["Konststudier", "Språkkurser", "Vinturism"], avgRent: "~7 500 kr/mån" },
+      { name: "Florens", image: florensImage, description: "Renässansstaden med konst, vin och toskansk charm.", swedes: "~800 svenskar", popularFor: ["Konststudier", "Språkkurser", "Vinturism"], avgRent: "~7 500 kr/mån" },
     ],
   },
 
