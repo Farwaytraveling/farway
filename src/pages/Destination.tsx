@@ -135,13 +135,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/australia (Reddit)", url: "https://www.reddit.com/r/australia", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Australien", url: "https://www.kilroy.se/destinationer/australien", official: false },
-          { name: "EF – Språkkurser i Australien", url: "https://www.ef.se/ils/destinations/australien/", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "Sydney", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop", description: "Australiens största stad med ikoniska operahuset, fantastiska stränder som Bondi och ett pulserande nattliv.", swedes: "~3 500 svenskar", popularFor: ["Restaurangjobb", "Kontorsarbete", "Surfing"], avgRent: "~12 000 kr/mån", cityLinks: [
@@ -241,13 +234,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/france (Reddit)", url: "https://www.reddit.com/r/france", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Frankrike", url: "https://www.kilroy.se/destinationer/frankrike", official: false },
-          { name: "EF – Språkkurser i Frankrike", url: "https://www.ef.se/ils/destinations/frankrike/", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Ljusets stad med oändliga möjligheter för au pair, studier och praktik.", swedes: "~15 000 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån", detailedInfo: { neighborhoods: ["Le Marais – Trendigt med gallerier och caféer", "Montmartre – Konstnärskvarter med charm", "16:e arr. – Populärt bland au pair-familjer", "Saint-Germain – Studentkvarter vid Seine"], tips: ["Skaffa Navigo-kort för kollektivtrafiken", "Franska är ett måste – engelska räcker inte", "Boulangerierna stänger måndagar", "Museikort ger rabatt på 60+ museer"], safety: "Generellt säkert – var uppmärksam på ficktjuvar i turistområden", internet: "Utmärkt – WiFi överallt", costOfLiving: "Hög – 12 000–18 000 kr/mån", nightlife: "Fantastiskt – Oberkampf, Bastille, Pigalle", transport: "Världsklass – metro, buss, RER" } },
@@ -325,13 +311,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/london (Reddit)", url: "https://www.reddit.com/r/london", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Storbritannien", url: "https://www.kilroy.se/destinationer/storbritannien", official: false },
-          { name: "EF – Språkkurser i England", url: "https://www.ef.se/ils/destinations/england/", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "London", image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=400&fit=crop", description: "Världens mest internationella stad med oändliga möjligheter inom alla branscher.", swedes: "~50 000 svenskar", popularFor: ["Finans & bank", "Hospitality", "Tech & startup"], avgRent: "~12 000 kr/mån", detailedInfo: { neighborhoods: ["Shoreditch – Tech och hipsterkultur", "Clapham – Populärt bland skandinaver", "Camden – Alternativt med marknader", "Canary Wharf – Finansdistrikt"], tips: ["Oyster Card eller kontaktlöst för tunnelbanan", "Skaffa UK-bankkonto med Monzo eller Revolut", "Pub-kultur är viktig för nätverkande", "Zonerna avgör hyran – zon 2-3 bäst värdee"], safety: "Generellt säkert – var uppmärksam sent på kvällen", internet: "Utmärkt", costOfLiving: "Mycket hög – 15 000–22 000 kr/mån", nightlife: "Världsklass – Soho, Shoreditch, Brixton", transport: "Bäst i Europa – tube, bussar, Overground" } },
@@ -398,13 +377,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "Svenskar i Nya Zeeland (Facebook)", url: "https://www.facebook.com/groups/svenskarinyazeeland", official: false },
           { name: "r/newzealand (Reddit)", url: "https://www.reddit.com/r/newzealand", official: false },
           { name: "NZ Backpackers (Facebook)", url: "https://www.facebook.com/groups/nzbackpackers", official: false },
-        ],
-      },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Nya Zeeland", url: "https://www.kilroy.se/destinationer/nya-zeeland", official: false },
-          { name: "EF – Språkkurser i Nya Zeeland", url: "https://www.ef.se/ils/destinations/nya-zeeland/", official: false },
         ],
       },
     ],
@@ -475,13 +447,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/IWantOut (Reddit)", url: "https://www.reddit.com/r/IWantOut", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – USA", url: "https://www.kilroy.se/destinationer/usa", official: false },
-          { name: "EF – Språkkurser i USA", url: "https://www.ef.se/ils/destinations/usa/", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "New York", image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=600&h=400&fit=crop", description: "Världens mest ikoniska stad med oändliga möjligheter.", swedes: "~25 000 svenskar", popularFor: ["Au Pair", "Praktik", "Studier"], avgRent: "~15 000 kr/mån", detailedInfo: { neighborhoods: ["Manhattan – Allt händer här", "Brooklyn – Kreativt och trendigt", "Westchester – Populärt för au pairs", "Hoboken, NJ – Billigare med skyline-vy"], tips: ["MetroCard/OMNY för subway", "Au pair-familjer bor ofta i förorterna", "Tipping-kultur: 18-20% på restauranger", "Gå med i Scandinavian House-events"], safety: "Säkert i turistområden – var uppmärksam i subway sent", internet: "Utmärkt", costOfLiving: "Extremt hög – 18 000–25 000 kr/mån", nightlife: "Oändligt – East Village, Williamsburg, LES", transport: "Subway 24/7 – bäst i USA" } },
@@ -548,13 +513,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "Svenskar i Italien (Facebook)", url: "https://www.facebook.com/groups/svenskariitalien", official: false },
           { name: "Expats in Italy", url: "https://www.facebook.com/groups/expatsinitaly", official: false },
           { name: "r/italy (Reddit)", url: "https://www.reddit.com/r/italy", official: false },
-        ],
-      },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Italien", url: "https://www.kilroy.se/destinationer/italien", official: false },
-          { name: "EF – Språkkurser i Italien", url: "https://www.ef.se/ils/destinations/italien/", official: false },
         ],
       },
     ],
@@ -624,13 +582,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/spain (Reddit)", url: "https://www.reddit.com/r/spain", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Spanien", url: "https://www.kilroy.se/destinationer/spanien", official: false },
-          { name: "EF – Språkkurser i Spanien", url: "https://www.ef.se/ils/destinations/spanien/", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "Barcelona", image: "https://images.unsplash.com/photo-1583422409516-2895a77efded?w=600&h=400&fit=crop", description: "Gaudís stad med stränder, nattliv och en otrolig matscen.", swedes: "~8 000 svenskar", popularFor: ["Språkkurser", "Hospitality", "Tech & startup"], avgRent: "~8 000 kr/mån", detailedInfo: { neighborhoods: ["El Born – Trendigt med barer och gallerier", "Gràcia – Lokalt och bohemiskt", "Barceloneta – Strandliv", "Eixample – Elegant med Gaudí-arkitektur"], tips: ["T-Casual kort för metro (10 resor)", "Spanska OCH katalanska talas", "Undvik Las Ramblas-restauranger – turistfällor", "Lägenhetsjakt är tuff – börja tidigt"], safety: "Generellt säkert – ficktjuvar i turistzoner", internet: "Utmärkt", costOfLiving: "Medel – 9 000–14 000 kr/mån", nightlife: "Fantastiskt – börjar inte förrän midnatt!", transport: "Utmärkt metro och buss" } },
@@ -697,13 +648,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "Svenskar i Portugal (Facebook)", url: "https://www.facebook.com/groups/svenskariportugal", official: false },
           { name: "Svenska kyrkan i Portugal", url: "https://www.svenskakyrkan.se/portugal", official: true },
           { name: "r/portugal (Reddit)", url: "https://www.reddit.com/r/portugal", official: false },
-        ],
-      },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Portugal", url: "https://www.kilroy.se/destinationer/portugal", official: false },
-          { name: "EF – Språkkurser i Portugal", url: "https://www.ef.se/ils/destinations/portugal/", official: false },
         ],
       },
     ],
@@ -885,12 +829,6 @@ const destinationData: Record<string, DestinationInfo> = {
           { name: "r/ThailandTourism (Reddit)", url: "https://www.reddit.com/r/ThailandTourism", official: false },
         ],
       },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Thailand", url: "https://www.kilroy.se/destinationer/thailand", official: false },
-        ],
-      },
     ],
     cities: [
       { name: "Bangkok", image: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&h=400&fit=crop", description: "Pulserande huvudstad med tempel, streetfood och nattliv.", swedes: "~8 000 svenskar", popularFor: ["Volontärarbete", "Språkkurser", "Undervisning"], avgRent: "~4 000 kr/mån", detailedInfo: { neighborhoods: ["Khao San Road – Backpacker-mekka", "Sukhumvit – Modernt med bra nattliv", "Silom – Affärsdistrikt", "Thonglor – Hippt och trendrikt"], tips: ["BTS Skytrain och MRT för att undvika trafik", "Streetfood är billigt och gott – ät där lokalbefolkningen äter", "Förhandla alltid priset i tuk-tuk", "Visa respekt vid tempel – täck axlar och knän"], safety: "Generellt säkert – var uppmärksam på bedrägerier", internet: "Bra – WiFi på de flesta caféer", costOfLiving: "Låg – 5 000–8 000 kr/mån", nightlife: "Legendariskt – RCA, Thonglor, Khao San", transport: "BTS, MRT, båt och tuk-tuk" } },
@@ -939,12 +877,6 @@ const destinationData: Record<string, DestinationInfo> = {
         links: [
           { name: "Leboncoin – Chamonix", url: "https://www.leboncoin.fr", official: false },
           { name: "Season Workers Housing", url: "https://www.seasonworkers.com/accommodation/", official: false },
-        ],
-      },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Frankrike & Alperna", url: "https://www.kilroy.se/destinationer/frankrike", official: false },
         ],
       },
     ],
@@ -1008,13 +940,6 @@ const destinationData: Record<string, DestinationInfo> = {
         links: [
           { name: "Svenskar i Paris (Facebook)", url: "https://www.facebook.com/groups/svenskariparis", official: false },
           { name: "Svenska kyrkan i Paris", url: "https://www.svenskakyrkan.se/paris", official: true },
-        ],
-      },
-      {
-        category: "Boka via partner", icon: Plane,
-        links: [
-          { name: "Kilroy – Frankrike", url: "https://www.kilroy.se/destinationer/frankrike", official: false },
-          { name: "EF – Språkkurser i Paris", url: "https://www.ef.se/ils/destinations/frankrike/paris/", official: false },
         ],
       },
     ],
