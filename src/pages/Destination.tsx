@@ -10,6 +10,7 @@ import { vaccinationData, defaultVaccinationInfo } from "@/data/vaccinations";
 import { udTravelInfo, defaultUDInfo } from "@/data/udTravelInfo";
 import lyonImage from "@/assets/lyon.jpg";
 import bordeauxImage from "@/assets/bordeaux.jpg";
+import aixImage from "@/assets/aix-en-provence.jpg";
 
 type CityLink = {
   name: string;
@@ -250,6 +251,13 @@ const destinationData: Record<string, DestinationInfo> = {
       { name: "Paris", image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&h=400&fit=crop", description: "Ljusets stad med oändliga möjligheter för au pair, studier och praktik.", swedes: "~15 000 svenskar", popularFor: ["Au Pair", "Språkkurser", "Modepraktik"], avgRent: "~10 000 kr/mån", detailedInfo: { neighborhoods: ["Le Marais – Trendigt med gallerier och caféer", "Montmartre – Konstnärskvarter med charm", "16:e arr. – Populärt bland au pair-familjer", "Saint-Germain – Studentkvarter vid Seine"], tips: ["Skaffa Navigo-kort för kollektivtrafiken", "Franska är ett måste – engelska räcker inte", "Boulangerierna stänger måndagar", "Museikort ger rabatt på 60+ museer"], safety: "Generellt säkert – var uppmärksam på ficktjuvar i turistområden", internet: "Utmärkt – WiFi överallt", costOfLiving: "Hög – 12 000–18 000 kr/mån", nightlife: "Fantastiskt – Oberkampf, Bastille, Pigalle", transport: "Världsklass – metro, buss, RER" } },
       { name: "Lyon", image: lyonImage, description: "Gastronomiska huvudstaden med billigare levnadskostnader än Paris.", swedes: "~1 200 svenskar", popularFor: ["Gastronomi-praktik", "Språkstudier", "Au Pair"], avgRent: "~7 000 kr/mån" },
       { name: "Bordeaux", image: bordeauxImage, description: "Vinregionens huvudstad med vacker arkitektur och studentliv.", swedes: "~800 svenskar", popularFor: ["Vinbranschen", "Språkstudier", "Au Pair"], avgRent: "~7 500 kr/mån" },
+      { name: "Aix-en-Provence", image: aixImage, description: "Charmig universitetsstad i Provence – ett av Frankrikes mest populära mål för språkkurser tack vare det soliga klimatet, den vackra gamla stan och den välkända Institut d'Études Françaises pour Étudiants Étrangers (IEFEE) vid Aix-Marseille Université.", swedes: "~400 svenskar", popularFor: ["Språkkurser", "Universitetsstudier", "Au Pair"], avgRent: "~7 000 kr/mån", cityLinks: [
+        { name: "IS Aix-en-Provence (språkskola)", url: "https://www.is-aix.com/sv/", type: "jobb" },
+        { name: "Institut d'Études Françaises (IEFEE)", url: "https://iefee.univ-amu.fr/", type: "jobb" },
+        { name: "France Langue – Aix", url: "https://www.france-langue.com/en/destinations/learn-french-in-france/french-school-in-aix-en-provence/", type: "jobb" },
+        { name: "EF – Språkkurs i Aix-en-Provence", url: "https://www.ef.se/sprakresor/franska/frankrike/aix-en-provence/", type: "jobb" },
+        { name: "Leboncoin – Aix boende", url: "https://www.leboncoin.fr/recherche?category=10&locations=Aix-en-Provence", type: "boende" },
+      ], detailedInfo: { neighborhoods: ["Vieil Aix – Historisk gammal stadskärna", "Mazarin – Elegant 1600-talskvarter", "Sextius-Mirabeau – Modernt och centralt", "Jas de Bouffan – Lugnare studentområde"], tips: ["Boka språkkurs i god tid – sommarkurserna fylls snabbt", "Cours Mirabeau är stadens hjärta – fika under platanerna", "Tåg till Marseille tar bara 30 min", "Marknad varje tisdag, torsdag och lördag på Place Richelme"], safety: "Mycket säkert – litet och studentvänligt", internet: "Bra – WiFi på de flesta caféer och språkskolor", costOfLiving: "Medel – 9 000–13 000 kr/mån", nightlife: "Levande studentnattliv kring Forbin och Verdun", transport: "Allt nås till fots; bussar och tåg till resten av Provence" } },
       { name: "Chamonix", image: "https://images.unsplash.com/photo-1551524559-8af4e6624178?w=600&h=400&fit=crop", description: "Skiddestination vid Mont Blanc – epicentrum för säsongsarbete.", swedes: "~300 svenskar/säsong", popularFor: ["Skidlärare", "Bar & restaurang", "Hotellpersonal"], avgRent: "~7 000 kr/mån" },
     ],
   },
