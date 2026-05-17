@@ -119,6 +119,13 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const activityRoutes: Record<string, string> = {
+    "working-holiday": "/working-holiday",
+    "au-pair": "/au-pair",
+    "skidsasong": "/ski-season",
+    "studera": "/studera-utomlands",
+  };
+
   const handleSelect = (destination: Destination) => {
     if (destination.slug) {
       if (destination.slug.startsWith("_")) {
@@ -126,6 +133,10 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
       } else {
         navigate(`/destination/${destination.slug}`);
       }
+    } else if (destination.activities.length > 0 && activityRoutes[destination.activities[0]]) {
+      navigate(activityRoutes[destination.activities[0]]);
+    } else {
+      navigate("/karta");
     }
     setQuery("");
     setIsOpen(false);
