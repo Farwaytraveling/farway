@@ -606,9 +606,10 @@ interface BudgetRowProps {
   sub?: string;
   muted?: boolean;
   accent?: boolean;
+  source?: { name: string; url: string };
 }
 
-const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent }: BudgetRowProps) => (
+const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent, source }: BudgetRowProps) => (
   <div className="flex items-center justify-between gap-3">
     <div className="flex items-center gap-3 min-w-0">
       <div
@@ -621,6 +622,17 @@ const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent }: BudgetRowPr
       <div className="min-w-0">
         <p className={`text-sm ${muted ? "text-muted-foreground" : "text-foreground"} truncate`}>{label}</p>
         {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
+        {source && (
+          <a
+            href={source.url}
+            target={source.url.startsWith("#") ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            className="text-[10px] text-muted-foreground hover:text-primary hover:underline inline-flex items-center gap-0.5 mt-0.5"
+          >
+            Källa: {source.name}
+            {!source.url.startsWith("#") && <ExternalLink className="w-2.5 h-2.5" />}
+          </a>
+        )}
       </div>
     </div>
     <p className={`font-mono text-sm tabular-nums shrink-0 ${muted ? "text-muted-foreground" : "text-foreground font-semibold"}`}>
