@@ -65,6 +65,19 @@ const skiDestinations = [
     highlights: ["Enorma skidområden", "Bra mat", "Varierat"],
     jobUrl: "https://www.emploi.gouv.fr/", visaInfo: "EU-medborgare behöver inget visum",
   },
+  {
+    country: "Japan", flag: "🇯🇵", region: "Hokkaido & Nagano", season: "December – Mars", avgSalary: "¥180 000–250 000/mån",
+    description: "Japan är legendariskt för sin lätta, torra powder – \"Japow\". Kombinera världsklass-åkning med onsen, ramen och en helt unik kultur.",
+    resorts: [
+      { name: "Niseko", type: "Powder-mecka", jobs: "Hotell, barer, skidskola" },
+      { name: "Hakuba", type: "OS-ort", jobs: "Hotell, restauranger, liftar" },
+      { name: "Furano", type: "Autentiskt", jobs: "Hotell, uthyrning" },
+      { name: "Rusutsu", type: "Tree-skiing", jobs: "Resort, restauranger" },
+      { name: "Nozawa Onsen", type: "Traditionellt", jobs: "Ryokan, barer" },
+    ],
+    highlights: ["Världens bästa powder", "Onsen & kultur", "Unik upplevelse"],
+    jobUrl: "https://www.gaijinpot.com/", visaInfo: "Working Holiday-visum krävs (18–30 år)",
+  },
 ];
 
 const SkiSeason = () => {
