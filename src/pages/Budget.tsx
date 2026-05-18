@@ -484,7 +484,7 @@ const Budget = () => {
         </section>
 
         {/* Sources & methodology */}
-        <section className="border-t border-border/40 bg-muted/20">
+        <section id="kallor" className="border-t border-border/40 bg-muted/20 scroll-mt-24">
           <div className="container mx-auto px-4 py-12 max-w-4xl">
             <div className="flex items-center gap-2 text-primary mb-3">
               <BookOpen className="w-5 h-5" />
