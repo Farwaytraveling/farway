@@ -65,6 +65,19 @@ const skiDestinations = [
     highlights: ["Enorma skidområden", "Bra mat", "Varierat"],
     jobUrl: "https://www.emploi.gouv.fr/", visaInfo: "EU-medborgare behöver inget visum",
   },
+  {
+    country: "Japan", flag: "🇯🇵", region: "Hokkaido & Nagano", season: "December – Mars", avgSalary: "¥180 000–250 000/mån",
+    description: "Japan är legendariskt för sin lätta, torra powder – \"Japow\". Kombinera världsklass-åkning med onsen, ramen och en helt unik kultur.",
+    resorts: [
+      { name: "Niseko", type: "Powder-mecka", jobs: "Hotell, barer, skidskola" },
+      { name: "Hakuba", type: "OS-ort", jobs: "Hotell, restauranger, liftar" },
+      { name: "Furano", type: "Autentiskt", jobs: "Hotell, uthyrning" },
+      { name: "Rusutsu", type: "Tree-skiing", jobs: "Resort, restauranger" },
+      { name: "Nozawa Onsen", type: "Traditionellt", jobs: "Ryokan, barer" },
+    ],
+    highlights: ["Världens bästa powder", "Onsen & kultur", "Unik upplevelse"],
+    jobUrl: "https://www.gaijinpot.com/", visaInfo: "Working Holiday-visum krävs (18–30 år)",
+  },
 ];
 
 const SkiSeason = () => {
@@ -128,13 +141,13 @@ const SkiSeason = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                3 alpländer
+                4 toppländer
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
                 Välj din skidort
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                Österrike, Schweiz eller Frankrike – de tre mest populära alpländerna för säsongsjobb.
+                Österrike, Schweiz, Frankrike eller Japan – fyra av världens bästa länder för säsongsjobb.
               </p>
             </div>
 
