@@ -288,23 +288,51 @@ const Budget = () => {
                       <p className="text-sm text-muted-foreground mt-1">
                         ≈ {formatSEK(result.total / result.months)} per månad
                       </p>
+
+                      {whEstimate && (
+                        <div className="mt-5 pt-5 border-t border-primary/20">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Briefcase className="w-4 h-4 text-emerald-600" />
+                            <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                              Justerad med Working Holiday-lön
+                            </p>
+                          </div>
+                          <div className="grid grid-cols-2 gap-3 text-sm">
+                            <div>
+                              <p className="text-muted-foreground text-xs">– Nettoinkomst på plats</p>
+                              <p className="font-mono font-semibold text-emerald-700 dark:text-emerald-400">−{formatSEK(whEstimate.netIncome)}</p>
+                            </div>
+                            <div>
+                              <p className="text-muted-foreground text-xs">
+                                {whEstimate.netAfterCosts >= 0 ? "Överskott / sparat" : "Behöver hemifrån"}
+                              </p>
+                              <p className={`font-mono font-bold text-lg ${whEstimate.netAfterCosts >= 0 ? "text-emerald-700 dark:text-emerald-400" : "text-foreground"}`}>
+                                {whEstimate.netAfterCosts >= 0 ? "+" : ""}{formatSEK(whEstimate.netAfterCosts)}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
 
                   {/* Breakdown */}
                   <Card>
                     <CardHeader>
-                      <CardTitle className="font-display text-base">Så fördelas budgeten</CardTitle>
+                      <CardTitle className="font-display text-base flex items-center justify-between gap-2">
+                        <span>Så fördelas budgeten</span>
+                        <span className="text-[10px] font-normal text-muted-foreground uppercase tracking-wider">Källa per post</span>
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <BudgetRow icon={Plane} label="Flyg t/r från Sverige" value={result.flight} />
-                      <BudgetRow icon={Home} label="Boende" value={result.accommodation} sub={`${result.days} dagar`} />
-                      <BudgetRow icon={Utensils} label="Mat & dryck" value={result.food} sub={`${result.days} dagar`} />
-                      <BudgetRow icon={Bus} label="Lokal transport" value={result.transport} />
-                      <BudgetRow icon={Sparkles} label="Aktiviteter & nöjen" value={result.activities} />
-                      <BudgetRow icon={Shield} label="Reseförsäkring" value={result.insurance} sub={`~${result.months.toFixed(1)} mån`} />
+                      <BudgetRow icon={Plane} label="Flyg t/r från Sverige" value={result.flight} source={{ name: "Skyscanner", url: "https://www.skyscanner.se/" }} />
+                      <BudgetRow icon={Home} label="Boende" value={result.accommodation} sub={`${result.days} dagar`} source={{ name: "Numbeo", url: "https://www.numbeo.com/cost-of-living/" }} />
+                      <BudgetRow icon={Utensils} label="Mat & dryck" value={result.food} sub={`${result.days} dagar`} source={{ name: "Numbeo", url: "https://www.numbeo.com/cost-of-living/" }} />
+                      <BudgetRow icon={Bus} label="Lokal transport" value={result.transport} source={{ name: "Budget Your Trip", url: "https://www.budgetyourtrip.com/" }} />
+                      <BudgetRow icon={Sparkles} label="Aktiviteter & nöjen" value={result.activities} source={{ name: "Budget Your Trip", url: "https://www.budgetyourtrip.com/" }} />
+                      <BudgetRow icon={Shield} label="Reseförsäkring" value={result.insurance} sub={`~${result.months.toFixed(1)} mån`} source={{ name: "Gouda / ERV", url: "https://www.gouda-rf.se/" }} />
                       {result.visa > 0 && (
-                        <BudgetRow icon={Info} label="Visum" value={result.visa} />
+                        <BudgetRow icon={Info} label="Visum" value={result.visa} source={{ name: "Migrationsmyndighet", url: "#kallor" }} />
                       )}
                       {result.fixedExtra > 0 && (
                         <BudgetRow
@@ -317,6 +345,9 @@ const Budget = () => {
                       <div className="border-t border-border pt-3">
                         <BudgetRow icon={AlertCircle} label="Buffert (12%)" value={result.buffer} muted />
                       </div>
+                      <p className="text-[11px] text-muted-foreground pt-2 border-t border-border/40">
+                        Alla siffror är genomsnitt 2024–2025. Se <a href="#kallor" className="text-primary hover:underline">fullständig källförteckning</a> längre ner.
+                      </p>
                     </CardContent>
                   </Card>
 
@@ -453,7 +484,7 @@ const Budget = () => {
         </section>
 
         {/* Sources & methodology */}
-        <section className="border-t border-border/40 bg-muted/20">
+        <section id="kallor" className="border-t border-border/40 bg-muted/20 scroll-mt-24">
           <div className="container mx-auto px-4 py-12 max-w-4xl">
             <div className="flex items-center gap-2 text-primary mb-3">
               <BookOpen className="w-5 h-5" />
@@ -575,9 +606,10 @@ interface BudgetRowProps {
   sub?: string;
   muted?: boolean;
   accent?: boolean;
+  source?: { name: string; url: string };
 }
 
-const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent }: BudgetRowProps) => (
+const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent, source }: BudgetRowProps) => (
   <div className="flex items-center justify-between gap-3">
     <div className="flex items-center gap-3 min-w-0">
       <div
@@ -590,6 +622,17 @@ const BudgetRow = ({ icon: Icon, label, value, sub, muted, accent }: BudgetRowPr
       <div className="min-w-0">
         <p className={`text-sm ${muted ? "text-muted-foreground" : "text-foreground"} truncate`}>{label}</p>
         {sub && <p className="text-xs text-muted-foreground">{sub}</p>}
+        {source && (
+          <a
+            href={source.url}
+            target={source.url.startsWith("#") ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            className="text-[10px] text-muted-foreground hover:text-primary hover:underline inline-flex items-center gap-0.5 mt-0.5"
+          >
+            Källa: {source.name}
+            {!source.url.startsWith("#") && <ExternalLink className="w-2.5 h-2.5" />}
+          </a>
+        )}
       </div>
     </div>
     <p className={`font-mono text-sm tabular-nums shrink-0 ${muted ? "text-muted-foreground" : "text-foreground font-semibold"}`}>
