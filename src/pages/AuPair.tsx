@@ -59,6 +59,8 @@ const auPairCountries = [
     highlights: ["London", "Engelska", "Kulturupplevelser"],
     cities: ["London", "Cambridge", "Oxford", "Brighton", "Bath"],
     applyUrl: "https://www.gov.uk/youth-mobility",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinuk",
+    facebookLabel: "Au Pairs in the UK",
   },
   {
     country: "Frankrike",
@@ -72,6 +74,8 @@ const auPairCountries = [
     highlights: ["Paris", "Franska", "Kultur & mat"],
     cities: ["Paris", "Lyon", "Marseille", "Nice", "Bordeaux"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/france",
+    facebookUrl: "https://www.facebook.com/groups/AuPairsInParis",
+    facebookLabel: "Au Pairs in Paris",
   },
   {
     country: "Spanien",
@@ -85,6 +89,8 @@ const auPairCountries = [
     highlights: ["Barcelona", "Spanska", "Sol & strand"],
     cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Málaga"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/spain",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinspain",
+    facebookLabel: "Au Pairs in Spain",
   },
   {
     country: "Australien",
@@ -98,6 +104,8 @@ const auPairCountries = [
     highlights: ["Sydney", "Engelska", "Strandliv"],
     cities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Gold Coast"],
     applyUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinaustralia",
+    facebookLabel: "Au Pairs in Australia",
   },
   {
     country: "Italien",
@@ -111,6 +119,8 @@ const auPairCountries = [
     highlights: ["Rom", "Italienska", "Mat & historia"],
     cities: ["Rom", "Milano", "Florens", "Neapel", "Turin"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/italy",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinitaly",
+    facebookLabel: "Au Pairs in Italy",
   },
   {
     country: "USA",
@@ -124,6 +134,8 @@ const auPairCountries = [
     highlights: ["Reglerat program", "College-bidrag", "Travel month"],
     cities: ["New York", "San Francisco", "Boston", "Chicago", "Los Angeles"],
     applyUrl: "https://j1visa.state.gov/programs/au-pair",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinamerica",
+    facebookLabel: "Au Pairs in America",
   },
   {
     country: "Tyskland",
@@ -137,6 +149,8 @@ const auPairCountries = [
     highlights: ["Officiellt reglerat", "Språkkursbidrag €70/mån", "Berlin & München"],
     cities: ["Berlin", "München", "Hamburg", "Köln", "Frankfurt"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/germany",
+    facebookUrl: "https://www.facebook.com/groups/aupairsingermany",
+    facebookLabel: "Au Pairs in Germany",
   },
 ];
 
