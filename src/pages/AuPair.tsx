@@ -183,6 +183,18 @@ const auPairCountries = [
 ];
 
 const AuPair = () => {
+  const [cityFilter, setCityFilter] = useState<string | null>(null);
+
+  const allCities = useMemo(
+    () => Array.from(new Set(auPairCountries.flatMap((c) => c.cities))).sort(),
+    [],
+  );
+
+  const visibleCountries = useMemo(
+    () => (cityFilter ? auPairCountries.filter((c) => c.cities.includes(cityFilter)) : auPairCountries),
+    [cityFilter],
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
