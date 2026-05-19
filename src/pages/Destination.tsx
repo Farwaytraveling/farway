@@ -18,6 +18,7 @@ import edinburghImage from "@/assets/edinburgh.jpg";
 import manchesterImage from "@/assets/manchester.jpg";
 import oxfordImage from "@/assets/oxford.jpg";
 import cambridgeImage from "@/assets/cambridge.jpg";
+import queenstownImage from "@/assets/queenstown.jpg";
 
 type CityLink = {
   name: string;
