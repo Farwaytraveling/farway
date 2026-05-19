@@ -71,7 +71,7 @@ const auPairCountries = [
     description: "Lär dig franska medan du bor i Paris – världens mest romantiska stad. Fantastisk mat, kultur och ett rikt socialt liv väntar.",
     highlights: ["Paris", "Franska", "Kultur & mat"],
     cities: ["Paris", "Lyon", "Marseille", "Nice", "Bordeaux"],
-    applyUrl: "https://www.aupairworld.com/en/au_pair_program/france",
+    applyUrl: "https://www.aupairworld.com/en/au-pair-programs/france",
   },
   {
     country: "Spanien",
@@ -84,7 +84,7 @@ const auPairCountries = [
     description: "Sol, strand och spanska! Bo hos en familj i Barcelona och njut av Gaudís arkitektur, strandliv och ett fantastiskt nattliv.",
     highlights: ["Barcelona", "Spanska", "Sol & strand"],
     cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Málaga"],
-    applyUrl: "https://www.aupairworld.com/en/au_pair_program/spain",
+    applyUrl: "https://www.aupairworld.com/en/au-pair-programs/spain",
   },
   {
     country: "Australien",
@@ -110,7 +110,7 @@ const auPairCountries = [
     description: "Lev la dolce vita! Lär dig italienska medan du bor hos en familj i Rom eller Milano – med pasta, gelato och historia runt varje hörn.",
     highlights: ["Rom", "Italienska", "Mat & historia"],
     cities: ["Rom", "Milano", "Florens", "Neapel", "Turin"],
-    applyUrl: "https://www.aupairworld.com/en/au_pair_program/italy",
+    applyUrl: "https://www.aupairworld.com/en/au-pair-programs/italy",
   },
   {
     country: "USA",
@@ -136,7 +136,7 @@ const auPairCountries = [
     description: "Tyskland har en officiell au pair-modell genom Bundesagentur für Arbeit. Familjen ska bidra med €70/mån till språkkurs och en månads betald semester ingår.",
     highlights: ["Officiellt reglerat", "Språkkursbidrag €70/mån", "Berlin & München"],
     cities: ["Berlin", "München", "Hamburg", "Köln", "Frankfurt"],
-    applyUrl: "https://www.aupairworld.com/en/au_pair_program/germany",
+    applyUrl: "https://www.aupairworld.com/en/au-pair-programs/germany",
   },
 ];
 
