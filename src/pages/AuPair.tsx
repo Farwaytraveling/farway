@@ -1,7 +1,8 @@
+import { useState, useMemo } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users } from "lucide-react";
+import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
 import {
@@ -10,6 +11,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+// Kända, etablerade Facebook-grupper per stad. Övriga städer faller tillbaka
+// till Facebooks egna gruppsökning, som alltid fungerar.
+const CITY_FB_GROUPS: Record<string, string> = {
+  London: "https://www.facebook.com/groups/aupairsinlondon",
+  Paris: "https://www.facebook.com/groups/AuPairsInParis",
+  Lyon: "https://www.facebook.com/groups/aupairlyon",
+  Barcelona: "https://www.facebook.com/groups/aupairsinbarcelona",
+  Madrid: "https://www.facebook.com/groups/aupairsinmadrid",
+  Sydney: "https://www.facebook.com/groups/aupairsinsydney",
+  Melbourne: "https://www.facebook.com/groups/aupairsinmelbourne",
+  Rom: "https://www.facebook.com/groups/aupairsinrome",
+  Milano: "https://www.facebook.com/groups/aupairsinmilan",
+  "New York": "https://www.facebook.com/groups/aupairsnyc",
+  "San Francisco": "https://www.facebook.com/groups/aupairsbayarea",
+  Boston: "https://www.facebook.com/groups/aupairsboston",
+  Chicago: "https://www.facebook.com/groups/aupairschicago",
+  "Los Angeles": "https://www.facebook.com/groups/aupairsinla",
+  Berlin: "https://www.facebook.com/groups/aupairsinberlin",
+  München: "https://www.facebook.com/groups/aupairmunich",
+  Hamburg: "https://www.facebook.com/groups/aupairhamburg",
+};
+
+const cityFbUrl = (city: string) =>
+  CITY_FB_GROUPS[city] ??
+  `https://www.facebook.com/search/groups/?q=${encodeURIComponent(`au pair ${city}`)}`;
+
 
 const faqItems = [
   {
