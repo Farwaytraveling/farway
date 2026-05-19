@@ -1859,9 +1859,11 @@ const Destination = () => {
             <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10 text-center">
               <h3 className="font-display text-xl font-bold text-foreground mb-3">Redo att åka till {dest.name}?</h3>
               <p className="text-muted-foreground mb-6">Kontakta oss för att få hjälp med planering och bokning.</p>
-              <Button size="lg" className="rounded-xl">
-                Kontakta oss
-                <MapPin className="w-4 h-4 ml-2" />
+              <Button size="lg" className="rounded-xl" asChild>
+                <a href={`mailto:farwaytravelling@gmail.com?subject=${encodeURIComponent(`Hjälp med ${dest.name}`)}`}>
+                  Kontakta oss
+                  <MapPin className="w-4 h-4 ml-2" />
+                </a>
               </Button>
             </div>
           </div>
