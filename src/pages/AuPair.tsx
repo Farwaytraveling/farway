@@ -255,8 +255,65 @@ const AuPair = () => {
               </p>
             </div>
 
+            </div>
+
+            {/* City filter */}
+            <div className="max-w-4xl mx-auto mb-10">
+              <div className="flex items-center justify-center gap-2 mb-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4" />
+                <span>Filtrera på stad</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-1.5">
+                <button
+                  onClick={() => setCityFilter(null)}
+                  className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
+                    cityFilter === null
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card border-border hover:border-primary/40 text-foreground"
+                  }`}
+                >
+                  Alla städer
+                </button>
+                {allCities.map((city) => (
+                  <button
+                    key={city}
+                    onClick={() => setCityFilter(city === cityFilter ? null : city)}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
+                      cityFilter === city
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-card border-border hover:border-primary/40 text-foreground"
+                    }`}
+                  >
+                    {city}
+                  </button>
+                ))}
+              </div>
+              {cityFilter && (
+                <div className="mt-4 flex items-center justify-center gap-3 text-sm">
+                  <span className="text-muted-foreground">
+                    Visar {visibleCountries.length} land med <span className="font-medium text-foreground">{cityFilter}</span>
+                  </span>
+                  <a
+                    href={cityFbUrl(cityFilter)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/15 transition-colors text-xs font-medium"
+                  >
+                    <Users className="w-3.5 h-3.5" />
+                    Facebook-grupp för au pairer i {cityFilter}
+                  </a>
+                  <button
+                    onClick={() => setCityFilter(null)}
+                    className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground text-xs"
+                  >
+                    <X className="w-3 h-3" /> Rensa
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {auPairCountries.map((country) => (
+              {visibleCountries.map((country) => (
                 <div
                   key={country.country}
                   className="group bg-card rounded-2xl border border-border/60 overflow-hidden hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
