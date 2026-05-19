@@ -60,8 +60,6 @@ const auPairCountries = [
     cities: ["London", "Cambridge", "Oxford", "Brighton", "Bath"],
     applyUrl: "https://www.gov.uk/youth-mobility",
   },
-}.dummy
-  },
   {
     country: "Frankrike",
     flag: "🇫🇷",
