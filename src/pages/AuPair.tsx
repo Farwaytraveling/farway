@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight } from "lucide-react";
+import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
 import {
@@ -59,6 +59,8 @@ const auPairCountries = [
     highlights: ["London", "Engelska", "Kulturupplevelser"],
     cities: ["London", "Cambridge", "Oxford", "Brighton", "Bath"],
     applyUrl: "https://www.gov.uk/youth-mobility",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinuk",
+    facebookLabel: "Au Pairs in the UK",
   },
   {
     country: "Frankrike",
@@ -72,6 +74,8 @@ const auPairCountries = [
     highlights: ["Paris", "Franska", "Kultur & mat"],
     cities: ["Paris", "Lyon", "Marseille", "Nice", "Bordeaux"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/france",
+    facebookUrl: "https://www.facebook.com/groups/AuPairsInParis",
+    facebookLabel: "Au Pairs in Paris",
   },
   {
     country: "Spanien",
@@ -85,6 +89,8 @@ const auPairCountries = [
     highlights: ["Barcelona", "Spanska", "Sol & strand"],
     cities: ["Barcelona", "Madrid", "Valencia", "Sevilla", "Málaga"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/spain",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinspain",
+    facebookLabel: "Au Pairs in Spain",
   },
   {
     country: "Australien",
@@ -98,6 +104,8 @@ const auPairCountries = [
     highlights: ["Sydney", "Engelska", "Strandliv"],
     cities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Gold Coast"],
     applyUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-462",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinaustralia",
+    facebookLabel: "Au Pairs in Australia",
   },
   {
     country: "Italien",
@@ -111,6 +119,8 @@ const auPairCountries = [
     highlights: ["Rom", "Italienska", "Mat & historia"],
     cities: ["Rom", "Milano", "Florens", "Neapel", "Turin"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/italy",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinitaly",
+    facebookLabel: "Au Pairs in Italy",
   },
   {
     country: "USA",
@@ -124,6 +134,8 @@ const auPairCountries = [
     highlights: ["Reglerat program", "College-bidrag", "Travel month"],
     cities: ["New York", "San Francisco", "Boston", "Chicago", "Los Angeles"],
     applyUrl: "https://j1visa.state.gov/programs/au-pair",
+    facebookUrl: "https://www.facebook.com/groups/aupairsinamerica",
+    facebookLabel: "Au Pairs in America",
   },
   {
     country: "Tyskland",
@@ -137,6 +149,8 @@ const auPairCountries = [
     highlights: ["Officiellt reglerat", "Språkkursbidrag €70/mån", "Berlin & München"],
     cities: ["Berlin", "München", "Hamburg", "Köln", "Frankfurt"],
     applyUrl: "https://www.aupairworld.com/en/au-pair-programs/germany",
+    facebookUrl: "https://www.facebook.com/groups/aupairsingermany",
+    facebookLabel: "Au Pairs in Germany",
   },
 ];
 
@@ -264,12 +278,20 @@ const AuPair = () => {
                       </div>
                     </div>
 
-                    <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                        <span>Hitta värdfamiljer</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
-                      </Button>
-                    </a>
+                    <div className="space-y-2">
+                      <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
+                          <span>Hitta värdfamiljer</span>
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                        </Button>
+                      </a>
+                      <a href={country.facebookUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" size="sm" className="w-full text-xs text-muted-foreground hover:text-primary">
+                          <Users className="w-3.5 h-3.5 mr-1.5" />
+                          <span>Facebook-grupp: {country.facebookLabel}</span>
+                        </Button>
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
