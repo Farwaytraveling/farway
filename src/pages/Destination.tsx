@@ -19,6 +19,7 @@ import manchesterImage from "@/assets/manchester.jpg";
 import oxfordImage from "@/assets/oxford.jpg";
 import cambridgeImage from "@/assets/cambridge.jpg";
 import queenstownImage from "@/assets/queenstown.jpg";
+import mountMaunganuiImage from "@/assets/mount-maunganui.jpg";
 
 type CityLink = {
   name: string;
@@ -392,7 +393,7 @@ const destinationData: Record<string, DestinationInfo> = {
       { name: "Auckland", image: "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?w=600&h=400&fit=crop", description: "Nya Zeelands största stad med en mix av stadskultur och natur.", swedes: "~1 200 svenskar", popularFor: ["Kontorsjobb", "Hospitality", "Startpunkt för resor"], avgRent: "~9 000 kr/mån", detailedInfo: { neighborhoods: ["Ponsonby – Trendigt med barer och restauranger", "CBD – Centralt med jobbmöjligheter", "Devonport – Charmig förort vid havet", "Mt Eden – Utsikt och studentliv"], tips: ["AT HOP-kort för kollektivtrafiken", "Jobb finns inom hospitality och bygg", "Vädret kan vara ostabilt – ta med regnjacka", "Stor svensk community i Ponsonby-området"], safety: "Mycket säkert", internet: "Bra – fibernät utbrett", costOfLiving: "Medel-hög – 11 000–16 000 kr/mån", nightlife: "Bra – Ponsonby, Britomart, K'Road", transport: "Bussar och tåg, men bil kan behövas" } },
       { name: "Queenstown", image: queenstownImage, description: "Äventyrshuvudstaden med bungy, skidåkning och otrolig natur.", swedes: "~600 svenskar", popularFor: ["Skidsäsong", "Äventyrsjobb", "Hospitality"], avgRent: "~10 000 kr/mån" },
       { name: "Wellington", image: "https://images.unsplash.com/photo-1559386484-97dfc0e15539?w=600&h=400&fit=crop", description: "Huvudstaden med kreativ kultur och fantastisk matscen.", swedes: "~500 svenskar", popularFor: ["Kreativa jobb", "Kaféer", "Filmproduktion"], avgRent: "~8 500 kr/mån" },
-      { name: "Mount Maunganui", image: "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=600&h=400&fit=crop", description: "Surf- och strandstaden vid Bay of Plenty med ett av Nya Zeelands bästa stränder och ett avslappnat liv.", swedes: "~300 svenskar", popularFor: ["Surfing", "Strandliv", "Hospitality"], avgRent: "~8 000 kr/mån" },
+      { name: "Mount Maunganui", image: mountMaunganuiImage, description: "Surf- och strandstaden vid Bay of Plenty med ett av Nya Zeelands bästa stränder och ett avslappnat liv.", swedes: "~300 svenskar", popularFor: ["Surfing", "Strandliv", "Hospitality"], avgRent: "~8 000 kr/mån" },
     ],
   },
 
