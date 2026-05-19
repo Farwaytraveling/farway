@@ -1,7 +1,8 @@
+import { useState, useMemo } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users } from "lucide-react";
+import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users, X, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
 import {
@@ -10,6 +11,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
+// Kända, etablerade Facebook-grupper per stad. Övriga städer faller tillbaka
+// till Facebooks egna gruppsökning, som alltid fungerar.
+const CITY_FB_GROUPS: Record<string, string> = {
+  London: "https://www.facebook.com/groups/aupairsinlondon",
+  Paris: "https://www.facebook.com/groups/AuPairsInParis",
+  Lyon: "https://www.facebook.com/groups/aupairlyon",
+  Barcelona: "https://www.facebook.com/groups/aupairsinbarcelona",
+  Madrid: "https://www.facebook.com/groups/aupairsinmadrid",
+  Sydney: "https://www.facebook.com/groups/aupairsinsydney",
+  Melbourne: "https://www.facebook.com/groups/aupairsinmelbourne",
+  Rom: "https://www.facebook.com/groups/aupairsinrome",
+  Milano: "https://www.facebook.com/groups/aupairsinmilan",
+  "New York": "https://www.facebook.com/groups/aupairsnyc",
+  "San Francisco": "https://www.facebook.com/groups/aupairsbayarea",
+  Boston: "https://www.facebook.com/groups/aupairsboston",
+  Chicago: "https://www.facebook.com/groups/aupairschicago",
+  "Los Angeles": "https://www.facebook.com/groups/aupairsinla",
+  Berlin: "https://www.facebook.com/groups/aupairsinberlin",
+  München: "https://www.facebook.com/groups/aupairmunich",
+  Hamburg: "https://www.facebook.com/groups/aupairhamburg",
+};
+
+const cityFbUrl = (city: string) =>
+  CITY_FB_GROUPS[city] ??
+  `https://www.facebook.com/search/groups/?q=${encodeURIComponent(`au pair ${city}`)}`;
+
 
 const faqItems = [
   {
@@ -155,6 +183,18 @@ const auPairCountries = [
 ];
 
 const AuPair = () => {
+  const [cityFilter, setCityFilter] = useState<string | null>(null);
+
+  const allCities = useMemo(
+    () => Array.from(new Set(auPairCountries.flatMap((c) => c.cities))).sort(),
+    [],
+  );
+
+  const visibleCountries = useMemo(
+    () => (cityFilter ? auPairCountries.filter((c) => c.cities.includes(cityFilter)) : auPairCountries),
+    [cityFilter],
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <SEO
@@ -215,8 +255,65 @@ const AuPair = () => {
               </p>
             </div>
 
+
+
+            {/* City filter */}
+            <div className="max-w-4xl mx-auto mb-10">
+              <div className="flex items-center justify-center gap-2 mb-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4" />
+                <span>Filtrera på stad</span>
+              </div>
+              <div className="flex flex-wrap justify-center gap-1.5">
+                <button
+                  onClick={() => setCityFilter(null)}
+                  className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
+                    cityFilter === null
+                      ? "bg-primary text-primary-foreground border-primary"
+                      : "bg-card border-border hover:border-primary/40 text-foreground"
+                  }`}
+                >
+                  Alla städer
+                </button>
+                {allCities.map((city) => (
+                  <button
+                    key={city}
+                    onClick={() => setCityFilter(city === cityFilter ? null : city)}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-all ${
+                      cityFilter === city
+                        ? "bg-primary text-primary-foreground border-primary"
+                        : "bg-card border-border hover:border-primary/40 text-foreground"
+                    }`}
+                  >
+                    {city}
+                  </button>
+                ))}
+              </div>
+              {cityFilter && (
+                <div className="mt-4 flex items-center justify-center gap-3 text-sm">
+                  <span className="text-muted-foreground">
+                    Visar {visibleCountries.length} land med <span className="font-medium text-foreground">{cityFilter}</span>
+                  </span>
+                  <a
+                    href={cityFbUrl(cityFilter)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/15 transition-colors text-xs font-medium"
+                  >
+                    <Users className="w-3.5 h-3.5" />
+                    Facebook-grupp för au pairer i {cityFilter}
+                  </a>
+                  <button
+                    onClick={() => setCityFilter(null)}
+                    className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground text-xs"
+                  >
+                    <X className="w-3 h-3" /> Rensa
+                  </button>
+                </div>
+              )}
+            </div>
+
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {auPairCountries.map((country) => (
+              {visibleCountries.map((country) => (
                 <div
                   key={country.country}
                   className="group bg-card rounded-2xl border border-border/60 overflow-hidden hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
@@ -246,16 +343,24 @@ const AuPair = () => {
                     </div>
 
                     <div className="mb-4">
-                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer – klicka för att filtrera</div>
                       <div className="flex flex-wrap gap-1">
-                        {country.cities.slice(0, 3).map((city) => (
-                          <span key={city} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{city}</span>
+                        {country.cities.map((city) => (
+                          <button
+                            key={city}
+                            onClick={() => setCityFilter(city === cityFilter ? null : city)}
+                            className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
+                              cityFilter === city
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted/70 hover:bg-primary/10 hover:text-primary"
+                            }`}
+                          >
+                            {city}
+                          </button>
                         ))}
-                        {country.cities.length > 3 && (
-                          <span className="text-xs text-muted-foreground">+{country.cities.length - 3}</span>
-                        )}
                       </div>
                     </div>
+
 
                     <div className="grid grid-cols-2 gap-1 text-center text-xs mb-5 py-3 bg-muted/40 rounded-xl">
                       <div>
