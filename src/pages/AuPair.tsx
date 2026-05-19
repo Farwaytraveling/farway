@@ -255,7 +255,7 @@ const AuPair = () => {
               </p>
             </div>
 
-            </div>
+
 
             {/* City filter */}
             <div className="max-w-4xl mx-auto mb-10">
