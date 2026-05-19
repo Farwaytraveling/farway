@@ -278,12 +278,20 @@ const AuPair = () => {
                       </div>
                     </div>
 
-                    <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                        <span>Hitta värdfamiljer</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
-                      </Button>
-                    </a>
+                    <div className="space-y-2">
+                      <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
+                          <span>Hitta värdfamiljer</span>
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                        </Button>
+                      </a>
+                      <a href={country.facebookUrl} target="_blank" rel="noopener noreferrer">
+                        <Button variant="ghost" size="sm" className="w-full text-xs text-muted-foreground hover:text-primary">
+                          <Users className="w-3.5 h-3.5 mr-1.5" />
+                          <span>Facebook-grupp: {country.facebookLabel}</span>
+                        </Button>
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
