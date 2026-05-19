@@ -343,16 +343,24 @@ const AuPair = () => {
                     </div>
 
                     <div className="mb-4">
-                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer</div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1.5">Populära städer – klicka för att filtrera</div>
                       <div className="flex flex-wrap gap-1">
-                        {country.cities.slice(0, 3).map((city) => (
-                          <span key={city} className="text-xs bg-muted/70 px-2 py-0.5 rounded-full">{city}</span>
+                        {country.cities.map((city) => (
+                          <button
+                            key={city}
+                            onClick={() => setCityFilter(city === cityFilter ? null : city)}
+                            className={`text-xs px-2 py-0.5 rounded-full transition-colors ${
+                              cityFilter === city
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted/70 hover:bg-primary/10 hover:text-primary"
+                            }`}
+                          >
+                            {city}
+                          </button>
                         ))}
-                        {country.cities.length > 3 && (
-                          <span className="text-xs text-muted-foreground">+{country.cities.length - 3}</span>
-                        )}
                       </div>
                     </div>
+
 
                     <div className="grid grid-cols-2 gap-1 text-center text-xs mb-5 py-3 bg-muted/40 rounded-xl">
                       <div>
