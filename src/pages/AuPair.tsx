@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight } from "lucide-react";
+import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
 import {
