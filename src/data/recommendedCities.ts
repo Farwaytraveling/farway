@@ -135,4 +135,33 @@ export const recommendedCities: Record<string, RecommendedCity[]> = {
     { name: "Osaka", blurb: "Mat-mecka med folklig charm." },
     { name: "Niseko (Hokkaido)", blurb: "Världsklassig powder – populär skidresort." },
   ],
+  frankrike: [
+    { name: "Paris", blurb: "Konst, mode och kaféliv i världens romantiska huvudstad." },
+    { name: "Lyon", blurb: "Gastronomihuvudstaden med rik historia." },
+    { name: "Nice / Riviera", blurb: "Medelhavskust, sol och azurblått vatten." },
+    { name: "Bordeaux", blurb: "Vinregion med elegant arkitektur." },
+  ],
+  italien: [
+    { name: "Rom", blurb: "Antik historia, pasta och dolce vita." },
+    { name: "Milano", blurb: "Mode-, design- och affärsmetropolen." },
+    { name: "Florens", blurb: "Renässansens vagga och toskansk charm." },
+    { name: "Neapel / Amalfikusten", blurb: "Pizza, kust och vulkanlandskap." },
+  ],
+  portugal: [
+    { name: "Lissabon", blurb: "Färgglada kvarter, fado och billigare än mycket av Europa." },
+    { name: "Porto", blurb: "Portvin, broar och avslappnad atmosfär." },
+    { name: "Algarve (Lagos)", blurb: "Klippkust, stränder och surf." },
+    { name: "Madeira", blurb: "Grönskande ö med vandring och naturpooler." },
+  ],
+  chamonix: [
+    { name: "Chamonix Centre", blurb: "Klassisk alpby vid Mont Blanc." },
+    { name: "Argentière", blurb: "Lugnare alternativ närmare Grands Montets." },
+    { name: "Les Houches", blurb: "Familjevänligt med billigare boende." },
+  ],
+  paris: [
+    { name: "Paris Centre (1–4)", blurb: "Louvren, Marais och Seine inom räckhåll." },
+    { name: "Montmartre (18e)", blurb: "Konstnärsvibe och Sacré-Cœur." },
+    { name: "Le Marais (3–4e)", blurb: "Hippt kvarter med kaféer och nattliv." },
+    { name: "Belleville / Canal St-Martin", blurb: "Mångkulturellt och prisvärdare." },
+  ],
 };
