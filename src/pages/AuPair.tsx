@@ -184,11 +184,18 @@ const auPairCountries = [
 
 const AuPair = () => {
   const [cityFilter, setCityFilter] = useState<string | null>(null);
+  const [citySearchQuery, setCitySearchQuery] = useState("");
 
   const allCities = useMemo(
     () => Array.from(new Set(auPairCountries.flatMap((c) => c.cities))).sort(),
     [],
   );
+
+  const filteredCities = useMemo(() => {
+    if (!citySearchQuery.trim()) return allCities;
+    const q = citySearchQuery.toLowerCase().trim();
+    return allCities.filter((city) => city.toLowerCase().includes(q));
+  }, [allCities, citySearchQuery]);
 
   const visibleCountries = useMemo(
     () => (cityFilter ? auPairCountries.filter((c) => c.cities.includes(cityFilter)) : auPairCountries),
