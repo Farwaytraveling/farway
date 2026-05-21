@@ -291,9 +291,9 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["yoga", "retreat", "meditation"],
     label: "Yoga/Retreat",
-    activityMultiplier: 1.1,
-    fixedExtra: 8000,
-    note: "Retreats kostar typiskt 5 000–15 000 kr för 1–2 veckor.",
+    activityMultiplier: 1.05,
+    fixedExtra: 6000,
+    note: "Retreats kostar typiskt 4 000–12 000 kr för 1–2 veckor.",
   },
   {
     keywords: ["backpack", "ryggs", "interrail", "resa runt", "rundresa"],
