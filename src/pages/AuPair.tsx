@@ -423,12 +423,21 @@ const AuPair = () => {
                           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
                         </Button>
                       </a>
-                      <a href={country.facebookUrl} target="_blank" rel="noopener noreferrer">
-                        <Button variant="ghost" size="sm" className="w-full text-xs text-muted-foreground hover:text-primary">
-                          <Users className="w-3.5 h-3.5 mr-1.5" />
-                          <span>Facebook-grupp: {country.facebookLabel}</span>
-                        </Button>
-                      </a>
+                      {cityFilter && country.cities.includes(cityFilter) ? (
+                        <a href={cityFbUrl(cityFilter)} target="_blank" rel="noopener noreferrer">
+                          <Button variant="default" size="sm" className="w-full text-xs bg-[#1877F2] hover:bg-[#166fe5] text-white border-[#1877F2]">
+                            <Users className="w-3.5 h-3.5 mr-1.5" />
+                            <span>Au Pair-grupp i {cityFilter}</span>
+                          </Button>
+                        </a>
+                      ) : (
+                        <a href={country.facebookUrl} target="_blank" rel="noopener noreferrer">
+                          <Button variant="ghost" size="sm" className="w-full text-xs text-muted-foreground hover:text-primary">
+                            <Users className="w-3.5 h-3.5 mr-1.5" />
+                            <span>Facebook-grupp: {country.facebookLabel}</span>
+                          </Button>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
