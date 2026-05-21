@@ -271,7 +271,7 @@ export const activityProfiles: ActivityProfile[] = [
     keywords: ["volont", "volunteer"],
     label: "Volontär",
     activityMultiplier: 0.5,
-    fixedExtra: 5000,
+    fixedExtra: 3500,
     note: "Många volontärprogram inkluderar boende & mat – men programavgift tillkommer.",
   },
   {
