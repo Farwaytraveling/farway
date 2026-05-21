@@ -402,7 +402,15 @@ export function findCountry(query: string): { slug: string; data: CountryCost } 
     schweiz: "alperna",
     österrike: "alperna",
     osterrike: "alperna",
-    frankrike: "alperna",
+    italy: "italien",
+    france: "frankrike",
+    portugal: "portugal",
+    lisbon: "portugal",
+    lissabon: "portugal",
+    rom: "italien",
+    rome: "italien",
+    milano: "italien",
+
   };
   for (const [alias, slug] of Object.entries(aliases)) {
     if (lower.includes(alias)) return { slug, data: countryBudgets[slug] };
