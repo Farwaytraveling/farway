@@ -305,9 +305,9 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["språkkurs", "language", "spraakkurs", "språk"],
     label: "Språkkurs",
-    activityMultiplier: 0.9,
-    fixedExtra: 15000,
-    note: "Språkskolor kostar typiskt 10 000–25 000 kr för 4–8 veckor.",
+    activityMultiplier: 0.85,
+    fixedExtra: 12000,
+    note: "Språkskolor kostar typiskt 8 000–20 000 kr för 4–8 veckor.",
   },
 ];
 
