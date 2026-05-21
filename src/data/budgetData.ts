@@ -19,13 +19,13 @@ export interface CountryCost {
 export const countryBudgets: Record<string, CountryCost> = {
   australien: {
     name: "Australien",
-    accommodation: { budget: 350, medel: 700, komfort: 1400 },
-    food: { budget: 200, medel: 400, komfort: 700 },
-    transport: { budget: 80, medel: 150, komfort: 300 },
-    activities: { budget: 100, medel: 250, komfort: 500 },
-    flight: 12000,
-    visa: 5000,
-    insuranceMonthly: 600,
+    accommodation: { budget: 320, medel: 650, komfort: 1300 },
+    food: { budget: 180, medel: 380, komfort: 650 },
+    transport: { budget: 70, medel: 140, komfort: 280 },
+    activities: { budget: 90, medel: 220, komfort: 450 },
+    flight: 10500,
+    visa: 4800,
+    insuranceMonthly: 550,
   },
   "nya-zeeland": {
     name: "Nya Zeeland",
