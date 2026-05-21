@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users, X, MapPin } from "lucide-react";
+import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users, X, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
 import {
