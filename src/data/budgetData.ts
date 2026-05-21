@@ -256,8 +256,8 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["au pair", "barnvakt"],
     label: "Au Pair",
-    activityMultiplier: 0.4,
-    fixedExtra: 3000,
+    activityMultiplier: 0.3,
+    fixedExtra: 2000,
     note: "Värdfamilj betalar boende + mat. Du behöver mest fickpengar.",
   },
   {
