@@ -284,9 +284,9 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["surf", "surfing"],
     label: "Surf",
-    activityMultiplier: 1.2,
-    fixedExtra: 3000,
-    note: "Surflektioner och brädhyra ca 3 000 kr extra.",
+    activityMultiplier: 1.1,
+    fixedExtra: 2500,
+    note: "Surflektioner och brädhyra ca 2 500 kr extra.",
   },
   {
     keywords: ["yoga", "retreat", "meditation"],
