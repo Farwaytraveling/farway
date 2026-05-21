@@ -242,9 +242,9 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["ski", "skid", "snowboard", "afterski", "after-ski", "alperna", "lift"],
     label: "Skidsäsong",
-    activityMultiplier: 1.5,
-    fixedExtra: 8000, // säsongskort
-    note: "Säsongskort/liftkort är största posten – budgeterat ~8 000 kr extra.",
+    activityMultiplier: 1.4,
+    fixedExtra: 6000, // säsongskort
+    note: "Säsongskort/liftkort är största posten – budgeterat ~6 000 kr extra.",
   },
   {
     keywords: ["working holiday", "jobba", "arbeta", "work"],
