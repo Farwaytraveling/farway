@@ -227,6 +227,56 @@ export const countryBudgets: Record<string, CountryCost> = {
     visa: 0,
     insuranceMonthly: 420,
   },
+  frankrike: {
+    name: "Frankrike",
+    accommodation: { budget: 260, medel: 580, komfort: 1200 },
+    food: { budget: 130, medel: 300, komfort: 580 },
+    transport: { budget: 50, medel: 120, komfort: 240 },
+    activities: { budget: 80, medel: 190, komfort: 400 },
+    flight: 1500,
+    visa: 0,
+    insuranceMonthly: 320,
+  },
+  italien: {
+    name: "Italien",
+    accommodation: { budget: 220, medel: 500, komfort: 1050 },
+    food: { budget: 110, medel: 260, komfort: 520 },
+    transport: { budget: 45, medel: 100, komfort: 210 },
+    activities: { budget: 75, medel: 180, komfort: 380 },
+    flight: 1600,
+    visa: 0,
+    insuranceMonthly: 320,
+  },
+  portugal: {
+    name: "Portugal",
+    accommodation: { budget: 180, medel: 420, komfort: 900 },
+    food: { budget: 95, medel: 220, komfort: 440 },
+    transport: { budget: 40, medel: 90, komfort: 180 },
+    activities: { budget: 65, medel: 150, komfort: 320 },
+    flight: 1700,
+    visa: 0,
+    insuranceMonthly: 320,
+  },
+  chamonix: {
+    name: "Chamonix (Frankrike)",
+    accommodation: { budget: 320, medel: 720, komfort: 1450 },
+    food: { budget: 150, medel: 340, komfort: 640 },
+    transport: { budget: 55, medel: 130, komfort: 260 },
+    activities: { budget: 200, medel: 400, komfort: 800 }, // liftkort
+    flight: 1900,
+    visa: 0,
+    insuranceMonthly: 320,
+  },
+  paris: {
+    name: "Paris (Frankrike)",
+    accommodation: { budget: 320, medel: 720, komfort: 1450 },
+    food: { budget: 150, medel: 340, komfort: 640 },
+    transport: { budget: 55, medel: 110, komfort: 220 },
+    activities: { budget: 90, medel: 210, komfort: 440 },
+    flight: 1400,
+    visa: 0,
+    insuranceMonthly: 320,
+  },
 };
 
 // Activity keywords → cost adjustments (multiplier on activities + extra fixed costs)
@@ -352,7 +402,15 @@ export function findCountry(query: string): { slug: string; data: CountryCost } 
     schweiz: "alperna",
     österrike: "alperna",
     osterrike: "alperna",
-    frankrike: "alperna",
+    italy: "italien",
+    france: "frankrike",
+    portugal: "portugal",
+    lisbon: "portugal",
+    lissabon: "portugal",
+    rom: "italien",
+    rome: "italien",
+    milano: "italien",
+
   };
   for (const [alias, slug] of Object.entries(aliases)) {
     if (lower.includes(alias)) return { slug, data: countryBudgets[slug] };
