@@ -277,9 +277,9 @@ export const activityProfiles: ActivityProfile[] = [
   {
     keywords: ["dyk", "diving", "divemaster", "padi"],
     label: "Dykning",
-    activityMultiplier: 1.3,
-    fixedExtra: 12000,
-    note: "PADI-kurser och Divemaster kan kosta 10 000–25 000 kr.",
+    activityMultiplier: 1.2,
+    fixedExtra: 9000,
+    note: "PADI-kurser och Divemaster kan kosta 8 000–20 000 kr.",
   },
   {
     keywords: ["surf", "surfing"],
