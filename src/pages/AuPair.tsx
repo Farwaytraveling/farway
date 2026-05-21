@@ -315,7 +315,7 @@ const AuPair = () => {
                     {city}
                   </button>
                 ))}
-              </img>
+              </div>
               {citySearchQuery && filteredCities.length === 1 && !cityFilter && (
                 <p className="text-center text-xs text-muted-foreground mt-2">
                   Tryck på staden för att filtrera
