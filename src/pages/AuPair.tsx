@@ -270,6 +270,27 @@ const AuPair = () => {
                 <MapPin className="w-4 h-4" />
                 <span>Filtrera på stad</span>
               </div>
+
+              {/* City search */}
+              <div className="max-w-sm mx-auto mb-4 relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                <input
+                  type="text"
+                  value={citySearchQuery}
+                  onChange={(e) => setCitySearchQuery(e.target.value)}
+                  placeholder="Sök stad..."
+                  className="w-full pl-9 pr-8 py-2 rounded-full border border-border bg-card text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/40 transition-all"
+                />
+                {citySearchQuery && (
+                  <button
+                    onClick={() => setCitySearchQuery("")}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+              </div>
+
               <div className="flex flex-wrap justify-center gap-1.5">
                 <button
                   onClick={() => setCityFilter(null)}
@@ -281,7 +302,7 @@ const AuPair = () => {
                 >
                   Alla städer
                 </button>
-                {allCities.map((city) => (
+                {filteredCities.map((city) => (
                   <button
                     key={city}
                     onClick={() => setCityFilter(city === cityFilter ? null : city)}
@@ -294,9 +315,14 @@ const AuPair = () => {
                     {city}
                   </button>
                 ))}
-              </div>
+              </img>
+              {citySearchQuery && filteredCities.length === 1 && !cityFilter && (
+                <p className="text-center text-xs text-muted-foreground mt-2">
+                  Tryck på staden för att filtrera
+                </p>
+              )}
               {cityFilter && (
-                <div className="mt-4 flex items-center justify-center gap-3 text-sm">
+                <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-sm">
                   <span className="text-muted-foreground">
                     Visar {visibleCountries.length} land med <span className="font-medium text-foreground">{cityFilter}</span>
                   </span>
