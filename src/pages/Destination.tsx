@@ -1283,7 +1283,27 @@ const Destination = () => {
   const [selectedCity, setSelectedCity] = useState<CityInfo | null>(null);
 
   const { slug } = useParams<{ slug: string }>();
+  const [searchParams] = useSearchParams();
   const dest = slug ? destinationData[slug] : null;
+
+  useEffect(() => {
+    if (!dest) return;
+    const cityParam = searchParams.get("city");
+    if (!cityParam) return;
+    const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    const target = normalize(cityParam);
+    const match = dest.cities.find((c) => {
+      const n = normalize(c.name);
+      return n === target || n.startsWith(target) || target.startsWith(n) || n.includes(target);
+    });
+    if (match) {
+      setSelectedCity(match);
+      setTimeout(() => {
+        const el = document.getElementById("cities-section");
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [dest, searchParams]);
 
   if (!dest) {
     return (
