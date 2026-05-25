@@ -492,6 +492,63 @@ export const whWages: Record<string, WHWage> = {
   },
 };
 
+// ===== City-level modifiers =====
+// Lets the budget calculator adjust daily costs when a specific city is picked,
+// or redirect to a dedicated country entry (e.g. Paris/Chamonix have own datasets).
+export interface CityModifier {
+  /** Override to another countryBudgets slug (e.g. "paris", "chamonix"). */
+  citySlug?: string;
+  /** Multiplier applied to daily accommodation/food/transport/activities. */
+  multiplier?: number;
+  note?: string;
+}
+
+export const cityModifiers: Record<string, Record<string, CityModifier>> = {
+  frankrike: {
+    "Paris": { citySlug: "paris", note: "Använder Paris-specifik prisdata." },
+    "Lyon": { multiplier: 0.85, note: "Lyon är ca 15 % billigare än snittet i Frankrike." },
+    "Nice / Riviera": { multiplier: 1.05, note: "Rivieran ligger något över snittet." },
+    "Bordeaux": { multiplier: 0.9, note: "Bordeaux är något billigare än Paris." },
+  },
+  italien: {
+    "Rom": { multiplier: 1.0 },
+    "Milano": { multiplier: 1.15, note: "Milano är Italiens dyraste storstad." },
+    "Florens": { multiplier: 1.05 },
+    "Neapel / Amalfikusten": { multiplier: 0.95, note: "Neapel är billigare, Amalfi i högsäsong dyrare." },
+  },
+  portugal: {
+    "Lissabon": { multiplier: 1.1, note: "Lissabon är dyrast i Portugal." },
+    "Porto": { multiplier: 0.95 },
+    "Algarve (Lagos)": { multiplier: 0.95, note: "Sommarsäsongen kan ligga 20 % över." },
+    "Madeira": { multiplier: 0.9 },
+  },
+  chamonix: {
+    "Chamonix Centre": { multiplier: 1.05 },
+    "Argentière": { multiplier: 0.95 },
+    "Les Houches": { multiplier: 0.85, note: "Familjeorten med billigare boende." },
+  },
+  paris: {
+    "Paris Centre (1–4)": { multiplier: 1.15, note: "Centrala arrondissement drar upp boende." },
+    "Montmartre (18e)": { multiplier: 1.0 },
+    "Le Marais (3–4e)": { multiplier: 1.1 },
+    "Belleville / Canal St-Martin": { multiplier: 0.9, note: "Mer prisvärt än innerstaden." },
+  },
+};
+
+export function resolveCity(
+  countrySlug: string,
+  cityName: string | null
+): { slug: string; multiplier: number; note?: string } {
+  if (!cityName) return { slug: countrySlug, multiplier: 1 };
+  const mod = cityModifiers[countrySlug]?.[cityName];
+  if (!mod) return { slug: countrySlug, multiplier: 1 };
+  return {
+    slug: mod.citySlug ?? countrySlug,
+    multiplier: mod.multiplier ?? 1,
+    note: mod.note,
+  };
+}
+
 // Detect if user input mentions working holiday
 export function isWorkingHoliday(text: string): boolean {
   const lower = text.toLowerCase();
