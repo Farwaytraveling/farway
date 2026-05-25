@@ -195,6 +195,26 @@ const Budget = () => {
                     )}
                   </div>
 
+                  {country && cityList.length > 0 && (
+                    <div>
+                      <Label htmlFor="city">Stad / region (valfritt)</Label>
+                      <Select value={effectiveCity || "_all"} onValueChange={(v) => setCity(v === "_all" ? "" : v)}>
+                        <SelectTrigger id="city" className="mt-1.5">
+                          <SelectValue placeholder="Hela landet" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="_all">Hela landet (snitt)</SelectItem>
+                          {cityList.map((c) => (
+                            <SelectItem key={c.name} value={c.name}>{c.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      {cityResolution?.note && (
+                        <p className="text-xs text-muted-foreground mt-1.5">{cityResolution.note}</p>
+                      )}
+                    </div>
+                  )}
+
                   <div>
                     <Label htmlFor="activity">Vad ska du göra där?</Label>
                     <Textarea
