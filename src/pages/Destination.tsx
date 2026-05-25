@@ -1632,7 +1632,8 @@ const Destination = () => {
             })()}
 
             {/* Cities */}
-            <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+            <h2 id="cities-section" className="font-display text-2xl font-bold text-foreground mb-2 scroll-mt-24">
+
               <Building2 className="w-6 h-6 inline-block mr-2 text-primary" />
               Populära städer i {dest.name}
             </h2>
