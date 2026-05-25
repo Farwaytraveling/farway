@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ArrowLeft, MapPin, Calendar, Users, Globe, Sun, Briefcase, Building2, DollarSign, Home, TrendingUp, Star, Coffee, Wifi, Shield, ExternalLink, FileCheck, Plane, Syringe, AlertTriangle } from "lucide-react";
@@ -1283,7 +1283,27 @@ const Destination = () => {
   const [selectedCity, setSelectedCity] = useState<CityInfo | null>(null);
 
   const { slug } = useParams<{ slug: string }>();
+  const [searchParams] = useSearchParams();
   const dest = slug ? destinationData[slug] : null;
+
+  useEffect(() => {
+    if (!dest) return;
+    const cityParam = searchParams.get("city");
+    if (!cityParam) return;
+    const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+    const target = normalize(cityParam);
+    const match = dest.cities.find((c) => {
+      const n = normalize(c.name);
+      return n === target || n.startsWith(target) || target.startsWith(n) || n.includes(target);
+    });
+    if (match) {
+      setSelectedCity(match);
+      setTimeout(() => {
+        const el = document.getElementById("cities-section");
+        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 100);
+    }
+  }, [dest, searchParams]);
 
   if (!dest) {
     return (
@@ -1612,7 +1632,8 @@ const Destination = () => {
             })()}
 
             {/* Cities */}
-            <h2 className="font-display text-2xl font-bold text-foreground mb-2">
+            <h2 id="cities-section" className="font-display text-2xl font-bold text-foreground mb-2 scroll-mt-24">
+
               <Building2 className="w-6 h-6 inline-block mr-2 text-primary" />
               Populära städer i {dest.name}
             </h2>

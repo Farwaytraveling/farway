@@ -129,11 +129,13 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
   };
 
   const handleSelect = (destination: Destination) => {
+    const city = getCityForResult(destination, query);
+    const cityQuery = city ? `?city=${encodeURIComponent(city)}` : "";
     if (destination.slug) {
       if (destination.slug.startsWith("_")) {
-        navigate(`/${destination.slug.slice(1)}`);
+        navigate(`/${destination.slug.slice(1)}${cityQuery}`);
       } else {
-        navigate(`/destination/${destination.slug}`);
+        navigate(`/destination/${destination.slug}${cityQuery}`);
       }
     } else if (destination.activities.length > 0 && activityRoutes[destination.activities[0]]) {
       navigate(activityRoutes[destination.activities[0]]);
