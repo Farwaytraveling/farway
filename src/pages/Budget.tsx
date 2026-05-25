@@ -14,9 +14,11 @@ import {
   findCountry,
   whWages,
   isWorkingHoliday,
+  resolveCity,
   type CostStyle,
 } from "@/data/budgetData";
 import { recommendedCities } from "@/data/recommendedCities";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const styles: { value: CostStyle; label: string; desc: string }[] = [
   { value: "budget", label: "Budget", desc: "Hostel, gatumat, kollektivt" },
