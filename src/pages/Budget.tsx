@@ -14,9 +14,11 @@ import {
   findCountry,
   whWages,
   isWorkingHoliday,
+  resolveCity,
   type CostStyle,
 } from "@/data/budgetData";
 import { recommendedCities } from "@/data/recommendedCities";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const styles: { value: CostStyle; label: string; desc: string }[] = [
   { value: "budget", label: "Budget", desc: "Hostel, gatumat, kollektivt" },
@@ -29,24 +31,47 @@ const formatSEK = (n: number) =>
 
 const Budget = () => {
   const [destination, setDestination] = useState("");
+  const [city, setCity] = useState<string>("");
   const [activity, setActivity] = useState("");
   const [duration, setDuration] = useState<number>(30);
   const [style, setStyle] = useState<CostStyle>("medel");
   const [submitted, setSubmitted] = useState(false);
 
   const country = useMemo(() => findCountry(destination), [destination]);
+  const cityList = useMemo(
+    () => (country ? recommendedCities[country.slug] ?? [] : []),
+    [country]
+  );
+
+  // Reset city when country changes and previous city isn't valid anymore
+  const cityValid = !!city && cityList.some((c) => c.name === city);
+  const effectiveCity = cityValid ? city : "";
+
+  const cityResolution = useMemo(
+    () => (country ? resolveCity(country.slug, effectiveCity || null) : null),
+    [country, effectiveCity]
+  );
+
+  const effectiveCountry = useMemo(() => {
+    if (!country || !cityResolution) return country;
+    if (cityResolution.slug === country.slug) return country;
+    const data = countryBudgets[cityResolution.slug];
+    return data ? { slug: cityResolution.slug, data } : country;
+  }, [country, cityResolution]);
+
   const activityProfile = useMemo(() => detectActivity(activity), [activity]);
 
   const result = useMemo(() => {
-    if (!country || !duration) return null;
+    if (!effectiveCountry || !duration) return null;
     const days = Math.max(1, Math.min(365, duration));
     const months = days / 30;
-    const c = country.data;
+    const c = effectiveCountry.data;
+    const cityMul = cityResolution?.multiplier ?? 1;
 
-    const accommodation = c.accommodation[style] * days;
-    const food = c.food[style] * days;
-    const transport = c.transport[style] * days;
-    const activitiesBase = c.activities[style] * days;
+    const accommodation = c.accommodation[style] * days * cityMul;
+    const food = c.food[style] * days * cityMul;
+    const transport = c.transport[style] * days * cityMul;
+    const activitiesBase = c.activities[style] * days * cityMul;
     const activities = activitiesBase * activityProfile.activityMultiplier;
     const flight = c.flight;
     const visa = c.visa;
@@ -170,6 +195,26 @@ const Budget = () => {
                     )}
                   </div>
 
+                  {country && cityList.length > 0 && (
+                    <div>
+                      <Label htmlFor="city">Stad / region (valfritt)</Label>
+                      <Select value={effectiveCity || "_all"} onValueChange={(v) => setCity(v === "_all" ? "" : v)}>
+                        <SelectTrigger id="city" className="mt-1.5">
+                          <SelectValue placeholder="Hela landet" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="_all">Hela landet (snitt)</SelectItem>
+                          {cityList.map((c) => (
+                            <SelectItem key={c.name} value={c.name}>{c.name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      {cityResolution?.note && (
+                        <p className="text-xs text-muted-foreground mt-1.5">{cityResolution.note}</p>
+                      )}
+                    </div>
+                  )}
+
                   <div>
                     <Label htmlFor="activity">Vad ska du göra där?</Label>
                     <Textarea
@@ -280,7 +325,7 @@ const Budget = () => {
                   <Card className="bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
                     <CardContent className="pt-6">
                       <p className="text-sm text-muted-foreground">
-                        Uppskattad totalkostnad för {result.days} dagar i {country.data.name}
+                        Uppskattad totalkostnad för {result.days} dagar i {effectiveCity ? `${effectiveCity}, ${country.data.name}` : country.data.name}
                       </p>
                       <p className="font-display text-4xl md:text-5xl font-bold text-foreground mt-2">
                         {formatSEK(result.total)}
