@@ -325,7 +325,7 @@ const Budget = () => {
                   <Card className="bg-gradient-to-br from-primary/10 to-accent/5 border-primary/20">
                     <CardContent className="pt-6">
                       <p className="text-sm text-muted-foreground">
-                        Uppskattad totalkostnad för {result.days} dagar i {country.data.name}
+                        Uppskattad totalkostnad för {result.days} dagar i {effectiveCity ? `${effectiveCity}, ${country.data.name}` : country.data.name}
                       </p>
                       <p className="font-display text-4xl md:text-5xl font-bold text-foreground mt-2">
                         {formatSEK(result.total)}
