@@ -1808,19 +1808,29 @@ const Destination = () => {
                           </h4>
                           <p className="text-xs text-muted-foreground mb-3">Hoppa direkt till guiden för aktiviteterna som passar här.</p>
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                            {programs.map((p) => (
-                              <Link
-                                key={p.href}
-                                to={p.href}
-                                className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/30 hover:border-primary/40 hover:bg-primary/5 transition-colors group"
-                              >
-                                <span className="flex items-center gap-2 text-sm font-medium text-foreground">
-                                  <span className="text-lg">{p.emoji}</span>
-                                  {p.label}
-                                </span>
-                                <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180 group-hover:text-primary transition-colors" />
-                              </Link>
-                            ))}
+                            {programs.map((p) => {
+                              const ctx = new URLSearchParams({
+                                city: selectedCity.name,
+                                country: dest.name,
+                                ...(slug ? { countrySlug: slug } : {}),
+                              }).toString();
+                              const href = p.href.includes("?")
+                                ? `${p.href}&${ctx}`
+                                : `${p.href}?${ctx}`;
+                              return (
+                                <Link
+                                  key={p.href}
+                                  to={href}
+                                  className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/30 hover:border-primary/40 hover:bg-primary/5 transition-colors group"
+                                >
+                                  <span className="flex items-center gap-2 text-sm font-medium text-foreground">
+                                    <span className="text-lg">{p.emoji}</span>
+                                    {p.label}
+                                  </span>
+                                  <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180 group-hover:text-primary transition-colors" />
+                                </Link>
+                              );
+                            })}
                           </div>
                         </div>
                       );
