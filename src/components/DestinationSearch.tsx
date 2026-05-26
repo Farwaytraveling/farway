@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, X, ExternalLink, FileCheck, Briefcase, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { recommendedCities } from "@/data/recommendedCities";
 
 type Resource = {
   name: string;
