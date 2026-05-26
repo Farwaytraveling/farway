@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, Calendar, MapPin, Sparkles, ArrowRight, Mountain, Info } from "lucide-react";
 import heroImg from "@/assets/hero-ski.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
