@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { Briefcase, Clock, DollarSign, User, ExternalLink, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 import {
   Accordion,
   AccordionContent,
