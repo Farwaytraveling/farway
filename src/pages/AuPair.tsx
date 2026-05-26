@@ -210,6 +210,7 @@ const AuPair = () => {
         canonical="https://farway.lovable.app/au-pair"
       />
       <Header />
+      <CityContextBanner programLabel="Au Pair" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
