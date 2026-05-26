@@ -120,26 +120,40 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
   const filteredDestinations = useMemo(() => {
     if (!query) return [];
     const q = query.toLowerCase().trim();
+    if (q.length < 2) return [];
 
-    const cityMatch = Object.entries(cityAliases).find(([city]) => city.includes(q) || q.includes(city));
+    // Find ALL city aliases that match the query (not just the first)
+    const cityMatches = Object.entries(cityAliases).filter(
+      ([city]) => city.includes(q) || q.includes(city)
+    );
 
     let results = destinations.filter(
       (dest) =>
         dest.name.toLowerCase().includes(q) ||
         dest.region.toLowerCase().includes(q) ||
-        dest.activities.some(a => allActivities[a]?.label.toLowerCase().includes(q))
+        dest.activities.some((a) => allActivities[a]?.label.toLowerCase().includes(q))
     );
 
-    if (cityMatch) {
-      const countryName = cityMatch[1];
-      const country = destinations.find(d => d.name === countryName);
-      if (country && !results.find(r => r.name === country.name)) {
+    // Add each matched country once at the top
+    for (const [, countryName] of cityMatches) {
+      const country = destinations.find((d) => d.name === countryName);
+      if (country && !results.find((r) => r.name === country.name)) {
         results.unshift(country);
+      } else if (!country && !results.find((r) => r.name === countryName)) {
+        // Country has no destination entry yet — render a clickable fallback to /karta
+        results.push({
+          name: countryName,
+          flag: "📍",
+          region: "Utforska på kartan",
+          visaInfo: "",
+          activities: [],
+        });
       }
     }
 
     return results.slice(0, 8);
   }, [query]);
+
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -240,9 +254,13 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
               );
             })
           ) : (
-            <div className="p-4 text-center text-muted-foreground text-sm">
-              Ingen destination hittades för "{query}"
-            </div>
+            <button
+              onClick={() => { navigate("/karta"); setQuery(""); setIsOpen(false); }}
+              className="w-full p-4 text-left hover:bg-muted/60 transition-colors"
+            >
+              <p className="text-sm text-foreground font-medium">Ingen direktträff för "{query}"</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Klicka för att utforska alla destinationer på kartan →</p>
+            </button>
           )}
         </div>
       )}
