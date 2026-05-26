@@ -58,7 +58,7 @@ const destinations: Destination[] = [
   { name: "Filippinerna", flag: "🇵🇭", region: "Asien", visaInfo: "Visumfritt 30 dagar", slug: "filippinerna", activities: [] },
 ];
 
-const cityAliases: Record<string, string> = {
+const manualCityAliases: Record<string, string> = {
   "sydney": "Australien", "melbourne": "Australien", "gold coast": "Australien", "cairns": "Australien", "brisbane": "Australien", "perth": "Australien",
   "auckland": "Nya Zeeland", "queenstown": "Nya Zeeland", "wellington": "Nya Zeeland",
   "new york": "USA", "los angeles": "USA", "miami": "USA", "san francisco": "USA",
@@ -73,6 +73,38 @@ const cityAliases: Record<string, string> = {
   "bangkok": "Thailand", "bali": "Indonesien", "rio de janeiro": "Brasilien",
   "buenos aires": "Argentina", "lima": "Peru", "bogotá": "Colombia",
 };
+
+// Auto-generate aliases for every city listed under recommendedCities so all
+// cities on the site are searchable (e.g. "Cusco", "Medellín", "Niseko").
+const slugToCountryName: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const d of destinations) {
+    if (!d.slug) continue;
+    map[d.slug.replace(/^_/, "")] = d.name;
+  }
+  return map;
+})();
+
+const generatedCityAliases: Record<string, string> = (() => {
+  const map: Record<string, string> = {};
+  for (const [slug, cities] of Object.entries(recommendedCities)) {
+    const country = slugToCountryName[slug];
+    if (!country) continue;
+    for (const c of cities) {
+      // Strip parentheticals like "(FR)" / "(Bali)" and split combo names on / & –
+      const base = c.name.toLowerCase().replace(/\s*\([^)]*\)/g, "").trim();
+      const parts = base.split(/\s*(?:[/&]|–|-\s)\s*/);
+      for (const p of parts) {
+        const key = p.trim();
+        if (key && !map[key]) map[key] = country;
+      }
+    }
+  }
+  return map;
+})();
+
+const cityAliases: Record<string, string> = { ...generatedCityAliases, ...manualCityAliases };
+
 
 interface DestinationSearchProps {
   variant?: "header" | "full";
