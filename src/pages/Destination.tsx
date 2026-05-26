@@ -1781,6 +1781,52 @@ const Destination = () => {
                       </div>
                     </div>
 
+                    {(() => {
+                      const tagToProgram = (tag: string): { label: string; href: string; emoji: string } | null => {
+                        const t = tag.toLowerCase();
+                        if (t.includes("au pair")) return { label: "Au Pair-guiden", href: "/au-pair", emoji: "👶" };
+                        if (t.includes("working holiday") || t.includes("farm")) return { label: "Working Holiday-guiden", href: "/working-holiday", emoji: "💼" };
+                        if (t.includes("skid") || t.includes("snow") || t.includes("ski")) return { label: "Skidsäsong-guiden", href: "/ski-season", emoji: "⛷️" };
+                        if (t.includes("språk") || t.includes("studi") || t.includes("universitet")) return { label: "Studera utomlands", href: "/studera-utomlands", emoji: "🎓" };
+                        if (t.includes("surf")) return { label: "Surfdestinationer", href: "/karta", emoji: "🏄" };
+                        if (t.includes("dyk") || t.includes("dive")) return { label: "Utforska på kartan", href: "/karta", emoji: "🤿" };
+                        return null;
+                      };
+                      const programs = Array.from(
+                        new Map(
+                          selectedCity.popularFor
+                            .map(tagToProgram)
+                            .filter((p): p is { label: string; href: string; emoji: string } => p !== null)
+                            .map((p) => [p.href, p])
+                        ).values()
+                      );
+                      if (programs.length === 0) return null;
+                      return (
+                        <div className="mt-6">
+                          <h4 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                            <Globe className="w-4 h-4 text-primary" /> Vad du kan göra i {selectedCity.name}
+                          </h4>
+                          <p className="text-xs text-muted-foreground mb-3">Hoppa direkt till guiden för aktiviteterna som passar här.</p>
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            {programs.map((p) => (
+                              <Link
+                                key={p.href}
+                                to={p.href}
+                                className="flex items-center justify-between p-3 rounded-xl border border-border bg-muted/30 hover:border-primary/40 hover:bg-primary/5 transition-colors group"
+                              >
+                                <span className="flex items-center gap-2 text-sm font-medium text-foreground">
+                                  <span className="text-lg">{p.emoji}</span>
+                                  {p.label}
+                                </span>
+                                <ArrowLeft className="w-4 h-4 text-muted-foreground rotate-180 group-hover:text-primary transition-colors" />
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      );
+                    })()}
+
+
                     {selectedCity.detailedInfo && (
                       <>
                         <div className="mt-6">
