@@ -343,6 +343,7 @@ const StuderaUtomlands = () => {
         canonical="https://farway.lovable.app/studera-utomlands"
       />
       <Header />
+      <CityContextBanner programLabel="Studera utomlands" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
