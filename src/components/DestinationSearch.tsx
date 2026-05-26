@@ -254,9 +254,13 @@ export const DestinationSearch = ({ variant = "full" }: DestinationSearchProps) 
               );
             })
           ) : (
-            <div className="p-4 text-center text-muted-foreground text-sm">
-              Ingen destination hittades för "{query}"
-            </div>
+            <button
+              onClick={() => { navigate("/karta"); setQuery(""); setIsOpen(false); }}
+              className="w-full p-4 text-left hover:bg-muted/60 transition-colors"
+            >
+              <p className="text-sm text-foreground font-medium">Ingen direktträff för "{query}"</p>
+              <p className="text-xs text-muted-foreground mt-0.5">Klicka för att utforska alla destinationer på kartan →</p>
+            </button>
           )}
         </div>
       )}
