@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, BookOpen, Languages, ArrowRight, GraduationCap, Globe2, Users, MapPin, FileText, Home, Train, PoundSterling, CalendarDays } from "lucide-react";
 import heroImg from "@/assets/hero-studera.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 
 import {
   Accordion,
