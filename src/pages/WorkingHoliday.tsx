@@ -157,6 +157,7 @@ const WorkingHoliday = () => {
         canonical="https://farway.lovable.app/working-holiday"
       />
       <Header />
+      <CityContextBanner programLabel="Working Holiday" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
