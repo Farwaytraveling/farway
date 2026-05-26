@@ -5,6 +5,7 @@ import { SEO } from "@/components/SEO";
 import { Heart, Clock, DollarSign, User, Home, Baby, Sparkles, ArrowRight, Users, X, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-au-pair.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 import {
   Accordion,
   AccordionContent,
@@ -210,6 +211,7 @@ const AuPair = () => {
         canonical="https://farway.lovable.app/au-pair"
       />
       <Header />
+      <CityContextBanner programLabel="Au Pair" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">

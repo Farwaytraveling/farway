@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, BookOpen, Languages, ArrowRight, GraduationCap, Globe2, Users, MapPin, FileText, Home, Train, PoundSterling, CalendarDays } from "lucide-react";
 import heroImg from "@/assets/hero-studera.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 
 import {
   Accordion,
@@ -342,6 +343,7 @@ const StuderaUtomlands = () => {
         canonical="https://farway.lovable.app/studera-utomlands"
       />
       <Header />
+      <CityContextBanner programLabel="Studera utomlands" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">

@@ -4,6 +4,7 @@ import { SEO } from "@/components/SEO";
 import { Briefcase, Clock, DollarSign, User, ExternalLink, Sparkles, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 import {
   Accordion,
   AccordionContent,
@@ -156,6 +157,7 @@ const WorkingHoliday = () => {
         canonical="https://farway.lovable.app/working-holiday"
       />
       <Header />
+      <CityContextBanner programLabel="Working Holiday" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">

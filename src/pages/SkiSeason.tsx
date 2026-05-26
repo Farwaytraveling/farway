@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
 import { Clock, DollarSign, Calendar, MapPin, Sparkles, ArrowRight, Mountain, Info } from "lucide-react";
 import heroImg from "@/assets/hero-ski.jpg";
+import { CityContextBanner } from "@/components/CityContextBanner";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -100,6 +101,7 @@ const SkiSeason = () => {
         canonical="https://farway.lovable.app/ski-season"
       />
       <Header />
+      <CityContextBanner programLabel="Skidsäsong" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
