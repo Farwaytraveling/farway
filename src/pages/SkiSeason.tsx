@@ -101,6 +101,7 @@ const SkiSeason = () => {
         canonical="https://farway.lovable.app/ski-season"
       />
       <Header />
+      <CityContextBanner programLabel="Skidsäsong" />
       <main>
         {/* Hero Section */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
