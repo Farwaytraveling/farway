@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Clock, DollarSign, User, ExternalLink, Sparkles, ArrowRight, Briefcase, Calendar, MapPin, FileCheck, Wallet, CheckCircle2, AlertCircle } from "lucide-react";
+import { Clock, DollarSign, User, ExternalLink, Sparkles, ArrowRight, Briefcase, Calendar, MapPin, FileCheck, Wallet, CheckCircle2, AlertCircle, FileText, CalendarClock, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
 import { CityContextBanner } from "@/components/CityContextBanner";
@@ -78,6 +78,21 @@ const workingHolidayCountries = [
     officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
     embassyUrl: "https://www.swedenabroad.se/canberra",
     destinationSlug: "australien",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Måste vara giltigt under hela vistelsen + minst 6 mån buffert. Scanna sidan med foto i färg (PDF eller JPG, max 5 MB).", required: true },
+      { name: "Digitalt passfoto", detail: "Färgfoto mot vit bakgrund, max 6 mån gammalt, 35×45 mm.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Visar minst 5 000 AUD (~35 000 SEK) på konto. Senaste 3 månaderna, stämplat av banken.", required: true },
+      { name: "Bevis på medel för returbiljett", detail: "Antingen bokad returbiljett eller ytterligare ~2 000 AUD utöver sparkravet.", required: true },
+      { name: "Hälsodeklaration", detail: "Fylls i online. Vid längre vistelse i högriskland kan läkarundersökning krävas.", required: false },
+      { name: "Reseförsäkring (rekommenderas)", detail: "Heltäckande för 12 mån. Krävs inte formellt men är i praktiken nödvändig.", required: false },
+    ],
+    timeline: [
+      { when: "4–6 mån före avresa", task: "Förnya pass om < 18 mån kvar, börja spara, jämför reseförsäkringar." },
+      { when: "2–3 mån före avresa", task: "Skapa ImmiAccount och lämna in ansökan online. Avgift ~670 AUD." },
+      { when: "1–4 veckor", task: "Handläggning. De flesta får besked inom 2 veckor – e-visum mejlas." },
+      { when: "1 mån före avresa", task: "Boka flyg, teckna reseförsäkring, ordna första boendet (hostel 1–2 veckor)." },
+      { when: "Vid ankomst", task: "Ansök om Tax File Number (TFN), öppna australiskt bankkonto, skaffa SIM-kort." },
+    ],
   },
   {
     country: "Nya Zeeland",
@@ -109,6 +124,21 @@ const workingHolidayCountries = [
     officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/sweden-working-holiday-visa",
     embassyUrl: "https://www.swedenabroad.se/wellington",
     destinationSlug: "nya-zeeland",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Giltigt minst 3 mån efter planerad utresa. Scanna sidan med foto (PDF/JPG).", required: true },
+      { name: "Digitalt passfoto", detail: "Senaste 6 mån, vit bakgrund, JPG max 10 MB.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Minst 4 200 NZD (~28 000 SEK), stämplat utdrag senaste 3 mån.", required: true },
+      { name: "Returbiljett eller medel för en", detail: "Antingen bokad biljett eller ytterligare ~2 000 NZD utöver sparkravet.", required: true },
+      { name: "Reseförsäkring – KRAV", detail: "Heltäckande för hela vistelsen, inklusive sjukvård och hemtransport. Måste kunna visas upp vid gränsen.", required: true },
+      { name: "Hälsodeklaration", detail: "Fylls i online; lungröntgen kan krävas om du bott > 3 mån i högriskland senaste 5 åren.", required: false },
+    ],
+    timeline: [
+      { when: "3–4 mån före avresa", task: "Förnya pass, teckna reseförsäkring (krav!), börja spara." },
+      { when: "1–2 mån före avresa", task: "Skapa RealMe-konto, lämna in online-ansökan + betala IVL." },
+      { when: "Inom 4 veckor", task: "Beslut via mejl. eVisa kopplas till passet automatiskt." },
+      { when: "2–4 veckor före avresa", task: "Boka flyg och första boendet (Queenstown/Auckland hostel)." },
+      { when: "Vid ankomst", task: "Ansök om IRD-nummer online, öppna NZ-bankkonto, skaffa SIM-kort." },
+    ],
   },
   {
     country: "Kanada",
@@ -140,6 +170,24 @@ const workingHolidayCountries = [
     officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
     embassyUrl: "https://www.swedenabroad.se/ottawa",
     destinationSlug: "kanada",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Giltigt hela vistelsen. Visumets längd matchas mot passets utgångsdatum.", required: true },
+      { name: "Digitalt passfoto", detail: "Senaste 6 mån, vit bakgrund, JPG 60 KB–240 KB.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Minst 2 500 CAD (~18 000 SEK). Stämplat utdrag senaste 4 mån.", required: true },
+      { name: "CV på engelska", detail: "Laddas upp i IEC-portalen efter Invitation to Apply.", required: true },
+      { name: "Biometri", detail: "Fingeravtryck + foto lämnas på VFS Global i Stockholm (~85 CAD).", required: true },
+      { name: "Polisutdrag", detail: "Begärs från Polisen (utdrag för utlandsändamål). Kan krävas vid längre vistelse.", required: false },
+      { name: "Läkarundersökning", detail: "Endast om du planerar jobba inom vård/skola/barn. Görs av godkänd panel-läkare.", required: false },
+      { name: "Reseförsäkring", detail: "KRAV vid gränsen – heltäckande för hela vistelsen. Saknas den kortas visumet.", required: true },
+    ],
+    timeline: [
+      { when: "5–6 mån före avresa", task: "Skapa GCKey-profil, lämna intresseanmälan så snart pool öppnar (januari)." },
+      { when: "1–10 veckor", task: "Vänta på Invitation to Apply (ITA) – dragningar varannan vecka." },
+      { when: "Inom 20 dagar efter ITA", task: "Lämna in full ansökan, betala avgifter, ladda upp dokument." },
+      { when: "2–4 veckor efter ansökan", task: "Boka biometri-tid på VFS i Stockholm." },
+      { when: "8–12 veckor totalt", task: "Port of Entry Letter mejlas – skrivs ut och visas vid ankomst." },
+      { when: "Vid ankomst", task: "Ansök om SIN (Social Insurance Number), öppna kanadensiskt bankkonto." },
+    ],
   },
   {
     country: "Japan",
@@ -171,6 +219,24 @@ const workingHolidayCountries = [
     officialUrl: "https://www.se.emb-japan.go.jp/itpr_sv/visa_working_holiday.html",
     embassyUrl: "https://www.swedenabroad.se/tokyo",
     destinationSlug: "japan",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Giltigt minst 6 mån efter inresedatum. Lämnas in i original på ambassaden.", required: true },
+      { name: "Ifylld ansökningsblankett", detail: "Hämtas på ambassadens hemsida. Fylls i för hand eller digitalt och skrivs ut.", required: true },
+      { name: "Passfoto 4,5×4,5 cm", detail: "Fysiskt foto klistras på blanketten. Vit bakgrund, max 6 mån gammalt.", required: true },
+      { name: "Plan för vistelsen (krav!)", detail: "Skriftlig plan på engelska/japanska som beskriver resmål, syfte och budget. Ca 1 A4.", required: true },
+      { name: "CV", detail: "På engelska. Tydlig kronologisk översikt över utbildning och arbete.", required: true },
+      { name: "Motivationsbrev", detail: "1 A4 där du förklarar varför du vill till Japan och vad du vill uppleva.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Minst motsvarande 250 000 JPY (~17 000 SEK). Stämplat utdrag senaste 3 mån.", required: true },
+      { name: "Bokad eller bevisbar returbiljett", detail: "Antingen biljett eller ytterligare medel motsvarande flygkostnad.", required: true },
+      { name: "Reseförsäkring – KRAV", detail: "Heltäckande för 12 mån. Försäkringsbrev visas vid ansökan.", required: true },
+    ],
+    timeline: [
+      { when: "4–6 mån före avresa", task: "Förnya pass, börja spara, läs på om kvoten (ansök tidigt på året)." },
+      { when: "2–3 mån före avresa", task: "Skriv plan, CV och motivationsbrev. Teckna reseförsäkring." },
+      { when: "1–2 mån före avresa", task: "Boka tid på japanska ambassaden i Stockholm, lämna in personligen." },
+      { when: "1–4 veckor", task: "Handläggning. Visumet klistras i passet – hämtas personligen." },
+      { when: "Vid ankomst", task: "Registrera adress på kommunkontoret inom 14 dagar, skaffa My Number + bankkonto." },
+    ],
   },
 ];
 
@@ -396,6 +462,74 @@ const WorkingHoliday = () => {
                         ))}
                       </ol>
                     </div>
+
+                    {/* Document checklist */}
+                    <div className="mb-8">
+                      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                        <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-primary" />
+                          Dokumentchecklista – det här behöver du ladda upp
+                        </h4>
+                        <button
+                          type="button"
+                          onClick={() => window.print()}
+                          className="text-xs font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1"
+                        >
+                          <Printer className="w-3.5 h-3.5" />
+                          Skriv ut checklistan
+                        </button>
+                      </div>
+                      <ul className="grid sm:grid-cols-2 gap-3">
+                        {c.documents.map((d) => (
+                          <li
+                            key={d.name}
+                            className="flex gap-3 p-4 rounded-xl bg-muted/30 border border-border/50 hover:border-primary/30 transition-colors"
+                          >
+                            <input
+                              type="checkbox"
+                              aria-label={d.name}
+                              className="mt-1 h-4 w-4 rounded border-border accent-[hsl(var(--primary))] shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="text-sm font-semibold text-foreground">{d.name}</span>
+                                {d.required ? (
+                                  <span className="text-[10px] uppercase tracking-wider font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded">
+                                    Krävs
+                                  </span>
+                                ) : (
+                                  <span className="text-[10px] uppercase tracking-wider font-semibold bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+                                    Rek.
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{d.detail}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="mb-8">
+                      <h4 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <CalendarClock className="w-4 h-4 text-primary" />
+                        Tidslinje – ungefärlig
+                      </h4>
+                      <ol className="relative border-l-2 border-primary/20 ml-2 space-y-5">
+                        {c.timeline.map((t, i) => (
+                          <li key={i} className="pl-5 relative">
+                            <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
+                            <div className="text-xs font-semibold uppercase tracking-wider text-primary">{t.when}</div>
+                            <div className="text-sm text-muted-foreground mt-1">{t.task}</div>
+                          </li>
+                        ))}
+                      </ol>
+                      <p className="text-xs text-muted-foreground mt-4 italic">
+                        Tidslinjen är vägledande. Officiella handläggningstider gäller alltid – kontrollera på {c.country}s migrationsmyndighet.
+                      </p>
+                    </div>
+
 
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-border/60">
