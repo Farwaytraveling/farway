@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Briefcase, Clock, DollarSign, User, ExternalLink, Sparkles, MapPin, ArrowRight } from "lucide-react";
+import { Clock, DollarSign, User, ExternalLink, Sparkles, ArrowRight, Briefcase, Calendar, MapPin, FileCheck, Wallet, CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
 import { CityContextBanner } from "@/components/CityContextBanner";
@@ -15,35 +15,35 @@ import {
 const faqItems = [
   {
     question: "Vad är ett Working Holiday-visum?",
-    answer: "Ett Working Holiday-visum är ett speciellt visum som tillåter unga vuxna att resa och arbeta i ett annat land under en längre period, vanligtvis 12 månader. Det skiljer sig från ett vanligt turistvisum genom att du har rätt att ta anställning och tjäna pengar för att finansiera din resa."
+    answer: "Ett Working Holiday-visum (WHV) är ett tidsbegränsat visum som tillåter unga vuxna att resa och arbeta i ett annat land, oftast i 12 månader. Till skillnad från ett turistvisum får du laglig rätt att ta anställning och tjäna pengar för att finansiera din vistelse.",
   },
   {
-    question: "Vilka krav måste jag uppfylla?",
-    answer: "Kraven varierar mellan länder, men generellt måste du vara mellan 18–30 år (Kanada upp till 35), ha ett giltigt svenskt pass, kunna visa att du har tillräckligt med sparpengar (vanligtvis 5 000 AUD/NZD/CAD ≈ 35 000–45 000 SEK), ha en returbiljett eller pengar för en, samt en giltig reseförsäkring som täcker hela vistelsen."
+    question: "Vilka grundkrav måste jag uppfylla?",
+    answer: "Du behöver vara svensk medborgare, ha ett pass som är giltigt under hela vistelsen, vara inom åldersramen (18–30 år för de flesta länder, upp till 35 för Kanada), kunna visa sparmedel motsvarande ca 5 000 AUD/NZD/CAD (~35 000–50 000 SEK), ha returbiljett eller pengar för en, samt en heltäckande reseförsäkring.",
   },
   {
-    question: "Hur lång tid tar ansökningsprocessen?",
-    answer: "Handläggningstiden varierar kraftigt. Australien kan ge svar inom några dagar till veckor, medan Kanadas IEC-program har en årlig lotterirunda. Japan och andra asiatiska länder tar ofta 2-4 veckor. Ansök alltid i god tid - minst 2-3 månader innan planerad avresa."
+    question: "Hur lång tid tar ansökan?",
+    answer: "Australien: oftast några dagar till 4 veckor online. Nya Zeeland: vanligtvis under 4 veckor. Kanada (IEC): pool-system med dragningar – räkna med 8–12 veckor från intresseanmälan till godkänt visum. Japan: 1–4 veckor via ambassaden i Stockholm, begränsad kvot. Ansök alltid 2–4 månader före planerad avresa.",
   },
   {
-    question: "Kan jag förlänga mitt visum?",
-    answer: "Det beror på landet. Australien erbjuder möjlighet att förlänga upp till 3 år om du utför specificerat arbete (t.ex. farmarbete) under din första visumperiod. Nya Zeeland har liknande regler. De flesta andra länder erbjuder inte förlängning av Working Holiday-visum."
+    question: "Kan jag förlänga visumet?",
+    answer: "Australien: kan förlängas till 2:a och 3:e året om du utför specificerat arbete (farm, fiske, byggnation i regional Australien). Nya Zeeland: kan förlängas med 3 månader om du gjort 3 månaders säsongsarbete inom trädgård/vinodling. Kanada IEC: kan göras två gånger totalt. Japan: kan inte förlängas.",
   },
   {
-    question: "Vilka typer av jobb kan jag få?",
-    answer: "De vanligaste jobben inkluderar restaurang- och bararbete, hotell och turism, farmarbete (särskilt i Australien/Nya Zeeland), säsongsarbete på skidorter, au pair, och kontorsjobb om du har relevant erfarenhet. Vissa länder har begränsningar för hur länge du får jobba hos samma arbetsgivare."
-  },
-  {
-    question: "Hur mycket pengar behöver jag ha sparat?",
-    answer: "De flesta länder kräver att du kan visa cirka 5,000 AUD/NZD/CAD i sparade medel. Utöver detta rekommenderas att ha extra buffert för oförutsedda utgifter, första månadens hyra och levnadskostnader tills du hittar jobb - räkna med minst 20,000-30,000 SEK extra."
+    question: "Hur mycket pengar behöver jag spara?",
+    answer: "Utöver de officiella sparkraven (~5 000 AUD/NZD/CAD) rekommenderas en buffert på 20 000–40 000 SEK för flygbiljett, första månadens hyra, försäkring och levnadskostnader tills första lönen. Många budgeterar 60 000–80 000 SEK totalt vid avresa.",
   },
   {
     question: "Behöver jag reseförsäkring?",
-    answer: "Ja, reseförsäkring är obligatoriskt för de flesta Working Holiday-visum och starkt rekommenderat för alla. Försäkringen bör täcka sjukvård, olyckor, hemtransport och helst även stöld och förlorat bagage. Jämför olika försäkringsbolag - priser och villkor varierar."
+    answer: "Ja. För Nya Zeeland och Japan är det krav. För Australien och Kanada är det starkt rekommenderat och i praktiken nödvändigt. Försäkringen ska täcka hela vistelsen, inklusive sjukvård, olyckor, hemtransport och gärna stöld. Vanlig hemförsäkring räcker oftast bara 45 dagar.",
   },
   {
-    question: "Kan jag ansöka om jag redan är i landet?",
-    answer: "Generellt måste du ansöka om Working Holiday-visum från ditt hemland (Sverige) och vara utanför destinationslandet när visumet beviljas. Du kan inte konvertera ett turistvisum till Working Holiday-visum på plats. Planera därför i förväg."
+    question: "Kan jag jobba hur länge som helst hos samma arbetsgivare?",
+    answer: "Nej. Australien: max 6 månader per arbetsgivare (kan ibland förlängas vid godkännande). Nya Zeeland: ingen tidsgräns per arbetsgivare. Kanada: ingen tidsgräns. Japan: får inte arbeta inom vissa branscher (barer, klubbar, vissa nöjesverksamheter).",
+  },
+  {
+    question: "Vilka skatter betalar jag?",
+    answer: "Du betalar skatt i landet du arbetar. Australien: ~15 % på inkomst upp till 45 000 AUD som WHV-innehavare. Nya Zeeland: progressiv skatt från 10,5 %. Kanada: federal + provinsiell skatt, ofta 15–25 %. Japan: ~5–10 % beroende på inkomst. Ansök om Tax File Number (eller motsvarande) direkt när du landar.",
   },
 ];
 
@@ -51,115 +51,141 @@ const workingHolidayCountries = [
   {
     country: "Australien",
     flag: "🇦🇺",
-    visaType: "Working Holiday (subclass 417)",
+    tagline: "Det klassiska valet – sol, jobb och oändliga möjligheter",
+    visaType: "Working Holiday Visa (subclass 417)",
     ageLimit: "18–30 år",
-    duration: "12 månader",
+    duration: "12 månader (förlängningsbart till 3 år)",
     cost: "~670 AUD",
-    description: "Det klassiska valet för svenskar. Jobba på caféer, farms eller i storstäder som Sydney och Melbourne. Som svensk får du ansöka inifrån eller utanför Australien.",
-    highlights: ["Förlängningsbart till 3 år", "Farm work öppnar år 2", "Engelska räcker"],
-    applyUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+    processingTime: "Dagar–4 veckor",
+    savingsRequired: "5 000 AUD",
+    avgWage: "25–35 AUD/timme",
+    bestSeason: "Året runt – sept–nov för start i Sydney/Melbourne",
+    quota: "Ingen kvot för svenskar",
+    description:
+      "Australien är överlägset mest populärt bland svenska Working Holiday-resenärer. Stark ekonomi, hög minimilön, fungerande engelska överallt och ett brett utbud av jobb gör det till det självklara förstavalet. Som svensk får du ansöka från Sverige eller på plats, och visumet kan förlängas i upp till tre år om du utför specificerat regionalt arbete.",
+    popularJobs: ["Hospitality (café/bar/restaurang)", "Farm work & fruit picking", "Bygg & hantverk", "Försäljning & detaljhandel", "Au pair & barnpassning"],
+    popularCities: ["Sydney", "Melbourne", "Brisbane", "Perth", "Cairns"],
+    pros: ["Hög minimilön (~24 AUD/h)", "Förlängningsbart till 3 år", "Stort svenskt community"],
+    cons: ["Dyrt boende i storstäder", "Långt och dyrt flyg", "Stark sol – skydd krävs"],
+    steps: [
+      "Skapa ImmiAccount på immi.homeaffairs.gov.au",
+      "Ladda upp pass, biometri och bevis på sparmedel",
+      "Betala ansökningsavgift (~670 AUD)",
+      "Vänta på beslut (oftast 1–4 veckor)",
+      "Boka flyg – du har 12 mån på dig att resa in",
+      "Sök Tax File Number (TFN) direkt vid ankomst",
+    ],
+    officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+    embassyUrl: "https://www.swedenabroad.se/canberra",
+    destinationSlug: "australien",
   },
   {
     country: "Nya Zeeland",
     flag: "🇳🇿",
-    visaType: "Working Holiday Visa",
+    tagline: "Äventyrarens paradis – natur, vingårdar och skidsäsong",
+    visaType: "Working Holiday Visa (Sweden)",
     ageLimit: "18–30 år",
-    duration: "12 månader",
-    cost: "~770 NZD",
-    description: "Perfekt för naturälskare. Kombinera arbete med äventyr – från vingårdsarbete i Marlborough till skidsäsong i Queenstown.",
-    highlights: ["Extremsporter", "Filmlandskap", "Vingårdsarbete"],
-    applyUrl: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/sweden-working-holiday-visa",
+    duration: "12 månader (förlängningsbart med 3 mån)",
+    cost: "~420 NZD",
+    processingTime: "Under 4 veckor",
+    savingsRequired: "4 200 NZD",
+    avgWage: "23–30 NZD/timme",
+    bestSeason: "Okt–dec (sommarsäsong) eller maj–jun (skidsäsong)",
+    quota: "Ingen kvot för svenskar",
+    description:
+      "Nya Zeeland är drömmen för dig som vill kombinera arbete med extremsporter och natur i världsklass. Från vingårdsarbete i Marlborough till skidsäsong i Queenstown och bartending i Wellington – landet är litet, säkert och lätt att resa runt i. Visumet kan förlängas i 3 månader om du arbetat säsongsvis inom trädgård eller vinodling.",
+    popularJobs: ["Vingårds- & fruktplockning", "Skidsäsong (Queenstown/Wanaka)", "Hospitality", "Backpacker hostels", "Turism & guide"],
+    popularCities: ["Queenstown", "Auckland", "Wellington", "Christchurch", "Wanaka"],
+    pros: ["Spektakulär natur", "Säkert och engelsktalande", "Lätt att komma in på arbetsmarknaden"],
+    cons: ["Lägre löner än Australien", "Avlägset – dyrt att resa hem", "Begränsat med storstadsjobb"],
+    steps: [
+      "Skapa RealMe-konto på immigration.govt.nz",
+      "Fyll i online-ansökan + ladda upp pass",
+      "Betala visumavgift + IVL (turistskatt)",
+      "Genomgå hälsodeklaration",
+      "Visum godkänns oftast inom 4 veckor",
+      "Ansök om IRD-nummer vid ankomst",
+    ],
+    officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/sweden-working-holiday-visa",
+    embassyUrl: "https://www.swedenabroad.se/wellington",
+    destinationSlug: "nya-zeeland",
   },
   {
     country: "Kanada",
     flag: "🇨🇦",
-    visaType: "International Experience Canada (IEC)",
+    tagline: "Norra halvklotets favorit – storstad, skidor och vildmark",
+    visaType: "International Experience Canada (IEC) – Working Holiday",
     ageLimit: "18–35 år",
-    duration: "12–24 månader",
-    cost: "~272 CAD",
-    description: "Jobba i storstäder eller på skidorter. Kanadas IEC-program har en årlig kvot och fungerar via 'pool of candidates' – ansök tidigt på säsongen.",
-    highlights: ["Längst upp till 35 år", "Skidsäsong i Whistler", "Pool-system"],
-    applyUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+    duration: "12 månader (vissa kan förlängas till 24)",
+    cost: "~272 CAD (avgifter + biometri)",
+    processingTime: "8–12 veckor från pool till visum",
+    savingsRequired: "2 500 CAD",
+    avgWage: "17–25 CAD/timme",
+    bestSeason: "Pool öppnar i januari – sök tidigt på säsongen",
+    quota: "Begränsad årlig kvot – pool-system med dragningar",
+    description:
+      "Kanada är unikt för att åldersgränsen sträcker sig upp till 35 år, vilket gör programmet attraktivt för något äldre sökande. IEC fungerar som en pool: du skapar en profil, väntar på att bli inbjuden, och har sedan 20 dagar på dig att ansöka. Skidsäsong i Whistler eller Banff är extremt populärt – men även Toronto, Montréal och Vancouver lockar för stadsliv och tech-jobb.",
+    popularJobs: ["Skidresort-personal (Whistler/Banff)", "Hospitality i storstäder", "Bygg & hantverk", "Retail & service", "Sommarcamp & turism"],
+    popularCities: ["Vancouver", "Toronto", "Montréal", "Whistler", "Banff"],
+    pros: ["Åldersgräns upp till 35", "Världsklass skidsäsong", "Lågt sparkrav (2 500 CAD)"],
+    cons: ["Pool-system kan vara osäkert", "Kall vinter – kläder är dyra", "Tar längre tid att få visum"],
+    steps: [
+      "Skapa GCKey-konto på canada.ca/iec",
+      "Fyll i intresseanmälan (kommer in i pool)",
+      "Vänta på Invitation to Apply (ITA)",
+      "Ansök inom 20 dagar – ladda upp dokument",
+      "Lämna biometri på ambassaden",
+      "Få Port of Entry letter – visa upp vid ankomst",
+    ],
+    officialUrl: "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+    embassyUrl: "https://www.swedenabroad.se/ottawa",
+    destinationSlug: "kanada",
   },
   {
     country: "Japan",
     flag: "🇯🇵",
-    visaType: "Working Holiday Visa",
+    tagline: "Kulturupplevelse på djupet – gratis visum och unik vardag",
+    visaType: "Working Holiday Visa (Japan)",
     ageLimit: "18–30 år",
     duration: "12 månader",
     cost: "Gratis",
-    description: "Upplev japansk kultur på djupet. Begränsad kvot för svenskar – sök i god tid via japanska ambassaden i Stockholm.",
-    highlights: ["Gratis visum", "Unik kultur", "Begränsad kvot"],
-    applyUrl: "https://www.se.emb-japan.go.jp/itpr_sv/visa_working_holiday.html",
-  },
-  {
-    country: "Sydkorea",
-    flag: "🇰🇷",
-    visaType: "H-1 Working Holiday Visa",
-    ageLimit: "18–30 år",
-    duration: "12 månader",
-    cost: "Gratis",
-    description: "Asiens nya het – Seoul växer snabbt som hub för digitala nomader, K-pop och tech. Många jobbar som engelsklärare eller på hostels.",
-    highlights: ["Gratis visum", "K-kultur", "Engelsklärarjobb"],
-    applyUrl: "https://overseas.mofa.go.kr/se-en/index.do",
-  },
-  {
-    country: "Argentina",
-    flag: "🇦🇷",
-    visaType: "Programa Vacaciones y Trabajo",
-    ageLimit: "18–30 år",
-    duration: "12 månader",
-    cost: "~150 USD",
-    description: "Sveriges enda WHV-avtal i Sydamerika. Buenos Aires bjuder på tango, biff och ett vibbande nattliv – perfekt för att lära sig spanska.",
-    highlights: ["Spanska", "Patagonien", "Buenos Aires"],
-    applyUrl: "https://www.cancilleria.gob.ar/en/services/foreign/sweden",
-  },
-  {
-    country: "Hongkong",
-    flag: "🇭🇰",
-    visaType: "Working Holiday Scheme",
-    ageLimit: "18–30 år",
-    duration: "12 månader",
-    cost: "~230 HKD",
-    description: "Asiens finanshuvudstad i fickformat. Hög lönenivå, engelska överallt och språngbräda till resten av Asien.",
-    highlights: ["Hög lön", "Engelska funkar", "Asien-hub"],
-    applyUrl: "https://www.immd.gov.hk/eng/services/visas/working_holiday.html",
-  },
-  {
-    country: "Taiwan",
-    flag: "🇹🇼",
-    visaType: "Working Holiday Visa",
-    ageLimit: "18–30 år",
-    duration: "6–12 månader",
-    cost: "Gratis",
-    description: "Taipei är ett av Asiens säkraste och mest gästvänliga huvudstäder. Stark bubbel-tea-kultur, fantastisk mat och billigt boende.",
-    highlights: ["Gratis visum", "Säkert", "Mandarin-möjlighet"],
-    applyUrl: "https://www.roc-taiwan.org/se_en/post/107.html",
-  },
-  {
-    country: "Uruguay",
-    flag: "🇺🇾",
-    visaType: "Programa Vacaciones y Trabajo",
-    ageLimit: "18–30 år",
-    duration: "12 månader",
-    cost: "~70 USD",
-    description: "Sydamerikas mest stabila och säkra land. Avslappnad atlantkust, mate-kultur och lugn rytm – mindre kaotiskt än grannländerna.",
-    highlights: ["Säkraste i Sydamerika", "Spanska", "Avslappnat"],
-    applyUrl: "https://www.gub.uy/ministerio-relaciones-exteriores/",
+    processingTime: "1–4 veckor via ambassaden i Stockholm",
+    savingsRequired: "Motsvarande 250 000 JPY (~17 000 SEK)",
+    avgWage: "1 000–1 300 JPY/timme",
+    bestSeason: "Mar–maj (körsbärsblom) eller sep–nov (höstlöv)",
+    quota: "Begränsad årlig kvot – sök tidigt",
+    description:
+      "Japan är det mest unika WHV-landet för svenskar – gratis visum, djupgående kulturupplevelse och en chans att lära sig japanska på riktigt. Tokyo och Osaka erbjuder jobb inom turism, engelskundervisning, hostels och restaurang. Notera att du inte får jobba inom barer, klubbar eller nöjesindustri. Visumet kan inte förlängas, men det är en av de starkaste meriterna på ett CV.",
+    popularJobs: ["Engelsklärare (privatlektioner/eikaiwa)", "Hostel- & hotellpersonal", "Skidresort (Niseko, Hakuba)", "Restaurang & café", "Modell & event"],
+    popularCities: ["Tokyo", "Osaka", "Kyoto", "Niseko", "Fukuoka"],
+    pros: ["Gratis visum", "Unik kulturmerit", "Säkert – nästan obefintlig brottslighet"],
+    cons: ["Språkbarriären är verklig", "Får inte jobba i barer/klubbar", "Kan inte förlängas"],
+    steps: [
+      "Boka tid på japanska ambassaden i Stockholm",
+      "Skriv en plan för vistelsen (krav!)",
+      "Ta med pass, foto, kontoutdrag, returbiljett",
+      "Lämna ansökan personligen",
+      "Hämta visum efter 1–4 veckor",
+      "Registrera dig på kommunkontoret vid ankomst",
+    ],
+    officialUrl: "https://www.se.emb-japan.go.jp/itpr_sv/visa_working_holiday.html",
+    embassyUrl: "https://www.swedenabroad.se/tokyo",
+    destinationSlug: "japan",
   },
 ];
+
 const WorkingHoliday = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Working Holiday-visum 2025 – Australien, Kanada, Japan & fler | Farway"
-        description="Komplett guide till Working Holiday-visum för svenskar: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Argentina m.fl. Krav, åldersgränser, kostnader och hur du ansöker."
+        title="Working Holiday-visum 2026 – Australien, Nya Zeeland, Kanada & Japan | Farway"
+        description="Komplett svensk guide till Working Holiday-visum i Australien, Nya Zeeland, Kanada och Japan. Krav, kostnader, löner, jobb, ansökningssteg och officiella länkar."
         canonical="https://farway.lovable.app/working-holiday"
       />
       <Header />
       <CityContextBanner programLabel="Working Holiday" />
       <main>
-        {/* Hero Section */}
+        {/* Hero */}
         <section className="relative py-28 sm:py-36 overflow-hidden">
           <img src={heroImg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={768} />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/40" />
@@ -176,13 +202,13 @@ const WorkingHoliday = () => {
                 Jobba, res och lev i ett nytt land i upp till 12 månader.
               </p>
               <p className="text-lg text-primary-foreground/70 mb-10 max-w-xl">
-                Från Australiens stränder till Tokyos gator – finansiera ditt äventyr genom att jobba längs vägen.
+                Den svenska guiden till de fyra största destinationerna: Australien, Nya Zeeland, Kanada och Japan.
               </p>
               <div className="flex flex-wrap gap-3 text-sm">
                 {[
                   { icon: User, text: "18–35 år" },
                   { icon: Clock, text: "12–24 månader" },
-                  { icon: DollarSign, text: "Gratis – ~$500" },
+                  { icon: DollarSign, text: "Gratis – ~670 AUD" },
                 ].map((item) => (
                   <div key={item.text} className="flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-md border border-primary-foreground/15 rounded-full px-5 py-2.5 text-primary-foreground">
                     <item.icon className="w-4 h-4" />
@@ -194,77 +220,206 @@ const WorkingHoliday = () => {
           </div>
         </section>
 
-        {/* Countries Grid */}
+        {/* Quick comparison */}
+        <section className="py-16 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10">
+              <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                Jämför på 30 sekunder
+              </span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4">
+                De fyra destinationerna – sida vid sida
+              </h2>
+            </div>
+            <div className="overflow-x-auto rounded-2xl border border-border/60 bg-card shadow-sm">
+              <table className="w-full text-sm">
+                <thead className="bg-muted/60 text-foreground">
+                  <tr>
+                    <th className="text-left p-4 font-semibold">Land</th>
+                    <th className="text-left p-4 font-semibold">Ålder</th>
+                    <th className="text-left p-4 font-semibold">Längd</th>
+                    <th className="text-left p-4 font-semibold">Kostnad</th>
+                    <th className="text-left p-4 font-semibold">Sparkrav</th>
+                    <th className="text-left p-4 font-semibold">Timlön (snitt)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {workingHolidayCountries.map((c) => (
+                    <tr key={c.country} className="border-t border-border/60 hover:bg-muted/30 transition-colors">
+                      <td className="p-4 font-medium text-foreground">
+                        <span className="mr-2">{c.flag}</span>
+                        {c.country}
+                      </td>
+                      <td className="p-4 text-muted-foreground">{c.ageLimit}</td>
+                      <td className="p-4 text-muted-foreground">{c.duration}</td>
+                      <td className="p-4 text-muted-foreground">{c.cost}</td>
+                      <td className="p-4 text-muted-foreground">{c.savingsRequired}</td>
+                      <td className="p-4 text-muted-foreground">{c.avgWage}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* Countries – detailed */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16">
+            <div className="text-center mb-14">
               <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
-                9 länder med avtal
+                Fullständiga guider
               </span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mt-4 mb-4">
-                Vart vill du åka?
+                Välj din destination
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-                Sverige har Working Holiday-avtal med dessa länder. Välj ditt äventyr.
+                Allt du behöver för att fatta beslut, ansöka och packa väskan.
               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {workingHolidayCountries.map((country) => (
-                <div
-                  key={country.country}
-                  className="group bg-card rounded-2xl border border-border/60 overflow-hidden hover:shadow-lg hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
+            <div className="space-y-12 max-w-5xl mx-auto">
+              {workingHolidayCountries.map((c) => (
+                <article
+                  key={c.country}
+                  id={c.destinationSlug}
+                  className="bg-card rounded-3xl border border-border/60 shadow-sm overflow-hidden scroll-mt-24"
                 >
-                  <div className="h-1 bg-gradient-to-r from-primary to-primary/60" />
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <span className="text-4xl leading-none">{country.flag}</span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-display text-lg font-bold text-foreground">
-                          {country.country}
-                        </h3>
-                        <p className="text-xs text-muted-foreground truncate">{country.visaType}</p>
+                  <div className="h-1.5 bg-gradient-to-r from-primary via-primary/70 to-primary/40" />
+                  <div className="p-8 sm:p-10">
+                    {/* Header */}
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-6 pb-6 border-b border-border/60">
+                      <span className="text-5xl leading-none">{c.flag}</span>
+                      <div className="flex-1">
+                        <h3 className="font-display text-2xl sm:text-3xl font-bold text-foreground">{c.country}</h3>
+                        <p className="text-primary font-medium mt-1">{c.tagline}</p>
+                        <p className="text-xs text-muted-foreground mt-1">{c.visaType}</p>
                       </div>
                     </div>
 
-                    <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                      {country.description}
-                    </p>
-
-                    <div className="flex flex-wrap gap-1.5 mb-5">
-                      {country.highlights.map((highlight) => (
-                        <span
-                          key={highlight}
-                          className="text-xs font-medium bg-primary/5 text-primary border border-primary/15 px-2.5 py-1 rounded-full"
-                        >
-                          {highlight}
-                        </span>
+                    {/* Stats */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+                      {[
+                        { icon: User, label: "Ålder", value: c.ageLimit },
+                        { icon: Clock, label: "Längd", value: c.duration },
+                        { icon: DollarSign, label: "Visumavgift", value: c.cost },
+                        { icon: Wallet, label: "Sparkrav", value: c.savingsRequired },
+                        { icon: Briefcase, label: "Timlön", value: c.avgWage },
+                        { icon: Calendar, label: "Bäst säsong", value: c.bestSeason },
+                        { icon: FileCheck, label: "Handläggning", value: c.processingTime },
+                        { icon: AlertCircle, label: "Kvot", value: c.quota },
+                      ].map((s) => (
+                        <div key={s.label} className="bg-muted/40 rounded-xl p-3 border border-border/40">
+                          <div className="flex items-center gap-1.5 text-muted-foreground text-[10px] uppercase tracking-wider mb-1">
+                            <s.icon className="w-3 h-3" />
+                            {s.label}
+                          </div>
+                          <div className="font-semibold text-foreground text-sm">{s.value}</div>
+                        </div>
                       ))}
                     </div>
 
-                    <div className="grid grid-cols-3 gap-1 text-center text-xs mb-5 py-3 bg-muted/40 rounded-xl">
-                      <div className="px-2">
-                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Ålder</div>
-                        <div className="font-semibold text-foreground">{country.ageLimit}</div>
+                    {/* Description */}
+                    <p className="text-muted-foreground text-base leading-relaxed mb-8">{c.description}</p>
+
+                    {/* Jobs + Cities */}
+                    <div className="grid md:grid-cols-2 gap-6 mb-8">
+                      <div>
+                        <h4 className="font-display font-semibold text-foreground mb-3 flex items-center gap-2">
+                          <Briefcase className="w-4 h-4 text-primary" />
+                          Populära jobb
+                        </h4>
+                        <ul className="space-y-2">
+                          {c.popularJobs.map((job) => (
+                            <li key={job} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                              <span>{job}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
-                      <div className="px-2 border-x border-border">
-                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Längd</div>
-                        <div className="font-semibold text-foreground">{country.duration}</div>
-                      </div>
-                      <div className="px-2">
-                        <div className="text-muted-foreground text-[10px] uppercase tracking-wider mb-0.5">Kostnad</div>
-                        <div className="font-semibold text-foreground">{country.cost}</div>
+                      <div>
+                        <h4 className="font-display font-semibold text-foreground mb-3 flex items-center gap-2">
+                          <MapPin className="w-4 h-4 text-primary" />
+                          Populära städer
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {c.popularCities.map((city) => (
+                            <span key={city} className="text-sm font-medium bg-primary/5 text-primary border border-primary/15 px-3 py-1.5 rounded-full">
+                              {city}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    <a href={country.applyUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-all duration-300">
-                        <span>Ansök om visum</span>
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
+                    {/* Pros / Cons */}
+                    <div className="grid md:grid-cols-2 gap-4 mb-8">
+                      <div className="bg-primary/[0.04] border border-primary/15 rounded-xl p-5">
+                        <h4 className="font-display font-semibold text-foreground mb-3">Fördelar</h4>
+                        <ul className="space-y-1.5 text-sm text-muted-foreground">
+                          {c.pros.map((p) => (
+                            <li key={p} className="flex items-start gap-2">
+                              <span className="text-primary mt-0.5">+</span>
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-muted/40 border border-border/60 rounded-xl p-5">
+                        <h4 className="font-display font-semibold text-foreground mb-3">Att tänka på</h4>
+                        <ul className="space-y-1.5 text-sm text-muted-foreground">
+                          {c.cons.map((p) => (
+                            <li key={p} className="flex items-start gap-2">
+                              <span className="text-muted-foreground mt-0.5">−</span>
+                              <span>{p}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Steps */}
+                    <div className="mb-8">
+                      <h4 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <FileCheck className="w-4 h-4 text-primary" />
+                        Så ansöker du – steg för steg
+                      </h4>
+                      <ol className="space-y-3">
+                        {c.steps.map((step, i) => (
+                          <li key={i} className="flex gap-4">
+                            <span className="flex-shrink-0 w-7 h-7 rounded-full bg-primary text-primary-foreground text-sm font-semibold flex items-center justify-center">
+                              {i + 1}
+                            </span>
+                            <span className="text-muted-foreground pt-0.5">{step}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-border/60">
+                      <Button asChild className="flex-1">
+                        <a href={c.officialUrl} target="_blank" rel="noopener noreferrer">
+                          Officiell ansökan
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
                       </Button>
-                    </a>
+                      <Button asChild variant="outline" className="flex-1">
+                        <a href={`/destination/${c.destinationSlug}`}>
+                          Läs mer om {c.country}
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                      <Button asChild variant="ghost" className="flex-1">
+                        <a href={c.embassyUrl} target="_blank" rel="noopener noreferrer">
+                          Svenska ambassaden
+                          <ExternalLink className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                    </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -280,27 +435,27 @@ const WorkingHoliday = () => {
                 <span className="text-sm font-medium text-primary">Bra att veta</span>
               </div>
               <h2 className="font-display text-3xl font-bold text-foreground mb-8 text-center">
-                Vad är Working Holiday?
+                Innan du ansöker
               </h2>
               <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
                 <p>
-                  Working Holiday är ett speciellt visum som tillåter unga vuxna att resa och arbeta i ett annat land under en längre period, vanligtvis 12 månader. Det är ett utmärkt sätt att finansiera sin resa, få internationell arbetslivserfarenhet och uppleva en ny kultur på djupet.
+                  Working Holiday är ett av de bästa sätten att uppleva ett nytt land på riktigt. Du får tid att jobba, resa, lära dig språket och bygga ett internationellt nätverk – allt inom ramen för ett legitimt visum.
                 </p>
                 <div className="bg-card rounded-2xl border border-border/60 p-6 shadow-sm">
-                  <p className="text-foreground font-medium mb-2">💡 Visste du att...</p>
+                  <p className="text-foreground font-medium mb-2">💡 Farways rekommendation</p>
                   <p className="text-muted-foreground">
-                    Sverige har Working Holiday-avtal med 9 länder: Australien, Nya Zeeland, Kanada, Japan, Sydkorea, Hongkong, Taiwan, Argentina och Uruguay. De flesta är öppna för 18–30-åringar, men Kanada tillåter upp till 35 år.
+                    Är du osäker – välj <strong>Australien</strong>. Högst lön, lättast att hitta jobb, störst svenskt community och möjlighet att förlänga i upp till 3 år. Vill du ha äventyr utöver det vanliga är <strong>Nya Zeeland</strong> svaret. Är du över 30 är <strong>Kanada</strong> det enda alternativet. Och söker du en unik kulturupplevelse på CV:t – välj <strong>Japan</strong>.
                   </p>
                 </div>
                 <p>
-                  Ansökningsprocessen varierar mellan länder. Japan, Sydkorea och Taiwan erbjuder gratis visum, medan Australien tar ut ~670 AUD och Nya Zeeland ~770 NZD. Oavsett vilket land du väljer är Working Holiday ett äventyr som ger minnen för livet.
+                  Oavsett vilket land du väljer: <strong>ansök i god tid</strong>, <strong>köp heltäckande reseförsäkring</strong> och <strong>spara en buffert</strong> utöver det officiella sparkravet. Då slipper du stress både före och under resan.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* FAQ */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
