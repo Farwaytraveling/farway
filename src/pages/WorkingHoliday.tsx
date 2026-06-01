@@ -219,6 +219,24 @@ const workingHolidayCountries = [
     officialUrl: "https://www.se.emb-japan.go.jp/itpr_sv/visa_working_holiday.html",
     embassyUrl: "https://www.swedenabroad.se/tokyo",
     destinationSlug: "japan",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Giltigt minst 6 mån efter inresedatum. Lämnas in i original på ambassaden.", required: true },
+      { name: "Ifylld ansökningsblankett", detail: "Hämtas på ambassadens hemsida. Fylls i för hand eller digitalt och skrivs ut.", required: true },
+      { name: "Passfoto 4,5×4,5 cm", detail: "Fysiskt foto klistras på blanketten. Vit bakgrund, max 6 mån gammalt.", required: true },
+      { name: "Plan för vistelsen (krav!)", detail: "Skriftlig plan på engelska/japanska som beskriver resmål, syfte och budget. Ca 1 A4.", required: true },
+      { name: "CV", detail: "På engelska. Tydlig kronologisk översikt över utbildning och arbete.", required: true },
+      { name: "Motivationsbrev", detail: "1 A4 där du förklarar varför du vill till Japan och vad du vill uppleva.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Minst motsvarande 250 000 JPY (~17 000 SEK). Stämplat utdrag senaste 3 mån.", required: true },
+      { name: "Bokad eller bevisbar returbiljett", detail: "Antingen biljett eller ytterligare medel motsvarande flygkostnad.", required: true },
+      { name: "Reseförsäkring – KRAV", detail: "Heltäckande för 12 mån. Försäkringsbrev visas vid ansökan.", required: true },
+    ],
+    timeline: [
+      { when: "4–6 mån före avresa", task: "Förnya pass, börja spara, läs på om kvoten (ansök tidigt på året)." },
+      { when: "2–3 mån före avresa", task: "Skriv plan, CV och motivationsbrev. Teckna reseförsäkring." },
+      { when: "1–2 mån före avresa", task: "Boka tid på japanska ambassaden i Stockholm, lämna in personligen." },
+      { when: "1–4 veckor", task: "Handläggning. Visumet klistras i passet – hämtas personligen." },
+      { when: "Vid ankomst", task: "Registrera adress på kommunkontoret inom 14 dagar, skaffa My Number + bankkonto." },
+    ],
   },
 ];
 
