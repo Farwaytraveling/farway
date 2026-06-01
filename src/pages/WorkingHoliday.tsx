@@ -124,6 +124,21 @@ const workingHolidayCountries = [
     officialUrl: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/sweden-working-holiday-visa",
     embassyUrl: "https://www.swedenabroad.se/wellington",
     destinationSlug: "nya-zeeland",
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Giltigt minst 3 mån efter planerad utresa. Scanna sidan med foto (PDF/JPG).", required: true },
+      { name: "Digitalt passfoto", detail: "Senaste 6 mån, vit bakgrund, JPG max 10 MB.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Minst 4 200 NZD (~28 000 SEK), stämplat utdrag senaste 3 mån.", required: true },
+      { name: "Returbiljett eller medel för en", detail: "Antingen bokad biljett eller ytterligare ~2 000 NZD utöver sparkravet.", required: true },
+      { name: "Reseförsäkring – KRAV", detail: "Heltäckande för hela vistelsen, inklusive sjukvård och hemtransport. Måste kunna visas upp vid gränsen.", required: true },
+      { name: "Hälsodeklaration", detail: "Fylls i online; lungröntgen kan krävas om du bott > 3 mån i högriskland senaste 5 åren.", required: false },
+    ],
+    timeline: [
+      { when: "3–4 mån före avresa", task: "Förnya pass, teckna reseförsäkring (krav!), börja spara." },
+      { when: "1–2 mån före avresa", task: "Skapa RealMe-konto, lämna in online-ansökan + betala IVL." },
+      { when: "Inom 4 veckor", task: "Beslut via mejl. eVisa kopplas till passet automatiskt." },
+      { when: "2–4 veckor före avresa", task: "Boka flyg och första boendet (Queenstown/Auckland hostel)." },
+      { when: "Vid ankomst", task: "Ansök om IRD-nummer online, öppna NZ-bankkonto, skaffa SIM-kort." },
+    ],
   },
   {
     country: "Kanada",
