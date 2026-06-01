@@ -78,7 +78,21 @@ const workingHolidayCountries = [
     officialUrl: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
     embassyUrl: "https://www.swedenabroad.se/canberra",
     destinationSlug: "australien",
-  },
+    documents: [
+      { name: "Giltigt svenskt pass", detail: "Måste vara giltigt under hela vistelsen + minst 6 mån buffert. Scanna sidan med foto i färg (PDF eller JPG, max 5 MB).", required: true },
+      { name: "Digitalt passfoto", detail: "Färgfoto mot vit bakgrund, max 6 mån gammalt, 35×45 mm.", required: true },
+      { name: "Bankutdrag – sparmedel", detail: "Visar minst 5 000 AUD (~35 000 SEK) på konto. Senaste 3 månaderna, stämplat av banken.", required: true },
+      { name: "Bevis på medel för returbiljett", detail: "Antingen bokad returbiljett eller ytterligare ~2 000 AUD utöver sparkravet.", required: true },
+      { name: "Hälsodeklaration", detail: "Fylls i online. Vid längre vistelse i högriskland kan läkarundersökning krävas.", required: false },
+      { name: "Reseförsäkring (rekommenderas)", detail: "Heltäckande för 12 mån. Krävs inte formellt men är i praktiken nödvändig.", required: false },
+    ],
+    timeline: [
+      { when: "4–6 mån före avresa", task: "Förnya pass om < 18 mån kvar, börja spara, jämför reseförsäkringar." },
+      { when: "2–3 mån före avresa", task: "Skapa ImmiAccount och lämna in ansökan online. Avgift ~670 AUD." },
+      { when: "1–4 veckor", task: "Handläggning. De flesta får besked inom 2 veckor – e-visum mejlas." },
+      { when: "1 mån före avresa", task: "Boka flyg, teckna reseförsäkring, ordna första boendet (hostel 1–2 veckor)." },
+      { when: "Vid ankomst", task: "Ansök om Tax File Number (TFN), öppna australiskt bankkonto, skaffa SIM-kort." },
+    ],
   {
     country: "Nya Zeeland",
     flag: "🇳🇿",
