@@ -463,6 +463,74 @@ const WorkingHoliday = () => {
                       </ol>
                     </div>
 
+                    {/* Document checklist */}
+                    <div className="mb-8">
+                      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
+                        <h4 className="font-display font-semibold text-foreground flex items-center gap-2">
+                          <FileText className="w-4 h-4 text-primary" />
+                          Dokumentchecklista – det här behöver du ladda upp
+                        </h4>
+                        <button
+                          type="button"
+                          onClick={() => window.print()}
+                          className="text-xs font-medium text-primary hover:text-primary/80 inline-flex items-center gap-1"
+                        >
+                          <Printer className="w-3.5 h-3.5" />
+                          Skriv ut checklistan
+                        </button>
+                      </div>
+                      <ul className="grid sm:grid-cols-2 gap-3">
+                        {c.documents.map((d) => (
+                          <li
+                            key={d.name}
+                            className="flex gap-3 p-4 rounded-xl bg-muted/30 border border-border/50 hover:border-primary/30 transition-colors"
+                          >
+                            <input
+                              type="checkbox"
+                              aria-label={d.name}
+                              className="mt-1 h-4 w-4 rounded border-border accent-[hsl(var(--primary))] shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                <span className="text-sm font-semibold text-foreground">{d.name}</span>
+                                {d.required ? (
+                                  <span className="text-[10px] uppercase tracking-wider font-semibold bg-primary/10 text-primary px-1.5 py-0.5 rounded">
+                                    Krävs
+                                  </span>
+                                ) : (
+                                  <span className="text-[10px] uppercase tracking-wider font-semibold bg-muted text-muted-foreground px-1.5 py-0.5 rounded">
+                                    Rek.
+                                  </span>
+                                )}
+                              </div>
+                              <p className="text-xs text-muted-foreground leading-relaxed mt-1">{d.detail}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Timeline */}
+                    <div className="mb-8">
+                      <h4 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
+                        <CalendarClock className="w-4 h-4 text-primary" />
+                        Tidslinje – ungefärlig
+                      </h4>
+                      <ol className="relative border-l-2 border-primary/20 ml-2 space-y-5">
+                        {c.timeline.map((t, i) => (
+                          <li key={i} className="pl-5 relative">
+                            <span className="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-primary ring-4 ring-background" />
+                            <div className="text-xs font-semibold uppercase tracking-wider text-primary">{t.when}</div>
+                            <div className="text-sm text-muted-foreground mt-1">{t.task}</div>
+                          </li>
+                        ))}
+                      </ol>
+                      <p className="text-xs text-muted-foreground mt-4 italic">
+                        Tidslinjen är vägledande. Officiella handläggningstider gäller alltid – kontrollera på {c.country}s migrationsmyndighet.
+                      </p>
+                    </div>
+
+
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-border/60">
                       <Button asChild className="flex-1">
