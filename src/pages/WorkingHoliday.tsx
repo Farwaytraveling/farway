@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { SEO } from "@/components/SEO";
-import { Clock, DollarSign, User, ExternalLink, Sparkles, ArrowRight, Briefcase, Calendar, MapPin, FileCheck, Wallet, CheckCircle2, AlertCircle } from "lucide-react";
+import { Clock, DollarSign, User, ExternalLink, Sparkles, ArrowRight, Briefcase, Calendar, MapPin, FileCheck, Wallet, CheckCircle2, AlertCircle, FileText, CalendarClock, Download, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/hero-working-holiday.jpg";
 import { CityContextBanner } from "@/components/CityContextBanner";
