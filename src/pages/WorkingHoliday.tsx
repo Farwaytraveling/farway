@@ -93,6 +93,7 @@ const workingHolidayCountries = [
       { when: "1 mån före avresa", task: "Boka flyg, teckna reseförsäkring, ordna första boendet (hostel 1–2 veckor)." },
       { when: "Vid ankomst", task: "Ansök om Tax File Number (TFN), öppna australiskt bankkonto, skaffa SIM-kort." },
     ],
+  },
   {
     country: "Nya Zeeland",
     flag: "🇳🇿",
